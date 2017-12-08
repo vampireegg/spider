@@ -159,8 +159,8 @@ function initLevel(level)
     localStorage.setItem("level", level);
     gPlayer.width =70;
     gPlayer.height =70;
-    gContext.fillStyle='#151515';
-    gContext.fillRect(mainScreenBoundaryX,0,200,gCanvas.height);
+    //gContext.fillStyle='#151515';
+    //gContext.fillRect(mainScreenBoundaryX,0,200,gCanvas.height);
 
 
 

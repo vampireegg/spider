@@ -118,5 +118,23 @@ local line1 = display.newLine( mainScreenBoundaryX,0,mainScreenBoundaryX,totalHe
 line1:setStrokeColor( 0, 0, 0 )
 line1.strokeWidth = 1
 
-drawHelpBorder()
+--drawHelpBorder()
+local spider = display.newGroup()
+spider.x = 300
+spider.y = 300
+
+
+
+
+local leg = {}
+for i = 0,7 do
+	leg[i] = display.newImageRect( "leg.png", 411* 1.5,96  )
+	spider:insert( leg[i] )
+	leg[i].rotation = i * 45
+	
+end
+
+local body = display.newImageRect( "body.png", 341, 311 )
+
+spider:insert( body )
 

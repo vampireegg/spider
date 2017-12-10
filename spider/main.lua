@@ -129,15 +129,18 @@ spider.y = 300
 
 local leg = {}
 for i = 1,8 do
-	leg[i] = display.newImageRect( "arrow.png", 70,70  )
+	leg[i] = display.newImageRect( "arrow.png", 35,35  )
 	leg[i].angle = i * 45
-	leg[i].radAngle = (leg[i].angle + 315) * math.pi / 180
+	leg[i].isBullet = true
+	leg[i].radAngle = (leg[i].angle + 135) * math.pi / 180
 	leg[i].exists = true
 	leg[i].rotAngle = (leg[i].angle + 315) * math.pi / 180
-	local distance = 200
+	local distance = 150
 	spider:insert( leg[i] )	
-	leg[i]:rotate (leg[i].angle)
+	
+	leg[i].rotation = leg[i].angle
 	leg[i]:translate (distance * math.cos(leg[i].rotAngle), distance * math.sin(leg[i].rotAngle))
+	display.save( leg[i],{filename="cleg"..i..".png", baseDir="E:" } )
 	
 	
 end
@@ -147,22 +150,32 @@ local scale = .7
 spider:insert( body )
 spider.xScale = scale
 spider.yScale = scale
+spider.isFixedRotation = true
 
 local function pushLeg(event )
 	local leg = event.target
-	local radAngle = leg.radAngle
-	leg:applyLinearImpulse( -math.cos(leg.radAngle), -math.sin(leg.radAngle), leg.x, leg.y )
-
+	--local radAngle = leg.radAngle
+	--leg.rotation = leg.angle
+	--leg:setLinearVelocity( 50 * math.cos(leg.radAngle), 50 * math.sin(leg.radAngle))
+	--leg:applyLinearImpulse( 5 * math.cos(leg.radAngle), 5 * math.sin(leg.radAngle), leg.x , leg.y )
+	leg:removeSelf()
+	
+	
+	spider:applyLinearImpulse( 5 * math.cos(leg.radAngle), 5 * math.sin(leg.radAngle), body.x , body.y )
+	spider.angularVelocity = 0
 	
 end
 
 physics.start()
 physics.setGravity( 0, 0)
---physics.addBody( spider, "dynamic" )
-physics.addBody( body, "static" )
+
+--physics.addBody( body, "dynamic", {radius = 100} )
+physics.addBody( spider, "dynamic",  {radius = 100} )
 
 for i = 1,8 do
-	physics.addBody( leg[i], "dynamic" )
+	--local offsetRectParams = { halfWidth=35, halfHeight=35, x=leg[i].x, y=leg[i].y, leg[i].angle }
+	--physics.addBody( leg[i], "dynamic", { outline=leg[i] , bounce=0.4, density=3.0, friction=0.8} )
+	--physics.addBody( leg[i], "dynamic" )
 	leg[i]:addEventListener( "tap", pushLeg )
 end
 

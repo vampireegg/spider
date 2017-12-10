@@ -151,13 +151,13 @@ drawCollider(4)
 
 local leg = {}
 for i = 1,8 do
-	leg[i] = display.newImageRect( "arrow.png", 35,35  )
+	leg[i] = display.newImageRect( "arrow.png", 24,24  )
 	leg[i].angle = i * 45
 	leg[i].isBullet = true
 	leg[i].radAngle = (leg[i].angle + 135) * math.pi / 180
 	leg[i].exists = true
 	leg[i].rotAngle = (leg[i].angle + 315) * math.pi / 180
-	local distance = 150
+	local distance = 105
 	spider:insert( leg[i] )	
 	
 	leg[i].rotation = leg[i].angle
@@ -167,11 +167,8 @@ for i = 1,8 do
 	
 end
 
-local body = display.newImageRect( "body2.png", 200, 200 )
-local scale = .7
+local body = display.newImageRect( "body2.png", 140, 140 )
 spider:insert( body )
-spider.xScale = scale
-spider.yScale = scale
 spider.isFixedRotation = true
 
 local function pushLeg(event )
@@ -197,7 +194,7 @@ physics.start()
 physics.setGravity( 0, 0)
 
 --physics.addBody( body, "dynamic", {radius = 100} )
-physics.addBody( spider, "dynamic",  {radius = 80} )
+physics.addBody( spider, "dynamic", {radius = 90})
 
 local colliderRectParams = { halfWidth=140, halfHeight=35, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
 physics.addBody( colliderGroup, "static", { friction=0, bounce=0} )

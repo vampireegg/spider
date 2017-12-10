@@ -13,7 +13,9 @@ local jsWidth = 800
 
 local physics = require( "physics" )
 
-local bg = display.newRect( totalHeight/2, totalWidth/2, totalHeight, totalWidth )
+local bg = display.newImageRect( "bg1.png", totalHeight, totalWidth )
+bg.x = totalHeight/2
+bg.y = totalWidth/2
 bg:setFillColor( 1, 1, 1 )
 
 local HelpText ={
@@ -96,6 +98,8 @@ local function drawShadowedLine(x, y, x1, y1, height, color, gradient)
 
 end
 
+
+
 local function drawHelpBorder()
 	local gradient = 
 	{
@@ -126,12 +130,14 @@ spider.y = 300
 local leg = {}
 for i = 1,8 do
 	leg[i] = display.newImageRect( "arrow.png", 70,70  )
-	local angle = i * 45
-	local radAngle = (angle + 315) * math.pi / 180
+	leg[i].angle = i * 45
+	leg[i].radAngle = (leg[i].angle + 315) * math.pi / 180
+	leg[i].exists = true
+	leg[i].rotAngle = (leg[i].angle + 315) * math.pi / 180
 	local distance = 200
 	spider:insert( leg[i] )	
-	leg[i]:rotate (angle)
-	leg[i]:translate (distance * math.cos(radAngle), distance * math.sin(radAngle))
+	leg[i]:rotate (leg[i].angle)
+	leg[i]:translate (distance * math.cos(leg[i].rotAngle), distance * math.sin(leg[i].rotAngle))
 	
 	
 end
@@ -141,4 +147,22 @@ local scale = .7
 spider:insert( body )
 spider.xScale = scale
 spider.yScale = scale
+
+local function pushLeg(event )
+	local leg = event.target
+	local radAngle = leg.radAngle
+	leg:applyLinearImpulse( -math.cos(leg.radAngle), -math.sin(leg.radAngle), leg.x, leg.y )
+
+	
+end
+
+physics.start()
+physics.setGravity( 0, 0)
+--physics.addBody( spider, "dynamic" )
+physics.addBody( body, "static" )
+
+for i = 1,8 do
+	physics.addBody( leg[i], "dynamic" )
+	leg[i]:addEventListener( "tap", pushLeg )
+end
 

@@ -147,7 +147,7 @@ local function drawCollider(n)
 		colliderGroup:insert(collider[i])
 	end
 end
-drawCollider(4)
+drawCollider(5)
 
 local leg = {}
 for i = 1,8 do

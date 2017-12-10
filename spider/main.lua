@@ -7,11 +7,14 @@
 -- Your code here
 
 local mainScreenBoundaryX = 615
-local totalWidth = 1066
-local totalHeight = 600
+local totalWidth = 600
+local totalHeight = 1066
 local jsWidth = 800
 
 local physics = require( "physics" )
+
+local bg = display.newRect( totalHeight/2, totalWidth/2, totalHeight, totalWidth )
+bg:setFillColor( 1, 1, 1 )
 
 local HelpText ={
     '\n\n1. Meet Bumble Spider.\n\n' ..
@@ -109,16 +112,10 @@ local function drawHelpBorder()
 
 end
 
---Draw the background
-local line1 = display.newLine( mainScreenBoundaryX-3,0,mainScreenBoundaryX-3,totalHeight )
-line1:setStrokeColor( 0, 0, 0 )
-line1.strokeWidth = 1
-
-local line1 = display.newLine( mainScreenBoundaryX,0,mainScreenBoundaryX,totalHeight )
-line1:setStrokeColor( 0, 0, 0 )
-line1.strokeWidth = 1
 
 --drawHelpBorder()
+
+
 local spider = display.newGroup()
 spider.x = 300
 spider.y = 300
@@ -127,14 +124,21 @@ spider.y = 300
 
 
 local leg = {}
-for i = 0,7 do
-	leg[i] = display.newImageRect( "leg.png", 411* 1.5,96  )
-	spider:insert( leg[i] )
-	leg[i].rotation = i * 45
+for i = 1,8 do
+	leg[i] = display.newImageRect( "arrow.png", 70,70  )
+	local angle = i * 45
+	local radAngle = (angle + 315) * math.pi / 180
+	local distance = 200
+	spider:insert( leg[i] )	
+	leg[i]:rotate (angle)
+	leg[i]:translate (distance * math.cos(radAngle), distance * math.sin(radAngle))
+	
 	
 end
 
-local body = display.newImageRect( "body.png", 341, 311 )
-
+local body = display.newImageRect( "body2.png", 200, 200 )
+local scale = .7
 spider:insert( body )
+spider.xScale = scale
+spider.yScale = scale
 

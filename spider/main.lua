@@ -137,15 +137,16 @@ spider.y = 300
 local colliderSize = 100
 local colliderWidth = 70
 local colliderGroup = display.newGroup()
-colliderGroup.x = 100
+colliderGroup.x = 150
 colliderGroup.y = 500
 local collider = {}
 local function drawCollider(n)
-	for i = 1,n do
+	for i = 0,n - 1 do
 		collider[i] = display.newImageRect( "collider2.png", colliderSize,colliderSize  )
 		collider[i].x = i * colliderWidth
 		colliderGroup:insert(collider[i])
 	end
+	colliderGroup.width = colliderWidth * n
 end
 drawCollider(5)
 

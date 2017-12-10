@@ -13,9 +13,9 @@ local jsWidth = 800
 
 local physics = require( "physics" )
 
---local bg = display.newImageRect( "bg1.png", totalHeight, totalWidth )
---bg.x = totalHeight/2
---bg.y = totalWidth/2
+local bg = display.newImageRect( "bbg.png", totalHeight, totalWidth )
+bg.x = totalHeight/2
+bg.y = totalWidth/2
 --bg:setFillColor( 1, 1, 1 )
 
 local HelpText ={
@@ -102,9 +102,10 @@ local spiral = {}
 for i = 1,10 do
 	local x = math.random(0, totalHeight)
 	local y = math.random(0, totalWidth)
-	--spiral[i] = display.newImageRect( "spiral.png", 35,35  )
-	--spiral[i].x = x
-	--spiral[i].y = y
+	spiral[i] = display.newImageRect( "spiral.png", 15,15  )
+	spiral[i].x = x
+	spiral[i].y = y
+	spiral[i]:setFillColor( 1, 1, 1, .7 )
 end
 
 

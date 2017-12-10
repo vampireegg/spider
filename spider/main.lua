@@ -102,10 +102,10 @@ local spiral = {}
 for i = 1,10 do
 	local x = math.random(0, totalHeight)
 	local y = math.random(0, totalWidth)
-	spiral[i] = display.newImageRect( "spiral.png", 15,15  )
-	spiral[i].x = x
-	spiral[i].y = y
-	spiral[i]:setFillColor( 1, 1, 1, .7 )
+	--spiral[i] = display.newImageRect( "spiral.png", 15,15  )
+	--spiral[i].x = x
+	--spiral[i].y = y
+	--spiral[i]:setFillColor( 1, 1, 1, .7 )
 end
 
 
@@ -134,8 +134,19 @@ local spider = display.newGroup()
 spider.x = 300
 spider.y = 300
 
-
-
+local colliderSize = 100
+local colliderWidth = 70
+local colliderGroup = display.newGroup()
+local collider = {}
+local function drawCollider(n)
+	for i = 1,n do
+		collider[i] = display.newImageRect( "collider2.png", colliderSize,colliderSize  )
+		collider[i].x = 200 + i * colliderWidth
+		collider[i].y = 500
+		colliderGroup:insert(collider[i])
+	end
+end
+drawCollider(2)
 
 local leg = {}
 for i = 1,8 do
@@ -181,6 +192,9 @@ physics.setGravity( 0, 0)
 
 --physics.addBody( body, "dynamic", {radius = 100} )
 physics.addBody( spider, "dynamic",  {radius = 100} )
+
+local colliderRectParams = { halfWidth=100, halfHeight=100, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
+physics.addBody( colliderGroup, "dynamic", { friction=0.5, bounce=0.3 } )
 
 for i = 1,8 do
 	--local offsetRectParams = { halfWidth=35, halfHeight=35, x=leg[i].x, y=leg[i].y, leg[i].angle }

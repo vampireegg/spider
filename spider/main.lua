@@ -13,10 +13,10 @@ local jsWidth = 800
 
 local physics = require( "physics" )
 
-local bg = display.newImageRect( "bg1.png", totalHeight, totalWidth )
-bg.x = totalHeight/2
-bg.y = totalWidth/2
-bg:setFillColor( 1, 1, 1 )
+--local bg = display.newImageRect( "bg1.png", totalHeight, totalWidth )
+--bg.x = totalHeight/2
+--bg.y = totalWidth/2
+--bg:setFillColor( 1, 1, 1 )
 
 local HelpText ={
     '\n\n1. Meet Bumble Spider.\n\n' ..
@@ -96,6 +96,15 @@ local function drawShadowedLine(x, y, x1, y1, height, color, gradient)
 	myRectangle.strokeWidth = 1
 	myRectangle:setFillColor( gradient )
 
+end
+
+local spiral = {}
+for i = 1,10 do
+	local x = math.random(0, totalHeight)
+	local y = math.random(0, totalWidth)
+	--spiral[i] = display.newImageRect( "spiral.png", 35,35  )
+	--spiral[i].x = x
+	--spiral[i].y = y
 end
 
 

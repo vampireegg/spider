@@ -137,16 +137,17 @@ spider.y = 300
 local colliderSize = 100
 local colliderWidth = 70
 local colliderGroup = display.newGroup()
+colliderGroup.x = 100
+colliderGroup.y = 500
 local collider = {}
 local function drawCollider(n)
 	for i = 1,n do
 		collider[i] = display.newImageRect( "collider2.png", colliderSize,colliderSize  )
-		collider[i].x = 200 + i * colliderWidth
-		collider[i].y = 500
+		collider[i].x = i * colliderWidth
 		colliderGroup:insert(collider[i])
 	end
 end
-drawCollider(2)
+drawCollider(4)
 
 local leg = {}
 for i = 1,8 do
@@ -179,11 +180,16 @@ local function pushLeg(event )
 	--leg.rotation = leg.angle
 	--leg:setLinearVelocity( 50 * math.cos(leg.radAngle), 50 * math.sin(leg.radAngle))
 	--leg:applyLinearImpulse( 5 * math.cos(leg.radAngle), 5 * math.sin(leg.radAngle), leg.x , leg.y )
-	leg:removeSelf()
 	
 	
-	spider:applyLinearImpulse( 5 * math.cos(leg.radAngle), 5 * math.sin(leg.radAngle), body.x , body.y )
-	spider.angularVelocity = 0
+	local vx, vy = spider:getLinearVelocity()
+	if(vx == 0 and vy == 0)
+	then
+		leg:removeSelf()
+		--spider:setLinearVelocity( 50 * math.cos(leg.radAngle), 50 * math.sin(leg.radAngle))
+		spider:applyLinearImpulse( 3 * math.cos(leg.radAngle), 3 * math.sin(leg.radAngle), body.x , body.y )
+		spider.angularVelocity = 0
+	end
 	
 end
 
@@ -191,10 +197,10 @@ physics.start()
 physics.setGravity( 0, 0)
 
 --physics.addBody( body, "dynamic", {radius = 100} )
-physics.addBody( spider, "dynamic",  {radius = 100} )
+physics.addBody( spider, "dynamic",  {radius = 80} )
 
-local colliderRectParams = { halfWidth=100, halfHeight=100, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
-physics.addBody( colliderGroup, "dynamic", { friction=0.5, bounce=0.3 } )
+local colliderRectParams = { halfWidth=140, halfHeight=35, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
+physics.addBody( colliderGroup, "static", { friction=0, bounce=0} )
 
 for i = 1,8 do
 	--local offsetRectParams = { halfWidth=35, halfHeight=35, x=leg[i].x, y=leg[i].y, leg[i].angle }

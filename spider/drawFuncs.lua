@@ -56,10 +56,11 @@ local function drawSpider(spider, spiderProp)
 	spider:insert( spiderProp.body )
 	for i = 1,8 do
 		print('spiderProp.leg[i].x' .. spiderProp.leg[i].x .. 'spiderProp.leg[i].y' .. spiderProp.leg[i].y)
-		spiderProp.legSquare[i] = display.newRect( spider.x + spiderProp.leg[i].x, spider.y + spiderProp.leg[i].y, spiderProp.arrowsize * 5, spiderProp.arrowsize * 5)
+		spiderProp.legSquare[i] = display.newRect( spiderProp.leg[i].x, spiderProp.leg[i].y, spiderProp.arrowsize * 5, spiderProp.arrowsize * 5)
 		spiderProp.legSquare[i]:setFillColor( 1, 1, 1, 0 )
 		spiderProp.legSquare[i].leg = spiderProp.leg[i]
 		spiderProp.legSquare[i].isHitTestable = true
+		spider:insert(spiderProp.legSquare[i])
 	end
 	spider.isFixedRotation = true
 	physics.addBody( spider, "dynamic", {radius = spiderProp.spiderRadius * .9})

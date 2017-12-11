@@ -130,19 +130,20 @@ drawBorder()
 
 local spider = display.newGroup()
 spider.x = 300
-spider.y = 300
+spider.y = 200
 
 local colliderSize = 100
 local colliderWidth = 70
 local colliderGroup = display.newGroup()
 colliderGroup.x = 150
-colliderGroup.y = 500
+colliderGroup.y = 400
 local collider = {}
 local function drawCollider(n)
 	for i = 0,n - 1 do
 		collider[i] = display.newImageRect( "collider2.png", colliderSize,colliderSize  )
 		collider[i].x = i * colliderWidth
 		colliderGroup:insert(collider[i])
+		collider[i].colliderRectParams = { halfWidth=35, halfHeight=50, x=colliderGroup.x + collider[i].x , y=colliderGroup.y + collider[i].y, angle=0 }
 	end
 	colliderGroup.width = colliderWidth * n
 end
@@ -194,9 +195,11 @@ physics.setGravity( 0, 0)
 --physics.addBody( body, "dynamic", {radius = 100} )
 physics.addBody( spider, "dynamic", {radius = 90})
 
-local colliderRectParams = { halfWidth=140, halfHeight=35, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
-physics.addBody( colliderGroup, "static", { friction=0, bounce=0} )
-
+--local colliderRectParams = { halfWidth=140, halfHeight=35, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
+--physics.addBody( colliderGroup, "static", { friction=0, bounce=0} )
+for i = 0,4 do
+	physics.addBody( collider[i], "static", { box = collider[i].colliderRectParams, friction=0, bounce=0} )
+end
 for i = 0,3 do
 	physics.addBody( borders[i], "static", { friction=0, bounce=0} )
 end

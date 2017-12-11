@@ -12,6 +12,10 @@ local function drawBorder(borders, totalWidth, totalHeight, borderProp)
 
 	borders[3] = display.newRect( totalHeight/2, totalWidth - borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
 	borders[3]:setFillColor( 1, 1, 1, 0 )
+	
+	for i = 0,3 do
+		physics.addBody( borders[i], "static", { friction=0, bounce=0} )
+	end
 end
 
 M.drawBorder = drawBorder
@@ -31,6 +35,7 @@ local function drawCollider(collider, colliderProp)
 		collider[i].y = colliderProp. colliderGroupy
 		collider[i].colliderRectParams = { halfWidth=colliderProp.colliderWidth/2, halfHeight=colliderProp.colliderHeight/2,
 		x=colliderProp.colliderGroupx + collider[i].x , y=colliderProp.colliderGroupy + collider[i].y, angle=0 }
+		physics.addBody( collider[i], "static", { friction=.5, bounce=0} )
 	end
 end
 M.drawCollider = drawCollider
@@ -51,6 +56,7 @@ local function drawSpider(spider, spiderProp)
 	spiderProp.body = display.newImageRect( "body2.png", spiderProp.bodysize, spiderProp.bodysize )
 	spider:insert( spiderProp.body )
 	spider.isFixedRotation = true
+	physics.addBody( spider, "dynamic", {radius = spiderProp.spiderRadius * .9})
 end
 
 M.drawSpider = drawSpider

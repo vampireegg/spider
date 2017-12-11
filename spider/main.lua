@@ -108,7 +108,7 @@ for i = 1,10 do
 	-- spiral[i]:setFillColor( 1, 1, 1, .2 )
 end
 
-local borderWidth = 30
+local borderWidth = 2
 local borders = {}
 local function drawBorder()
 	borders[0] = display.newRect( borderWidth/2, totalWidth/2, borderWidth, totalWidth)

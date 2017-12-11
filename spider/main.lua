@@ -54,7 +54,7 @@ local function pushLeg(event )
 	print("toched")
 	local leg = event.target.leg	
 	local vx, vy = spider:getLinearVelocity()
-	if(vx == 0 and vy == 0) then
+	if(vx == 0 and vy == 0 and leg.removeSelf ~= nil) then
 		leg:removeSelf()
 		spider:applyLinearImpulse( 3 * math.cos(leg.radAngle), 3 * math.sin(leg.radAngle), spiderProp.body.x , spiderProp.body.y )
 		spider.angularVelocity = 0
@@ -65,4 +65,12 @@ end
 for i = 1,8 do
 	spiderProp.legSquare[i]:addEventListener( "touch", pushLeg )
 end
+
+local function spiderCollided( self, event )
+	print("collided with " .. event.other.Name)
+    spider:setLinearVelocity(0,0)
+end
+ 
+spider.collision = spiderCollided
+spider:addEventListener( "collision" )
 

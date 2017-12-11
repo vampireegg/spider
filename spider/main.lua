@@ -65,8 +65,8 @@ local function pushLeg(event )
 		if(math.abs(ry) < 0.5)then
 			ry = 0
 		end
-		print("applying velocity " ..  rx .. "," .. ry)
-		spider:applyLinearImpulse( rx, ry, spiderProp.body.x , spiderProp.body.y )
+		print("applying velocity " ..  rx .. "," .. ry .. " x = " .. spider.x .. " y = " .. spider.y )
+		spider:applyLinearImpulse( rx, ry, 0 , 0 )
 		spider.angularVelocity = 0
 	end
 end
@@ -77,7 +77,7 @@ for i = 1,8 do
 end
 
 local function spiderCollided( self, event )
-	print("collided with " .. event.other.Name)
+	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y)
 	spider.angularVelocity = 0
     spider:setLinearVelocity(0,0)
 end

@@ -78,6 +78,7 @@ end
 
 local function spiderCollided( self, event )
 	print("collided with " .. event.other.Name)
+	spider.angularVelocity = 0
     spider:setLinearVelocity(0,0)
 end
  

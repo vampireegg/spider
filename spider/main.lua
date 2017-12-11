@@ -51,12 +51,22 @@ spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)
 
 local function pushLeg(event )
-	print("toched")
+	print("touched")
 	local leg = event.target.leg	
 	local vx, vy = spider:getLinearVelocity()
+
 	if(vx == 0 and vy == 0 and leg.removeSelf ~= nil) then
 		leg:removeSelf()
-		spider:applyLinearImpulse( 3 * math.cos(leg.radAngle), 3 * math.sin(leg.radAngle), spiderProp.body.x , spiderProp.body.y )
+		local rx = 3 * math.cos(leg.radAngle)
+		local ry = 3 * math.sin(leg.radAngle)
+		if(math.abs(rx) < 0.5)then
+			rx = 0
+		end
+		if(math.abs(ry) < 0.5)then
+			ry = 0
+		end
+		print("applying velocity " ..  rx .. "," .. ry)
+		spider:applyLinearImpulse( rx, ry, spiderProp.body.x , spiderProp.body.y )
 		spider.angularVelocity = 0
 	end
 end

@@ -28,7 +28,7 @@ local borders = {}
 drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp, physics)
 
 local colliderProp = {}
-colliderProp.colliderHeight = 35
+colliderProp.colliderHeight = 36
 colliderProp.colliderWidth = 70
 colliderProp.colliderGroupx = 150
 colliderProp.colliderGroupy = 400
@@ -50,9 +50,9 @@ spiderProp.leg = {}
 spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)
 
-local function pushLeg(event )
-	print("touched")
-	local leg = event.target.leg	
+local function pushLeg(event )	
+	local leg = event.target.leg
+	print("touched" .. event.target.leg.i)
 	local vx, vy = spider:getLinearVelocity()
 
 	if(vx == 0 and vy == 0 and leg.removeSelf ~= nil) then
@@ -73,7 +73,7 @@ end
 
 
 for i = 1,8 do
-	spiderProp.legSquare[i]:addEventListener( "touch", pushLeg )
+	spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 end
 
 local function spiderCollided( self, event )

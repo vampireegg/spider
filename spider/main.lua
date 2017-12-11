@@ -50,13 +50,17 @@ spiderProp.leg = {}
 spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)
 
+local lastLegTouched = -1
+
 local function pushLeg(event )	
 	local leg = event.target.leg
 	print("touched" .. event.target.leg.i)
+	
 	local vx, vy = spider:getLinearVelocity()
 
 	if(vx == 0 and vy == 0 and leg.removeSelf ~= nil) then
 		leg:removeSelf()
+		lastLegTouched = event.target.leg.i
 		local rx = 3 * math.cos(leg.radAngle)
 		local ry = 3 * math.sin(leg.radAngle)
 		if(math.abs(rx) < 0.5)then
@@ -71,6 +75,10 @@ local function pushLeg(event )
 	end
 end
 
+local function shiftSpider( event )
+	spider.x = spider.x + spiderProp.leg[lastLegTouched].dirx
+	spider.y = spider.y + spiderProp.leg[lastLegTouched].diry
+end
 
 for i = 1,8 do
 	spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
@@ -80,6 +88,7 @@ local function spiderCollided( self, event )
 	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y)
 	spider.angularVelocity = 0
     spider:setLinearVelocity(0,0)
+	timer.performWithDelay( 50, shiftSpider )
 end
  
 spider.collision = spiderCollided

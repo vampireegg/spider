@@ -53,7 +53,24 @@ local function drawSpider(spider, spiderProp)
 		spiderProp.leg[i].i = i
 		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
 		spiderProp.leg[i]:translate (spiderProp.arrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.arrowDistance * math.sin(spiderProp.leg[i].rotAngle))
+		
+		if(i == 1 or i == 2 or i == 8) then
+			spiderProp.leg[i].dirx = 1
+		elseif (i == 4 or i == 5 or i == 6) then
+			spiderProp.leg[i].dirx = -1
+		else
+			spiderProp.leg[i].dirx = 0
+		end
+		
+		if(i == 2 or i == 3 or i == 4) then
+			spiderProp.leg[i].diry = 1
+		elseif (i == 6 or i == 7 or i == 8) then
+			spiderProp.leg[i].diry = -1
+		else
+			spiderProp.leg[i].diry = 0
+		end
 	end
+
 	spiderProp.body = display.newImageRect( "body2.png", spiderProp.bodysize, spiderProp.bodysize )
 	spider:insert( spiderProp.body )
 	for i = 1,8 do

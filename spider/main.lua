@@ -5,11 +5,8 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code here
-
-local mainScreenBoundaryX = 615
 local totalWidth = 600
 local totalHeight = 1066
-local jsWidth = 800
 
 
 
@@ -49,6 +46,13 @@ spider.RectParams = { halfWidth = spiderProp.spiderRadius * .9, halfHeight = spi
 spiderProp.leg = {}
 spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)
+
+local goalProp = {}
+goalProp.size = 100
+goalProp.x = totalHeight - goalProp.size - 10
+goalProp.y = totalWidth - goalProp.size - 10
+local goal = {}
+drawFuncs.drawGoal(goalProp, goalProp, physics)
 
 local lastLegTouched = -1
 

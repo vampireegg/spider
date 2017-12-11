@@ -15,5 +15,13 @@ local function drawBorder(borderWidth, borders, totalWidth, totalHeight)
 end
 
 M.drawBorder = drawBorder
+
+local function drawBackGround(bg, totalWidth, totalHeight)
+	bg = display.newImageRect( "bbg.png", totalHeight, totalWidth )
+	bg.x = totalHeight/2
+	bg.y = totalWidth/2
+end
+
+M.drawBackGround = drawBackGround
  
 return M

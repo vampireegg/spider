@@ -16,9 +16,8 @@ local jsWidth = 800
 local physics = require( "physics" )
 local drawFuncs = require("drawFuncs")
 
-local bg = display.newImageRect( "bbg.png", totalHeight, totalWidth )
-bg.x = totalHeight/2
-bg.y = totalWidth/2
+local bg
+drawFuncs.drawBackGround(bg, totalWidth, totalHeight) 
 
 local borderWidth = 2
 local borders = {}

@@ -19,74 +19,52 @@ local drawFuncs = require("drawFuncs")
 local bg
 drawFuncs.drawBackGround(bg, totalWidth, totalHeight) 
 
-local borderWidth = 2
+local borderProp = {}
+borderProp.borderWidth = 2
 local borders = {}
-drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderWidth)
+drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp)
 
-local colliderHeight = 35
-local colliderWidth = 70
-local colliderGroupx = 150
-local colliderGroupy = 400
-local numColliders = 5
+local colliderProp = {}
+colliderProp.colliderHeight = 35
+colliderProp.colliderWidth = 70
+colliderProp.colliderGroupx = 150
+colliderProp.colliderGroupy = 400
+colliderProp.numColliders = 5
 local collider = {}
-drawFuncs.drawCollider(collider, numColliders, colliderWidth, colliderHeight, colliderGroupx, colliderGroupy)
+drawFuncs.drawCollider(collider, colliderProp)
 
+
+local spiderProp = {}
 local spider = display.newGroup()
 spider.x = 300
 spider.y = 200
-local arrowsize = 24
-local bodysize = 140
-local arrowDistance = 105
-local spiderRadius = arrowDistance + arrowsize
-local leg = {}
-for i = 1,8 do
-	leg[i] = display.newImageRect( "arrow.png", arrowsize,arrowsize  )
-	leg[i].angle = i * 45
-	leg[i].isBullet = true
-	leg[i].radAngle = (leg[i].angle + 135) * math.pi / 180
-	leg[i].exists = true
-	leg[i].rotAngle = (leg[i].angle + 315) * math.pi / 180
-	spider:insert( leg[i] )	
-	
-	leg[i].rotation = leg[i].angle
-	leg[i]:translate (arrowDistance * math.cos(leg[i].rotAngle), arrowDistance * math.sin(leg[i].rotAngle))
-	display.save( leg[i],{filename="cleg"..i..".png", baseDir="E:" } )
-	
-	
-end
-
-local body = display.newImageRect( "body2.png", bodysize, bodysize )
-spider:insert( body )
-spider.isFixedRotation = true
+spiderProp.arrowsize = 24
+spiderProp.bodysize = 140
+spiderProp.arrowDistance = 105
+spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.arrowsize
+spiderProp.leg = {}
+drawFuncs.drawSpider(spider, spiderProp)
 
 local function pushLeg(event )
-	local leg = event.target
-	--local radAngle = leg.radAngle
-	--leg.rotation = leg.angle
-	--leg:setLinearVelocity( 50 * math.cos(leg.radAngle), 50 * math.sin(leg.radAngle))
-	--leg:applyLinearImpulse( 5 * math.cos(leg.radAngle), 5 * math.sin(leg.radAngle), leg.x , leg.y )
-	
-	
+	local leg = event.target	
 	local vx, vy = spider:getLinearVelocity()
 	if(vx == 0 and vy == 0) then
 		leg:removeSelf()
 		--spider:setLinearVelocity( 50 * math.cos(leg.radAngle), 50 * math.sin(leg.radAngle))
-		spider:applyLinearImpulse( 3 * math.cos(leg.radAngle), 3 * math.sin(leg.radAngle), body.x , body.y )
+		spider:applyLinearImpulse( 3 * math.cos(leg.radAngle), 3 * math.sin(leg.radAngle), spiderProp.body.x , spiderProp.body.y )
 		spider.angularVelocity = 0
 	end
 	
 end
 
-spider.RectParams = { halfWidth=spiderRadius * .9, halfHeight=spiderRadius * .9, x=spider.x , y=spider.y, angle=0 }
+spider.RectParams = { halfWidth = spiderProp.spiderRadius * .9, halfHeight = spiderProp.spiderRadius * .9, x=spider.x , y=spider.y, angle=0 }
 
 physics.start()
 physics.setGravity( 0, 0)
 
---physics.addBody( spider, "dynamic", { box = spider.RectParams})
-physics.addBody( spider, "dynamic", {radius = spiderRadius * .9})
+physics.addBody( spider, "dynamic", {radius = spiderProp.spiderRadius * .9})
 
---local colliderRectParams = { halfWidth=140, halfHeight=35, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
---physics.addBody( colliderGroup, "static", { friction=0, bounce=0} )
+
 for i = 0,4 do
 	physics.addBody( collider[i], "static", { friction=.5, bounce=0} )
 end
@@ -95,9 +73,6 @@ for i = 0,3 do
 end
 
 for i = 1,8 do
-	--local offsetRectParams = { halfWidth=35, halfHeight=35, x=leg[i].x, y=leg[i].y, leg[i].angle }
-	--physics.addBody( leg[i], "dynamic", { outline=leg[i] , bounce=0.4, density=3.0, friction=0.8} )
-	--physics.addBody( leg[i], "dynamic" )
-	leg[i]:addEventListener( "tap", pushLeg )
+	spiderProp.leg[i]:addEventListener( "tap", pushLeg )
 end
 

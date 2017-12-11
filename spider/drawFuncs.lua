@@ -1,16 +1,16 @@
 
 local M = {}
-local function drawBorder(borders, totalWidth, totalHeight, borderWidth)
-	borders[0] = display.newRect( borderWidth/2, totalWidth/2, borderWidth, totalWidth)
+local function drawBorder(borders, totalWidth, totalHeight, borderProp)
+	borders[0] = display.newRect( borderProp.borderWidth/2, totalWidth/2, borderProp.borderWidth, totalWidth)
 	borders[0]:setFillColor( 1, 1, 1, 0 )
 	
-	borders[1] = display.newRect( totalHeight - borderWidth/2,  totalWidth/2, borderWidth, totalWidth)
+	borders[1] = display.newRect( totalHeight - borderProp.borderWidth/2,  totalWidth/2, borderProp.borderWidth, totalWidth)
 	borders[1]:setFillColor( 1, 1, 1, 0 )
 	
-	borders[2] = display.newRect( totalHeight/2, borderWidth/2, totalHeight, borderWidth)
+	borders[2] = display.newRect( totalHeight/2, borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
 	borders[2]:setFillColor( 1, 1, 1, 0 )
 
-	borders[3] = display.newRect( totalHeight/2, totalWidth - borderWidth/2, totalHeight, borderWidth)
+	borders[3] = display.newRect( totalHeight/2, totalWidth - borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
 	borders[3]:setFillColor( 1, 1, 1, 0 )
 end
 
@@ -24,14 +24,35 @@ end
 
 M.drawBackGround = drawBackGround
 
-local function drawCollider(collider, numColliders, colliderWidth, colliderHeight, colliderGroupx, colliderGroupy)
-	for i = 0,numColliders - 1 do
-		collider[i] = display.newImageRect( "collider.png", colliderWidth,colliderHeight  )
-		collider[i].x = colliderGroupx + i * colliderWidth
-		collider[i].y = colliderGroupy
-		collider[i].colliderRectParams = { halfWidth=colliderWidth/2, halfHeight=colliderHeight/2, x=colliderGroupx + collider[i].x , y=colliderGroupy + collider[i].y, angle=0 }
+local function drawCollider(collider, colliderProp)
+	for i = 0, colliderProp.numColliders - 1 do
+		collider[i] = display.newImageRect( "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
+		collider[i].x = colliderProp.colliderGroupx + i * colliderProp.colliderWidth
+		collider[i].y = colliderProp. colliderGroupy
+		collider[i].colliderRectParams = { halfWidth=colliderProp.colliderWidth/2, halfHeight=colliderProp.colliderHeight/2,
+		x=colliderProp.colliderGroupx + collider[i].x , y=colliderProp.colliderGroupy + collider[i].y, angle=0 }
 	end
 end
 M.drawCollider = drawCollider
+
+local function drawSpider(spider, spiderProp)
+	for i = 1,8 do
+		spiderProp.leg[i] = display.newImageRect( "arrow.png", spiderProp.arrowsize,spiderProp.arrowsize  )
+		spiderProp.leg[i].angle = i * 45
+		spiderProp.leg[i].radAngle = (spiderProp.leg[i].angle + 135) * math.pi / 180
+		spiderProp.leg[i].exists = true
+		spiderProp.leg[i].rotAngle = (spiderProp.leg[i].angle + 315) * math.pi / 180
+		spider:insert( spiderProp.leg[i] )	
+		
+		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
+		spiderProp.leg[i]:translate (spiderProp.arrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.arrowDistance * math.sin(spiderProp.leg[i].rotAngle))
+	
+	end
+	spiderProp.body = display.newImageRect( "body2.png", spiderProp.bodysize, spiderProp.bodysize )
+	spider:insert( spiderProp.body )
+	spider.isFixedRotation = true
+end
+
+M.drawSpider = drawSpider
  
 return M

@@ -191,14 +191,13 @@ local function pushLeg(event )
 	
 end
 
---spider.RectParams = { halfWidth=spiderRadius, halfHeight=spiderRadius, x=spider.x , y=spider.y, angle=0 }
+spider.RectParams = { halfWidth=spiderRadius * .9, halfHeight=spiderRadius * .9, x=spider.x , y=spider.y, angle=0 }
 
 physics.start()
 physics.setGravity( 0, 0)
 
---physics.addBody( body, "dynamic", {radius = 100} )
---physics.addBody( spider, "dynamic", { box = spider.RectParams, friction=0, bounce=0})
-physics.addBody( spider, "dynamic", {radius = spiderRadius})
+--physics.addBody( spider, "dynamic", { box = spider.RectParams})
+physics.addBody( spider, "dynamic", {radius = spiderRadius * .9})
 
 --local colliderRectParams = { halfWidth=140, halfHeight=35, x=colliderGroup.x, y=colliderGroup.y, angle=0 }
 --physics.addBody( colliderGroup, "static", { friction=0, bounce=0} )

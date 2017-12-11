@@ -47,14 +47,15 @@ spiderProp.arrowDistance = 105
 spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.arrowsize
 spider.RectParams = { halfWidth = spiderProp.spiderRadius * .9, halfHeight = spiderProp.spiderRadius * .9, x=spider.x , y=spider.y, angle=0 }
 spiderProp.leg = {}
+spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)
 
 local function pushLeg(event )
-	local leg = event.target	
+	print("toched")
+	local leg = event.target.leg	
 	local vx, vy = spider:getLinearVelocity()
 	if(vx == 0 and vy == 0) then
 		leg:removeSelf()
-		--spider:setLinearVelocity( 50 * math.cos(leg.radAngle), 50 * math.sin(leg.radAngle))
 		spider:applyLinearImpulse( 3 * math.cos(leg.radAngle), 3 * math.sin(leg.radAngle), spiderProp.body.x , spiderProp.body.y )
 		spider.angularVelocity = 0
 	end
@@ -62,6 +63,6 @@ end
 
 
 for i = 1,8 do
-	spiderProp.leg[i]:addEventListener( "tap", pushLeg )
+	spiderProp.legSquare[i]:addEventListener( "touch", pushLeg )
 end
 

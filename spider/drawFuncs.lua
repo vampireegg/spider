@@ -51,10 +51,16 @@ local function drawSpider(spider, spiderProp)
 		
 		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
 		spiderProp.leg[i]:translate (spiderProp.arrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.arrowDistance * math.sin(spiderProp.leg[i].rotAngle))
-	
 	end
 	spiderProp.body = display.newImageRect( "body2.png", spiderProp.bodysize, spiderProp.bodysize )
 	spider:insert( spiderProp.body )
+	for i = 1,8 do
+		print('spiderProp.leg[i].x' .. spiderProp.leg[i].x .. 'spiderProp.leg[i].y' .. spiderProp.leg[i].y)
+		spiderProp.legSquare[i] = display.newRect( spider.x + spiderProp.leg[i].x, spider.y + spiderProp.leg[i].y, spiderProp.arrowsize * 3, spiderProp.arrowsize * 3)
+		spiderProp.legSquare[i]:setFillColor( 1, 1, 1, 0 )
+		spiderProp.legSquare[i].leg = spiderProp.leg[i]
+		spiderProp.legSquare[i].isHitTestable = true
+	end
 	spider.isFixedRotation = true
 	physics.addBody( spider, "dynamic", {radius = spiderProp.spiderRadius * .9})
 end

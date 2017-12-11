@@ -1,6 +1,6 @@
 
 local M = {}
-local function drawBorder(borderWidth, borders, totalWidth, totalHeight)
+local function drawBorder(borders, totalWidth, totalHeight, borderWidth)
 	borders[0] = display.newRect( borderWidth/2, totalWidth/2, borderWidth, totalWidth)
 	borders[0]:setFillColor( 1, 1, 1, 0 )
 	
@@ -23,5 +23,15 @@ local function drawBackGround(bg, totalWidth, totalHeight)
 end
 
 M.drawBackGround = drawBackGround
+
+local function drawCollider(collider, numColliders, colliderWidth, colliderHeight, colliderGroupx, colliderGroupy)
+	for i = 0,numColliders - 1 do
+		collider[i] = display.newImageRect( "collider.png", colliderWidth,colliderHeight  )
+		collider[i].x = colliderGroupx + i * colliderWidth
+		collider[i].y = colliderGroupy
+		collider[i].colliderRectParams = { halfWidth=colliderWidth/2, halfHeight=colliderHeight/2, x=colliderGroupx + collider[i].x , y=colliderGroupy + collider[i].y, angle=0 }
+	end
+end
+M.drawCollider = drawCollider
  
 return M

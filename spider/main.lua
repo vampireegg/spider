@@ -21,30 +21,19 @@ drawFuncs.drawBackGround(bg, totalWidth, totalHeight)
 
 local borderWidth = 2
 local borders = {}
-drawFuncs.drawBorder(borderWidth, borders, totalWidth, totalHeight)
+drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderWidth)
 
+local colliderHeight = 35
+local colliderWidth = 70
+local colliderGroupx = 150
+local colliderGroupy = 400
+local numColliders = 5
+local collider = {}
+drawFuncs.drawCollider(collider, numColliders, colliderWidth, colliderHeight, colliderGroupx, colliderGroupy)
 
 local spider = display.newGroup()
 spider.x = 300
 spider.y = 200
-
-local colliderHeight = 35
-local colliderWidth = 70
---local colliderGroup = display.newGroup()
-colliderGroupx = 150
-colliderGroupy = 400
-local collider = {}
-local function drawCollider(n)
-	for i = 0,n - 1 do
-		collider[i] = display.newImageRect( "collider.png", colliderWidth,colliderHeight  )
-		collider[i].x = colliderGroupx + i * colliderWidth
-		collider[i].y = colliderGroupy
-		--colliderGroup:insert(collider[i])
-		collider[i].colliderRectParams = { halfWidth=colliderWidth/2, halfHeight=colliderHeight/2, x=colliderGroupx + collider[i].x , y=colliderGroupy + collider[i].y, angle=0 }
-	end
-	--colliderGroup.width = colliderWidth * n
-end
-drawCollider(5)
 local arrowsize = 24
 local bodysize = 140
 local arrowDistance = 105

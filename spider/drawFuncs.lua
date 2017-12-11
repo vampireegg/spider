@@ -64,7 +64,8 @@ local function drawSpider(spider, spiderProp)
 		spiderProp.legSquare[i].isHitTestable = true
 		spider:insert(spiderProp.legSquare[i])
 	end
-	spider.isFixedRotation = true
+	--local offsetRectParams = { halfWidth=spiderProp.spiderRadius, halfHeight=spiderProp.spiderRadius, x=0, y=0, angle=0 }
+	--spider.isFixedRotation = true
 	physics.addBody( spider, "dynamic", {radius = spiderProp.spiderRadius * .9, friction=0, bounce=0})
 end
 

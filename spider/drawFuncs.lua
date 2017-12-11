@@ -50,7 +50,7 @@ local function drawSpider(spider, spiderProp)
 		spiderProp.leg[i].exists = true
 		spiderProp.leg[i].rotAngle = (spiderProp.leg[i].angle + 315) * math.pi / 180
 		spider:insert( spiderProp.leg[i] )	
-		
+		spiderProp.leg[i].i = i
 		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
 		spiderProp.leg[i]:translate (spiderProp.arrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.arrowDistance * math.sin(spiderProp.leg[i].rotAngle))
 	end

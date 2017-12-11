@@ -52,7 +52,7 @@ goalProp.size = 100
 goalProp.x = totalHeight - goalProp.size - 10
 goalProp.y = totalWidth - goalProp.size - 10
 local goal = {}
-drawFuncs.drawGoal(goalProp, goalProp, physics)
+drawFuncs.drawGoal(goal, goalProp, physics)
 
 local lastLegTouched = -1
 
@@ -97,4 +97,21 @@ end
  
 spider.collision = spiderCollided
 spider:addEventListener( "collision" )
+
+local function distance(obj1, obj2)
+	local term1 = (obj1.x - obj2.x) * (obj1.x - obj2.x)
+	local term2 = (obj1.y - obj2.y) * (obj1.y - obj2.y)
+	return math.sqrt(term1 + term2)
+end
+
+
+local function on_frame( event )
+	if(distance(spider,goal[0]) < 50) then
+		print("reached goal")
+		goal[0]:setFillColor( 1, 1, 1, 0 )
+	end
+	--print("goal[0].x = " .. goal[0].x .. " spider.x = " .. spider.x)
+end 
+
+Runtime:addEventListener( "enterFrame", on_frame )
 

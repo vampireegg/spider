@@ -89,12 +89,12 @@ end
 M.drawSpider = drawSpider
 
 local function drawGoal(goal, goalProp)
-	goal = display.newImageRect( "goal.png", goalProp.size,goalProp.size  )
-	goal.x = goalProp.x
-	goal.y = goalProp.y
-	physics.addBody( goal, "dynamic", {friction=0, bounce=0})
-	goal.angularVelocity = 30
-	goal.Name = "goal"
+	goal[0] = display.newImageRect( "goal.png", goalProp.size,goalProp.size  )
+	goal[0].x = goalProp.x
+	goal[0].y = goalProp.y
+	--physics.addBody( goal[0], "dynamic", {friction=0, bounce=0})
+	--goal[0].angularVelocity = 0
+	goal[0].Name = "goal"
 end
 
 M.drawGoal = drawGoal

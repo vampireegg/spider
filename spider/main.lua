@@ -25,10 +25,11 @@ local borders = {}
 drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp, physics)
 
 local colliderProp = {}
-colliderProp.colliderHeight = 36
-colliderProp.colliderWidth = 70
-colliderProp.colliderGroupx = 150
-colliderProp.colliderGroupy = 400
+colliderProp.scale = 0.8
+colliderProp.colliderHeight = 36 * colliderProp.scale
+colliderProp.colliderWidth = 70 * colliderProp.scale
+colliderProp.colliderGroupx = 100
+colliderProp.colliderGroupy = 300
 colliderProp.numColliders = 5
 local collider = {}
 drawFuncs.drawCollider(collider, colliderProp, physics)
@@ -36,9 +37,9 @@ drawFuncs.drawCollider(collider, colliderProp, physics)
 
 local spiderProp = {}
 local spider = display.newGroup()
-spider.x = 300
-spider.y = 200
-spiderProp.scale = 1
+spider.x = 220
+spider.y = 150
+spiderProp.scale = 0.8
 spiderProp.arrowsize = 24 * spiderProp.scale
 spiderProp.bodysize = 140 * spiderProp.scale
 spiderProp.arrowDistance = 105 * spiderProp.scale
@@ -49,8 +50,8 @@ drawFuncs.drawSpider(spider, spiderProp, physics)
 
 local goalProp = {}
 goalProp.size = 100
-goalProp.x = totalHeight - goalProp.size - 10
-goalProp.y = totalWidth - goalProp.size - 10
+goalProp.x = totalHeight - goalProp.size - 5
+goalProp.y = totalWidth - goalProp.size - 5
 local goal = {}
 drawFuncs.drawGoal(goal, goalProp, physics)
 

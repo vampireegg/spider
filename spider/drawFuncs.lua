@@ -26,6 +26,7 @@ local function drawBackGround(bg, totalWidth, totalHeight)
 	bg = display.newImageRect( "bbg2.png", totalHeight, totalWidth )
 	bg.x = totalHeight/2
 	bg.y = totalWidth/2
+	bg:setFillColor( 1, 1, 1, 1 )
 end
 
 M.drawBackGround = drawBackGround

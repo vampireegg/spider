@@ -45,18 +45,17 @@ M.drawCollider = drawCollider
 
 local function drawSpider(spider, spiderProp)
 	-- sequences table
-	local spd_movement = {
+	spiderProp.spd_movement = {
     -- consecutive frames sequence
 		{
 			name = "normalRun",
-			start = 1,
-			count = 5,
-			time = 8,
+			frames = { 1,2,3,4,5 },
+			time = 800,
 			loopCount = 0,
 			loopDirection = "forward"
 		}
 	}
-	local bodySheet = graphics.newImageSheet("sheet.png", sheetInfo:getSheet())
+	spiderProp.bodySheet = graphics.newImageSheet("sheet.png", sheetInfo:getSheet())
 	for i = 1,8 do
 		spiderProp.leg[i] = display.newImageRect( "arrow.png", spiderProp.arrowsize,spiderProp.arrowsize  )
 		spiderProp.leg[i].angle = i * 45
@@ -85,7 +84,8 @@ local function drawSpider(spider, spiderProp)
 		end
 	end
 
-	spiderProp.body = display.newSprite( bodySheet, spd_movement )
+	spiderProp.body = display.newSprite( spiderProp.bodySheet, spiderProp.spd_movement )
+	spiderProp.body:play()
 	spiderProp.body:scale(.23,.23)
 	spider:insert( spiderProp.body )
 	for i = 1,8 do

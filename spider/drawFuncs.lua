@@ -24,10 +24,10 @@ end
 M.drawBorder = drawBorder
 
 local function drawBackGround(bg, totalWidth, totalHeight)
-	bg = display.newImageRect( "bbg2.png", totalHeight, totalWidth )
+	bg = display.newImageRect( "tree2.png", totalHeight, totalWidth )
 	bg.x = totalHeight/2
 	bg.y = totalWidth/2
-	bg:setFillColor( 1, 1, 1, 1 )
+	bg:setFillColor( 1, 1, 1, 0.7 )
 end
 
 M.drawBackGround = drawBackGround
@@ -61,13 +61,13 @@ local function drawEyes(eyes, eyeProp, totalWidth, totalHeight)
 			}
 		}
 	end
-	for i = 1, 8 do
+	for i = 1, 16 do
 		local x = math.random(0, totalHeight)
 		local y = math.random(0, totalWidth)
-		eyes[i] = display.newSprite( eyeProp.Sheet, eyeProp.eye_movement[math.ceil(i/2)] )
+		eyes[i] = display.newSprite( eyeProp.Sheet, eyeProp.eye_movement[math.ceil(i/4)] )
 		eyes[i].x = x
 		eyes[i].y = y
-		eyes[i].size = math.random() * .03 + .01
+		eyes[i].size = math.random() * .02 + .01
 		eyes[i]:scale(eyes[i].size,eyes[i].size)
 		eyes[i]:setFillColor( 1, 1, 1, .5 )
 		eyes[i]:play()

@@ -1,4 +1,5 @@
 
+local sheetInfo = require("sheet")
 local M = {}
 local function drawBorder(borders, totalWidth, totalHeight, borderProp)
 	borders[0] = display.newRect( borderProp.borderWidth/2, totalWidth/2, borderProp.borderWidth, totalWidth)
@@ -22,7 +23,7 @@ end
 M.drawBorder = drawBorder
 
 local function drawBackGround(bg, totalWidth, totalHeight)
-	bg = display.newImageRect( "bbg.png", totalHeight, totalWidth )
+	bg = display.newImageRect( "bbg2.png", totalHeight, totalWidth )
 	bg.x = totalHeight/2
 	bg.y = totalWidth/2
 end
@@ -43,6 +44,19 @@ end
 M.drawCollider = drawCollider
 
 local function drawSpider(spider, spiderProp)
+	-- sequences table
+	local spd_movement = {
+    -- consecutive frames sequence
+		{
+			name = "normalRun",
+			start = 1,
+			count = 5,
+			time = 8,
+			loopCount = 0,
+			loopDirection = "forward"
+		}
+	}
+	local bodySheet = graphics.newImageSheet("sheet.png", sheetInfo:getSheet())
 	for i = 1,8 do
 		spiderProp.leg[i] = display.newImageRect( "arrow.png", spiderProp.arrowsize,spiderProp.arrowsize  )
 		spiderProp.leg[i].angle = i * 45
@@ -71,7 +85,8 @@ local function drawSpider(spider, spiderProp)
 		end
 	end
 
-	spiderProp.body = display.newImageRect( "body2.png", spiderProp.bodysize, spiderProp.bodysize )
+	spiderProp.body = display.newSprite( bodySheet, spd_movement )
+	spiderProp.body.scale = .3
 	spider:insert( spiderProp.body )
 	for i = 1,8 do
 		print('spiderProp.leg[i].x' .. spiderProp.leg[i].x .. 'spiderProp.leg[i].y' .. spiderProp.leg[i].y)

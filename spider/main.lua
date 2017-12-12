@@ -105,7 +105,6 @@ local function distance(obj1, obj2)
 	return math.sqrt(term1 + term2)
 end
 
-
 local function on_frame( event )
 	goal[0].rotation = goal[0].rotation + .2
 	if(distance(spider,goal[0]) < 50) then

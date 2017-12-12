@@ -107,6 +107,7 @@ end
 
 
 local function on_frame( event )
+	goal[0].rotation = goal[0].rotation + .2
 	if(distance(spider,goal[0]) < 50) then
 		print("reached goal")
 		goal[0]:setFillColor( 1, 1, 1, 0 )

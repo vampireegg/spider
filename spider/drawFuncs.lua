@@ -86,7 +86,7 @@ local function drawSpider(spider, spiderProp)
 	end
 
 	spiderProp.body = display.newSprite( bodySheet, spd_movement )
-	spiderProp.body.scale = .3
+	spiderProp.body:scale(.23,.23)
 	spider:insert( spiderProp.body )
 	for i = 1,8 do
 		print('spiderProp.leg[i].x' .. spiderProp.leg[i].x .. 'spiderProp.leg[i].y' .. spiderProp.leg[i].y)

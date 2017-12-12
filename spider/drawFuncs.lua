@@ -1,5 +1,6 @@
 
 local sheetInfo = require("sheet")
+local eyesheetInfo = require("eyesheet")
 local M = {}
 local function drawBorder(borders, totalWidth, totalHeight, borderProp)
 	borders[0] = display.newRect( borderProp.borderWidth/2, totalWidth/2, borderProp.borderWidth, totalWidth)
@@ -43,6 +44,37 @@ local function drawCollider(collider, colliderProp)
 	end
 end
 M.drawCollider = drawCollider
+
+local function drawEyes(eyes, eyeProp, totalWidth, totalHeight)
+	eyeProp.Sheet = graphics.newImageSheet("eyesheet.png", eyesheetInfo:getSheet())
+	eyeProp.eye_movement = {}
+	for i = 1, 4 do
+		eyeProp.eye_movement[i] = 
+		{
+			{
+				name = "eyeRun" .. i,
+				frames = { math.fmod(i,4),math.fmod((i + 1),4),math.fmod((i + 2),4),math.fmod((i + 3),4) },
+				--frames = { 1,2,3,4 },
+				time = 800,
+				loopCount = 0,
+				loopDirection = "forward"
+			}
+		}
+	end
+	for i = 1, 8 do
+		local x = math.random(0, totalHeight)
+		local y = math.random(0, totalWidth)
+		eyes[i] = display.newSprite( eyeProp.Sheet, eyeProp.eye_movement[math.ceil(i/2)] )
+		eyes[i].x = x
+		eyes[i].y = y
+		eyes[i].size = math.random() * .03 + .01
+		eyes[i]:scale(eyes[i].size,eyes[i].size)
+		eyes[i]:setFillColor( 1, 1, 1, .5 )
+		eyes[i]:play()
+	end
+end
+
+M.drawEyes = drawEyes
 
 local function drawSpider(spider, spiderProp)
 	-- sequences table

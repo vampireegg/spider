@@ -19,6 +19,10 @@ physics.setGravity( 0, 0)
 local bg
 drawFuncs.drawBackGround(bg, totalWidth, totalHeight) 
 
+local eyeProp = {}
+local eyes = {}
+drawFuncs.drawEyes(eyes, eyeProp, totalWidth, totalHeight)
+
 local borderProp = {}
 borderProp.borderWidth = 2
 local borders = {}
@@ -33,6 +37,8 @@ colliderProp.colliderGroupy = 300
 colliderProp.numColliders = 5
 local collider = {}
 drawFuncs.drawCollider(collider, colliderProp, physics)
+
+
 
 
 local spiderProp = {}

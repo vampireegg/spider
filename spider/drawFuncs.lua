@@ -67,7 +67,7 @@ local function drawEyes(eyes, eyeProp, totalWidth, totalHeight)
 		eyes[i] = display.newSprite( eyeProp.Sheet, eyeProp.eye_movement[math.ceil(i/4)] )
 		eyes[i].x = x
 		eyes[i].y = y
-		eyes[i].size = math.random() * .02 + .01
+		eyes[i].size = math.random() * .1 + .05
 		eyes[i]:scale(eyes[i].size,eyes[i].size)
 		eyes[i]:setFillColor( 1, 1, 1, .5 )
 		eyes[i]:play()

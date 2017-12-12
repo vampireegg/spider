@@ -1,7 +1,7 @@
 --
 -- created with TexturePacker (http://www.codeandweb.com/texturepacker)
 --
--- $TexturePacker:SmartUpdate:cc30828ba69abae9a959b0f41556d092:4bc40f7edaa1084c5034542195130b1b:54c9d37194c8886a2ea4fde487583249$
+-- $TexturePacker:SmartUpdate:e492ba95184de52cfc79bb5b90dc2bca:e732b981c4e9d5e436980742f4392b07:54c9d37194c8886a2ea4fde487583249$
 --
 -- local sheetInfo = require("mysheet")
 -- local myImageSheet = graphics.newImageSheet( "mysheet.png", sheetInfo:getSheet() )
@@ -18,54 +18,54 @@ SheetInfo.sheet =
             -- eye1
             x=1,
             y=1,
-            width=790,
-            height=276,
+            width=162,
+            height=58,
 
-            sourceX = 566,
-            sourceY = 278,
-            sourceWidth = 1920,
-            sourceHeight = 1040
+            sourceX = 111,
+            sourceY = 54,
+            sourceWidth = 384,
+            sourceHeight = 208
         },
         {
             -- eye2
-            x=793,
+            x=165,
             y=1,
-            width=790,
-            height=276,
+            width=162,
+            height=58,
 
-            sourceX = 566,
-            sourceY = 278,
-            sourceWidth = 1920,
-            sourceHeight = 1040
+            sourceX = 111,
+            sourceY = 54,
+            sourceWidth = 384,
+            sourceHeight = 208
         },
         {
             -- eye3
-            x=1,
-            y=279,
-            width=790,
-            height=276,
+            x=329,
+            y=1,
+            width=162,
+            height=58,
 
-            sourceX = 566,
-            sourceY = 278,
-            sourceWidth = 1920,
-            sourceHeight = 1040
+            sourceX = 111,
+            sourceY = 54,
+            sourceWidth = 384,
+            sourceHeight = 208
         },
         {
             -- eye4
-            x=793,
-            y=279,
-            width=790,
-            height=276,
+            x=493,
+            y=1,
+            width=162,
+            height=58,
 
-            sourceX = 566,
-            sourceY = 278,
-            sourceWidth = 1920,
-            sourceHeight = 1040
+            sourceX = 111,
+            sourceY = 54,
+            sourceWidth = 384,
+            sourceHeight = 208
         },
     },
     
-    sheetContentWidth = 1584,
-    sheetContentHeight = 556
+    sheetContentWidth = 656,
+    sheetContentHeight = 60
 }
 
 SheetInfo.frameIndex =

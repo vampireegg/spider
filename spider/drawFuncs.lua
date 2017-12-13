@@ -34,14 +34,15 @@ end
 M.drawBackGround = drawBackGround
 
 local function drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
-	bgProp.reLoadButton = display.newImageRect( sceneGroup, "reload.png", 30, 30 )
+	bgProp.reLoadButton = display.newImageRect( sceneGroup, "reload2.png", 30, 30 )
 	bgProp.reLoadButton.x = totalHeight - 80
 	bgProp.reLoadButton.y =  50
-	bgProp.reLoadButton:scale(-1,1)
+	bgProp.reLoadButton:scale(0.9,0.9)
 	
 	bgProp.crossButton = display.newImageRect( sceneGroup, "cross2.png", 30, 30 )
 	bgProp.crossButton.x = totalHeight - 40
 	bgProp.crossButton.y =  50
+	bgProp.crossButton:scale(0.8,0.8)
 end
 
 M.drawButtons = drawButtons

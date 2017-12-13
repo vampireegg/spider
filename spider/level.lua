@@ -21,7 +21,7 @@ local scene = composer.newScene()
 physics.start()
 physics.setGravity( 0, 0 )
 
-local Level = 1
+local Level = composer.getVariable("level")
 
 local totalWidth = commonProp.total.Width
 local totalHeight = commonProp.total.Height

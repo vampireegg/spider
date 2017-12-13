@@ -40,7 +40,7 @@ local function drawCollider(collider, colliderProp)
 			collider[i][j].x = colliderProp.colliderGroupx[i] + j * colliderProp.colliderWidth
 			collider[i][j].y = colliderProp.colliderGroupy[i]
 			physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
-			collider[i].Name = "collider_" .. i .. "_" .. j
+			collider[i][j].Name = "collider_" .. i .. "_" .. j
 		end
 	end
 end

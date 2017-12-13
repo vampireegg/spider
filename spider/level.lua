@@ -56,8 +56,9 @@ local function pushLeg(event )
 	
 	local vx, vy = spider[1]:getLinearVelocity()
 
-	if(vx == 0 and vy == 0 and leg.removeSelf ~= nil) then
-		leg:removeSelf()
+	if(vx == 0 and vy == 0 and leg.exists == 1) then
+		leg.exists = 0
+		leg:setFillColor( 1, 1, 1, 0.2 )
 		lastLegTouched = event.target.leg.i
 		local rx = 3 * math.cos(leg.radAngle)
 		local ry = 3 * math.sin(leg.radAngle)

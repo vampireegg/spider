@@ -102,6 +102,7 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics)
 		spiderProp.leg[i].rotAngle = (spiderProp.leg[i].angle + 315) * math.pi / 180
 		spider[1]:insert( spiderProp.leg[i] )	
 		spiderProp.leg[i].i = i
+		spiderProp.leg[i].exists = 1
 		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
 		spiderProp.leg[i]:translate (spiderProp.ArrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.ArrowDistance * math.sin(spiderProp.leg[i].rotAngle))
 		

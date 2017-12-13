@@ -33,14 +33,15 @@ end
 M.drawBackGround = drawBackGround
 
 local function drawCollider(collider, colliderProp)
-	for i = 0, colliderProp.numColliders - 1 do
-		collider[i] = display.newImageRect( "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
-		collider[i].x = colliderProp.colliderGroupx + i * colliderProp.colliderWidth
-		collider[i].y = colliderProp. colliderGroupy
-		collider[i].colliderRectParams = { halfWidth=colliderProp.colliderWidth/2, halfHeight=colliderProp.colliderHeight/2,
-		x=colliderProp.colliderGroupx + collider[i].x , y=colliderProp.colliderGroupy + collider[i].y, angle=0 }
-		physics.addBody( collider[i], "static", { friction=0, bounce=0} )
-		collider[i].Name = "collider_" .. i
+	for i = 1,#(colliderProp.numColliders) do
+		collider[i] = {}
+		for j = 0, colliderProp.numColliders[i] - 1 do
+			collider[i][j] = display.newImageRect( "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
+			collider[i][j].x = colliderProp.colliderGroupx[i] + j * colliderProp.colliderWidth
+			collider[i][j].y = colliderProp.colliderGroupy[i]
+			physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
+			collider[i].Name = "collider_" .. i .. "_" .. j
+		end
 	end
 end
 M.drawCollider = drawCollider

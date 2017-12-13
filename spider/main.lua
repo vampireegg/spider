@@ -32,9 +32,9 @@ local colliderProp = {}
 colliderProp.scale = 0.8
 colliderProp.colliderHeight = 36 * colliderProp.scale
 colliderProp.colliderWidth = 70 * colliderProp.scale
-colliderProp.colliderGroupx = 100
-colliderProp.colliderGroupy = 300
-colliderProp.numColliders = 5
+colliderProp.colliderGroupx = {100}
+colliderProp.colliderGroupy = {300}
+colliderProp.numColliders = {5}
 local collider = {}
 drawFuncs.drawCollider(collider, colliderProp, physics)
 

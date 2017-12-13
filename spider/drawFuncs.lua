@@ -2,7 +2,7 @@
 local sheetInfo = require("sheet")
 local eyesheetInfo = require("eyesheet")
 local M = {}
-local function drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp)
+local function drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
 	borders[0] = display.newRect(sceneGroup, borderProp.borderWidth/2, totalWidth/2, borderProp.borderWidth, totalWidth)
 	borders[0]:setFillColor( 1, 1, 1, 0 )
 	
@@ -32,7 +32,7 @@ end
 
 M.drawBackGround = drawBackGround
 
-local function drawCollider(sceneGroup, collider, colliderProp)
+local function drawCollider(sceneGroup, collider, colliderProp, physics)
 	for i = 1,#(colliderProp.numColliders) do
 		collider[i] = {}
 		for j = 0, colliderProp.numColliders[i] - 1 do
@@ -77,7 +77,7 @@ end
 
 M.drawEyes = drawEyes
 
-local function drawSpider(sceneGroup, spider, spiderProp)
+local function drawSpider(sceneGroup, spider, spiderProp, physics)
 	spider[1] = display.newGroup(sceneGroup)
 	spider[1].x = spiderProp.PosiX
 	spider[1].y = spiderProp.PosiY
@@ -140,7 +140,7 @@ end
 
 M.drawSpider = drawSpider
 
-local function drawGoal(sceneGroup, goal, goalProp)
+local function drawGoal(sceneGroup, goal, goalProp, physics)
 	goal[0] = display.newImageRect(sceneGroup, "goal.png", goalProp.Size,goalProp.Size  )
 	goal[0].x = goalProp.x
 	goal[0].y = goalProp.y

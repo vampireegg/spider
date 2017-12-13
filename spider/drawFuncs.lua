@@ -99,7 +99,7 @@ local function drawSpider(spider, spiderProp)
 		spider:insert( spiderProp.leg[i] )	
 		spiderProp.leg[i].i = i
 		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
-		spiderProp.leg[i]:translate (spiderProp.arrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.arrowDistance * math.sin(spiderProp.leg[i].rotAngle))
+		spiderProp.leg[i]:translate (spiderProp.ArrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.ArrowDistance * math.sin(spiderProp.leg[i].rotAngle))
 		
 		if(i == 1 or i == 2 or i == 8) then
 			spiderProp.leg[i].dirx = 1
@@ -130,9 +130,9 @@ local function drawSpider(spider, spiderProp)
 		spiderProp.legSquare[i].isHitTestable = true
 		spider:insert(spiderProp.legSquare[i])
 	end
-	--local offsetRectParams = { halfWidth=spiderProp.spiderRadius, halfHeight=spiderProp.spiderRadius, x=0, y=0, angle=0 }
+	--local offsetRectParams = { halfWidth=spiderProp.SpiderRadius, halfHeight=spiderProp.SpiderRadius, x=0, y=0, angle=0 }
 	--spider.isFixedRotation = true
-	physics.addBody( spider, "dynamic", {radius = spiderProp.spiderRadius * .9, friction=0, bounce=0})
+	physics.addBody( spider, "dynamic", {radius = spiderProp.SpiderRadius * .9, friction=0, bounce=0})
 end
 
 M.drawSpider = drawSpider

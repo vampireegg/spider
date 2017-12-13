@@ -51,8 +51,8 @@ spider.y = 150
 spiderProp.MyScale = commonProp.spider.MyScale
 spiderProp.ArrowSize = commonProp.spider.ArrowSize
 spiderProp.BodySize = commonProp.spider.BodySize
-spiderProp.arrowDistance = 365 * spiderProp.MyScale
-spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.ArrowSize
+spiderProp.ArrowDistance = commonProp.spider.ArrowDistance
+spiderProp.SpiderRadius = commonProp.spider.SpiderRadius
 spiderProp.leg = {}
 spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)

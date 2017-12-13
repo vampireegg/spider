@@ -94,8 +94,17 @@ local function distance(obj1, obj2)
 end
 
 local function endGame()
-	
+	display.remove( bg[1] )
 	display.remove( spider[1] )
+	display.remove( goal[1] )
+	for i = 1, 16 do
+		display.remove( eyes[i] )
+	end
+	for i = 1,#(colliderProp.numColliders) do
+		for j = 0, colliderProp.numColliders[i] - 1 do
+			display.remove(collider[i][j])
+		end
+	end
     local options = 
 	{
 		effect = "fade",
@@ -118,7 +127,7 @@ local function on_frame( event )
 		goal[0]:setFillColor( 1, 1, 1, 0 )
 		spiderReachedGoal = true
 		Runtime:removeEventListener( "enterFrame", on_frame )
-		timer.performWithDelay( 2000, endGame )
+		timer.performWithDelay( 1000, endGame )
 	end
 	--print("goal[0].x = " .. goal[0].x .. " spider[1].x = " .. spider[1].x)
 end 

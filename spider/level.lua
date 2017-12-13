@@ -13,26 +13,25 @@ local physics = require( "physics" )
 local drawFuncs = require("drawFuncs")
 local commonProp = require("commonProp")
 local levelProp = require("levelProp")
+local composer = require( "composer" )
+ 
+ -- Hide the status bar
+display.setStatusBar( display.HiddenStatusBar )
+local scene = composer.newScene()
+
 
 local Level = 1
 
 local totalWidth = commonProp.total.Width
 local totalHeight = commonProp.total.Height
-
-physics.start()
-physics.setGravity( 0, 0)
-
-local bg
-drawFuncs.drawBackGround(bg, totalWidth, totalHeight) 
+local bg = {}
 
 local eyeProp = {}
 local eyes = {}
-drawFuncs.drawEyes(eyes, eyeProp, totalWidth, totalHeight)
 
 local borderProp = {}
 borderProp.borderWidth = commonProp.border.Width
 local borders = {}
-drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp, physics)
 
 local colliderProp = {}
 colliderProp.MyScale = commonProp.collider.MyScale
@@ -42,38 +41,34 @@ colliderProp.colliderGroupx = levelProp[Level].collider.GroupX
 colliderProp.colliderGroupy = levelProp[Level].collider.GroupY
 colliderProp.numColliders = levelProp[Level].collider.Num
 local collider = {}
-drawFuncs.drawCollider(collider, colliderProp, physics)
-
-
-
 
 local spiderProp = {}
-local spider = display.newGroup()
-spider.x = levelProp[Level].spider.PosiX
-spider.y = levelProp[Level].spider.PosiY
+local spider = {}
 spiderProp.MyScale = commonProp.spider.MyScale
 spiderProp.ArrowSize = commonProp.spider.ArrowSize
 spiderProp.BodySize = commonProp.spider.BodySize
 spiderProp.ArrowDistance = commonProp.spider.ArrowDistance
 spiderProp.SpiderRadius = commonProp.spider.SpiderRadius
+spiderProp.PosiX = levelProp[Level].spider.PosiX
+spiderProp.PosiY = levelProp[Level].spider.PosiY
 spiderProp.leg = {}
 spiderProp.legSquare = {}
-drawFuncs.drawSpider(spider, spiderProp, physics)
 
 local goalProp = {}
 goalProp.Size = commonProp.goal.Size
 goalProp.x = levelProp[Level].goal.PosiX
 goalProp.y = levelProp[Level].goal.PosiY
 local goal = {}
-drawFuncs.drawGoal(goal, goalProp, physics)
 
 local lastLegTouched = -1
+
+
 
 local function pushLeg(event )	
 	local leg = event.target.leg
 	print("touched" .. event.target.leg.i)
 	
-	local vx, vy = spider:getLinearVelocity()
+	local vx, vy = spider[1]:getLinearVelocity()
 
 	if(vx == 0 and vy == 0 and leg.removeSelf ~= nil) then
 		leg:removeSelf()
@@ -86,30 +81,26 @@ local function pushLeg(event )
 		if(math.abs(ry) < 0.5)then
 			ry = 0
 		end
-		print("applying velocity " ..  rx .. "," .. ry .. " x = " .. spider.x .. " y = " .. spider.y )
-		spider:applyLinearImpulse( rx, ry, 0 , 0 )
-		spider.angularVelocity = 0
+		print("applying velocity " ..  rx .. "," .. ry .. " x = " .. spider[1].x .. " y = " .. spider[1].y )
+		spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
+		spider[1].angularVelocity = 0
 	end
 end
 
 local function shiftSpider( event )
-	spider.x = spider.x + spiderProp.leg[lastLegTouched].dirx
-	spider.y = spider.y + spiderProp.leg[lastLegTouched].diry
+	spider[1].x = spider[1].x + spiderProp.leg[lastLegTouched].dirx
+	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
 end
 
-for i = 1,8 do
-	spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
-end
+
 
 local function spiderCollided( self, event )
 	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y)
-	spider.angularVelocity = 0
-    spider:setLinearVelocity(0,0)
+	spider[1].angularVelocity = 0
+    spider[1]:setLinearVelocity(0,0)
 	timer.performWithDelay( 50, shiftSpider )
 end
  
-spider.collision = spiderCollided
-spider:addEventListener( "collision" )
 
 local function distance(obj1, obj2)
 	local term1 = (obj1.x - obj2.x) * (obj1.x - obj2.x)
@@ -119,12 +110,88 @@ end
 
 local function on_frame( event )
 	goal[0].rotation = goal[0].rotation + .2
-	if(distance(spider,goal[0]) < 50) then
+	if(distance(spider[1],goal[0]) < 50) then
 		print("reached goal")
 		goal[0]:setFillColor( 1, 1, 1, 0 )
 	end
-	--print("goal[0].x = " .. goal[0].x .. " spider.x = " .. spider.x)
+	--print("goal[0].x = " .. goal[0].x .. " spider[1].x = " .. spider[1].x)
 end 
 
-Runtime:addEventListener( "enterFrame", on_frame )
+
+function scene:create( event )
+	physics.pause()
+    local sceneGroup = self.view
+    -- Code here runs when the scene is first created but has not yet appeared on screen
+	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth, totalHeight)
+	drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
+	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
+	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics)
+	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)
+
+	for i = 1,8 do
+			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
+	end
+end
+
+
+-- show()
+function scene:show( event )
+
+	local sceneGroup = self.view
+	local phase = event.phase
+
+	if ( phase == "will" ) then
+		-- Code here runs when the scene is still off screen (but is about to come on screen)
+
+	elseif ( phase == "did" ) then
+		-- Code here runs when the scene is entirely on screen
+		print("show called")
+		physics.start()
+		physics.setGravity( 0, 0)
+		
+		Runtime:addEventListener( "enterFrame", on_frame )
+		spider[1].collision = spiderCollided
+		spider[1]:addEventListener( "collision" )
+	end
+end
+
+
+-- hide()
+function scene:hide( event )
+
+	local sceneGroup = self.view
+	local phase = event.phase
+
+	if ( phase == "will" ) then
+		-- Code here runs when the scene is on screen (but is about to go off screen)
+
+	elseif ( phase == "did" ) then
+		-- Code here runs immediately after the scene goes entirely off screen
+
+	end
+end
+
+
+-- destroy()
+function scene:destroy( event )
+
+	local sceneGroup = self.view
+	-- Code here runs prior to the removal of scene's view
+
+end
+
+
+-- -----------------------------------------------------------------------------------
+-- Scene event function listeners
+-- -----------------------------------------------------------------------------------
+scene:addEventListener( "create", scene )
+scene:addEventListener( "show", scene )
+scene:addEventListener( "hide", scene )
+scene:addEventListener( "destroy", scene )
+-- -----------------------------------------------------------------------------------
+
+return scene
+
+
 

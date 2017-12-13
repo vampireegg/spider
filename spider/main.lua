@@ -12,6 +12,9 @@
 local physics = require( "physics" )
 local drawFuncs = require("drawFuncs")
 local commonProp = require("commonProp")
+local levelProp = require("levelProp")
+
+local Level = 1
 
 local totalWidth = commonProp.total.Width
 local totalHeight = commonProp.total.Height
@@ -35,9 +38,9 @@ local colliderProp = {}
 colliderProp.MyScale = commonProp.collider.MyScale
 colliderProp.colliderHeight = commonProp.collider.Height
 colliderProp.colliderWidth = commonProp.collider.Width
-colliderProp.colliderGroupx = {100}
-colliderProp.colliderGroupy = {300}
-colliderProp.numColliders = {5}
+colliderProp.colliderGroupx = levelProp[Level].collider.GroupX
+colliderProp.colliderGroupy = levelProp[Level].collider.GroupY
+colliderProp.numColliders = levelProp[Level].collider.Num
 local collider = {}
 drawFuncs.drawCollider(collider, colliderProp, physics)
 
@@ -46,8 +49,8 @@ drawFuncs.drawCollider(collider, colliderProp, physics)
 
 local spiderProp = {}
 local spider = display.newGroup()
-spider.x = 220
-spider.y = 150
+spider.x = levelProp[Level].spider.PosiX
+spider.y = levelProp[Level].spider.PosiY
 spiderProp.MyScale = commonProp.spider.MyScale
 spiderProp.ArrowSize = commonProp.spider.ArrowSize
 spiderProp.BodySize = commonProp.spider.BodySize
@@ -59,8 +62,8 @@ drawFuncs.drawSpider(spider, spiderProp, physics)
 
 local goalProp = {}
 goalProp.Size = commonProp.goal.Size
-goalProp.x = 1061 - goalProp.Size
-goalProp.y = 595 - goalProp.Size
+goalProp.x = levelProp[Level].goal.PosiX
+goalProp.y = levelProp[Level].goal.PosiY
 local goal = {}
 drawFuncs.drawGoal(goal, goalProp, physics)
 

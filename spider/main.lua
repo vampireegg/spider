@@ -32,7 +32,7 @@ local borders = {}
 drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp, physics)
 
 local colliderProp = {}
-colliderProp.Scale = commonProp.collider.Scale
+colliderProp.MyScale = commonProp.collider.MyScale
 colliderProp.colliderHeight = commonProp.collider.Height
 colliderProp.colliderWidth = commonProp.collider.Width
 colliderProp.colliderGroupx = {100}
@@ -48,10 +48,10 @@ local spiderProp = {}
 local spider = display.newGroup()
 spider.x = 220
 spider.y = 150
-spiderProp.scale = 0.23
-spiderProp.arrowsize = 83.5 * spiderProp.scale
-spiderProp.bodysize = 487 * spiderProp.scale
-spiderProp.arrowDistance = 365 * spiderProp.scale
+spiderProp.MyScale = 0.23
+spiderProp.arrowsize = 83.5 * spiderProp.MyScale
+spiderProp.bodysize = 487 * spiderProp.MyScale
+spiderProp.arrowDistance = 365 * spiderProp.MyScale
 spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.arrowsize
 spiderProp.leg = {}
 spiderProp.legSquare = {}

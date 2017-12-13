@@ -8,8 +8,10 @@ M.border = {}
 M.border.Width = 2
 
 M.collider = {}
-M.collider.Scale = 0.8
-M.collider.Height = M.collider.Scale * 36
-M.collider.Width = M.collider.Scale * 70
+M.collider.MyScale = 0.8
+M.collider.Height = M.collider.MyScale * 36
+M.collider.Width = M.collider.MyScale * 70
+
+M.spider = {}
 
 return M

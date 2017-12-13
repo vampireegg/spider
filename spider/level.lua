@@ -94,17 +94,7 @@ local function distance(obj1, obj2)
 end
 
 local function endGame()
-	display.remove( bg[1] )
-	display.remove( spider[1] )
-	display.remove( goal[1] )
-	for i = 1, 16 do
-		display.remove( eyes[i] )
-	end
-	for i = 1,#(colliderProp.numColliders) do
-		for j = 0, colliderProp.numColliders[i] - 1 do
-			display.remove(collider[i][j])
-		end
-	end
+	display.remove(sceneGroup)
     local options = 
 	{
 		effect = "fade",

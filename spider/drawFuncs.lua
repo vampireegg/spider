@@ -78,7 +78,8 @@ end
 M.drawEyes = drawEyes
 
 local function drawSpider(sceneGroup, spider, spiderProp, physics)
-	spider[1] = display.newGroup(sceneGroup)
+	spider[1] = display.newGroup()
+	sceneGroup:insert(spider[1])
 	spider[1].x = spiderProp.PosiX
 	spider[1].y = spiderProp.PosiY
 	-- sequences table
@@ -150,5 +151,6 @@ local function drawGoal(sceneGroup, goal, goalProp, physics)
 end
 
 M.drawGoal = drawGoal
+
  
 return M

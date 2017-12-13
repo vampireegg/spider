@@ -12,6 +12,7 @@ local totalHeight = 1066
 
 local physics = require( "physics" )
 local drawFuncs = require("drawFuncs")
+local commonProp = require("commonProp")
 
 physics.start()
 physics.setGravity( 0, 0)
@@ -45,10 +46,10 @@ local spiderProp = {}
 local spider = display.newGroup()
 spider.x = 220
 spider.y = 150
-spiderProp.scale = 0.8
-spiderProp.arrowsize = 24 * spiderProp.scale
-spiderProp.bodysize = 140 * spiderProp.scale
-spiderProp.arrowDistance = 105 * spiderProp.scale
+spiderProp.scale = 0.23
+spiderProp.arrowsize = 83.5 * spiderProp.scale
+spiderProp.bodysize = 487 * spiderProp.scale
+spiderProp.arrowDistance = 365 * spiderProp.scale
 spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.arrowsize
 spiderProp.leg = {}
 spiderProp.legSquare = {}

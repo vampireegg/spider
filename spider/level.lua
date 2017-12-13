@@ -168,6 +168,9 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen
+		Runtime:removeEventListener( "collision", spiderCollided )
+		physics.pause()
+		composer.removeScene( "level" )
 
 	end
 end

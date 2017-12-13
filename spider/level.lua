@@ -91,7 +91,7 @@ local function endGame()
 	display.remove(sceneGroup)
     local options = 
 	{
-		effect = "fade",
+		effect = "crossfade",
 		time = 800
 	}
 	 
@@ -124,6 +124,14 @@ end
 
 
 local function on_frame( event )
+	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius + 20
+	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
+		bgProp.reLoadButton:setFillColor( 1, 1, 1, 0 )
+		bgProp.crossButton:setFillColor( 1, 1, 1, 0 )
+	else
+		bgProp.reLoadButton:setFillColor( 1, 1, 1, 1 )
+		bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
+	end
 	goal[0].rotation = goal[0].rotation + .2
 	if(distance(spider[1],goal[0]) < 20 and spiderReachedGoal == false) then
 		print("reached goal")
@@ -159,7 +167,7 @@ end
 
 local function reLoad(event )
 	Runtime:removeEventListener( "enterFrame", on_frame )
-	timer.performWithDelay( 100, endGame )
+	timer.performWithDelay( 500, endGame )
 end
 
 

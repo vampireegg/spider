@@ -76,6 +76,30 @@ local function pushLeg(event )
 	end
 end
 
+local function endGame()
+	display.remove( bg[1] )
+	display.remove( spider[1] )
+	display.remove( goal[1] )
+	for i = 1, 16 do
+		display.remove( eyes[i] )
+	end
+	for i = 1,#(colliderProp.numColliders) do
+		for j = 0, colliderProp.numColliders[i] - 1 do
+			display.remove(collider[i][j])
+		end
+	end
+	display.remove(sceneGroup)
+    local options = 
+	{
+		effect = "fade",
+		time = 800
+	}
+	 
+	-- Go to the menu screen
+	composer.gotoScene( "level" )
+end
+
+
 local function shiftSpider( event )
 	spider[1].x = spider[1].x + spiderProp.leg[lastLegTouched].dirx
 	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
@@ -97,33 +121,7 @@ local function distance(obj1, obj2)
 	return math.sqrt(term1 + term2)
 end
 
-local function endGame()
-	display.remove( bg[1] )
-	display.remove( spider[1] )
-	display.remove( goal[1] )
-	for i = 1, 16 do
-		display.remove( eyes[i] )
-	end
-	for i = 1,#(colliderProp.numColliders) do
-		for j = 0, colliderProp.numColliders[i] - 1 do
-			display.remove(collider[i][j])
-		end
-	end
-	display.remove(sceneGroup)
-    local options = 
-	{
-		effect = "fade",
-		time = 800
-	}
-	 
-	-- Go to the menu screen
-	if(Level < 3) then
-		composer.setVariable( "level", Level + 1 )
-	else
-		composer.setVariable( "level", 1 )
-	end
-	composer.gotoScene( "level" )
-end
+
 
 local function on_frame( event )
 	goal[0].rotation = goal[0].rotation + .2
@@ -132,7 +130,13 @@ local function on_frame( event )
 		goal[0]:setFillColor( 1, 1, 1, 0 )
 		spiderReachedGoal = true
 		Runtime:removeEventListener( "enterFrame", on_frame )
+		if(Level < 3) then
+			composer.setVariable( "level", Level + 1 )
+		else
+			composer.setVariable( "level", 1 )
+		end
 		timer.performWithDelay( 1000, endGame )
+		
 	end
 	legPhaseCounter = legPhaseCounter + 1
 	if(legPhaseCounter == 10) then
@@ -152,6 +156,11 @@ local function on_frame( event )
 	end
 	--print("goal[0].x = " .. goal[0].x .. " spider[1].x = " .. spider[1].x)
 end 
+
+local function reLoad(event )
+	Runtime:removeEventListener( "enterFrame", on_frame )
+	timer.performWithDelay( 100, endGame )
+end
 
 
 function scene:create( event )
@@ -208,6 +217,7 @@ function scene:create( event )
 	for i = 1,8 do
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
+	bgProp.reLoadButton:addEventListener("tap", reLoad)
 end
 
 

@@ -91,7 +91,7 @@ local function drawSpider(spider, spiderProp)
 	}
 	spiderProp.bodySheet = graphics.newImageSheet("sheet.png", sheetInfo:getSheet())
 	for i = 1,8 do
-		spiderProp.leg[i] = display.newImageRect( "arrow.png", spiderProp.arrowsize,spiderProp.arrowsize  )
+		spiderProp.leg[i] = display.newImageRect( "arrow.png", spiderProp.ArrowSize,spiderProp.ArrowSize  )
 		spiderProp.leg[i].angle = i * 45
 		spiderProp.leg[i].radAngle = (spiderProp.leg[i].angle + 135) * math.pi / 180
 		spiderProp.leg[i].exists = true
@@ -124,7 +124,7 @@ local function drawSpider(spider, spiderProp)
 	spider:insert( spiderProp.body )
 	for i = 1,8 do
 		print('spiderProp.leg[i].x' .. spiderProp.leg[i].x .. 'spiderProp.leg[i].y' .. spiderProp.leg[i].y)
-		spiderProp.legSquare[i] = display.newRect( spiderProp.leg[i].x, spiderProp.leg[i].y, spiderProp.arrowsize * 5, spiderProp.arrowsize * 5)
+		spiderProp.legSquare[i] = display.newRect( spiderProp.leg[i].x, spiderProp.leg[i].y, spiderProp.ArrowSize * 5, spiderProp.ArrowSize * 5)
 		spiderProp.legSquare[i]:setFillColor( 1, 1, 1, 0 )
 		spiderProp.legSquare[i].leg = spiderProp.leg[i]
 		spiderProp.legSquare[i].isHitTestable = true

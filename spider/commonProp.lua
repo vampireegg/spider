@@ -13,5 +13,8 @@ M.collider.Height = M.collider.MyScale * 36
 M.collider.Width = M.collider.MyScale * 70
 
 M.spider = {}
+M.spider.MyScale = 0.23
+M.spider.ArrowSize = 83.5 * M.spider.MyScale
+M.spider.BodySize = 487 * M.spider.MyScale
 
 return M

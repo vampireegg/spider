@@ -48,11 +48,11 @@ local spiderProp = {}
 local spider = display.newGroup()
 spider.x = 220
 spider.y = 150
-spiderProp.MyScale = 0.23
-spiderProp.arrowsize = 83.5 * spiderProp.MyScale
-spiderProp.bodysize = 487 * spiderProp.MyScale
+spiderProp.MyScale = commonProp.spider.MyScale
+spiderProp.ArrowSize = commonProp.spider.ArrowSize
+spiderProp.BodySize = commonProp.spider.BodySize
 spiderProp.arrowDistance = 365 * spiderProp.MyScale
-spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.arrowsize
+spiderProp.spiderRadius = spiderProp.arrowDistance + spiderProp.ArrowSize
 spiderProp.leg = {}
 spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)

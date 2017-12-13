@@ -27,7 +27,7 @@ local function drawBackGround(bg, totalWidth, totalHeight)
 	bg = display.newImageRect( "tree2.jpg", totalHeight, totalWidth )
 	bg.x = totalHeight/2
 	bg.y = totalWidth/2
-	bg:setFillColor( 1, 1, 1, 0.7 )
+	bg:setFillColor( 1, 1, 1, 0.45 )
 end
 
 M.drawBackGround = drawBackGround

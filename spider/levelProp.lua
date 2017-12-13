@@ -21,16 +21,33 @@ M[2] = {}
 
 
 M[2].spider = {}
-M[2].spider.PosiX = 190
+M[2].spider.PosiX = 90
 M[2].spider.PosiY = 150
 
 M[2].collider = {}
-M[2].collider.GroupX = {60, 550}
-M[2].collider.GroupY = {280, 410}
-M[2].collider.Num = {5, 8}
+M[2].collider.GroupX = {30}
+M[2].collider.GroupY = {300}
+M[2].collider.Num = {8}
 
 M[2].goal = {}
-M[2].goal.PosiX = 980
-M[2].goal.PosiY = 530
+M[2].goal.PosiX = 80
+M[2].goal.PosiY = 380
+
+---------------------------------------- Level 3----------------------------------------
+M[3] = {}
+
+
+M[3].spider = {}
+M[3].spider.PosiX = 190
+M[3].spider.PosiY = 150
+
+M[3].collider = {}
+M[3].collider.GroupX = {60, 550}
+M[3].collider.GroupY = {280, 410}
+M[3].collider.Num = {5, 8}
+
+M[3].goal = {}
+M[3].goal.PosiX = 980
+M[3].goal.PosiY = 530
 
 return M

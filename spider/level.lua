@@ -103,7 +103,11 @@ local function endGame()
 	}
 	 
 	-- Go to the menu screen
-	composer.setVariable( "level", 2 )
+	if(Level < 3) then
+		composer.setVariable( "level", Level + 1 )
+	else
+		composer.setVariable( "level", 1 )
+	end
 	composer.gotoScene( "level" )
 end
 

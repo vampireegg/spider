@@ -25,11 +25,11 @@ M[2].collider.GroupY = {300}
 M[2].collider.Num = {5}
 
 M[2].spider = {}
-M[2].spider.PosiX = 220
+M[2].spider.PosiX = 420
 M[2].spider.PosiY = 150
 
 M[2].goal = {}
 M[2].goal.PosiX = 961
-M[2].goal.PosiY = 395
+M[2].goal.PosiY = 295
 
 return M

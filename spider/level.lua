@@ -22,6 +22,7 @@ physics.start()
 physics.setGravity( 0, 0 )
 
 local Level = composer.getVariable("level")
+local gameLoopTimer
 
 local totalWidth = commonProp.total.Width
 local totalHeight = commonProp.total.Height
@@ -62,6 +63,7 @@ goalProp.y = levelProp[Level].goal.PosiY
 local goal = {}
 
 local lastLegTouched = -1
+local spiderReachedGoal = false
 
 
 
@@ -109,11 +111,28 @@ local function distance(obj1, obj2)
 	return math.sqrt(term1 + term2)
 end
 
+local function endGame()
+	
+	display.remove( spider[1] )
+    local options = 
+	{
+		effect = "fade",
+		time = 800
+	}
+	 
+	-- Go to the menu screen
+	composer.setVariable( "level", 2 )
+	composer.gotoScene( "level" )
+end
+
 local function on_frame( event )
 	goal[0].rotation = goal[0].rotation + .2
-	if(distance(spider[1],goal[0]) < 50) then
+	if(distance(spider[1],goal[0]) < 20 and spiderReachedGoal == false) then
 		print("reached goal")
 		goal[0]:setFillColor( 1, 1, 1, 0 )
+		spiderReachedGoal = true
+		Runtime:removeEventListener( "enterFrame", on_frame )
+		timer.performWithDelay( 2000, endGame )
 	end
 	--print("goal[0].x = " .. goal[0].x .. " spider[1].x = " .. spider[1].x)
 end 
@@ -168,7 +187,6 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen
-		Runtime:removeEventListener( "collision", spiderCollided )
 		physics.pause()
 		composer.removeScene( "level" )
 

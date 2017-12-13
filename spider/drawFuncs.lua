@@ -28,6 +28,15 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	bg[1].x = totalHeight/2
 	bg[1].y = totalWidth/2
 	bg[1]:setFillColor( 1, 1, 1, bgProp.Opacity )
+	
+	bgProp.reLoadButton = display.newImageRect( sceneGroup, "reload.png", 30, 30 )
+	bgProp.reLoadButton.x = totalHeight - 80
+	bgProp.reLoadButton.y =  50
+	bgProp.reLoadButton:scale(-1,1)
+	
+	bgProp.crossButton = display.newImageRect( sceneGroup, "cross2.png", 30, 30 )
+	bgProp.crossButton.x = totalHeight - 40
+	bgProp.crossButton.y =  50
 end
 
 M.drawBackGround = drawBackGround

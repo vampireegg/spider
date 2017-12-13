@@ -13,8 +13,8 @@ local physics = require( "physics" )
 local drawFuncs = require("drawFuncs")
 local commonProp = require("commonProp")
 
-local totalWidth = commonProp.totalWidth
-local totalHeight = commonProp.totalHeight
+local totalWidth = commonProp.total.Width
+local totalHeight = commonProp.total.Height
 
 physics.start()
 physics.setGravity( 0, 0)
@@ -27,14 +27,14 @@ local eyes = {}
 drawFuncs.drawEyes(eyes, eyeProp, totalWidth, totalHeight)
 
 local borderProp = {}
-borderProp.borderWidth = commonProp.borderWidth
+borderProp.borderWidth = commonProp.border.Width
 local borders = {}
 drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp, physics)
 
 local colliderProp = {}
-colliderProp.scale = 0.8
-colliderProp.colliderHeight = 36 * colliderProp.scale
-colliderProp.colliderWidth = 70 * colliderProp.scale
+colliderProp.Scale = commonProp.collider.Scale
+colliderProp.colliderHeight = commonProp.collider.Height
+colliderProp.colliderWidth = commonProp.collider.Width
 colliderProp.colliderGroupx = {100}
 colliderProp.colliderGroupy = {300}
 colliderProp.numColliders = {5}

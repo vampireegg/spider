@@ -49,6 +49,7 @@ local lastLegTouched
 local spiderReachedGoal
 local legPhase
 local legPhaseCounter
+local needtoReload
 
 
 
@@ -146,6 +147,10 @@ local function on_frame( event )
 		timer.performWithDelay( 1000, endGame )
 		
 	end
+	if(needtoReload == true) then
+		Runtime:removeEventListener( "enterFrame", on_frame )
+		timer.performWithDelay( 500, endGame )
+	end
 	legPhaseCounter = legPhaseCounter + 1
 	if(legPhaseCounter == 10) then
 		for i = 1, 8 do
@@ -166,8 +171,7 @@ local function on_frame( event )
 end 
 
 local function reLoad(event )
-	Runtime:removeEventListener( "enterFrame", on_frame )
-	timer.performWithDelay( 500, endGame )
+	needtoReload = true
 end
 
 
@@ -210,6 +214,7 @@ function scene:create( event )
 	spiderReachedGoal = false
 	legPhase = -1
 	legPhaseCounter = 0
+	needtoReload = false
 	
 	physics.pause()
     local sceneGroup = self.view

@@ -16,4 +16,20 @@ M[1].goal = {}
 M[1].goal.PosiX = 961
 M[1].goal.PosiY = 495
 
+---------------------------------------- Dummy Level 2----------------------------------------
+M[2] = {}
+
+M[2].collider = {}
+M[2].collider.GroupX = {100}
+M[2].collider.GroupY = {300}
+M[2].collider.Num = {5}
+
+M[2].spider = {}
+M[2].spider.PosiX = 220
+M[2].spider.PosiY = 150
+
+M[2].goal = {}
+M[2].goal.PosiX = 961
+M[2].goal.PosiY = 395
+
 return M

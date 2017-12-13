@@ -47,6 +47,8 @@ local goal = {}
 
 local lastLegTouched
 local spiderReachedGoal
+local legPhase
+local legPhaseCounter
 
 
 
@@ -132,6 +134,22 @@ local function on_frame( event )
 		Runtime:removeEventListener( "enterFrame", on_frame )
 		timer.performWithDelay( 1000, endGame )
 	end
+	legPhaseCounter = legPhaseCounter + 1
+	if(legPhaseCounter == 10) then
+		for i = 1, 8 do
+			if(spiderProp.leg[i].exists == 1)then
+				if(legPhase == 1) then
+					spiderProp.leg[i].x = spiderProp.leg[i].x + spiderProp.leg[i].dirx
+					spiderProp.leg[i].y = spiderProp.leg[i].y + spiderProp.leg[i].diry
+				else
+					spiderProp.leg[i].x = spiderProp.leg[i].x - spiderProp.leg[i].dirx
+					spiderProp.leg[i].y = spiderProp.leg[i].y - spiderProp.leg[i].diry
+				end
+			end
+		end
+		legPhase = legPhase * -1
+		legPhaseCounter = 0
+	end
 	--print("goal[0].x = " .. goal[0].x .. " spider[1].x = " .. spider[1].x)
 end 
 
@@ -173,6 +191,8 @@ function scene:create( event )
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false
+	legPhase = -1
+	legPhaseCounter = 0
 	
 	physics.pause()
     local sceneGroup = self.view

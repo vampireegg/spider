@@ -23,11 +23,11 @@ end
 
 M.drawBorder = drawBorder
 
-local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight)
-	bg[1] = display.newImageRect( sceneGroup, "tree2.jpg", totalHeight, totalWidth )
+local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
+	bg[1] = display.newImageRect( sceneGroup, bgProp.Img, totalHeight, totalWidth )
 	bg[1].x = totalHeight/2
 	bg[1].y = totalWidth/2
-	bg[1]:setFillColor( 1, 1, 1, 0.4 )
+	bg[1]:setFillColor( 1, 1, 1, bgProp.Opacity )
 end
 
 M.drawBackGround = drawBackGround

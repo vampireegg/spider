@@ -26,6 +26,7 @@ local gameLoopTimer
 
 local totalWidth
 local totalHeight
+local bgProp = {}
 local bg = {}
 
 local eyeProp = {}
@@ -140,6 +141,10 @@ function scene:create( event )
 	
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
+	
+	bgProp.Img = levelProp[Level].bg.Img
+	bgProp.Opacity = levelProp[Level].bg.Opacity
+	
 	borderProp.borderWidth = commonProp.border.Width
 	
 	colliderProp.MyScale = commonProp.collider.MyScale
@@ -169,7 +174,7 @@ function scene:create( event )
 	physics.pause()
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
-	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth, totalHeight)
+	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)

@@ -18,7 +18,8 @@ local composer = require( "composer" )
  -- Hide the status bar
 display.setStatusBar( display.HiddenStatusBar )
 local scene = composer.newScene()
-
+physics.start()
+physics.setGravity( 0, 0 )
 
 local Level = 1
 
@@ -148,7 +149,6 @@ function scene:show( event )
 		-- Code here runs when the scene is entirely on screen
 		print("show called")
 		physics.start()
-		physics.setGravity( 0, 0)
 		
 		Runtime:addEventListener( "enterFrame", on_frame )
 		spider[1].collision = spiderCollided

@@ -5,14 +5,16 @@
 -----------------------------------------------------------------------------------------
 
 -- Your code here
-local totalWidth = 600
-local totalHeight = 1066
+
 
 
 
 local physics = require( "physics" )
 local drawFuncs = require("drawFuncs")
 local commonProp = require("commonProp")
+
+local totalWidth = commonProp.totalWidth
+local totalHeight = commonProp.totalHeight
 
 physics.start()
 physics.setGravity( 0, 0)
@@ -25,7 +27,7 @@ local eyes = {}
 drawFuncs.drawEyes(eyes, eyeProp, totalWidth, totalHeight)
 
 local borderProp = {}
-borderProp.borderWidth = 2
+borderProp.borderWidth = commonProp.borderWidth
 local borders = {}
 drawFuncs.drawBorder(borders, totalWidth, totalHeight, borderProp, physics)
 

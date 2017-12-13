@@ -203,6 +203,7 @@ function scene:create( event )
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)
+	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 
 	for i = 1,8 do
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )

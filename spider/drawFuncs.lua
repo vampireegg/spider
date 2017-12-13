@@ -29,6 +29,11 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	bg[1].y = totalWidth/2
 	bg[1]:setFillColor( 1, 1, 1, bgProp.Opacity )
 	
+end
+
+M.drawBackGround = drawBackGround
+
+local function drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 	bgProp.reLoadButton = display.newImageRect( sceneGroup, "reload.png", 30, 30 )
 	bgProp.reLoadButton.x = totalHeight - 80
 	bgProp.reLoadButton.y =  50
@@ -39,7 +44,7 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	bgProp.crossButton.y =  50
 end
 
-M.drawBackGround = drawBackGround
+M.drawButtons = drawButtons
 
 local function drawCollider(sceneGroup, collider, colliderProp, physics)
 	for i = 1,#(colliderProp.numColliders) do

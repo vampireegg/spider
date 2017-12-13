@@ -41,11 +41,11 @@ M[2].goal.PosiX = 80
 M[2].goal.PosiY = 380
 
 M[2].bg = {}
-M[2].bg.Img = "tree2.jpg"
-M[2].bg.Opacity = 0.4
+M[2].bg.Img = "bbg2.jpg"
+M[2].bg.Opacity = 1
 
 M[2].eye = {}
-M[2].eye.Opacity = 0.5
+M[2].eye.Opacity = 0
 
 ---------------------------------------- Level 3----------------------------------------
 M[3] = {}
@@ -65,8 +65,8 @@ M[3].goal.PosiX = 980
 M[3].goal.PosiY = 530
 
 M[3].bg = {}
-M[3].bg.Img = "tree2.jpg"
-M[3].bg.Opacity = 0.4
+M[3].bg.Img = "bbg2.jpg"
+M[3].bg.Opacity = 1
 
 M[3].eye = {}
 M[3].eye.Opacity = 0

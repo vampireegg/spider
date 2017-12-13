@@ -68,8 +68,8 @@ local function drawEyes(eyes, eyeProp, totalWidth, totalHeight)
 		eyes[i] = display.newSprite( eyeProp.Sheet, eyeProp.eye_movement[math.ceil(i/4)] )
 		eyes[i].x = x
 		eyes[i].y = y
-		eyes[i].size = math.random() * .1 + .05
-		eyes[i]:scale(eyes[i].size,eyes[i].size)
+		eyes[i].Size = math.random() * .1 + .05
+		eyes[i]:scale(eyes[i].Size,eyes[i].Size)
 		eyes[i]:setFillColor( 1, 1, 1, .5 )
 		eyes[i]:play()
 	end
@@ -138,7 +138,7 @@ end
 M.drawSpider = drawSpider
 
 local function drawGoal(goal, goalProp)
-	goal[0] = display.newImageRect( "goal.png", goalProp.size,goalProp.size  )
+	goal[0] = display.newImageRect( "goal.png", goalProp.Size,goalProp.Size  )
 	goal[0].x = goalProp.x
 	goal[0].y = goalProp.y
 	--physics.addBody( goal[0], "dynamic", {friction=0, bounce=0})

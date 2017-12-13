@@ -1466,8 +1466,8 @@ function canvasKeyUp(e)
 function deletearray(needle, haystack)
 {
     var i = 0;
-    var size = haystack.length
-    for(i; i < size; ++i)
+    var Size = haystack.length
+    for(i; i < Size; ++i)
     {
         if(haystack[i] == needle) {
             haystack.splice(i,1);

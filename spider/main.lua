@@ -58,9 +58,9 @@ spiderProp.legSquare = {}
 drawFuncs.drawSpider(spider, spiderProp, physics)
 
 local goalProp = {}
-goalProp.size = 100
-goalProp.x = totalHeight - goalProp.size - 5
-goalProp.y = totalWidth - goalProp.size - 5
+goalProp.Size = commonProp.goal.Size
+goalProp.x = 1061 - goalProp.Size
+goalProp.y = 595 - goalProp.Size
 local goal = {}
 drawFuncs.drawGoal(goal, goalProp, physics)
 

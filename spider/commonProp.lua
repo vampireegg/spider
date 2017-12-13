@@ -19,4 +19,7 @@ M.spider.BodySize = 487 * M.spider.MyScale
 M.spider.ArrowDistance = 365 * M.spider.MyScale
 M.spider.SpiderRadius = M.spider.ArrowDistance + M.spider.ArrowSize
 
+M.goal = {}
+M.goal.Size = 100
+
 return M

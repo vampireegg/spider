@@ -62,8 +62,8 @@ local function pushLeg(event )
 		leg.exists = 0
 		leg:setFillColor( 1, 1, 1, 0.1 )
 		lastLegTouched = event.target.leg.i
-		local rx = 3 * math.cos(leg.radAngle)
-		local ry = 3 * math.sin(leg.radAngle)
+		local rx = 5 * math.cos(leg.radAngle)
+		local ry = 5 * math.sin(leg.radAngle)
 		if(math.abs(rx) < 0.5)then
 			rx = 0
 		end

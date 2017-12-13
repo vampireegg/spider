@@ -27,7 +27,7 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight)
 	bg[1] = display.newImageRect( sceneGroup, "tree2.jpg", totalHeight, totalWidth )
 	bg[1].x = totalHeight/2
 	bg[1].y = totalWidth/2
-	bg[1]:setFillColor( 1, 1, 1, 0.45 )
+	bg[1]:setFillColor( 1, 1, 1, 0.4 )
 end
 
 M.drawBackGround = drawBackGround
@@ -56,7 +56,7 @@ local function drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 				name = "eyeRun" .. i,
 				frames = { math.fmod(i,4) + 1,math.fmod((i + 1),4) + 1,math.fmod((i + 2),4) + 1,math.fmod((i + 3),4) + 1 },
 				--frames = { 1,2,3,4 },
-				time = i * 400,
+				time = i * 800,
 				loopCount = 0,
 				loopDirection = "forward"
 			}

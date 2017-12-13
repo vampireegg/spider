@@ -70,7 +70,7 @@ local function drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 		eyes[i].y = y
 		eyes[i].Size = math.random() * .1 + .05
 		eyes[i]:scale(eyes[i].Size,eyes[i].Size)
-		eyes[i]:setFillColor( 1, 1, 1, .5 )
+		eyes[i]:setFillColor( 1, 1, 1, eyeProp.Opacity )
 		eyes[i]:play()
 	end
 end

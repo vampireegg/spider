@@ -147,6 +147,8 @@ function scene:create( event )
 	
 	borderProp.borderWidth = commonProp.border.Width
 	
+	eyeProp.Opacity = levelProp[Level].eye.Opacity
+	
 	colliderProp.MyScale = commonProp.collider.MyScale
 	colliderProp.colliderHeight = commonProp.collider.Height
 	colliderProp.colliderWidth = commonProp.collider.Width

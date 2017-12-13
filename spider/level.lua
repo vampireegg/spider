@@ -21,49 +21,31 @@ local scene = composer.newScene()
 physics.start()
 physics.setGravity( 0, 0 )
 
-local Level = composer.getVariable("level")
+local Level
 local gameLoopTimer
 
-local totalWidth = commonProp.total.Width
-local totalHeight = commonProp.total.Height
+local totalWidth
+local totalHeight
 local bg = {}
 
 local eyeProp = {}
 local eyes = {}
 
 local borderProp = {}
-borderProp.borderWidth = commonProp.border.Width
 local borders = {}
 
 local colliderProp = {}
-colliderProp.MyScale = commonProp.collider.MyScale
-colliderProp.colliderHeight = commonProp.collider.Height
-colliderProp.colliderWidth = commonProp.collider.Width
-colliderProp.colliderGroupx = levelProp[Level].collider.GroupX
-colliderProp.colliderGroupy = levelProp[Level].collider.GroupY
-colliderProp.numColliders = levelProp[Level].collider.Num
 local collider = {}
 
 local spiderProp = {}
 local spider = {}
-spiderProp.MyScale = commonProp.spider.MyScale
-spiderProp.ArrowSize = commonProp.spider.ArrowSize
-spiderProp.BodySize = commonProp.spider.BodySize
-spiderProp.ArrowDistance = commonProp.spider.ArrowDistance
-spiderProp.SpiderRadius = commonProp.spider.SpiderRadius
-spiderProp.PosiX = levelProp[Level].spider.PosiX
-spiderProp.PosiY = levelProp[Level].spider.PosiY
-spiderProp.leg = {}
-spiderProp.legSquare = {}
+
 
 local goalProp = {}
-goalProp.Size = commonProp.goal.Size
-goalProp.x = levelProp[Level].goal.PosiX
-goalProp.y = levelProp[Level].goal.PosiY
 local goal = {}
 
-local lastLegTouched = -1
-local spiderReachedGoal = false
+local lastLegTouched
+local spiderReachedGoal
 
 
 
@@ -139,6 +121,37 @@ end
 
 
 function scene:create( event )
+	Level = composer.getVariable("level")
+	print("Level = " .. Level)
+	
+	totalWidth = commonProp.total.Width
+	totalHeight = commonProp.total.Height
+	borderProp.borderWidth = commonProp.border.Width
+	
+	colliderProp.MyScale = commonProp.collider.MyScale
+	colliderProp.colliderHeight = commonProp.collider.Height
+	colliderProp.colliderWidth = commonProp.collider.Width
+	colliderProp.colliderGroupx = levelProp[Level].collider.GroupX
+	colliderProp.colliderGroupy = levelProp[Level].collider.GroupY
+	colliderProp.numColliders = levelProp[Level].collider.Num
+	
+	spiderProp.MyScale = commonProp.spider.MyScale
+	spiderProp.ArrowSize = commonProp.spider.ArrowSize
+	spiderProp.BodySize = commonProp.spider.BodySize
+	spiderProp.ArrowDistance = commonProp.spider.ArrowDistance
+	spiderProp.SpiderRadius = commonProp.spider.SpiderRadius
+	spiderProp.PosiX = levelProp[Level].spider.PosiX
+	spiderProp.PosiY = levelProp[Level].spider.PosiY
+	spiderProp.leg = {}
+	spiderProp.legSquare = {}
+	
+	goalProp.Size = commonProp.goal.Size
+	goalProp.x = levelProp[Level].goal.PosiX
+	goalProp.y = levelProp[Level].goal.PosiY
+	
+	lastLegTouched = -1
+	spiderReachedGoal = false
+	
 	physics.pause()
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen

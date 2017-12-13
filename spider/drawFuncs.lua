@@ -54,7 +54,7 @@ local function drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 		{
 			{
 				name = "eyeRun" .. i,
-				frames = { math.fmod(i,4),math.fmod((i + 1),4),math.fmod((i + 2),4),math.fmod((i + 3),4) },
+				frames = { math.fmod(i,4) + 1,math.fmod((i + 1),4) + 1,math.fmod((i + 2),4) + 1,math.fmod((i + 3),4) + 1 },
 				--frames = { 1,2,3,4 },
 				time = i * 400,
 				loopCount = 0,

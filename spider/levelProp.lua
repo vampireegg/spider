@@ -161,7 +161,7 @@ M[5].eye.Opacity = 0
 M[5].portal = {}
 M[5].portal.Exists = 1
 M[5].portal.Types = {3,4,1,2}
-M[5].portal.PosiX = {{270,270}, {270,660}, {140,930}, {140,930}}
+M[5].portal.PosiX = {{270,270}, {270,660}, {140,1000}, {140,1000}}
 M[5].portal.PosiY = {{70,490}, {270,490}, {270,170}, {490,490}}
 
 return M

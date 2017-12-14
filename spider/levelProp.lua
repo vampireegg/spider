@@ -120,7 +120,7 @@ M[4].eye.Opacity = 0
 
 M[4].portal = {}
 M[4].portal.Types = {1,2}
-M[4].portal.PosiX = {{80,500}, {30,400}}
+M[4].portal.PosiX = {{80,750}, {80,480}}
 M[4].portal.PosiY = {{150,150}, {530,530}}
 
 return M

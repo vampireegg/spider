@@ -137,6 +137,11 @@ local function on_frame( event )
 		bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
 	end
 	goal[0].rotation = goal[0].rotation + .2
+	for i = 1,#(portalProp.Types) do
+		for j = 1, 2 do
+			portal[i][j].rotation = portal[i][j].rotation  + 5
+		end
+	end
 	if(distance(spider[1],goal[0]) < 20 and spiderReachedGoal == false) then
 		print("reached goal")
 		goal[0]:setFillColor( 1, 1, 1, 0 )

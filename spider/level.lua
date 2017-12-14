@@ -56,6 +56,7 @@ local needtoReload
 local nextSpiderx
 local nextSpidery
 local SpiderPorting
+local LastPortal
 
 
 local function pushLeg(event )	
@@ -132,6 +133,7 @@ local function moveSpider( event )
 	local ry = - 5 * spiderProp.leg[lastLegTouched].diry
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
+	LastPortal = LastPortal.pair
 end
 
 local function portSpider( event )
@@ -153,12 +155,19 @@ local function on_frame( event )
 	for i = 1,#(portalProp.Types) do
 		for j = 1, 2 do
 			portal[i][j].rotation = portal[i][j].rotation  + 5
-			if(distance(spider[1], portal[i][j]) < 10 and SpiderPorting == 0) then
+			if(distance(spider[1], portal[i][j]) < 10 and portal[i][j].sensitive == 1) then
 				nextSpiderx = portal[i][j].pair.x
 				nextSpidery = portal[i][j].pair.y
-				SpiderPorting = 1
+				portal[i][j].sensitive = 0
+				portal[i][j].pair.sensitive = 0
+				LastPortal = portal[i][j]
 				timer.performWithDelay( 50, portSpider )
 			end
+		end
+	end
+	if(LastPortal ~= nil) then
+		if(distance(spider[1], LastPortal) > 10 and SpiderPorting == 1) then
+			LastPortal.sensitive = 1
 		end
 	end
 	if(distance(spider[1],goal[0]) < 20 and spiderReachedGoal == false) then

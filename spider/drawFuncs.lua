@@ -54,6 +54,7 @@ local function drawPortals(sceneGroup, portal, portalProp)
 			portal[i][j] = display.newImageRect(sceneGroup, portalProp.Img[portalProp.Types[i]], portalProp.Size, portalProp.Size  )
 			portal[i][j].x = portalProp.PosiX[i][j]
 			portal[i][j].y = portalProp.PosiY[i][j]
+			portal[i][j].sensitive = 1
 		end
 			portal[i][2].pair = portal[i][1]
 			portal[i][1].pair = portal[i][2]

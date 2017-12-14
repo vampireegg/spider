@@ -11,6 +11,7 @@ M.collider = {}
 M.collider.MyScale = 0.8
 M.collider.Height = M.collider.MyScale * 36
 M.collider.Width = M.collider.MyScale * 70
+M.collider.Img = {"collider.png"}
 
 
 M.goal = {}

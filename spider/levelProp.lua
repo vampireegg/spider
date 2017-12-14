@@ -14,6 +14,7 @@ M[1].collider.GroupX = {100}
 M[1].collider.GroupY = {300}
 M[1].collider.Num = {5}
 M[1].collider.Orientation = {1}
+M[1].collider.ColliderType = {1}
 
 M[1].goal = {}
 M[1].goal.PosiX = 980
@@ -47,6 +48,7 @@ M[2].collider.GroupX = {30}
 M[2].collider.GroupY = {300}
 M[2].collider.Num = {8}
 M[2].collider.Orientation = {1}
+M[2].collider.ColliderType = {1}
 
 M[2].goal = {}
 M[2].goal.PosiX = 80
@@ -80,6 +82,7 @@ M[3].collider.GroupX = {70, 550}
 M[3].collider.GroupY = {280, 410}
 M[3].collider.Num = {5, 8}
 M[3].collider.Orientation = {1, 1}
+M[3].collider.ColliderType = {1,1}
 
 M[3].goal = {}
 M[3].goal.PosiX = 980
@@ -113,6 +116,7 @@ M[4].collider.GroupX = {50}
 M[4].collider.GroupY = {300}
 M[4].collider.Num = {18}
 M[4].collider.Orientation = {1}
+M[4].collider.ColliderType = {1}
 
 M[4].goal = {}
 M[4].goal.PosiX = 90
@@ -146,6 +150,7 @@ M[5].collider.GroupX = {400, 650, 880}
 M[5].collider.GroupY = {50, 440, 50}
 M[5].collider.Num = {10, 3, 2}
 M[5].collider.Orientation = {2, 2, 2}
+M[5].collider.ColliderType = {1,1,1}
 
 M[5].goal = {}
 M[5].goal.PosiX = 980
@@ -179,6 +184,7 @@ M[6].collider.GroupX = {550, 50, 600}
 M[6].collider.GroupY = {50, 400, 300}
 M[6].collider.Num = {10, 9, 8}
 M[6].collider.Orientation = {2, 1, 1}
+M[6].collider.ColliderType = {1,1,1}
 
 M[6].goal = {}
 M[6].goal.PosiX = 660

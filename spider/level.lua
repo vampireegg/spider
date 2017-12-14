@@ -263,6 +263,8 @@ function scene:create( event )
 	colliderProp.colliderGroupy = levelProp[Level].collider.GroupY
 	colliderProp.numColliders = levelProp[Level].collider.Num
 	colliderProp.Orientation = levelProp[Level].collider.Orientation
+	colliderProp.ColliderType = levelProp[Level].collider.ColliderType
+	colliderProp.Img = commonProp.collider.Img
 	
 	spiderProp.MyScale = levelProp[Level].spider.MyScale
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale

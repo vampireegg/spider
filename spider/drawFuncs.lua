@@ -68,7 +68,7 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 		collider[i] = {}
 		if(colliderProp.Orientation[i] == 1) then
 			for j = 1, colliderProp.numColliders[i] do
-				collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
+				collider[i][j] = display.newImageRect(sceneGroup, colliderProp.Img[colliderProp.ColliderType[i]], colliderProp.colliderWidth, colliderProp.colliderHeight  )
 				collider[i][j].x = colliderProp.colliderGroupx[i] + (j - 1) * colliderProp.colliderWidth
 				collider[i][j].y = colliderProp.colliderGroupy[i]
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
@@ -76,7 +76,7 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 			end
 		else
 			for j = 1, colliderProp.numColliders[i] do
-				collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
+				collider[i][j] = display.newImageRect(sceneGroup, colliderProp.Img[colliderProp.ColliderType[i]], colliderProp.colliderWidth, colliderProp.colliderHeight  )
 				collider[i][j].x = colliderProp.colliderGroupx[i] 
 				collider[i][j].y = colliderProp.colliderGroupy[i] + (j - 1) * colliderProp.colliderWidth
 				collider[i][j].rotation = 90

@@ -101,7 +101,7 @@ local function endGame()
 		display.remove( borders[i] )
 	end
 	for i = 1,#(colliderProp.numColliders) do
-		for j = 0, colliderProp.numColliders[i] - 1 do
+		for j = 1, colliderProp.numColliders[i] - 1 do
 			display.remove(collider[i][j])
 		end
 	end

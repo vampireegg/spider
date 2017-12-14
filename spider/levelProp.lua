@@ -142,10 +142,10 @@ M[5].spider.PosiY = 70
 M[5].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[5].collider = {}
-M[5].collider.GroupX = {530, 50}
-M[5].collider.GroupY = {50, 400}
-M[5].collider.Num = {10, 18}
-M[5].collider.Orientation = {2, 1}
+M[5].collider.GroupX = {550, 50, 600}
+M[5].collider.GroupY = {50, 400, 400}
+M[5].collider.Num = {10, 9, 8}
+M[5].collider.Orientation = {2, 1, 1}
 
 M[5].goal = {}
 M[5].goal.PosiX = 750

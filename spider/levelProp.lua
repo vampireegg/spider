@@ -105,10 +105,10 @@ M[4].spider.PosiY = 200
 M[4].spider.LegExists = {1,0,1,0,1,0,1,0}
 
 M[4].collider = {}
-M[4].collider.GroupX = {400, 650}
-M[4].collider.GroupY = {50, 440}
-M[4].collider.Num = {10, 3}
-M[4].collider.Orientation = {2, 2}
+M[4].collider.GroupX = {400, 650, 880}
+M[4].collider.GroupY = {50, 440, 50}
+M[4].collider.Num = {10, 3, 2}
+M[4].collider.Orientation = {2, 2, 2}
 
 M[4].goal = {}
 M[4].goal.PosiX = 980
@@ -124,7 +124,7 @@ M[4].eye.Opacity = 0
 M[4].portal = {}
 M[4].portal.Exists = 1
 M[4].portal.Types = {1,2}
-M[4].portal.PosiX = {{80,750}, {80,490}}
-M[4].portal.PosiY = {{200,200}, {500,80}}
+M[4].portal.PosiX = {{90,750}, {90,500}}
+M[4].portal.PosiY = {{200,200}, {500,90}}
 
 return M

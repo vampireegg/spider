@@ -57,6 +57,7 @@ local nextSpiderx
 local nextSpidery
 local SpiderPorting
 local LastPortal
+local LastPortalPair
 
 
 local function pushLeg(event )	
@@ -133,7 +134,7 @@ local function moveSpider( event )
 	local ry = - 5 * spiderProp.leg[lastLegTouched].diry
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
-	LastPortal = LastPortal.pair
+	SpiderPorting = 0
 end
 
 local function portSpider( event )
@@ -157,21 +158,27 @@ local function on_frame( event )
 		for i = 1,#(portalProp.Types) do
 			for j = 1, 2 do
 				portal[i][j].rotation = portal[i][j].rotation  + 5
-				print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j)
-				if(distance(spider[1], portal[i][j]) < 20 and portal[i][j].sensitive == 1) then
+				print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j .. " sensitive = " .. portal[i][j].sensitive)
+				if(distance(spider[1], portal[i][j]) <= 20 and portal[i][j].sensitive == 1) then
 					nextSpiderx = portal[i][j].pair.x
 					nextSpidery = portal[i][j].pair.y
 					portal[i][j].sensitive = 0
 					portal[i][j].pair.sensitive = 0
 					LastPortal = portal[i][j]
+					SpiderPorting = 1
 					timer.performWithDelay( 50, portSpider )
 				end
 			end
 		end
 	end
-	if(LastPortal ~= nil) then
-		if(distance(spider[1], LastPortal) > 10 and SpiderPorting == 1) then
+	if(LastPortal ~= nil and SpiderPorting == 0) then
+		if(distance(spider[1], LastPortal) > 150) then
 			LastPortal.sensitive = 1
+		end
+	end
+	if(LastPortalPair ~= nil and SpiderPorting == 0) then
+		if(distance(spider[1], LastPortalPair) > 150) then
+			LastPortalPair.sensitive = 1
 		end
 	end
 	if(distance(spider[1],goal[0]) < 20 and spiderReachedGoal == false) then
@@ -268,6 +275,7 @@ function scene:create( event )
 	nextSpidery = 0
 	SpiderPorting = 0
 	LastPortal = nil
+	LastPortalPair = nil
 	
 	physics.pause()
     local sceneGroup = self.view

@@ -157,7 +157,8 @@ local function on_frame( event )
 		for i = 1,#(portalProp.Types) do
 			for j = 1, 2 do
 				portal[i][j].rotation = portal[i][j].rotation  + 5
-				if(distance(spider[1], portal[i][j]) < 10 and portal[i][j].sensitive == 1) then
+				print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j)
+				if(distance(spider[1], portal[i][j]) < 20 and portal[i][j].sensitive == 1) then
 					nextSpiderx = portal[i][j].pair.x
 					nextSpidery = portal[i][j].pair.y
 					portal[i][j].sensitive = 0

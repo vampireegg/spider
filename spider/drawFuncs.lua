@@ -56,8 +56,8 @@ local function drawPortals(sceneGroup, portal, portalProp)
 			portal[i][j].y = portalProp.PosiY[i][j]
 			portal[i][j].sensitive = 1
 		end
-			portal[i][2].pair = portal[i][1]
-			portal[i][1].pair = portal[i][2]
+		portal[i][2].pair = portal[i][1]
+		portal[i][1].pair = portal[i][2]
 	end
 end
 

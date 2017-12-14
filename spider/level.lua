@@ -204,7 +204,7 @@ local function on_frame( event )
 		goal[1]:setFillColor( 1, 1, 1, 0 )
 		spiderReachedGoal = true
 		Runtime:removeEventListener( "enterFrame", on_frame )
-		if(Level < 4) then
+		if(Level < #levelProp) then
 			composer.setVariable( "level", Level + 1 )
 		else
 			composer.setVariable( "level", 1 )

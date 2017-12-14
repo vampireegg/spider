@@ -97,6 +97,9 @@ local function endGame()
 	for i = 1, 16 do
 		display.remove( eyes[i] )
 	end
+	for i = 0, 3 do
+		display.remove( borders[i] )
+	end
 	for i = 1,#(colliderProp.numColliders) do
 		for j = 0, colliderProp.numColliders[i] - 1 do
 			display.remove(collider[i][j])
@@ -122,6 +125,7 @@ end
 
 
 local function shiftSpider( event )
+	print("shiftSpider called")
 	spider[1].x = spider[1].x + spiderProp.leg[lastLegTouched].dirx
 	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
 end
@@ -171,7 +175,7 @@ local function on_frame( event )
 		for i = 1,#(portalProp.Types) do
 			for j = 1, 2 do
 				portal[i][j].rotation = portal[i][j].rotation  + 5
-				print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j .. " sensitive = " .. portal[i][j].sensitive)
+				--print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j .. " sensitive = " .. portal[i][j].sensitive)
 				if(distance(spider[1], portal[i][j]) <= 20 and portal[i][j].sensitive == 1) then
 					nextSpiderx = portal[i][j].pair.x
 					nextSpidery = portal[i][j].pair.y

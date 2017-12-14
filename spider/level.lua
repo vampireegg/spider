@@ -141,17 +141,25 @@ local function moveSpiderInDirection(dir)
 	spider[1].angularVelocity = 0
 end
 
+local function callSpiderInDirection( event )
+	moveSpiderInDirection(1)
+end
+
 local function bounceSpider( event )
 	shiftSpiderByOne()
-	moveSpiderInDirection(1)
+	myTimers[#myTimers+1] = timer.performWithDelay( 50, callSpiderInDirection )
 end
 
 
 local function spiderCollided( self, event )
-	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y)
+	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y .. " CommonName = " .. event.other.CommonName)
 	spider[1].angularVelocity = 0
     spider[1]:setLinearVelocity(0,0)
-	myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
+	if(event.other.CommonName ~= "bouncer") then
+		myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
+	else
+		myTimers[#myTimers+1] = timer.performWithDelay( 50, bounceSpider )
+	end
 end
  
 
@@ -267,6 +275,7 @@ function scene:create( event )
 	bgProp.Opacity = levelProp[Level].bg.Opacity
 	
 	borderProp.borderWidth = commonProp.border.Width
+	borderProp.CommonName = commonProp.border.CommonName
 	
 	eyeProp.Opacity = levelProp[Level].eye.Opacity
 	
@@ -279,6 +288,7 @@ function scene:create( event )
 	colliderProp.Orientation = levelProp[Level].collider.Orientation
 	colliderProp.ColliderType = levelProp[Level].collider.ColliderType
 	colliderProp.Img = commonProp.collider.Img
+	colliderProp.CommonName = commonProp.collider.CommonName
 	
 	spiderProp.MyScale = levelProp[Level].spider.MyScale
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale

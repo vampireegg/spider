@@ -18,6 +18,7 @@ local function drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderPr
 	for i = 1,4 do
 		physics.addBody( borders[i], "static", { friction=0, bounce=0} )
 		borders[i].Name = "borders_" .. i
+		borders[i].CommonName = borderProp.CommonName
 	end
 end
 
@@ -73,6 +74,7 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 				collider[i][j].y = colliderProp.colliderGroupy[i]
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
 				collider[i][j].Name = "collider_" .. i .. "_" .. j
+				collider[i][j].CommonName = colliderProp.CommonName[colliderProp.ColliderType[i]]
 			end
 		else
 			for j = 1, colliderProp.numColliders[i] do
@@ -82,6 +84,7 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 				collider[i][j].rotation = 90
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
 				collider[i][j].Name = "collider_" .. i .. "_" .. j
+				collider[i][j].CommonName = colliderProp.CommonName[colliderProp.ColliderType[i]]
 			end
 		end
 	end

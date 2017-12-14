@@ -96,6 +96,11 @@ local function endGame()
 			display.remove(collider[i][j])
 		end
 	end
+	for i = 1,#(portalProp.Types) do
+		for j = 1, 2 do
+			display.remove(portal[i][j])
+		end
+	end
 	display.remove(sceneGroup)
     local options = 
 	{
@@ -196,8 +201,11 @@ local function on_frame( event )
 		
 	end
 	if(needtoReload == true) then
-		Runtime:removeEventListener( "enterFrame", on_frame )
-		timer.performWithDelay( 500, endGame )
+		local vx, vy = spider[1]:getLinearVelocity()
+		if(vx == 0 and vy == 0) then
+			Runtime:removeEventListener( "enterFrame", on_frame )
+			timer.performWithDelay( 500, endGame )
+		end
 	end
 	legPhaseCounter = legPhaseCounter + 1
 	if(legPhaseCounter == 10) then

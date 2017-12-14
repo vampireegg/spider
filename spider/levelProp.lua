@@ -48,7 +48,7 @@ M[2].collider.Orientation = {1}
 
 M[2].goal = {}
 M[2].goal.PosiX = 80
-M[2].goal.PosiY = 380
+M[2].goal.PosiY = 400
 
 M[2].bg = {}
 M[2].bg.Img = "bbg2.jpg"

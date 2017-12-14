@@ -139,7 +139,7 @@ M[5].spider = {}
 M[5].spider.MyScale = 0.15
 M[5].spider.PosiX = 70
 M[5].spider.PosiY = 70
-M[5].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[5].spider.LegExists = {1,0,1,0,1,0,1,0}
 
 M[5].collider = {}
 M[5].collider.GroupX = {550, 50, 600}
@@ -161,7 +161,7 @@ M[5].eye.Opacity = 0
 M[5].portal = {}
 M[5].portal.Exists = 1
 M[5].portal.Types = {3,4,1,2}
-M[5].portal.PosiX = {{270,270}, {270,750}, {140,890}, {140,890}}
+M[5].portal.PosiX = {{270,270}, {270,750}, {140,930}, {140,930}}
 M[5].portal.PosiY = {{70,490}, {270,490}, {270,270}, {490,490}}
 
 return M

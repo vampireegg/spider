@@ -80,7 +80,7 @@ M[4] = {}
 
 
 M[4].spider = {}
-M[4].spider.PosiX = 190
+M[4].spider.PosiX = 270
 M[4].spider.PosiY = 150
 
 M[4].collider = {}

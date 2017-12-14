@@ -137,19 +137,19 @@ M[5] = {}
 
 M[5].spider = {}
 M[5].spider.MyScale = 0.15
-M[5].spider.PosiX = 100
-M[5].spider.PosiY = 100
+M[5].spider.PosiX = 70
+M[5].spider.PosiY = 70
 M[5].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[5].collider = {}
 M[5].collider.GroupX = {530, 50}
-M[5].collider.GroupY = {50, 350}
+M[5].collider.GroupY = {50, 400}
 M[5].collider.Num = {10, 18}
 M[5].collider.Orientation = {2, 1}
 
 M[5].goal = {}
-M[5].goal.PosiX = 980
-M[5].goal.PosiY = 530
+M[5].goal.PosiX = 750
+M[5].goal.PosiY = 270
 
 M[5].bg = {}
 M[5].bg.Img = "water.jpg"
@@ -160,8 +160,8 @@ M[5].eye.Opacity = 0
 
 M[5].portal = {}
 M[5].portal.Exists = 1
-M[5].portal.Types = {3,4}
-M[5].portal.PosiX = {{250,750}, {250,750}}
-M[5].portal.PosiY = {{100,200}, {250,200}}
+M[5].portal.Types = {3,4,1,2}
+M[5].portal.PosiX = {{270,270}, {270,750}, {140,890}, {140,890}}
+M[5].portal.PosiY = {{70,490}, {270,490}, {270,270}, {490,490}}
 
 return M

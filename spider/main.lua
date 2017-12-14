@@ -14,5 +14,5 @@ local options = {
 }
  
 -- Go to the menu screen
-composer.setVariable( "level", 5 )
+composer.setVariable( "level", 1 )
 composer.gotoScene( "level" )

@@ -47,6 +47,7 @@ local goal = {}
 
 local portalProp = {}
 local portal = {}
+local myTimers = {}
 
 local lastLegTouched
 local spiderReachedGoal
@@ -85,6 +86,11 @@ local function pushLeg(event )
 end
 
 local function endGame()
+
+    for k, v in pairs(myTimers) do
+        timer.cancel(v)
+    end
+
 	display.remove( bg[1] )
 	display.remove( spider[1] )
 	display.remove( goal[1] )
@@ -96,9 +102,11 @@ local function endGame()
 			display.remove(collider[i][j])
 		end
 	end
-	for i = 1,#(portalProp.Types) do
-		for j = 1, 2 do
-			display.remove(portal[i][j])
+	if(portalProp.Exists == 1) then
+		for i = 1,#(portalProp.Types) do
+			for j = 1, 2 do
+				display.remove(portal[i][j])
+			end
 		end
 	end
 	display.remove(sceneGroup)
@@ -124,7 +132,7 @@ local function spiderCollided( self, event )
 	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y)
 	spider[1].angularVelocity = 0
     spider[1]:setLinearVelocity(0,0)
-	timer.performWithDelay( 50, shiftSpider )
+	myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 end
  
 
@@ -145,7 +153,7 @@ end
 local function portSpider( event )
 	spider[1].x = nextSpiderx
 	spider[1].y = nextSpidery
-	timer.performWithDelay( 50, moveSpider )
+	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
 end
 
 local function on_frame( event )
@@ -172,7 +180,7 @@ local function on_frame( event )
 					LastPortal = portal[i][j]
 					LastPortalPair = LastPortal.pair
 					SpiderPorting = 1
-					timer.performWithDelay( 50, portSpider )
+					myTimers[#myTimers+1] = timer.performWithDelay( 50, portSpider )
 				end
 			end
 		end
@@ -197,14 +205,14 @@ local function on_frame( event )
 		else
 			composer.setVariable( "level", 1 )
 		end
-		timer.performWithDelay( 1000, endGame )
+		myTimers[#myTimers+1] = timer.performWithDelay( 1000, endGame )
 		
 	end
 	if(needtoReload == true) then
 		local vx, vy = spider[1]:getLinearVelocity()
 		if(vx == 0 and vy == 0) then
 			Runtime:removeEventListener( "enterFrame", on_frame )
-			timer.performWithDelay( 500, endGame )
+			myTimers[#myTimers+1] = timer.performWithDelay( 500, endGame )
 		end
 	end
 	legPhaseCounter = legPhaseCounter + 1

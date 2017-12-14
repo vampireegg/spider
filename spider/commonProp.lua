@@ -11,8 +11,8 @@ M.border.CommonName = "border"
 M.collider = {}
 M.collider.MyScale = 0.8
 M.collider.Height = M.collider.MyScale * 36
-M.collider.Width = {M.collider.MyScale * 70, M.collider.MyScale * 20}
-M.collider.Img = {"collider.png", "bouncer3.png"}
+M.collider.Width = {M.collider.MyScale * 70, M.collider.MyScale * 70}
+M.collider.Img = {"collider.png", "bouncer8.png"}
 M.collider.CommonName = {"collider", "bouncer"}
 
 

@@ -123,11 +123,15 @@ local function endGame()
 	composer.gotoScene( "level" )
 end
 
+local function shiftSpiderByOne()
+	spider[1].x = spider[1].x + spiderProp.leg[lastLegTouched].dirx
+	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
+end
+
 
 local function shiftSpider( event )
 	print("shiftSpider called")
-	spider[1].x = spider[1].x + spiderProp.leg[lastLegTouched].dirx
-	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
+	shiftSpiderByOne()
 end
 
 

@@ -4,6 +4,7 @@ local M = {}
 M[1] = {}
 
 M[1].spider = {}
+M[1].spider.MyScale = 0.2
 M[1].spider.PosiX = 220
 M[1].spider.PosiY = 150
 M[1].spider.LegExists = {1,1,1,1,1,1,1,1}
@@ -36,6 +37,7 @@ M[2] = {}
 
 
 M[2].spider = {}
+M[2].spider.MyScale = 0.2
 M[2].spider.PosiX = 90
 M[2].spider.PosiY = 150
 M[2].spider.LegExists = {1,1,1,1,1,1,1,1}
@@ -68,6 +70,7 @@ M[3] = {}
 
 
 M[3].spider = {}
+M[3].spider.MyScale = 0.2
 M[3].spider.PosiX = 230
 M[3].spider.PosiY = 150
 M[3].spider.LegExists = {1,1,1,1,1,1,1,1}
@@ -100,6 +103,7 @@ M[4] = {}
 
 
 M[4].spider = {}
+M[4].spider.MyScale = 0.2
 M[4].spider.PosiX = 270
 M[4].spider.PosiY = 200
 M[4].spider.LegExists = {1,0,1,0,1,0,1,0}
@@ -126,5 +130,38 @@ M[4].portal.Exists = 1
 M[4].portal.Types = {1,2}
 M[4].portal.PosiX = {{90,750}, {90,500}}
 M[4].portal.PosiY = {{200,200}, {500,90}}
+
+---------------------------------------- Level 5----------------------------------------
+M[5] = {}
+
+
+M[5].spider = {}
+M[5].spider.MyScale = 0.15
+M[5].spider.PosiX = 100
+M[5].spider.PosiY = 100
+M[5].spider.LegExists = {1,1,1,1,1,1,1,1}
+
+M[5].collider = {}
+M[5].collider.GroupX = {530, 50}
+M[5].collider.GroupY = {50, 350}
+M[5].collider.Num = {10, 18}
+M[5].collider.Orientation = {2, 1}
+
+M[5].goal = {}
+M[5].goal.PosiX = 980
+M[5].goal.PosiY = 530
+
+M[5].bg = {}
+M[5].bg.Img = "water.jpg"
+M[5].bg.Opacity = 0.3
+
+M[5].eye = {}
+M[5].eye.Opacity = 0
+
+M[5].portal = {}
+M[5].portal.Exists = 1
+M[5].portal.Types = {3,4}
+M[5].portal.PosiX = {{250,750}, {250,750}}
+M[5].portal.PosiY = {{100,200}, {250,200}}
 
 return M

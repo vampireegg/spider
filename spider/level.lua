@@ -161,7 +161,7 @@ local function portSpider( event )
 end
 
 local function on_frame( event )
-	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius + 20
+	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius * 1.22
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
 		bgProp.reLoadButton:setFillColor( 1, 1, 1, 0 )
 		bgProp.crossButton:setFillColor( 1, 1, 1, 0 )
@@ -176,7 +176,7 @@ local function on_frame( event )
 			for j = 1, 2 do
 				portal[i][j].rotation = portal[i][j].rotation  + 5
 				--print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j .. " sensitive = " .. portal[i][j].sensitive)
-				if(distance(spider[1], portal[i][j]) <= 20 and portal[i][j].sensitive == 1) then
+				if(distance(spider[1], portal[i][j]) <= spiderProp.SpiderRadius / 4.48 and portal[i][j].sensitive == 1) then
 					nextSpiderx = portal[i][j].pair.x
 					nextSpidery = portal[i][j].pair.y
 					portal[i][j].sensitive = 0
@@ -190,16 +190,16 @@ local function on_frame( event )
 		end
 	end
 	if(LastPortal ~= nil and SpiderPorting == 0) then
-		if(distance(spider[1], LastPortal) > 20) then
+		if(distance(spider[1], LastPortal) > spiderProp.SpiderRadius / 4.48) then
 			LastPortal.sensitive = 1
 		end
 	end
 	if(LastPortalPair ~= nil and SpiderPorting == 0) then
-		if(distance(spider[1], LastPortalPair) > 20) then
+		if(distance(spider[1], LastPortalPair) > spiderProp.SpiderRadius / 4.48) then
 			LastPortalPair.sensitive = 1
 		end
 	end
-	if(distance(spider[1],goal[1]) < 20 and spiderReachedGoal == false) then
+	if(distance(spider[1],goal[1]) < spiderProp.SpiderRadius / 4.48 and spiderReachedGoal == false) then
 		print("reached goal")
 		goal[1]:setFillColor( 1, 1, 1, 0 )
 		spiderReachedGoal = true
@@ -264,11 +264,11 @@ function scene:create( event )
 	colliderProp.numColliders = levelProp[Level].collider.Num
 	colliderProp.Orientation = levelProp[Level].collider.Orientation
 	
-	spiderProp.MyScale = commonProp.spider.MyScale
-	spiderProp.ArrowSize = commonProp.spider.ArrowSize
-	spiderProp.BodySize = commonProp.spider.BodySize
-	spiderProp.ArrowDistance = commonProp.spider.ArrowDistance
-	spiderProp.SpiderRadius = commonProp.spider.SpiderRadius
+	spiderProp.MyScale = levelProp[Level].spider.MyScale
+	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
+	spiderProp.BodySize = 487 * spiderProp.MyScale
+	spiderProp.ArrowDistance = 365 * spiderProp.MyScale
+	spiderProp.SpiderRadius = spiderProp.ArrowSize + spiderProp.ArrowDistance
 	spiderProp.PosiX = levelProp[Level].spider.PosiX
 	spiderProp.PosiY = levelProp[Level].spider.PosiY
 	spiderProp.LegExists = levelProp[Level].spider.LegExists

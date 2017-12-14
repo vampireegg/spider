@@ -26,6 +26,7 @@ M[1].eye = {}
 M[1].eye.Opacity = 0
 
 M[1].portal = {}
+M[1].portal.Exists = 0
 M[1].portal.Types = {}
 M[1].portal.PosiX = {}
 M[1].portal.PosiY = {}
@@ -57,6 +58,7 @@ M[2].eye = {}
 M[2].eye.Opacity = 0
 
 M[2].portal = {}
+M[2].portal.Exists = 0
 M[2].portal.Types = {}
 M[2].portal.PosiX = {}
 M[2].portal.PosiY = {}
@@ -88,6 +90,7 @@ M[3].eye = {}
 M[3].eye.Opacity = 0
 
 M[3].portal = {}
+M[3].portal.Exists = 0
 M[3].portal.Types = {}
 M[3].portal.PosiX = {}
 M[3].portal.PosiY = {}
@@ -98,7 +101,7 @@ M[4] = {}
 
 M[4].spider = {}
 M[4].spider.PosiX = 270
-M[4].spider.PosiY = 150
+M[4].spider.PosiY = 200
 M[4].spider.LegExists = {1,0,1,0,1,0,1,0}
 
 M[4].collider = {}
@@ -119,8 +122,9 @@ M[4].eye = {}
 M[4].eye.Opacity = 0
 
 M[4].portal = {}
+M[4].portal.Exists = 1
 M[4].portal.Types = {1,2}
 M[4].portal.PosiX = {{80,750}, {80,480}}
-M[4].portal.PosiY = {{150,150}, {530,530}}
+M[4].portal.PosiY = {{200,200}, {530,530}}
 
 return M

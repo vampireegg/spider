@@ -152,16 +152,19 @@ local function on_frame( event )
 		bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
 	end
 	goal[0].rotation = goal[0].rotation + .2
-	for i = 1,#(portalProp.Types) do
-		for j = 1, 2 do
-			portal[i][j].rotation = portal[i][j].rotation  + 5
-			if(distance(spider[1], portal[i][j]) < 10 and portal[i][j].sensitive == 1) then
-				nextSpiderx = portal[i][j].pair.x
-				nextSpidery = portal[i][j].pair.y
-				portal[i][j].sensitive = 0
-				portal[i][j].pair.sensitive = 0
-				LastPortal = portal[i][j]
-				timer.performWithDelay( 50, portSpider )
+	
+	if (portalProp.Exists == 1) then
+		for i = 1,#(portalProp.Types) do
+			for j = 1, 2 do
+				portal[i][j].rotation = portal[i][j].rotation  + 5
+				if(distance(spider[1], portal[i][j]) < 10 and portal[i][j].sensitive == 1) then
+					nextSpiderx = portal[i][j].pair.x
+					nextSpidery = portal[i][j].pair.y
+					portal[i][j].sensitive = 0
+					portal[i][j].pair.sensitive = 0
+					LastPortal = portal[i][j]
+					timer.performWithDelay( 50, portSpider )
+				end
 			end
 		end
 	end
@@ -253,6 +256,7 @@ function scene:create( event )
 	portalProp.Types = levelProp[Level].portal.Types
 	portalProp.PosiX = levelProp[Level].portal.PosiX
 	portalProp.PosiY = levelProp[Level].portal.PosiY
+	portalProp.Exists = levelProp[Level].portal.Exists
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false
@@ -262,6 +266,7 @@ function scene:create( event )
 	nextSpiderx = 0
 	nextSpidery = 0
 	SpiderPorting = 0
+	LastPortal = nil
 	
 	physics.pause()
     local sceneGroup = self.view

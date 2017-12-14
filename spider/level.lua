@@ -146,11 +146,15 @@ local function distance(obj1, obj2)
 	return math.sqrt(term1 + term2)
 end
 
-local function moveSpider( event )
-	local rx = - (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
-	local ry = - (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
+local function moveSpiderInDirection(dir)
+	local rx = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
+	local ry = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
+end
+
+local function moveSpider( event )
+	moveSpiderInDirection(-1)
 	SpiderPorting = 0
 end
 

@@ -24,6 +24,6 @@ M.goal.Size = 100
 
 M.portal = {}
 M.portal.Img = {"ptr.png", "ptw.png"}
-M.portal.Size = 100
+M.portal.Size = 50
 
 return M

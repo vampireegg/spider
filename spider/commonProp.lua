@@ -14,7 +14,7 @@ M.collider.Width = M.collider.MyScale * 70
 
 
 M.goal = {}
-M.goal.Size = 100
+M.goal.Size = 70
 
 M.portal = {}
 M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png" }

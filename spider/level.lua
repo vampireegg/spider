@@ -71,8 +71,8 @@ local function pushLeg(event )
 		leg.exists = 0
 		leg:setFillColor( 1, 1, 1, 0.1 )
 		lastLegTouched = event.target.leg.i
-		local rx = 5 * math.cos(leg.radAngle)
-		local ry = 5 * math.sin(leg.radAngle)
+		local rx = (spiderProp.SpiderRadius / 17.8) * math.cos(leg.radAngle)
+		local ry = (spiderProp.SpiderRadius / 17.8) * math.sin(leg.radAngle)
 		if(math.abs(rx) < 0.5)then
 			rx = 0
 		end
@@ -147,8 +147,8 @@ local function distance(obj1, obj2)
 end
 
 local function moveSpider( event )
-	local rx = - 5 * spiderProp.leg[lastLegTouched].dirx
-	local ry = - 5 * spiderProp.leg[lastLegTouched].diry
+	local rx = - (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
+	local ry = - (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
 	SpiderPorting = 0

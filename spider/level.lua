@@ -204,6 +204,7 @@ function scene:create( event )
 	spiderProp.SpiderRadius = commonProp.spider.SpiderRadius
 	spiderProp.PosiX = levelProp[Level].spider.PosiX
 	spiderProp.PosiY = levelProp[Level].spider.PosiY
+	spiderProp.LegExists = levelProp[Level].spider.LegExists
 	spiderProp.leg = {}
 	spiderProp.legSquare = {}
 	

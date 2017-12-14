@@ -128,9 +128,15 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics)
 		spiderProp.leg[i].rotAngle = (spiderProp.leg[i].angle + 315) * math.pi / 180
 		spider[1]:insert( spiderProp.leg[i] )	
 		spiderProp.leg[i].i = i
-		spiderProp.leg[i].exists = 1
+		spiderProp.leg[i].exists = spiderProp.LegExists[i]
 		spiderProp.leg[i].rotation = spiderProp.leg[i].angle
 		spiderProp.leg[i]:translate (spiderProp.ArrowDistance * math.cos(spiderProp.leg[i].rotAngle), spiderProp.ArrowDistance * math.sin(spiderProp.leg[i].rotAngle))
+		
+		if(spiderProp.leg[i].exists == 1) then
+			spiderProp.leg[i]:setFillColor( 1, 1, 1, 1 )
+		else
+			spiderProp.leg[i]:setFillColor( 1, 1, 1, 0.1 )
+		end
 		
 		if(i == 1 or i == 2 or i == 8) then
 			spiderProp.leg[i].dirx = 1

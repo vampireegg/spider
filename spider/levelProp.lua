@@ -6,6 +6,7 @@ M[1] = {}
 M[1].spider = {}
 M[1].spider.PosiX = 220
 M[1].spider.PosiY = 150
+M[1].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[1].collider = {}
 M[1].collider.GroupX = {100}
@@ -31,6 +32,7 @@ M[2] = {}
 M[2].spider = {}
 M[2].spider.PosiX = 90
 M[2].spider.PosiY = 150
+M[2].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[2].collider = {}
 M[2].collider.GroupX = {30}
@@ -56,6 +58,7 @@ M[3] = {}
 M[3].spider = {}
 M[3].spider.PosiX = 190
 M[3].spider.PosiY = 150
+M[3].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[3].collider = {}
 M[3].collider.GroupX = {60, 550}
@@ -82,6 +85,7 @@ M[4] = {}
 M[4].spider = {}
 M[4].spider.PosiX = 270
 M[4].spider.PosiY = 150
+M[4].spider.LegExists = {1,0,1,0,1,0,1,0}
 
 M[4].collider = {}
 M[4].collider.GroupX = {400, 650}

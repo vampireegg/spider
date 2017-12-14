@@ -47,6 +47,19 @@ end
 
 M.drawButtons = drawButtons
 
+local function drawPortals(sceneGroup, portal, portalProp)
+	for i = 1,#(portalProp.Types) do
+		portal[i] = {}
+		for j = 1, 2 do
+			portal[i][j] = display.newImageRect(sceneGroup, portalProp.Img[portalProp.Types[i]], portalProp.Size, portalProp.Size  )
+			portal[i][j].x = portalProp.PosiX[i][j]
+			portal[i][j].y = portalProp.PosiY[i][j]
+		end
+	end
+end
+
+M.drawPortals = drawPortals
+
 local function drawCollider(sceneGroup, collider, colliderProp, physics)
 	for i = 1,#(colliderProp.numColliders) do
 		collider[i] = {}

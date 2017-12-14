@@ -45,6 +45,9 @@ local spider = {}
 local goalProp = {}
 local goal = {}
 
+local portalProp = {}
+local portal = {}
+
 local lastLegTouched
 local spiderReachedGoal
 local legPhase
@@ -212,6 +215,12 @@ function scene:create( event )
 	goalProp.x = levelProp[Level].goal.PosiX
 	goalProp.y = levelProp[Level].goal.PosiY
 	
+	portalProp.Size = commonProp.portal.Size
+	portalProp.Img = commonProp.portal.Img
+	portalProp.Types = levelProp[Level].portal.Types
+	portalProp.PosiX = levelProp[Level].portal.PosiX
+	portalProp.PosiY = levelProp[Level].portal.PosiY
+	
 	lastLegTouched = -1
 	spiderReachedGoal = false
 	legPhase = -1
@@ -227,6 +236,7 @@ function scene:create( event )
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)
+	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
 	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 
 	for i = 1,8 do

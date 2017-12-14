@@ -22,4 +22,7 @@ M.spider.SpiderRadius = M.spider.ArrowDistance + M.spider.ArrowSize
 M.goal = {}
 M.goal.Size = 100
 
+M.portal = {}
+M.portal.Img = {"pr.png", "py.png"}
+
 return M

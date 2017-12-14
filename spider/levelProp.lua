@@ -25,6 +25,11 @@ M[1].bg.Opacity = 1
 M[1].eye = {}
 M[1].eye.Opacity = 0
 
+M[1].portal = {}
+M[1].portal.NumPairs = {0,0}
+M[1].portal.PosiX = {{0,0}, {0,0}}
+M[1].portal.PosiY = {{0,0}, {0,0}}
+
 ---------------------------------------- Level 2----------------------------------------
 M[2] = {}
 
@@ -50,6 +55,11 @@ M[2].bg.Opacity = 1
 
 M[2].eye = {}
 M[2].eye.Opacity = 0
+
+M[2].portal = {}
+M[2].portal.NumPairs = {0,0}
+M[2].portal.PosiX = {{0,0}, {0,0}}
+M[2].portal.PosiY = {{0,0}, {0,0}}
 
 ---------------------------------------- Level 3----------------------------------------
 M[3] = {}
@@ -77,6 +87,10 @@ M[3].bg.Opacity = 1
 M[3].eye = {}
 M[3].eye.Opacity = 0
 
+M[3].portal = {}
+M[3].portal.NumPairs = {0,0}
+M[3].portal.PosiX = {{0,0}, {0,0}}
+M[3].portal.PosiY = {{0,0}, {0,0}}
 
 ---------------------------------------- Level 4----------------------------------------
 M[4] = {}
@@ -103,5 +117,10 @@ M[4].bg.Opacity = 0.3
 
 M[4].eye = {}
 M[4].eye.Opacity = 0
+
+M[4].portal = {}
+M[4].portal.NumPairs = {1,1}
+M[4].portal.PosiX = {{80,30}, {500,400}}
+M[4].portal.PosiY = {{150,530}, {150,530}}
 
 return M

@@ -165,6 +165,7 @@ local function on_frame( event )
 					portal[i][j].sensitive = 0
 					portal[i][j].pair.sensitive = 0
 					LastPortal = portal[i][j]
+					LastPortalPair = LastPortal.pair
 					SpiderPorting = 1
 					timer.performWithDelay( 50, portSpider )
 				end
@@ -172,12 +173,12 @@ local function on_frame( event )
 		end
 	end
 	if(LastPortal ~= nil and SpiderPorting == 0) then
-		if(distance(spider[1], LastPortal) > 150) then
+		if(distance(spider[1], LastPortal) > 20) then
 			LastPortal.sensitive = 1
 		end
 	end
 	if(LastPortalPair ~= nil and SpiderPorting == 0) then
-		if(distance(spider[1], LastPortalPair) > 150) then
+		if(distance(spider[1], LastPortalPair) > 20) then
 			LastPortalPair.sensitive = 1
 		end
 	end

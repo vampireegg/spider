@@ -134,6 +134,17 @@ local function shiftSpider( event )
 	shiftSpiderByOne()
 end
 
+local function moveSpiderInDirection(dir)
+	local rx = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
+	local ry = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
+	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
+	spider[1].angularVelocity = 0
+end
+
+local function bounceSpider( event )
+	shiftSpiderByOne()
+	moveSpiderInDirection(1)
+end
 
 
 local function spiderCollided( self, event )
@@ -150,12 +161,7 @@ local function distance(obj1, obj2)
 	return math.sqrt(term1 + term2)
 end
 
-local function moveSpiderInDirection(dir)
-	local rx = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
-	local ry = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
-	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
-	spider[1].angularVelocity = 0
-end
+
 
 local function moveSpider( event )
 	moveSpiderInDirection(-1)

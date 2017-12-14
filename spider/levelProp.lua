@@ -11,6 +11,7 @@ M[1].collider = {}
 M[1].collider.GroupX = {100}
 M[1].collider.GroupY = {300}
 M[1].collider.Num = {5}
+M[1].collider.Orientation = {1}
 
 M[1].goal = {}
 M[1].goal.PosiX = 980
@@ -35,6 +36,7 @@ M[2].collider = {}
 M[2].collider.GroupX = {30}
 M[2].collider.GroupY = {300}
 M[2].collider.Num = {8}
+M[2].collider.Orientation = {1}
 
 M[2].goal = {}
 M[2].goal.PosiX = 80
@@ -59,6 +61,7 @@ M[3].collider = {}
 M[3].collider.GroupX = {60, 550}
 M[3].collider.GroupY = {280, 410}
 M[3].collider.Num = {5, 8}
+M[3].collider.Orientation = {1, 1}
 
 M[3].goal = {}
 M[3].goal.PosiX = 980
@@ -70,5 +73,31 @@ M[3].bg.Opacity = 1
 
 M[3].eye = {}
 M[3].eye.Opacity = 0
+
+
+---------------------------------------- Level 4----------------------------------------
+M[4] = {}
+
+
+M[4].spider = {}
+M[4].spider.PosiX = 190
+M[4].spider.PosiY = 150
+
+M[4].collider = {}
+M[4].collider.GroupX = {60, 550}
+M[4].collider.GroupY = {280, 410}
+M[4].collider.Num = {5, 8}
+M[3].collider.Orientation = {1, 1}
+
+M[4].goal = {}
+M[4].goal.PosiX = 980
+M[4].goal.PosiY = 530
+
+M[4].bg = {}
+M[4].bg.Img = "water.jpg"
+M[4].bg.Opacity = 0.3
+
+M[4].eye = {}
+M[4].eye.Opacity = 0
 
 return M

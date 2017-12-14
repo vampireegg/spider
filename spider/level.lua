@@ -127,9 +127,17 @@ local function distance(obj1, obj2)
 	return math.sqrt(term1 + term2)
 end
 
+local function moveSpider( event )
+	local rx = - 5 * spiderProp.leg[lastLegTouched].dirx
+	local ry = - 5 * spiderProp.leg[lastLegTouched].diry
+	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
+	spider[1].angularVelocity = 0
+end
+
 local function portSpider( event )
 	spider[1].x = nextSpiderx
 	spider[1].y = nextSpidery
+	timer.performWithDelay( 50, moveSpider )
 end
 
 local function on_frame( event )
@@ -150,8 +158,6 @@ local function on_frame( event )
 				nextSpidery = portal[i][j].pair.y
 				SpiderPorting = 1
 				timer.performWithDelay( 50, portSpider )
-				--local rx = spiderProp.leg[lastLegTouched].dirx
-				--local ry = spiderProp.leg[lastLegTouched].diry
 			end
 		end
 	end

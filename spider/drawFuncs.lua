@@ -50,12 +50,23 @@ M.drawButtons = drawButtons
 local function drawCollider(sceneGroup, collider, colliderProp, physics)
 	for i = 1,#(colliderProp.numColliders) do
 		collider[i] = {}
-		for j = 0, colliderProp.numColliders[i] - 1 do
-			collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
-			collider[i][j].x = colliderProp.colliderGroupx[i] + j * colliderProp.colliderWidth
-			collider[i][j].y = colliderProp.colliderGroupy[i]
-			physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
-			collider[i][j].Name = "collider_" .. i .. "_" .. j
+		if(colliderProp.Orientation[i] == 1) then
+			for j = 0, colliderProp.numColliders[i] - 1 do
+				collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
+				collider[i][j].x = colliderProp.colliderGroupx[i] + j * colliderProp.colliderWidth
+				collider[i][j].y = colliderProp.colliderGroupy[i]
+				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
+				collider[i][j].Name = "collider_" .. i .. "_" .. j
+			end
+		else
+			for j = 0, colliderProp.numColliders[i] - 1 do
+				collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
+				collider[i][j].x = colliderProp.colliderGroupx[i] 
+				collider[i][j].y = colliderProp.colliderGroupy[i] + j * colliderProp.colliderWidth
+				collider[i][j].rotation = 90
+				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
+				collider[i][j].Name = "collider_" .. i .. "_" .. j
+			end
 		end
 	end
 end

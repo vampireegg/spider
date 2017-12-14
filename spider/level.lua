@@ -139,7 +139,7 @@ local function on_frame( event )
 		goal[0]:setFillColor( 1, 1, 1, 0 )
 		spiderReachedGoal = true
 		Runtime:removeEventListener( "enterFrame", on_frame )
-		if(Level < 3) then
+		if(Level < 4) then
 			composer.setVariable( "level", Level + 1 )
 		else
 			composer.setVariable( "level", 1 )
@@ -195,6 +195,7 @@ function scene:create( event )
 	colliderProp.colliderGroupx = levelProp[Level].collider.GroupX
 	colliderProp.colliderGroupy = levelProp[Level].collider.GroupY
 	colliderProp.numColliders = levelProp[Level].collider.Num
+	colliderProp.Orientation = levelProp[Level].collider.Orientation
 	
 	spiderProp.MyScale = commonProp.spider.MyScale
 	spiderProp.ArrowSize = commonProp.spider.ArrowSize

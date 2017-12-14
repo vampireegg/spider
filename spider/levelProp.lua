@@ -84,10 +84,10 @@ M[4].spider.PosiX = 190
 M[4].spider.PosiY = 150
 
 M[4].collider = {}
-M[4].collider.GroupX = {60, 550}
-M[4].collider.GroupY = {280, 410}
-M[4].collider.Num = {5, 8}
-M[3].collider.Orientation = {1, 1}
+M[4].collider.GroupX = {400, 650}
+M[4].collider.GroupY = {50, 440}
+M[4].collider.Num = {10, 3}
+M[4].collider.Orientation = {2, 2}
 
 M[4].goal = {}
 M[4].goal.PosiX = 980

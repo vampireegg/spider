@@ -3,19 +3,19 @@ local sheetInfo = require("sheet")
 local eyesheetInfo = require("eyesheet")
 local M = {}
 local function drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
-	borders[0] = display.newRect(sceneGroup, borderProp.borderWidth/2, totalWidth/2, borderProp.borderWidth, totalWidth)
-	borders[0]:setFillColor( 1, 1, 1, 0 )
-	
-	borders[1] = display.newRect(sceneGroup, totalHeight - borderProp.borderWidth/2,  totalWidth/2, borderProp.borderWidth, totalWidth)
+	borders[1] = display.newRect(sceneGroup, borderProp.borderWidth/2, totalWidth/2, borderProp.borderWidth, totalWidth)
 	borders[1]:setFillColor( 1, 1, 1, 0 )
 	
-	borders[2] = display.newRect(sceneGroup, totalHeight/2, borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
+	borders[2] = display.newRect(sceneGroup, totalHeight - borderProp.borderWidth/2,  totalWidth/2, borderProp.borderWidth, totalWidth)
 	borders[2]:setFillColor( 1, 1, 1, 0 )
-
-	borders[3] = display.newRect(sceneGroup, totalHeight/2, totalWidth - borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
-	borders[3]:setFillColor( 1, 1, 1, 0 )
 	
-	for i = 0,3 do
+	borders[3] = display.newRect(sceneGroup, totalHeight/2, borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
+	borders[3]:setFillColor( 1, 1, 1, 0 )
+
+	borders[4] = display.newRect(sceneGroup, totalHeight/2, totalWidth - borderProp.borderWidth/2, totalHeight, borderProp.borderWidth)
+	borders[4]:setFillColor( 1, 1, 1, 0 )
+	
+	for i = 1,4 do
 		physics.addBody( borders[i], "static", { friction=0, bounce=0} )
 		borders[i].Name = "borders_" .. i
 	end
@@ -67,18 +67,18 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 	for i = 1,#(colliderProp.numColliders) do
 		collider[i] = {}
 		if(colliderProp.Orientation[i] == 1) then
-			for j = 0, colliderProp.numColliders[i] - 1 do
+			for j = 1, colliderProp.numColliders[i] do
 				collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
-				collider[i][j].x = colliderProp.colliderGroupx[i] + j * colliderProp.colliderWidth
+				collider[i][j].x = colliderProp.colliderGroupx[i] + (j - 1) * colliderProp.colliderWidth
 				collider[i][j].y = colliderProp.colliderGroupy[i]
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
 				collider[i][j].Name = "collider_" .. i .. "_" .. j
 			end
 		else
-			for j = 0, colliderProp.numColliders[i] - 1 do
+			for j = 1, colliderProp.numColliders[i] do
 				collider[i][j] = display.newImageRect(sceneGroup, "collider.png", colliderProp.colliderWidth, colliderProp.colliderHeight  )
 				collider[i][j].x = colliderProp.colliderGroupx[i] 
-				collider[i][j].y = colliderProp.colliderGroupy[i] + j * colliderProp.colliderWidth
+				collider[i][j].y = colliderProp.colliderGroupy[i] + (j - 1) * colliderProp.colliderWidth
 				collider[i][j].rotation = 90
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
 				collider[i][j].Name = "collider_" .. i .. "_" .. j
@@ -191,12 +191,10 @@ end
 M.drawSpider = drawSpider
 
 local function drawGoal(sceneGroup, goal, goalProp, physics)
-	goal[0] = display.newImageRect(sceneGroup, "goal.png", goalProp.Size,goalProp.Size  )
-	goal[0].x = goalProp.x
-	goal[0].y = goalProp.y
-	--physics.addBody( goal[0], "dynamic", {friction=0, bounce=0})
-	--goal[0].angularVelocity = 0
-	goal[0].Name = "goal"
+	goal[1] = display.newImageRect(sceneGroup, "goal.png", goalProp.Size,goalProp.Size  )
+	goal[1].x = goalProp.x
+	goal[1].y = goalProp.y
+	goal[1].Name = "goal"
 end
 
 M.drawGoal = drawGoal

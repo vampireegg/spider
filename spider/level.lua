@@ -97,7 +97,7 @@ local function endGame()
 	for i = 1, 16 do
 		display.remove( eyes[i] )
 	end
-	for i = 0, 3 do
+	for i = 1, 4 do
 		display.remove( borders[i] )
 	end
 	for i = 1,#(colliderProp.numColliders) do
@@ -169,7 +169,7 @@ local function on_frame( event )
 		bgProp.reLoadButton:setFillColor( 1, 1, 1, 1 )
 		bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
 	end
-	goal[0].rotation = goal[0].rotation + .2
+	goal[1].rotation = goal[1].rotation + .2
 	
 	if (portalProp.Exists == 1) then
 		for i = 1,#(portalProp.Types) do
@@ -199,9 +199,9 @@ local function on_frame( event )
 			LastPortalPair.sensitive = 1
 		end
 	end
-	if(distance(spider[1],goal[0]) < 20 and spiderReachedGoal == false) then
+	if(distance(spider[1],goal[1]) < 20 and spiderReachedGoal == false) then
 		print("reached goal")
-		goal[0]:setFillColor( 1, 1, 1, 0 )
+		goal[1]:setFillColor( 1, 1, 1, 0 )
 		spiderReachedGoal = true
 		Runtime:removeEventListener( "enterFrame", on_frame )
 		if(Level < 4) then
@@ -235,7 +235,6 @@ local function on_frame( event )
 		legPhase = legPhase * -1
 		legPhaseCounter = 0
 	end
-	--print("goal[0].x = " .. goal[0].x .. " spider[1].x = " .. spider[1].x)
 end 
 
 local function reLoad(event )

@@ -73,7 +73,7 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 				collider[i][j].x = colliderProp.colliderGroupx[i] + (j - 1) * colliderProp.colliderWidth[colliderProp.ColliderType[i]]
 				collider[i][j].y = colliderProp.colliderGroupy[i]
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
-				collider[i][j].Name = "collider_" .. i .. "_" .. j
+				collider[i][j].Name = "collider_" .. i
 				collider[i][j].CommonName = colliderProp.CommonName[colliderProp.ColliderType[i]]
 			end
 		else
@@ -83,7 +83,7 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 				collider[i][j].y = colliderProp.colliderGroupy[i] + (j - 1) * colliderProp.colliderWidth[colliderProp.ColliderType[i]]
 				collider[i][j].rotation = 90
 				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
-				collider[i][j].Name = "collider_" .. i .. "_" .. j
+				collider[i][j].Name = "collider_" .. i
 				collider[i][j].CommonName = colliderProp.CommonName[colliderProp.ColliderType[i]]
 			end
 		end
@@ -189,6 +189,7 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics)
 	end
 	--local offsetRectParams = { halfWidth=spiderProp.SpiderRadius, halfHeight=spiderProp.SpiderRadius, x=0, y=0, angle=0 }
 	--spider[1].isFixedRotation = true
+	
 	physics.addBody( spider[1], "dynamic", {radius = spiderProp.SpiderRadius * .9, friction=0, bounce=0})
 end
 

@@ -245,7 +245,7 @@ M[8] = {}
 
 M[8].spider = {}
 M[8].spider.MyScale = 0.15
-M[8].spider.PosiX = 150
+M[8].spider.PosiX = 200
 M[8].spider.PosiY = 150
 M[8].spider.LegExists = {1,1,1,1,1,1,1,1}
 
@@ -269,8 +269,8 @@ M[8].eye.Opacity = 0
 
 M[8].portal = {}
 M[8].portal.Exists = 1
-M[8].portal.Types = {2}
-M[8].portal.PosiX = {{350,OOF}}
-M[8].portal.PosiY = {{150,OOF}}
+M[8].portal.Types = {2, 3, 4}
+M[8].portal.PosiX = {{320,OOF}, {490,OOF}, {660,OOF}}
+M[8].portal.PosiY = {{150,OOF}, {150,OOF + 200}, {150,OOF + 400}}
 
 return M

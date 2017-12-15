@@ -1,5 +1,7 @@
 local M = {}
 
+local OOF = 2000
+
 ----------------------------------------Level 1----------------------------------------
 M[1] = {}
 
@@ -236,5 +238,39 @@ M[7].portal.Exists = 1
 M[7].portal.Types = {2}
 M[7].portal.PosiX = {{800,800}}
 M[7].portal.PosiY = {{70,530}}
+
+M[8] = {}
+
+---------------------------------------- Level 7----------------------------------------
+
+M[8].spider = {}
+M[8].spider.MyScale = 0.15
+M[8].spider.PosiX = 150
+M[8].spider.PosiY = 90
+M[8].spider.LegExists = {1,1,1,1,1,1,1,1}
+
+M[8].collider = {}
+M[8].collider.GroupX = {50}
+M[8].collider.GroupY = {300}
+M[8].collider.Num = {18}
+M[8].collider.Orientation = {1}
+M[8].collider.ColliderType = {2}
+
+M[8].goal = {}
+M[8].goal.PosiX = 90
+M[8].goal.PosiY = 530
+
+M[8].bg = {}
+M[8].bg.Img = "leaf.jpg"
+M[8].bg.Opacity = 0.3
+
+M[8].eye = {}
+M[8].eye.Opacity = 0
+
+M[8].portal = {}
+M[8].portal.Exists = 1
+M[8].portal.Types = {2}
+M[8].portal.PosiX = {{800,800}}
+M[8].portal.PosiY = {{70,530}}
 
 return M

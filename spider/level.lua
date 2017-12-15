@@ -59,6 +59,8 @@ local nextSpidery
 local SpiderPorting
 local LastPortal
 local LastPortalPair
+local spiderMoveDirX
+local spiderMoveDirY
 
 
 local function pushLeg(event )	
@@ -128,21 +130,26 @@ local function shiftSpiderByOne()
 	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
 end
 
+local function shiftSpiderByInDir()
+	spider[1].x = spider[1].x + spiderMoveDirX * spiderProp.leg[lastLegTouched].dirx
+	spider[1].y = spider[1].y + spiderMoveDirY * spiderProp.leg[lastLegTouched].diry
+end
+
 
 local function shiftSpider( event )
 	print("shiftSpider called")
 	shiftSpiderByOne()
 end
 
-local function moveSpiderInDirection(dir)
-	local rx = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
-	local ry = dir * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
+local function moveSpiderInDirection()
+	local rx = spiderMoveDirX * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
+	local ry = spiderMoveDirY * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
 end
 
 local function callSpiderInDirection( event )
-	moveSpiderInDirection(1)
+	moveSpiderInDirection()
 end
 
 local function bounceSpider( event )
@@ -158,6 +165,14 @@ local function spiderCollided( self, event )
 	if(event.other.CommonName ~= "bouncer") then
 		myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 	else
+		if(event.other.Orientation == 1) then
+			spiderMoveDirX = 1
+			spiderMoveDirY = -1
+		else
+			spiderMoveDirX = -1
+			spiderMoveDirY = 1
+		end
+		
 		myTimers[#myTimers+1] = timer.performWithDelay( 50, bounceSpider )
 	end
 end
@@ -172,7 +187,9 @@ end
 
 
 local function moveSpider( event )
-	moveSpiderInDirection(-1)
+	spiderMoveDirX = -1
+	spiderMoveDirY = -1
+	moveSpiderInDirection()
 	SpiderPorting = 0
 end
 
@@ -325,6 +342,8 @@ function scene:create( event )
 	SpiderPorting = 0
 	LastPortal = nil
 	LastPortalPair = nil
+	spiderMoveDirX = 0
+	spiderMoveDirY = 0
 	
 	physics.pause()
     local sceneGroup = self.view

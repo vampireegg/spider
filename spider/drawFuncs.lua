@@ -173,7 +173,8 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics)
 			spiderProp.leg[i].diry = 0
 		end
 	end
-
+	spiderProp.leg[2].pair = spiderProp.leg[4]
+	spiderProp.leg[4].pair = spiderProp.leg[2]
 	spiderProp.body = display.newSprite(sceneGroup, spiderProp.bodySheet, spiderProp.spd_movement )
 	spiderProp.body:play()
 	spiderProp.body:scale(spiderProp.MyScale,spiderProp.MyScale)

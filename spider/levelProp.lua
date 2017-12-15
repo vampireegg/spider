@@ -208,17 +208,17 @@ M[7] = {}
 
 
 M[7].spider = {}
-M[7].spider.MyScale = 0.2
+M[7].spider.MyScale = 0.15
 M[7].spider.PosiX = 90
 M[7].spider.PosiY = 90
 M[7].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[7].collider = {}
-M[7].collider.GroupX = {50}
-M[7].collider.GroupY = {300}
-M[7].collider.Num = {9}
-M[7].collider.Orientation = {1}
-M[7].collider.ColliderType = {2}
+M[7].collider.GroupX = {50, 250}
+M[7].collider.GroupY = {300, 50}
+M[7].collider.Num = {18,1}
+M[7].collider.Orientation = {1, 2}
+M[7].collider.ColliderType = {2, 1}
 
 M[7].goal = {}
 M[7].goal.PosiX = 90
@@ -226,15 +226,15 @@ M[7].goal.PosiY = 530
 
 M[7].bg = {}
 M[7].bg.Img = "leaf.jpg"
-M[7].bg.Opacity = 0.5
+M[7].bg.Opacity = 0.3
 
 M[7].eye = {}
 M[7].eye.Opacity = 0
 
 M[7].portal = {}
-M[7].portal.Exists = 0
-M[7].portal.Types = {}
-M[7].portal.PosiX = {}
-M[7].portal.PosiY = {}
+M[7].portal.Exists = 1
+M[7].portal.Types = {2}
+M[7].portal.PosiX = {{800,800}}
+M[7].portal.PosiY = {{70,530}}
 
 return M

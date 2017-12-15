@@ -257,8 +257,8 @@ M[8].collider.Orientation = {1, 1, 1}
 M[8].collider.ColliderType = {2, 2, 2}
 
 M[8].goal = {}
-M[8].goal.PosiX = OOF
-M[8].goal.PosiY = OOF
+M[8].goal.PosiX = 830
+M[8].goal.PosiY = 150
 
 M[8].bg = {}
 M[8].bg.Img = "leaf.jpg"
@@ -270,7 +270,7 @@ M[8].eye.Opacity = 0
 M[8].portal = {}
 M[8].portal.Exists = 1
 M[8].portal.Types = {2, 3, 4}
-M[8].portal.PosiX = {{320,OOF}, {490,490}, {660,OOF}}
-M[8].portal.PosiY = {{150,OOF}, {150,410}, {150,OOF + 400}}
+M[8].portal.PosiX = {{320,700}, {490,490}, {660,280}}
+M[8].portal.PosiY = {{150,410}, {150,410}, {150,410}}
 
 return M

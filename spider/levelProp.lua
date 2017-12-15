@@ -250,11 +250,11 @@ M[8].spider.PosiY = 150
 M[8].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[8].collider = {}
-M[8].collider.GroupX = {50, 50, 50}
-M[8].collider.GroupY = {20, 280, 540}
-M[8].collider.Num = {18, 18, 18}
-M[8].collider.Orientation = {1, 1, 1}
-M[8].collider.ColliderType = {2, 2, 2}
+M[8].collider.GroupX = {50, 50, 50, 1030}
+M[8].collider.GroupY = {20, 280, 540, 100}
+M[8].collider.Num = {18, 18, 18, 3}
+M[8].collider.Orientation = {1, 1, 1, 2}
+M[8].collider.ColliderType = {2, 2, 2, 2}
 
 M[8].goal = {}
 M[8].goal.PosiX = 830

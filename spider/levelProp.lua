@@ -245,13 +245,13 @@ M[8] = {}
 
 M[8].spider = {}
 M[8].spider.MyScale = 0.15
-M[8].spider.PosiX = 200
+M[8].spider.PosiX = 150
 M[8].spider.PosiY = 150
 M[8].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[8].collider = {}
 M[8].collider.GroupX = {50, 50}
-M[8].collider.GroupY = {300, 20}
+M[8].collider.GroupY = {280, 20}
 M[8].collider.Num = {18, 18}
 M[8].collider.Orientation = {1, 1}
 M[8].collider.ColliderType = {2, 2}

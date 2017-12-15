@@ -241,21 +241,24 @@ local function on_frame( event )
 			myTimers[#myTimers+1] = timer.performWithDelay( 500, endGame )
 		end
 	end
+	local vx, vy = spider[1]:getLinearVelocity()
+	if(vx == 0 and vy == 0) then
 	legPhaseCounter = legPhaseCounter + 1
-	if(legPhaseCounter == 10) then
-		for i = 1, 8 do
-			if(spiderProp.leg[i].exists == 1)then
-				if(legPhase == 1) then
-					spiderProp.leg[i].x = spiderProp.leg[i].x + spiderProp.leg[i].dirx
-					spiderProp.leg[i].y = spiderProp.leg[i].y + spiderProp.leg[i].diry
-				else
-					spiderProp.leg[i].x = spiderProp.leg[i].x - spiderProp.leg[i].dirx
-					spiderProp.leg[i].y = spiderProp.leg[i].y - spiderProp.leg[i].diry
+		if(legPhaseCounter == 10) then
+			for i = 1, 8 do
+				if(spiderProp.leg[i].exists == 1)then
+					if(legPhase == 1) then
+						spiderProp.leg[i].x = spiderProp.leg[i].x + spiderProp.leg[i].dirx
+						spiderProp.leg[i].y = spiderProp.leg[i].y + spiderProp.leg[i].diry
+					else
+						spiderProp.leg[i].x = spiderProp.leg[i].x - spiderProp.leg[i].dirx
+						spiderProp.leg[i].y = spiderProp.leg[i].y - spiderProp.leg[i].diry
+					end
 				end
 			end
+			legPhase = legPhase * -1
+			legPhaseCounter = 0
 		end
-		legPhase = legPhase * -1
-		legPhaseCounter = 0
 	end
 end 
 

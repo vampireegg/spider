@@ -63,7 +63,7 @@ local spiderMoveDirX
 local spiderMoveDirY
 local spiderPreCollisionDirX
 local spiderPreCollisionDirY
-local justCollided
+local lastCollidedWith = {}
 
 
 local function pushLeg(event )	
@@ -148,14 +148,10 @@ local function shiftSpiderByInDir()
 	spider[1].y = spider[1].y + spiderMoveDirY * spiderProp.leg[lastLegTouched].diry
 end
 
-local function resetJustCollided( event )
-	justCollided = false
-end
 
 local function shiftSpider( event )
 	print("shiftSpider called")
 	shiftSpiderByOne()
-	myTimers[#myTimers+1] = timer.performWithDelay( 100, resetJustCollided )
 end
 
 local function moveSpiderInDirection()
@@ -175,7 +171,6 @@ local function moveSpiderInDirection()
 	end
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
-	myTimers[#myTimers+1] = timer.performWithDelay( 100, resetJustCollided )
 end
 
 local function callSpiderInDirection( event )
@@ -192,9 +187,9 @@ end
 
 local function spiderCollided( self, event )
 	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y .. " CommonName = " .. event.other.CommonName)
-	if(justCollided == false) then
+	if(lastCollidedWith.Name ~= event.other.Name) then
 		print("Inside collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y .. " CommonName = " .. event.other.CommonName)
-		justCollided = true
+		lastCollidedWith.Name = event.other.Name
 		spider[1].angularVelocity = 0
 		spider[1]:setLinearVelocity(0,0)
 		if(event.other.CommonName ~= "bouncer") then
@@ -382,7 +377,7 @@ function scene:create( event )
 	spiderMoveDirY = 0
 	spiderPreCollisionDirX = 0
 	spiderPreCollisionDirY = 0
-	justCollided = false
+	lastCollidedWith.Name = ""
 	
 	physics.pause()
     local sceneGroup = self.view

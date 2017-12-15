@@ -142,21 +142,16 @@ local function shiftSpiderByOne()
 	spider[1].y = spider[1].y + spiderPreCollisionDirY
 end
 
-local function shiftSpiderByInDir()
-	spider[1].x = spider[1].x + spiderMoveDirX * spiderProp.leg[lastLegTouched].dirx
-	spider[1].y = spider[1].y + spiderMoveDirY * spiderProp.leg[lastLegTouched].diry
-end
-
-
 local function shiftSpider( event )
 	print("shiftSpider called")
 	shiftSpiderByOne()
+	return true
 end
 
 local function moveSpiderInDirection()
 	
-	local rx = spiderMoveDirX * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
-	local ry = spiderMoveDirY * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
+	local rx =   spiderMoveDirX * (spiderProp.SpiderRadius / 17.8) * spiderPreCollisionDirX
+	local ry =   spiderMoveDirY * (spiderProp.SpiderRadius / 17.8) * spiderPreCollisionDirY
 	if(rx == 0) then
 		spiderPreCollisionDirX = 0
 	else
@@ -176,7 +171,7 @@ local function callSpiderInDirection( event )
 end
 
 local function bounceSpider( event )
-	shiftSpiderByOne()
+	--shiftSpiderByOne()
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, callSpiderInDirection )
 end
 
@@ -186,6 +181,8 @@ local function spiderCollided( self, event )
 	spider[1].angularVelocity = 0
     spider[1]:setLinearVelocity(0,0)
 	if(event.other.CommonName ~= "bouncer") then
+		spiderMoveDirX = -1
+		spiderMoveDirY = -1
 		myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 	else
 		if(event.other.Orientation == 1) then
@@ -198,6 +195,7 @@ local function spiderCollided( self, event )
 		
 		myTimers[#myTimers+1] = timer.performWithDelay( 50, bounceSpider )
 	end
+	return true
 end
  
 

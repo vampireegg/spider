@@ -216,11 +216,11 @@ M[7].spider.PosiY = 90
 M[7].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[7].collider = {}
-M[7].collider.GroupX = {50, 250}
-M[7].collider.GroupY = {300, 50}
-M[7].collider.Num = {18,1}
-M[7].collider.Orientation = {1, 2}
-M[7].collider.ColliderType = {2, 1}
+M[7].collider.GroupX = {50}
+M[7].collider.GroupY = {300}
+M[7].collider.Num = {18}
+M[7].collider.Orientation = {1}
+M[7].collider.ColliderType = {2}
 
 M[7].goal = {}
 M[7].goal.PosiX = 90
@@ -245,20 +245,20 @@ M[8] = {}
 
 M[8].spider = {}
 M[8].spider.MyScale = 0.15
-M[8].spider.PosiX = 150
-M[8].spider.PosiY = 90
+M[8].spider.PosiX = 200
+M[8].spider.PosiY = 150
 M[8].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[8].collider = {}
-M[8].collider.GroupX = {50}
-M[8].collider.GroupY = {300}
-M[8].collider.Num = {18}
-M[8].collider.Orientation = {1}
-M[8].collider.ColliderType = {2}
+M[8].collider.GroupX = {50, 50}
+M[8].collider.GroupY = {300, 20}
+M[8].collider.Num = {18, 18}
+M[8].collider.Orientation = {1, 1}
+M[8].collider.ColliderType = {2, 2}
 
 M[8].goal = {}
-M[8].goal.PosiX = 90
-M[8].goal.PosiY = 530
+M[8].goal.PosiX = OOF
+M[8].goal.PosiY = OOF
 
 M[8].bg = {}
 M[8].bg.Img = "leaf.jpg"
@@ -270,7 +270,7 @@ M[8].eye.Opacity = 0
 M[8].portal = {}
 M[8].portal.Exists = 1
 M[8].portal.Types = {2}
-M[8].portal.PosiX = {{800,800}}
-M[8].portal.PosiY = {{70,530}}
+M[8].portal.PosiX = {{350,OOF}}
+M[8].portal.PosiY = {{150,OOF}}
 
 return M

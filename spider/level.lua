@@ -186,7 +186,7 @@ end
 
 
 local function spiderCollided( self, event )
-	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y .. " CommonName = " .. event.other.CommonName)
+	print("collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y .. " CommonName = " .. event.other.CommonName .. " time = " .. system.getTimer())
 	if(lastCollidedWith.Name ~= event.other.Name) then
 		print("Inside collided with " .. event.other.Name .. " x = " .. self.x .." y = " .. self.y .. " CommonName = " .. event.other.CommonName)
 		lastCollidedWith.Name = event.other.Name
@@ -253,6 +253,7 @@ local function on_frame( event )
 					portal[i][j].pair.sensitive = 0
 					LastPortal = portal[i][j]
 					LastPortalPair = LastPortal.pair
+					lastCollidedWith.Name = ""
 					SpiderPorting = 1
 					myTimers[#myTimers+1] = timer.performWithDelay( 50, portSpider )
 				end

@@ -61,6 +61,8 @@ local LastPortal
 local LastPortalPair
 local spiderMoveDirX
 local spiderMoveDirY
+local spiderPreCollisionDirX
+local spiderPreCollisionDirY
 
 
 local function pushLeg(event )	
@@ -82,6 +84,16 @@ local function pushLeg(event )
 			ry = 0
 		end
 		print("applying velocity " ..  rx .. "," .. ry .. " x = " .. spider[1].x .. " y = " .. spider[1].y )
+		if(rx == 0) then
+			spiderPreCollisionDirX = 0
+		else
+			spiderPreCollisionDirX = -rx / math.abs(rx)
+		end
+		if(ry == 0) then
+			spiderPreCollisionDirY = 0
+		else
+			spiderPreCollisionDirY = -ry / math.abs(ry)
+		end
 		spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 		spider[1].angularVelocity = 0
 	end
@@ -126,8 +138,8 @@ local function endGame()
 end
 
 local function shiftSpiderByOne()
-	spider[1].x = spider[1].x + spiderProp.leg[lastLegTouched].dirx
-	spider[1].y = spider[1].y + spiderProp.leg[lastLegTouched].diry
+	spider[1].x = spider[1].x + spiderPreCollisionDirX
+	spider[1].y = spider[1].y + spiderPreCollisionDirY
 end
 
 local function shiftSpiderByInDir()
@@ -142,8 +154,19 @@ local function shiftSpider( event )
 end
 
 local function moveSpiderInDirection()
+	
 	local rx = spiderMoveDirX * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].dirx
 	local ry = spiderMoveDirY * (spiderProp.SpiderRadius / 17.8) * spiderProp.leg[lastLegTouched].diry
+	if(rx == 0) then
+		spiderPreCollisionDirX = 0
+	else
+		spiderPreCollisionDirX = -rx / math.abs(rx)
+	end
+	if(ry == 0) then
+		spiderPreCollisionDirY = 0
+	else
+		spiderPreCollisionDirY = -ry / math.abs(ry)
+	end
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 	spider[1].angularVelocity = 0
 end
@@ -344,6 +367,8 @@ function scene:create( event )
 	LastPortalPair = nil
 	spiderMoveDirX = 0
 	spiderMoveDirY = 0
+	spiderPreCollisionDirX = 0
+	spiderPreCollisionDirY = 0
 	
 	physics.pause()
     local sceneGroup = self.view

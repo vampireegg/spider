@@ -78,8 +78,8 @@ local function pushLeg(event )
 		leg.exists = 0
 		leg:setFillColor( 1, 1, 1, 0.1 )
 		lastLegTouched = event.target.leg.i
-		local rx = (spiderProp.SpiderRadius / 20) * math.cos(leg.radAngle)
-		local ry = (spiderProp.SpiderRadius / 20) * math.sin(leg.radAngle)
+		local rx = (spiderProp.SpiderRadius / 23) * math.cos(leg.radAngle)
+		local ry = (spiderProp.SpiderRadius / 23) * math.sin(leg.radAngle)
 		if(math.abs(rx) < 0.5)then
 			rx = 0
 		end
@@ -161,8 +161,8 @@ end
 local function moveSpiderInDirection()
 	print("spiderProp.leg[lastLegTouched].dirx = " .. spiderProp.leg[lastLegTouched].dirx .. " spiderProp.leg[lastLegTouched].diry = " .. spiderProp.leg[lastLegTouched].diry)
 	print("spiderPreCollisionDirX = " .. spiderPreCollisionDirX .. " spiderPreCollisionDirY = " .. spiderPreCollisionDirY)
-	local rx = spiderMoveDirX * (spiderProp.SpiderRadius / 20) * spiderPreCollisionDirX
-	local ry = spiderMoveDirY * (spiderProp.SpiderRadius / 20) * spiderPreCollisionDirY
+	local rx = spiderMoveDirX * (spiderProp.SpiderRadius / 23) * spiderPreCollisionDirX
+	local ry = spiderMoveDirY * (spiderProp.SpiderRadius / 23) * spiderPreCollisionDirY
 	if(rx == 0) then
 		spiderPreCollisionDirX = 0
 	else

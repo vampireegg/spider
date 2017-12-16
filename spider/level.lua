@@ -238,7 +238,7 @@ local function on_frame( event )
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius * 1.22
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
 		local legCount = 0
-		for (i = 1, 8) do
+		for i = 1, 8 do
 			if(spiderProp.LegExists == 1) then
 				legCount = legCount + 1
 			end

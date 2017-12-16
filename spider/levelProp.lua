@@ -301,4 +301,8 @@ M[8].portal.Types = {2, 3, 4}
 M[8].portal.PosiX = {{320,700}, {490,490}, {660,280}}
 M[8].portal.PosiY = {{150,410}, {150,410}, {150,410}}
 
+M[8].dos_donts = {}
+M[8].dos_donts.Img = "dos_donts_8.png"
+M[8].dos_donts.Color = {0.2, 0.2, 0.2, 1}
+
 return M

@@ -149,6 +149,10 @@ M[4].portal.Types = {4}
 M[4].portal.PosiX = {{800,800}}
 M[4].portal.PosiY = {{70,400}}
 
+M[4].dos_donts = {}
+M[4].dos_donts.Img = "dos_donts_4.png"
+M[4].dos_donts.Color = {0.3, 0.2, 0.4, 1}
+
 ---------------------------------------- Level 5----------------------------------------
 M[5] = {}
 

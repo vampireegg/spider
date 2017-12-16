@@ -15,4 +15,4 @@ local options = {
  
 -- Go to the menu screen
 composer.setVariable( "level", 1 )
-composer.gotoScene( "dos_donts" )
+composer.gotoScene( "dos_donts", options )

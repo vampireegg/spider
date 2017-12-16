@@ -64,6 +64,8 @@ local spiderMoveDirY
 local spiderPreCollisionDirX
 local spiderPreCollisionDirY
 local lastCollidedWith = {}
+local options
+
 
 
 local function pushLeg(event )	
@@ -128,19 +130,15 @@ local function endGame()
 		end
 	end
 	display.remove(sceneGroup)
-    local options = 
-	{
-		effect = "crossfade",
-		time = 800
-	}
+
 	 
 	-- Go to the menu screen
 	if(spiderReachedGoal == true) then
 		print("going to dos_donts")
-		composer.gotoScene( "dos_donts" )
+		composer.gotoScene( "dos_donts" , options)
 	else
 		print("going to level")
-		composer.gotoScene( "level" )
+		composer.gotoScene( "level" , options)
 	end
 end
 
@@ -387,6 +385,11 @@ function scene:create( event )
 	spiderPreCollisionDirX = 0
 	spiderPreCollisionDirY = 0
 	lastCollidedWith.Name = ""
+	options = 
+	{
+		effect = "slideLeft",
+		time = 800
+	}
 	
 	physics.pause()
     local sceneGroup = self.view

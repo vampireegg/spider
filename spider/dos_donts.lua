@@ -11,7 +11,11 @@ local totalHeight
 local totalWidth
 
 local function gotoGame()
-    composer.gotoScene( "level" )
+	local options = {
+		effect = "slideLeft",
+		time = 800
+	}
+    composer.gotoScene( "level" , options)
 end
 
 function scene:create( event )

@@ -73,6 +73,10 @@ M[2].portal.Types = {}
 M[2].portal.PosiX = {}
 M[2].portal.PosiY = {}
 
+M[2].dos_donts = {}
+M[2].dos_donts.Img = "dos_donts_1.png"
+M[2].dos_donts.Color = {0, 0, 0, 1}
+
 ---------------------------------------- Level 3----------------------------------------
 M[3] = {}
 

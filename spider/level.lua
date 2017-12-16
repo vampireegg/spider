@@ -135,7 +135,13 @@ local function endGame()
 	}
 	 
 	-- Go to the menu screen
-	composer.gotoScene( "level" )
+	if(spiderReachedGoal == true) then
+		print("going to dos_donts")
+		composer.gotoScene( "dos_donts" )
+	else
+		print("going to level")
+		composer.gotoScene( "level" )
+	end
 end
 
 local function shiftSpiderByOne()
@@ -274,13 +280,14 @@ local function on_frame( event )
 	if(distance(spider[1],goal[1]) < spiderProp.SpiderRadius / 4.48 and spiderReachedGoal == false) then
 		print("reached goal")
 		goal[1]:setFillColor( 1, 1, 1, 0 )
-		spiderReachedGoal = true
+		
 		Runtime:removeEventListener( "enterFrame", on_frame )
 		if(Level < #levelProp) then
 			composer.setVariable( "level", Level + 1 )
 		else
 			composer.setVariable( "level", 1 )
 		end
+		spiderReachedGoal = true
 		myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
 		
 	end

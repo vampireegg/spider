@@ -17,6 +17,7 @@ end
 function scene:create( event )
  
 	Level = composer.getVariable("level")
+	print("dos_donts Level = " .. Level)
 	
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -69,6 +70,7 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen
+		composer.removeScene( "dos_donts" )
 
 	end
 end

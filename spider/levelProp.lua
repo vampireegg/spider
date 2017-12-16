@@ -74,8 +74,8 @@ M[2].portal.PosiX = {}
 M[2].portal.PosiY = {}
 
 M[2].dos_donts = {}
-M[2].dos_donts.Img = "dos_donts_1.png"
-M[2].dos_donts.Color = {0, 0, 0, 1}
+M[2].dos_donts.Img = "dos_donts_2.png"
+M[2].dos_donts.Color = {0.6, 0.4, 0.3, 1}
 
 ---------------------------------------- Level 3----------------------------------------
 M[3] = {}
@@ -110,6 +110,10 @@ M[3].portal.Exists = 0
 M[3].portal.Types = {}
 M[3].portal.PosiX = {}
 M[3].portal.PosiY = {}
+
+M[3].dos_donts = {}
+M[3].dos_donts.Img = "dos_donts_3.png"
+M[3].dos_donts.Color = {0.5, 0.4, 0.3, 1}
 
 ---------------------------------------- Level 4----------------------------------------
 M[4] = {}

@@ -14,5 +14,5 @@ local options = {
 }
  
 -- Go to the menu screen
-composer.setVariable( "level", 1 )
+composer.setVariable( "level", 3 )
 composer.gotoScene( "dos_donts" )

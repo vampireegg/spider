@@ -237,8 +237,19 @@ end
 local function on_frame( event )
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius * 1.22
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
-		bgProp.reLoadButton:setFillColor( 1, 1, 1, 0 )
-		bgProp.crossButton:setFillColor( 1, 1, 1, 0 )
+		local legCount = 0
+		for (i = 1, 8) do
+			if(spiderProp.LegExists == 1) then
+				legCount = legCount + 1
+			end
+		end
+		if (legCount > 0) then
+			bgProp.reLoadButton:setFillColor( 1, 1, 1, 0 )
+			bgProp.crossButton:setFillColor( 1, 1, 1, 0 )
+		else
+			bgProp.reLoadButton:setFillColor( 1, 1, 1, 1 )
+			bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
+		end
 	else
 		bgProp.reLoadButton:setFillColor( 1, 1, 1, 1 )
 		bgProp.crossButton:setFillColor( 1, 1, 1, 1 )

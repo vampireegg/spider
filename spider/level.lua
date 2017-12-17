@@ -290,7 +290,7 @@ local function on_frame( event )
 		print("reached goal")
 		goal[1]:setFillColor( 1, 1, 1, 0 )
 		
-		Runtime:removeEventListener( "enterFrame", on_frame )
+		--Runtime:removeEventListener( "enterFrame", on_frame )
 		if(Level < #levelProp) then
 			composer.setVariable( "level", Level + 1 )
 		else
@@ -303,7 +303,7 @@ local function on_frame( event )
 	if(needtoReload == true) then
 		local vx, vy = spider[1]:getLinearVelocity()
 		if(vx == 0 and vy == 0) then
-			Runtime:removeEventListener( "enterFrame", on_frame )
+			--Runtime:removeEventListener( "enterFrame", on_frame )
 			myTimers[#myTimers+1] = timer.performWithDelay( 500, endGame )
 		end
 	end
@@ -435,9 +435,10 @@ function scene:show( event )
 		print("show called")
 		physics.start()
 		
-		Runtime:addEventListener( "enterFrame", on_frame )
+		--Runtime:addEventListener( "enterFrame", on_frame )
 		spider[1].collision = spiderCollided
 		spider[1]:addEventListener( "collision" )
+		myTimers[#myTimers+1] = timer.performWithDelay( 33, on_frame, 0 )
 	end
 end
 

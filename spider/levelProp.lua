@@ -311,8 +311,8 @@ M[9] = {}
 
 M[9].spider = {}
 M[9].spider.MyScale = 0.12
-M[9].spider.PosiX = 200
-M[9].spider.PosiY = 150
+M[9].spider.PosiX = 320
+M[9].spider.PosiY = 100
 M[9].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[9].collider = {}
@@ -323,8 +323,8 @@ M[9].collider.Orientation = {1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2}
 M[9].collider.ColliderType = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 
 M[9].goal = {}
-M[9].goal.PosiX = 830
-M[9].goal.PosiY = 150
+M[9].goal.PosiX = EOF
+M[9].goal.PosiY = EOF
 
 M[9].bg = {}
 M[9].bg.Img = "leaf.jpg"
@@ -334,10 +334,10 @@ M[9].eye = {}
 M[9].eye.Opacity = 0
 
 M[9].portal = {}
-M[9].portal.Exists = 0
-M[9].portal.Types = {}
-M[9].portal.PosiX = {}
-M[9].portal.PosiY = {}
+M[9].portal.Exists = 1
+M[9].portal.Types = {6, 2}
+M[9].portal.PosiX = {{320, 740}, {220, EOF}}
+M[9].portal.PosiY = {{210, 480}, {100, EOF}}
 
 M[9].dos_donts = {}
 M[9].dos_donts.Img = "dos_donts_8.png"

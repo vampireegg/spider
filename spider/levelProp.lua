@@ -335,9 +335,9 @@ M[9].eye.Opacity = 0
 
 M[9].portal = {}
 M[9].portal.Exists = 1
-M[9].portal.Types = {6, 2}
-M[9].portal.PosiX = {{320, 740}, {220, EOF}}
-M[9].portal.PosiY = {{210, 480}, {100, EOF}}
+M[9].portal.Types = {6, 2, 3}
+M[9].portal.PosiX = {{320, 740}, {220, EOF}, {850, 740}}
+M[9].portal.PosiY = {{210, 480}, {100, EOF}, {480, 100}}
 
 M[9].dos_donts = {}
 M[9].dos_donts.Img = "dos_donts_8.png"

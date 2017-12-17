@@ -99,6 +99,7 @@ local function pushLeg(event )
 		end
 		spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 		spider[1].angularVelocity = 0
+		lastCollidedWith.Name = ""
 	end
 end
 

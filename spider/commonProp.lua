@@ -20,7 +20,7 @@ M.goal = {}
 M.goal.Size = 70
 
 M.portal = {}
-M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png", "ptbl.png", "ptfw.png", "ptfb.png" }
+M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png",  "ptfw.png", "ptfb.png", "ptbl.png",}
 M.portal.Size = 50
 
 

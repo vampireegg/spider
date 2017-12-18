@@ -138,7 +138,15 @@ local function endGame()
 	end
 	display.remove(sceneGroup)
 
-	 
+	levelTable[1] = composer.getVariable("level")
+	local file = io.open( filePath, "w" )
+	if file then
+		print("writing to file: " .. json.encode( levelTable ))
+        file:write( json.encode( levelTable ) )
+        io.close( file )
+	else
+		print("writing to file failed")
+    end
 	-- Go to the menu screen
 	if(spiderReachedGoal == true) then
 		print("going to dos_donts")

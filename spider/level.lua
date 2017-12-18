@@ -70,7 +70,7 @@ local filePath
 
 
  
-local scoresTable = {}
+local levelTable = {}
 
 
 

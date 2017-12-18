@@ -1,6 +1,8 @@
 
 
 local composer = require( "composer" )
+local json = require( "json" )
+local filePath = system.pathForFile( "scores.json", system.DocumentsDirectory )
  
 -- Hide status bar
 display.setStatusBar( display.HiddenStatusBar )

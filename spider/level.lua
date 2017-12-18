@@ -14,6 +14,7 @@ local drawFuncs = require("drawFuncs")
 local commonProp = require("commonProp")
 local levelProp = require("levelProp")
 local composer = require( "composer" )
+local json = require( "json" )
  
  -- Hide the status bar
 display.setStatusBar( display.HiddenStatusBar )
@@ -65,6 +66,11 @@ local spiderPreCollisionDirX
 local spiderPreCollisionDirY
 local lastCollidedWith = {}
 local options
+local filePath
+
+
+ 
+local scoresTable = {}
 
 
 
@@ -397,6 +403,7 @@ function scene:create( event )
 	spiderPreCollisionDirX = 0
 	spiderPreCollisionDirY = 0
 	lastCollidedWith.Name = ""
+	filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	options = 
 	{
 		effect = "slideLeft",

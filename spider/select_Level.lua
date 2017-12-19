@@ -11,6 +11,9 @@ local bgProp = {}
 local totalHeight
 local totalWidth
 
+local spiderProp = {}
+local spider = {}
+
 local function gotoGame()
 	local options = {
 		effect = "slideLeft",
@@ -30,21 +33,24 @@ function scene:create( event )
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
 	
-	bgProp.Img = levelProp[Level].dos_donts.Img
-	bgProp.Color = levelProp[Level].dos_donts.Color
+	--bgProp.Img = levelProp[Level].dos_donts.Img
+	bgProp.Color = levelProp[7].dos_donts.Color
 	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
+	spiderProp.MyScale = 0.5
+	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
+	spiderProp.BodySize = 487 * spiderProp.MyScale
+	spiderProp.ArrowDistance = 365 * spiderProp.MyScale
+	spiderProp.SpiderRadius = spiderProp.ArrowSize + spiderProp.ArrowDistance
+	spiderProp.PosiX = totalHeight / 2
+	spiderProp.PosiY = totalWidth / 2
+	spiderProp.LegExists = {1,1,1,1,1,1,1,1}
+	spiderProp.leg = {}
+	spiderProp.legSquare = {}
 	
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics)
  
-	
-    local background = display.newImageRect( sceneGroup, bgProp.Img, totalHeight, totalWidth )
-    background.x = display.contentCenterX
-    background.y = display.contentCenterY
-	
-	
-	
-	background:addEventListener( "tap", gotoGame )
 end
 
 

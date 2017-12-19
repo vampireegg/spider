@@ -36,4 +36,4 @@ local options = {
  
 -- Go to the menu screen
 composer.setVariable( "level", levelTable[1] )
-composer.gotoScene( "dos_donts", options )
+composer.gotoScene( "select_Level", options )

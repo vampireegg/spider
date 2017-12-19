@@ -11,6 +11,14 @@ local bgProp = {}
 local totalHeight
 local totalWidth
 
+local function gotoGame()
+	local options = {
+		effect = "slideLeft",
+		time = 800
+	}
+    composer.gotoScene( "level" , options)
+end
+
 function scene:create( event )
  
 	Level = composer.getVariable("level")

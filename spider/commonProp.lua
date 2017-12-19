@@ -23,5 +23,8 @@ M.portal = {}
 M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png",  "ptfw.png", "ptfb.png", "ptbl.png", "ptrb.png"}
 M.portal.Size = 50
 
+M.level_select_screen = {}
+M.level_select_screen.Color = {0.2, 0.1, 0.1, 1}
+
 
 return M

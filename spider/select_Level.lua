@@ -34,7 +34,7 @@ function scene:create( event )
 	totalHeight = commonProp.total.Height
 	
 	--bgProp.Img = levelProp[Level].dos_donts.Img
-	bgProp.Color = levelProp[7].dos_donts.Color
+	bgProp.Color = commonProp.level_select_screen.Color
 	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	

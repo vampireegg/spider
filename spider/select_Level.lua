@@ -33,10 +33,14 @@ function scene:create( event )
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
 	
-	--bgProp.Img = levelProp[Level].dos_donts.Img
+	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color
-	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
-	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
+	--local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
+	--bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
+	
+	local background = display.newImageRect( sceneGroup, bgProp.Img, totalHeight, totalWidth )
+    background.x = display.contentCenterX
+    background.y = display.contentCenterY
 	
 	spiderProp.MyScale = 0.5
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale

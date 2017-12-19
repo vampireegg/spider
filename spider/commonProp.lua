@@ -25,6 +25,7 @@ M.portal.Size = 50
 
 M.level_select_screen = {}
 M.level_select_screen.Color = {0.2, 0.1, 0.1, 1}
+M.level_select_screen.Img = "bbg2.jpg"
 
 
 return M

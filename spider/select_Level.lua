@@ -29,7 +29,7 @@ local function gotoGame(event)
 		effect = "slideLeft",
 		time = 800
 	}
-	composer.getVariable(event.target.level)
+	composer.setVariable("level",event.target.level)
     composer.gotoScene( "dos_donts" , options)
 end
 

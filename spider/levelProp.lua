@@ -163,7 +163,7 @@ M[4].dos_donts.Img = "dos_donts_4.png"
 M[4].dos_donts.Color = {0.3, 0.2, 0.4, 1}
 
 M[4].icon = {}
-M[4].icon.Img = "li_1.png"
+M[4].icon.Img = "li_4.png"
 
 ---------------------------------------- Level 5----------------------------------------
 M[5] = {}

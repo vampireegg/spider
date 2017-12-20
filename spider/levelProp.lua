@@ -39,6 +39,9 @@ M[1].dos_donts = {}
 M[1].dos_donts.Img = "dos_donts_1.png"
 M[1].dos_donts.Color = {0.4, 0.3, 0.2, 1}
 
+M[1].icon = {}
+M[1].icon.Img = "level_icon_1.png"
+
 ---------------------------------------- Level 2----------------------------------------
 M[2] = {}
 
@@ -76,6 +79,9 @@ M[2].portal.PosiY = {}
 M[2].dos_donts = {}
 M[2].dos_donts.Img = "dos_donts_2.png"
 M[2].dos_donts.Color = {0.6, 0.4, 0.3, 1}
+
+M[2].icon = {}
+M[2].icon.Img = "level_icon_1.png"
 
 ---------------------------------------- Level 3----------------------------------------
 M[3] = {}
@@ -115,6 +121,9 @@ M[3].dos_donts = {}
 M[3].dos_donts.Img = "dos_donts_3.png"
 M[3].dos_donts.Color = {0.5, 0.4, 0.3, 1}
 
+M[3].icon = {}
+M[3].icon.Img = "level_icon_1.png"
+
 ---------------------------------------- Level 4----------------------------------------
 M[4] = {}
 
@@ -152,6 +161,9 @@ M[4].portal.PosiY = {{70,400}}
 M[4].dos_donts = {}
 M[4].dos_donts.Img = "dos_donts_4.png"
 M[4].dos_donts.Color = {0.3, 0.2, 0.4, 1}
+
+M[4].icon = {}
+M[4].icon.Img = "level_icon_1.png"
 
 ---------------------------------------- Level 5----------------------------------------
 M[5] = {}
@@ -191,6 +203,9 @@ M[5].dos_donts = {}
 M[5].dos_donts.Img = "dos_donts_5.png"
 M[5].dos_donts.Color = {0.3, 0.2, 0.5, 1}
 
+M[5].icon = {}
+M[5].icon.Img = "level_icon_1.png"
+
 ---------------------------------------- Level 6----------------------------------------
 M[6] = {}
 
@@ -228,6 +243,9 @@ M[6].portal.PosiY = {{70,490}, {270,490}, {270,170}, {490,490}}
 M[6].dos_donts = {}
 M[6].dos_donts.Img = "dos_donts_6.png"
 M[6].dos_donts.Color = {0.2, 0.4, 0.5, 1}
+
+M[6].icon = {}
+M[6].icon.Img = "level_icon_1.png"
 
 ---------------------------------------- Level 7----------------------------------------
 M[7] = {}
@@ -267,6 +285,9 @@ M[7].dos_donts = {}
 M[7].dos_donts.Img = "dos_donts_7.png"
 M[7].dos_donts.Color = {0.2, 0.3, 0.2, 1}
 
+M[7].icon = {}
+M[7].icon.Img = "level_icon_1.png"
+
 ---------------------------------------- Level 8----------------------------------------
 
 M[8] = {}
@@ -305,6 +326,9 @@ M[8].dos_donts = {}
 M[8].dos_donts.Img = "dos_donts_8.png"
 M[8].dos_donts.Color = {0.2, 0.2, 0.2, 1}
 
+M[8].icon = {}
+M[8].icon.Img = "level_icon_1.png"
+
 ---------------------------------------- Level 9----------------------------------------
 
 M[9] = {}
@@ -342,5 +366,8 @@ M[9].portal.PosiY = {{230, 500}, {80,  500}, {500, 230}, {80,  350}, {500,  80},
 M[9].dos_donts = {}
 M[9].dos_donts.Img = "dos_donts_9.png"
 M[9].dos_donts.Color = {0.2, 0.2, 0.3, 1}
+
+M[9].icon = {}
+M[9].icon.Img = "level_icon_1.png"
 
 return M

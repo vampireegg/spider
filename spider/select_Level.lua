@@ -24,6 +24,12 @@ local spider = {}
 local iConPosX
 local iConPosY
 
+local next1st_Level
+local current1st_Level
+
+local nextScreenButton
+local prevScreenButton
+
 local function gotoGame(event)
 	local options = {
 		effect = "slideLeft",
@@ -59,6 +65,7 @@ function scene:create( event )
 	print("dos_donts Level = " .. Level)
 	
 	MaxLevel = 9
+	current1st_Level = composer.getVariable("1st_level")
 	-- Level_Per_Row = 5
 	-- Rows = math.ceil(MaxLevel / Level_Per_Row)
 	
@@ -137,7 +144,10 @@ function scene:create( event )
 			-- levelIcons[levelCount].circle:setStrokeColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4] )
 			levelCount = levelCount + 1
 		end
-	end	
+	end
+
+	if (current1st_Level + 8 <= MaxLevel) then
+	end
  
 end
 

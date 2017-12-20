@@ -73,6 +73,7 @@ local function gotoSelectLevel(event)
 		time = 800
 	}
 	composer.setVariable("1st_level",event.target.target1stLevel)
+	print("gotoSelectLevel" .. event.target.target1stLevel)
     composer.gotoScene( "select_Level" , options)
 end
 
@@ -147,8 +148,8 @@ function scene:create( event )
 	if (current1st_Level ~= 1) then
 		prevScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
 		prevScreenButton[1].x = 50
-		prevScreenButton[1].y = 50
-		prevScreenButton[1].rotation = 315
+		prevScreenButton[1].y = totalWidth - 50
+		prevScreenButton[1].rotation = -135
 		prevScreenButton[1].target1stLevel = current1st_Level - 8
 		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
 	end

@@ -30,35 +30,52 @@ local current1st_Level
 local nextScreenButton = {}
 local prevScreenButton = {}
 
-
-local function on_frame( event )
-	for i = 1, 8 do
-		if(spiderProp.leg[i].exists == 1)then
-			if(legPhase == 1) then
-				spiderProp.leg[i].x = spiderProp.leg[i].x + 0.5 * spiderProp.leg[i].dirx
-				spiderProp.leg[i].y = spiderProp.leg[i].y + 0.5 * spiderProp.leg[i].diry
-			else
-				spiderProp.leg[i].x = spiderProp.leg[i].x - 0.5 * spiderProp.leg[i].dirx
-				spiderProp.leg[i].y = spiderProp.leg[i].y - 0.5 * spiderProp.leg[i].diry
-			end
-		end
-	end
-	legPhaseCount = legPhaseCount + 1
-	if(legPhaseCount == 10) then
-		legPhase = legPhase * -1
-		legPhaseCount = 0
-	end
-end
+local ending_level
+local needtoGoToSelectLevel
 
 local function endSelection()
-	Runtime:removeEventListener( "enterFrame", on_frame )
 	display.remove( spider[1] )
 	for i = current1st_Level,current1st_Level + 7 do
 		display.remove(levelIcons[i])
 	end
+	ending_level = true
+	local options = {
+		effect = "slideLeft",
+		time = 800
+	}
+	composer.gotoScene( "select_Level", options )
+	
 end 
 
+local function on_frame( event )
+
+	if(needtoGoToSelectLevel == true) then
+		Runtime:removeEventListener( "enterFrame", on_frame )
+		timer.performWithDelay( 100, endSelection )
+	else
+		for i = 1, 8 do
+			if(spiderProp.leg[i].exists == 1)then
+				if(legPhase == 1) then
+					spiderProp.leg[i].x = spiderProp.leg[i].x + 0.5 * spiderProp.leg[i].dirx
+					spiderProp.leg[i].y = spiderProp.leg[i].y + 0.5 * spiderProp.leg[i].diry
+				else
+					spiderProp.leg[i].x = spiderProp.leg[i].x - 0.5 * spiderProp.leg[i].dirx
+					spiderProp.leg[i].y = spiderProp.leg[i].y - 0.5 * spiderProp.leg[i].diry
+				end
+			end
+		end
+		legPhaseCount = legPhaseCount + 1
+		if(legPhaseCount == 10) then
+			legPhase = legPhase * -1
+			legPhaseCount = 0
+		end
+	end
+end
+
+
+
 local function gotoGame(event)
+	endSelection()
 	local options = {
 		effect = "slideLeft",
 		time = 800
@@ -68,13 +85,10 @@ local function gotoGame(event)
 end
 
 local function gotoSelectLevel(event)
-	local options = {
-		effect = "slideLeft",
-		time = 800
-	}
+	needtoGoToSelectLevel = true	
 	composer.setVariable("1st_level",event.target.target1stLevel)
 	print("gotoSelectLevel" .. event.target.target1stLevel)
-    composer.gotoScene( "select_Level" , options)
+    
 end
 
 
@@ -84,6 +98,7 @@ function scene:create( event )
 	Level = composer.getVariable("level")
 	print("dos_donts Level = " .. Level)
 	
+	needtoGoToSelectLevel = false
 	MaxLevel = 9
 	current1st_Level = composer.getVariable("1st_level")
 	print("current1st_Level = " .. current1st_Level)
@@ -100,6 +115,8 @@ function scene:create( event )
 	
 	legPhase = 1
 	legPhaseCount = 0
+	
+	ending_level = false
 	
 	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color

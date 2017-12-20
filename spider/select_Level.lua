@@ -35,14 +35,16 @@ function scene:create( event )
 	
 	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color
-	--local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
-	--bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
+	-- local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
+	-- bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
 	local background = display.newImageRect( sceneGroup, bgProp.Img, totalHeight, totalWidth )
-    background.x = display.contentCenterX
-    background.y = display.contentCenterY
+    background.x = totalHeight/2
+    background.y = totalWidth/2
+	background:scale(1,1)
+	background:setFillColor(1,1,1,0.4)
 	
-	spiderProp.MyScale = 0.5
+	spiderProp.MyScale = 0.4
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
 	spiderProp.BodySize = 487 * spiderProp.MyScale
 	spiderProp.ArrowDistance = 365 * spiderProp.MyScale

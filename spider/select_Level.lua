@@ -24,12 +24,13 @@ local spider = {}
 local iConPosX
 local iConPosY
 
-local function gotoGame()
+local function gotoGame(event)
 	local options = {
 		effect = "slideLeft",
 		time = 800
 	}
-    composer.gotoScene( "level" , options)
+	composer.getVariable(event.target.level)
+    composer.gotoScene( "dos_donts" , options)
 end
 
 
@@ -128,6 +129,8 @@ function scene:create( event )
 			local radAngle = (i - 1) * 45 * math.pi / 180
 			levelIcons[levelCount].x = totalHeight/ 2 + 250 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 250 * math.sin(radAngle)
+			levelIcons[levelCount].level = levelCount
+			levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			-- levelIcons[levelCount].circle = display.newCircle( sceneGroup, levelIcons[levelCount].x , levelIcons[levelCount].y, 45 )
 			-- levelIcons[levelCount].circle:setFillColor( 1,1,1,0 )
 			-- levelIcons[levelCount].circle.strokeWidth = 5
@@ -167,7 +170,7 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen
-		composer.removeScene( "dos_donts" )
+		composer.removeScene( "select_level" )
 
 	end
 end

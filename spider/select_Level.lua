@@ -32,6 +32,7 @@ local prevScreenButton = {}
 
 local ending_level
 local needtoGoToSelectLevel
+local gotoSelectedLevel
 
 local function endSelection()
 	display.remove( spider[1] )
@@ -43,7 +44,11 @@ local function endSelection()
 		effect = "slideLeft",
 		time = 800
 	}
-	composer.gotoScene( "select_Level", options )
+	if(gotoSelectedLevel == true) then
+		composer.gotoScene( "select_Level", options )
+	else
+		composer.gotoScene( "dos_donts" , options)
+	end
 	
 end 
 
@@ -75,13 +80,9 @@ end
 
 
 local function gotoGame(event)
-	endSelection()
-	local options = {
-		effect = "slideLeft",
-		time = 800
-	}
+	needtoGoToSelectLevel = true	
+	gotoSelectedLevel = false
 	composer.setVariable("level",event.target.level)
-    composer.gotoScene( "dos_donts" , options)
 end
 
 local function gotoSelectLevel(event)
@@ -101,6 +102,7 @@ function scene:create( event )
 	needtoGoToSelectLevel = false
 	MaxLevel = 9
 	current1st_Level = composer.getVariable("1st_level")
+	gotoSelectedLevel= true
 	print("current1st_Level = " .. current1st_Level)
 	-- Level_Per_Row = 5
 	-- Rows = math.ceil(MaxLevel / Level_Per_Row)

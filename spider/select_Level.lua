@@ -124,11 +124,11 @@ function scene:create( event )
 	local levelCount = 1
 	for i = 1,8 do
 		if(levelCount <= MaxLevel) then
-			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 100, 100 )
-			--levelIcons[levelCount]:scale(0.15, 0.15)
+			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 432, 468 )
+			levelIcons[levelCount]:scale(0.25, 0.25)
 			local radAngle = (i - 1) * 45 * math.pi / 180
-			levelIcons[levelCount].x = totalHeight/ 2 + 250 * math.cos(radAngle)
-			levelIcons[levelCount].y = totalWidth / 2 + 250 * math.sin(radAngle)
+			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
+			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
 			levelIcons[levelCount].level = levelCount
 			levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			-- levelIcons[levelCount].circle = display.newCircle( sceneGroup, levelIcons[levelCount].x , levelIcons[levelCount].y, 45 )

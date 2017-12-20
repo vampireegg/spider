@@ -286,7 +286,7 @@ M[7].dos_donts.Img = "dos_donts_7.png"
 M[7].dos_donts.Color = {0.2, 0.3, 0.2, 1}
 
 M[7].icon = {}
-M[7].icon.Img = "li_1.png"
+M[7].icon.Img = "li_7.png"
 
 ---------------------------------------- Level 8----------------------------------------
 

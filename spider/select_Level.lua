@@ -30,6 +30,8 @@ local current1st_Level
 local nextScreenButton = {}
 local prevScreenButton = {}
 
+
+
 local function gotoGame(event)
 	local options = {
 		effect = "slideLeft",
@@ -44,6 +46,7 @@ local function gotoSelectLevel(event)
 		effect = "slideLeft",
 		time = 800
 	}
+	composer.setVariable("1st_level",event.target.target1stLevel)
     composer.gotoScene( "select_Level" , options)
 end
 
@@ -109,7 +112,7 @@ function scene:create( event )
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1, 0)
 	
-	local levelCount = 1
+	local levelCount = current1st_Level
 	for i = 1,8 do
 		if(levelCount <= MaxLevel) then
 			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 432, 468 )
@@ -129,7 +132,7 @@ function scene:create( event )
 		nextScreenButton[1].y = totalWidth - 50
 		nextScreenButton[1].rotation = 45
 		nextScreenButton[1].target1stLevel = current1st_Level + 8
-		nextScreenButton[1].addEventListener( "tap", gotoSelectLevel )
+		nextScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
 	end
 	
 	if (current1st_Level ~= 1) then
@@ -138,7 +141,7 @@ function scene:create( event )
 		prevScreenButton[1].y = 50
 		prevScreenButton[1].rotation = 315
 		prevScreenButton[1].target1stLevel = current1st_Level - 8
-		prevScreenButton[1].addEventListener( "tap", gotoSelectLevel )
+		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
 	end
  
 end

@@ -30,7 +30,28 @@ local current1st_Level
 local nextScreenButton = {}
 local prevScreenButton = {}
 
+
+local function on_frame( event )
+	for i = 1, 8 do
+		if(spiderProp.leg[i].exists == 1)then
+			if(legPhase == 1) then
+				spiderProp.leg[i].x = spiderProp.leg[i].x + 0.5 * spiderProp.leg[i].dirx
+				spiderProp.leg[i].y = spiderProp.leg[i].y + 0.5 * spiderProp.leg[i].diry
+			else
+				spiderProp.leg[i].x = spiderProp.leg[i].x - 0.5 * spiderProp.leg[i].dirx
+				spiderProp.leg[i].y = spiderProp.leg[i].y - 0.5 * spiderProp.leg[i].diry
+			end
+		end
+	end
+	legPhaseCount = legPhaseCount + 1
+	if(legPhaseCount == 10) then
+		legPhase = legPhase * -1
+		legPhaseCount = 0
+	end
+end
+
 local function endSelection()
+	Runtime:removeEventListener( "enterFrame", on_frame )
 	display.remove( spider[1] )
 	for i = current1st_Level,current1st_Level + 7 do
 		display.remove(levelIcons[i])
@@ -56,24 +77,6 @@ local function gotoSelectLevel(event)
 end
 
 
-local function on_frame( event )
-	for i = 1, 8 do
-		if(spiderProp.leg[i].exists == 1)then
-			if(legPhase == 1) then
-				spiderProp.leg[i].x = spiderProp.leg[i].x + 0.5 * spiderProp.leg[i].dirx
-				spiderProp.leg[i].y = spiderProp.leg[i].y + 0.5 * spiderProp.leg[i].diry
-			else
-				spiderProp.leg[i].x = spiderProp.leg[i].x - 0.5 * spiderProp.leg[i].dirx
-				spiderProp.leg[i].y = spiderProp.leg[i].y - 0.5 * spiderProp.leg[i].diry
-			end
-		end
-	end
-	legPhaseCount = legPhaseCount + 1
-	if(legPhaseCount == 10) then
-		legPhase = legPhase * -1
-		legPhaseCount = 0
-	end
-end
 
 function scene:create( event )
  

@@ -30,7 +30,12 @@ local current1st_Level
 local nextScreenButton = {}
 local prevScreenButton = {}
 
-
+local function endSelection()
+	display.remove( spider[1] )
+	for i = current1st_Level,current1st_Level + 7 do
+		display.remove(levelIcons[i])
+	end
+end 
 
 local function gotoGame(event)
 	local options = {

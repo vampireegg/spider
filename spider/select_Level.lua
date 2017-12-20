@@ -10,6 +10,8 @@ local Level
 local bgProp = {}
 local totalHeight
 local totalWidth
+local legPhase
+local legPhaseCount
 
 local spiderProp = {}
 local spider = {}
@@ -22,6 +24,26 @@ local function gotoGame()
     composer.gotoScene( "level" , options)
 end
 
+
+local function on_frame( event )
+	for i = 1, 8 do
+		if(spiderProp.leg[i].exists == 1)then
+			if(legPhase == 1) then
+				spiderProp.leg[i].x = spiderProp.leg[i].x + 0.5 * spiderProp.leg[i].dirx
+				spiderProp.leg[i].y = spiderProp.leg[i].y + 0.5 * spiderProp.leg[i].diry
+			else
+				spiderProp.leg[i].x = spiderProp.leg[i].x - 0.5 * spiderProp.leg[i].dirx
+				spiderProp.leg[i].y = spiderProp.leg[i].y - 0.5 * spiderProp.leg[i].diry
+			end
+		end
+	end
+	legPhaseCount = legPhaseCount + 1
+	if(legPhaseCount == 10) then
+		legPhase = legPhase * -1
+		legPhaseCount = 0
+	end
+end
+
 function scene:create( event )
  
 	Level = composer.getVariable("level")
@@ -32,6 +54,9 @@ function scene:create( event )
 	
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
+	
+	legPhase = 1
+	legPhaseCount = 0
 	
 	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color
@@ -71,6 +96,7 @@ function scene:show( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
+		Runtime:addEventListener( "enterFrame", on_frame )
 
 	end
 end

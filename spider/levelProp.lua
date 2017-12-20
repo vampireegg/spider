@@ -204,7 +204,7 @@ M[5].dos_donts.Img = "dos_donts_5.png"
 M[5].dos_donts.Color = {0.3, 0.2, 0.5, 1}
 
 M[5].icon = {}
-M[5].icon.Img = "li_1.png"
+M[5].icon.Img = "li_5.png"
 
 ---------------------------------------- Level 6----------------------------------------
 M[6] = {}
@@ -245,7 +245,7 @@ M[6].dos_donts.Img = "dos_donts_6.png"
 M[6].dos_donts.Color = {0.2, 0.4, 0.5, 1}
 
 M[6].icon = {}
-M[6].icon.Img = "li_1.png"
+M[6].icon.Img = "li_6.png"
 
 ---------------------------------------- Level 7----------------------------------------
 M[7] = {}

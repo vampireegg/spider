@@ -45,8 +45,10 @@ local function endSelection()
 		time = 800
 	}
 	if(gotoSelectedLevel == true) then
+		print("going to select_Level")
 		composer.gotoScene( "select_Level", options )
 	else
+		print("going to dos_donts")
 		composer.gotoScene( "dos_donts" , options)
 	end
 	

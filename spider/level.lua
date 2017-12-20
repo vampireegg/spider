@@ -426,7 +426,7 @@ function scene:create( event )
 	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
-	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics)
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 

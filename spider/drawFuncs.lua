@@ -199,7 +199,9 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, opacity, hasS
 	--local offsetRectParams = { halfWidth=spiderProp.SpiderRadius, halfHeight=spiderProp.SpiderRadius, x=0, y=0, angle=0 }
 	--spider[1].isFixedRotation = true
 	
-	physics.addBody( spider[1], "dynamic", {radius = spiderProp.SpiderRadius * .9, friction=0, bounce=0})
+	if(physics ~= nil) then
+		physics.addBody( spider[1], "dynamic", {radius = spiderProp.SpiderRadius * .9, friction=0, bounce=0})
+	end
 	spider[1].isBullet = true
 end
 

@@ -85,6 +85,7 @@ function scene:create( event )
 	
 	MaxLevel = 9
 	current1st_Level = composer.getVariable("1st_level")
+	print("current1st_Level = " .. current1st_Level)
 	-- Level_Per_Row = 5
 	-- Rows = math.ceil(MaxLevel / Level_Per_Row)
 	
@@ -118,7 +119,7 @@ function scene:create( event )
 	spiderProp.LegImg = "arrow_icon.png"
 	spiderProp.Img = "spider_icon.png"
 	
-	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1, 0)
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 1, 0)
 	
 	local levelCount = current1st_Level
 	for i = 1,8 do

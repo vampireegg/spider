@@ -140,7 +140,7 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, opacity, hasS
 	}
 	spiderProp.bodySheet = graphics.newImageSheet("sheet.png", sheetInfo:getSheet())
 	for i = 1,8 do
-		spiderProp.leg[i] = display.newImageRect(sceneGroup, "arrow.png", spiderProp.ArrowSize,spiderProp.ArrowSize  )
+		spiderProp.leg[i] = display.newImageRect(sceneGroup, spiderProp.LegImg, spiderProp.ArrowSize,spiderProp.ArrowSize  )
 		spiderProp.leg[i].angle = i * 45
 		spiderProp.leg[i].radAngle = (spiderProp.leg[i].angle + 135) * math.pi / 180
 		spiderProp.leg[i].exists = true

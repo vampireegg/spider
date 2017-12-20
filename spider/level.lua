@@ -382,6 +382,7 @@ function scene:create( event )
 	spiderProp.PosiX = levelProp[Level].spider.PosiX
 	spiderProp.PosiY = levelProp[Level].spider.PosiY
 	spiderProp.LegExists = levelProp[Level].spider.LegExists
+	spiderProp.LegImg = "arrow.png"
 	spiderProp.leg = {}
 	spiderProp.legSquare = {}
 	

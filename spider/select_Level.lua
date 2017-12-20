@@ -105,7 +105,7 @@ function scene:create( event )
 	-- background:scale(1,1)
 	-- background:setFillColor(1,1,1,0.4)
 	
-	spiderProp.MyScale = 0.3
+	spiderProp.MyScale = 0.4
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
 	spiderProp.BodySize = 487 * spiderProp.MyScale
 	spiderProp.ArrowDistance = 365 * spiderProp.MyScale
@@ -115,6 +115,7 @@ function scene:create( event )
 	spiderProp.LegExists = {1,1,1,1,1,1,1,1}
 	spiderProp.leg = {}
 	spiderProp.legSquare = {}
+	spiderProp.LegImg = "arrow_icon.png"
 	spiderProp.Img = "spider_icon.png"
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1, 0)

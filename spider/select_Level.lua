@@ -27,8 +27,8 @@ local iConPosY
 local next1st_Level
 local current1st_Level
 
-local nextScreenButton
-local prevScreenButton
+local nextScreenButton = {}
+local prevScreenButton = {}
 
 local function gotoGame(event)
 	local options = {
@@ -37,6 +37,14 @@ local function gotoGame(event)
 	}
 	composer.setVariable("level",event.target.level)
     composer.gotoScene( "dos_donts" , options)
+end
+
+local function gotoSelectLevel(event)
+	local options = {
+		effect = "slideLeft",
+		time = 800
+	}
+    composer.gotoScene( "select_Level" , options)
 end
 
 
@@ -85,33 +93,6 @@ function scene:create( event )
 	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
-	-- local levelCount = 1
-	-- for i = 1,Rows do
-		-- for j = 1,Level_Per_Row do
-			-- if(levelCount <= MaxLevel) then
-				-- levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 640, 605 )
-				-- levelIcons[levelCount]:scale(0.15, 0.15)
-				-- levelIcons[levelCount].x = (j - 1) * iConPosX + iConPosX/2
-				-- levelIcons[levelCount].y = (i - 1) * iConPosY + iConPosY/2
-				-- levelIcons[levelCount].circle = display.newCircle( sceneGroup, levelIcons[levelCount].x , levelIcons[levelCount].y, 45 )
-				-- levelIcons[levelCount].circle:setFillColor( 1,1,1,0 )
-				-- levelIcons[levelCount].circle.strokeWidth = 5
-				-- levelIcons[levelCount].circle:setStrokeColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4] )
-				-- levelCount = levelCount + 1
-			-- end
-		-- end
-	-- end	
-	
-	
-	
-	
-	
-	
-	-- local background = display.newImageRect( sceneGroup, bgProp.Img, totalHeight, totalWidth )
-    -- background.x = totalHeight/2
-    -- background.y = totalWidth/2
-	-- background:scale(1,1)
-	-- background:setFillColor(1,1,1,0.4)
 	
 	spiderProp.MyScale = 0.4
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
@@ -138,15 +119,26 @@ function scene:create( event )
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
 			levelIcons[levelCount].level = levelCount
 			levelIcons[levelCount]:addEventListener( "tap", gotoGame )
-			-- levelIcons[levelCount].circle = display.newCircle( sceneGroup, levelIcons[levelCount].x , levelIcons[levelCount].y, 45 )
-			-- levelIcons[levelCount].circle:setFillColor( 1,1,1,0 )
-			-- levelIcons[levelCount].circle.strokeWidth = 5
-			-- levelIcons[levelCount].circle:setStrokeColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4] )
 			levelCount = levelCount + 1
 		end
 	end
 
 	if (current1st_Level + 8 <= MaxLevel) then
+		nextScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
+		nextScreenButton[1].x = totalHeight - 50
+		nextScreenButton[1].y = totalWidth - 50
+		nextScreenButton[1].rotation = 45
+		nextScreenButton[1].target1stLevel = current1st_Level + 8
+		nextScreenButton[1].addEventListener( "tap", gotoSelectLevel )
+	end
+	
+	if (current1st_Level ~= 1) then
+		prevScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
+		prevScreenButton[1].x = 50
+		prevScreenButton[1].y = 50
+		prevScreenButton[1].rotation = 315
+		prevScreenButton[1].target1stLevel = current1st_Level - 8
+		prevScreenButton[1].addEventListener( "tap", gotoSelectLevel )
 	end
  
 end

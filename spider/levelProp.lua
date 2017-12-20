@@ -368,6 +368,6 @@ M[9].dos_donts.Img = "dos_donts_9.png"
 M[9].dos_donts.Color = {0.2, 0.2, 0.3, 1}
 
 M[9].icon = {}
-M[9].icon.Img = "li_1.png"
+M[9].icon.Img = "li_9.png"
 
 return M

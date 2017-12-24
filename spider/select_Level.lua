@@ -27,6 +27,8 @@ local iConPosY
 local next1st_Level
 local current1st_Level
 
+local bgRect
+
 local nextScreenButton = {}
 local prevScreenButton = {}
 
@@ -35,10 +37,16 @@ local needtoGoToSelectLevel
 local gotoSelectedLevel
 
 local function endSelection()
+	for i = 1, 8 do
+		display.remove(spiderProp.leg[i])
+	end
 	display.remove( spider[1] )
 	for i = current1st_Level,current1st_Level + 7 do
 		display.remove(levelIcons[i])
 	end
+	display.remove(bgRect)
+	display.remove(nextScreenButton[1])
+	display.remove(prevScreenButton[1])
 	ending_level = true
 	local options = {
 		effect = "slideLeft",
@@ -124,7 +132,7 @@ function scene:create( event )
 	
 	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color
-	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
+	bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
 	

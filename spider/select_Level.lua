@@ -149,7 +149,7 @@ function scene:create( event )
 	spiderProp.LegImg = "arrow_icon.png"
 	spiderProp.Img = "spider_icon.png"
 	
-	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 1, 0)
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 0)
 	
 	local levelCount = current1st_Level
 	for i = 1,8 do

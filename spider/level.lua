@@ -257,7 +257,7 @@ local function on_frame( event )
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
 		local legCount = 0
 		for i = 1, 8 do
-			if(spiderProp.LegExists[i] == 1) then
+			if(spiderProp.leg[i].exists == 1) then
 				legCount = legCount + 1
 			end
 		end
@@ -435,7 +435,7 @@ function scene:create( event )
 	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
-	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1, 1)
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 

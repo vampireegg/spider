@@ -122,7 +122,7 @@ end
 
 M.drawEyes = drawEyes
 
-local function drawSpider(sceneGroup, spider, spiderProp, physics, opacity, hasSheet)
+local function drawSpider(sceneGroup, spider, spiderProp, physics, hasSheet)
 	spider[1] = display.newGroup()
 	sceneGroup:insert(spider[1])
 	spider[1].x = spiderProp.PosiX
@@ -156,7 +156,6 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, opacity, hasS
 		else
 			spiderProp.leg[i]:setFillColor( 1, 1, 1, 0.1 )
 		end
-		spiderProp.leg[i]:setFillColor( 1, 1, 1, opacity )
 		
 		if(i == 1 or i == 2 or i == 8) then
 			spiderProp.leg[i].dirx = 1
@@ -184,8 +183,7 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, opacity, hasS
 		spiderProp.body = display.newImageRect(sceneGroup, spiderProp.Img, 629, 710 )
 		spiderProp.body:scale(spiderProp.MyScale * 0.7 ,spiderProp.MyScale * 0.7)
 	end
-	
-	spiderProp.body:setFillColor( 1, 1, 1, opacity )
+
 	
 	spider[1]:insert( spiderProp.body )
 	for i = 1,8 do

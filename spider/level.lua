@@ -55,6 +55,7 @@ local spiderReachedGoal
 local legPhase
 local legPhaseCounter
 local needtoReload
+local needtoCross
 local nextSpiderx
 local nextSpidery
 local SpiderPorting
@@ -151,9 +152,11 @@ local function endGame()
 	if(spiderReachedGoal == true) then
 		print("going to dos_donts")
 		composer.gotoScene( "dos_donts" , options)
-	else
+	elseif(needtoCross == false) then
 		print("going to level")
 		composer.gotoScene( "level" , options)
+	else
+		composer.gotoScene( "select_level" , options)
 	end
 end
 
@@ -315,7 +318,7 @@ local function on_frame( event )
 		myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
 		
 	end
-	if(needtoReload == true) then
+	if(needtoReload == true or needtoCross == true) then
 		local vx, vy = spider[1]:getLinearVelocity()
 		if(vx == 0 and vy == 0) then
 			Runtime:removeEventListener( "enterFrame", on_frame )
@@ -345,6 +348,10 @@ end
 
 local function reLoad(event )
 	needtoReload = true
+end
+
+local function cross(event )
+	needtoCross = true
 end
 
 
@@ -402,6 +409,7 @@ function scene:create( event )
 	legPhase = -1
 	legPhaseCounter = 0
 	needtoReload = false
+	needtoCross= false
 	nextSpiderx = 0
 	nextSpidery = 0
 	SpiderPorting = 0
@@ -435,6 +443,7 @@ function scene:create( event )
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
 	bgProp.reLoadButton:addEventListener("tap", reLoad)
+	bgProp.crossButton:addEventListener("tap", cross)
 end
 
 

@@ -164,6 +164,7 @@ function scene:create( event )
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			else
 				levelIcons[levelCount]:setFillColor(1,1,1,0.3)
+				spiderProp.leg[levelCount]:setFillColor(1,1,1,0.3)
 			end
 			levelCount = levelCount + 1
 		end

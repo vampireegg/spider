@@ -175,6 +175,8 @@ function scene:create( event )
 		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
 	end
  
+	Runtime:addEventListener( "enterFrame", on_frame )
+	
 end
 
 
@@ -189,7 +191,7 @@ function scene:show( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
-		Runtime:addEventListener( "enterFrame", on_frame )
+		
 
 	end
 end

@@ -6,14 +6,14 @@ local drawFuncs = require("drawFuncs")
 
 local scene = composer.newScene()
 
-local Level
+local Max_Level
 local bgProp = {}
 local totalHeight
 local totalWidth
 local legPhase
 local legPhaseCount
 
-local MaxLevel
+local MaxCompletedLevel
 local Level_Per_Row
 local Rows
 
@@ -106,8 +106,8 @@ end
 
 function scene:create( event )
  
-	Level = composer.getVariable("level")
-	print("dos_donts Level = " .. Level)
+	MaxCompletedLevel = composer.getVariable("max_completed_level")
+	print("dos_donts MaxCompletedLevel = " .. MaxCompletedLevel)
 	
 	needtoGoToSelectLevel = false
 	MaxLevel = 9
@@ -160,7 +160,11 @@ function scene:create( event )
 			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
 			levelIcons[levelCount].level = levelCount
-			levelIcons[levelCount]:addEventListener( "tap", gotoGame )
+			if(levelCount <= MaxCompletedLevel) then
+				levelIcons[levelCount]:addEventListener( "tap", gotoGame )
+			else
+				levelIcons[levelCount]:setFillColor(1,1,1,0.3)
+			end
 			levelCount = levelCount + 1
 		end
 	end

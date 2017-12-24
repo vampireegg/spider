@@ -139,7 +139,14 @@ local function endGame()
 	end
 	display.remove(sceneGroup)
 
-	levelTable[1] = composer.getVariable("level")
+	local nextLevel = composer.getVariable("level")
+	local maxCompletedLevel = composer.getVariable("max_completed_level")
+	if(nextLevel > maxCompletedLevel) then
+		maxCompletedLevel = nextLevel
+	end
+	composer.setVariable( "max_completed_level", maxCompletedLevel )
+	
+	levelTable[1] = maxCompletedLevel
 	local file = io.open( filePath, "w" )
 	if file then
 		print("writing to file: " .. json.encode( levelTable ))

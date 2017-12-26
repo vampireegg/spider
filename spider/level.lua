@@ -68,6 +68,8 @@ local spiderPreCollisionDirY
 local lastCollidedWith = {}
 local options
 local filePath
+local legTapCount
+local currentLegTapOrder = {}
 
 
  
@@ -107,7 +109,18 @@ local function pushLeg(event )
 		spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 		spider[1].angularVelocity = 0
 		lastCollidedWith.Name = ""
+		legTapCount = legTapCount + 1
+		if (Level == 1) then
+			currentLegTapOrder[legTapCount] = leg.i
+			if(currentLegTapOrder[legTapCount] ~= spiderProp.LegTapOrder[legTapCount]) then
+				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 1)
+				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
+				bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 0)
+			end
+		end
 	end
+	
+
 end
 
 local function endGame()
@@ -404,6 +417,7 @@ function scene:create( event )
 	spiderProp.PosiX = levelProp[Level].spider.PosiX
 	spiderProp.PosiY = levelProp[Level].spider.PosiY
 	spiderProp.LegExists = levelProp[Level].spider.LegExists
+	spiderProp.LegTapOrder = levelProp[Level].spider.LegTapOrder
 	spiderProp.LegImg = "arrow.png"
 	spiderProp.leg = {}
 	spiderProp.legSquare = {}
@@ -435,6 +449,7 @@ function scene:create( event )
 	spiderPreCollisionDirX = 0
 	spiderPreCollisionDirY = 0
 	lastCollidedWith.Name = ""
+	legTapCount = 0
 	filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	options = 
 	{

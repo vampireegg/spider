@@ -33,11 +33,12 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	bgProp.extra = {}
 	if(bgProp.ExtraImgExists == 1) then
 		for i = 1, #bgProp.ExtraImg do
-			bgProp.extra.ExtraImg = display.newImageRect( sceneGroup, bgProp.ExtraImg[i], bgProp.ExtraImgWidth[i], bgProp.ExtraImgHeight[i] )
-			bgProp.extra.ExtraImg.x = bgProp.ExtraImgX[i]
-			bgProp.extra.ExtraImg.y = bgProp.ExtraImgY[i]
-			bgProp.extra.ExtraImg:scale (bgProp.ExtraImgScale[i], bgProp.ExtraImgScale[i])
-			bgProp.extra.ExtraImg:setFillColor (1,1,1, bgProp.ExtraImgOpacity[i])
+			bgProp.extra[i] = {}
+			bgProp.extra[i].ExtraImg = display.newImageRect( sceneGroup, bgProp.ExtraImg[i], bgProp.ExtraImgWidth[i], bgProp.ExtraImgHeight[i] )
+			bgProp.extra[i].ExtraImg.x = bgProp.ExtraImgX[i]
+			bgProp.extra[i].ExtraImg.y = bgProp.ExtraImgY[i]
+			bgProp.extra[i].ExtraImg:scale (bgProp.ExtraImgScale[i], bgProp.ExtraImgScale[i])
+			bgProp.extra[i].ExtraImg:setFillColor (1,1,1, bgProp.ExtraImgOpacity[i])
 		end
 	end
 	

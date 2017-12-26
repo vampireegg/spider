@@ -10,6 +10,7 @@ M[1].spider.MyScale = 0.2
 M[1].spider.PosiX = 220
 M[1].spider.PosiY = 200
 M[1].spider.LegExists = {0,0,0,0,1,0,1,0}
+M[1].spider.LegTapOrder = {5, 7}
 
 M[1].collider = {}
 M[1].collider.GroupX = {100}
@@ -27,7 +28,7 @@ M[1].bg.Img = "bbg2.jpg"
 M[1].bg.Opacity = 1
 M[1].bg.ExtraImgExists = 1
 M[1].bg.ExtraImg = {"tap_here.png", "tap_here2.png", "reload_here.png"}
-M[1].bg.ExtraImgOpacity = {1, 1, 1}
+M[1].bg.ExtraImgOpacity = {1, 0, 0}
 M[1].bg.ExtraImgX = {90, 935, 910}
 M[1].bg.ExtraImgY = {150, 100, 50}
 M[1].bg.ExtraImgWidth = {285, 550, 572}

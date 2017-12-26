@@ -24,7 +24,7 @@ M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png",  "ptfw.png", "ptfb.p
 M.portal.Size = 50
 
 M.heart = {}
-M.heart.Img = "heart2.png"
+M.heart.Img = "heart1.png"
 M.heart.Size = 100
 
 M.level_select_screen = {}

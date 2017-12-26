@@ -391,7 +391,7 @@ M[10].spider.PosiY = 150
 M[10].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[10].collider = {}
-M[10].collider.GroupX = {30}
+M[10].collider.GroupX = {3000}
 M[10].collider.GroupY = {300}
 M[10].collider.Num = {8}
 M[10].collider.Orientation = {1}

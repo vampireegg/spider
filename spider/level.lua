@@ -315,13 +315,16 @@ local function on_frame( event )
 		if (legCount > 0) then
 			bgProp.reLoadButton:setFillColor( 1, 1, 1, 0 )
 			bgProp.crossButton:setFillColor( 1, 1, 1, 0 )
+			bgProp.crossButtonBox.isHitTestable = false
 		else
 			bgProp.reLoadButton:setFillColor( 1, 1, 1, 1 )
 			bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
+			bgProp.crossButtonBox.isHitTestable = true
 		end
 	else
 		bgProp.reLoadButton:setFillColor( 1, 1, 1, 1 )
 		bgProp.crossButton:setFillColor( 1, 1, 1, 1 )
+		bgProp.crossButtonBox.isHitTestable = true
 	end
 	goal[1].rotation = goal[1].rotation + .2
 	

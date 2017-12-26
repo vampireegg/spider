@@ -402,8 +402,8 @@ M[10].goal.PosiX = 80
 M[10].goal.PosiY = 400
 
 M[10].bg = {}
-M[10].bg.Img = "bbg2.jpg"
-M[10].bg.Opacity = 1
+M[10].bg.Img = "zebra.jpg"
+M[10].bg.Opacity = 0.4
 
 M[10].eye = {}
 M[10].eye.Opacity = 0

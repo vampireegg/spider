@@ -145,6 +145,12 @@ local function endGame()
 			display.remove(bgProp.extra[i].ExtraImg)
 		end
 	end
+	
+	if(heartProp.Exists == 1) then
+		for i = 1,#(heartProp.PosiX) do
+			display.remove(heart[i])
+		end
+	end
 	display.remove( bg[1] )
 	display.remove( spider[1] )
 	display.remove( goal[1] )

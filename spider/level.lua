@@ -116,6 +116,10 @@ local function pushLeg(event )
 				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 1)
 				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
 				bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 0)
+			else
+				if(legTapCount == 1 or legTapCount == 2) then
+					bgProp.extra[legTapCount].ExtraImg:setFillColor (1,1,1, 0)
+				end					
 			end
 		end
 	end
@@ -246,6 +250,15 @@ local function spiderCollided( self, event )
 			end
 			
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, bounceSpider )
+		end
+		
+		if (Level == 1 and event.other.CommonName == "border") then
+			bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 1)
+			if(spiderReachedGoal == true) then
+				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
+				bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 0)
+				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 0)
+			end
 		end
 	end
 end

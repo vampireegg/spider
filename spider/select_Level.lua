@@ -160,14 +160,18 @@ function scene:create( event )
 			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
 			levelIcons[levelCount].level = levelCount
+			
 			if(levelCount <= MaxCompletedLevel) then
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			else
 				levelIcons[levelCount]:setFillColor(1,1,1,0.3)
-				spiderProp.leg[levelCount]:setFillColor(1,1,1,0.3)
 			end
-			levelCount = levelCount + 1
 		end
+		spiderProp.leg[i].level = levelCount
+		if(spiderProp.leg[i].level > MaxCompletedLevel) then
+			spiderProp.leg[i]:setFillColor(1,1,1,0.3)
+		end
+		levelCount = levelCount + 1
 	end
 
 	if (current1st_Level + 8 <= MaxLevel) then

@@ -414,6 +414,11 @@ M[10].portal.Types = {}
 M[10].portal.PosiX = {}
 M[10].portal.PosiY = {}
 
+M[10].heartExists = 1
+M[10].heart = {}
+M[10].heart.PosiX = {350}
+M[10].heart.PosiY = {350}
+
 M[10].dos_donts = {}
 M[10].dos_donts.Img = "dos_donts_10.png"
 M[10].dos_donts.Color = {0.3, 0.1, 0.2, 1}

@@ -48,6 +48,10 @@ local goal = {}
 
 local portalProp = {}
 local portal = {}
+
+local heartProp = {}
+local heart = {}
+
 local myTimers = {}
 
 local lastLegTouched
@@ -452,6 +456,14 @@ function scene:create( event )
 	portalProp.PosiY = levelProp[Level].portal.PosiY
 	portalProp.Exists = levelProp[Level].portal.Exists
 	
+	heartProp.Size = commonProp.heart.Size
+	heartProp.Img = commonProp.heart.Img
+	if(levelProp[Level].heartExists == 1) then
+		heartProp.PosiX = levelProp[Level].heart.PosiX
+		heartProp.PosiY = levelProp[Level].heart.PosiY
+		heartProp.Exists = 1
+	end
+	
 	lastLegTouched = -1
 	spiderReachedGoal = false
 	legPhase = -1
@@ -485,6 +497,9 @@ function scene:create( event )
 	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
+	if(levelProp[Level].heartExists == 1) then
+		drawFuncs.drawHearts(sceneGroup, heart, heartProp)
+	end
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)

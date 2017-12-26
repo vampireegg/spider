@@ -84,6 +84,16 @@ end
 
 M.drawPortals = drawPortals
 
+local function drawHearts(sceneGroup, heart, heartProp)
+	for i = 1,#(heartProp.PosiX) do
+		heart[i] = display.newImageRect(sceneGroup, heartProp.Img, heartProp.Size, heartProp.Size  )
+		heart[i].x = heartProp.PosiX[i]
+		heart[i].y = heartProp.PosiY[i]
+	end
+end
+
+M.drawHearts = drawHearts
+
 local function drawCollider(sceneGroup, collider, colliderProp, physics)
 	for i = 1,#(colliderProp.numColliders) do
 		collider[i] = {}

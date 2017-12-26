@@ -450,7 +450,9 @@ function scene:create( event )
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
 	bgProp.reLoadButton:addEventListener("tap", reLoad)
+	bgProp.reLoadButtonBox:addEventListener("tap", reLoad)
 	bgProp.crossButton:addEventListener("tap", cross)
+	bgProp.crossButtonBox:addEventListener("tap", cross)
 end
 
 

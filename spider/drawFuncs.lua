@@ -40,10 +40,18 @@ local function drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 	bgProp.reLoadButton.y =  50
 	bgProp.reLoadButton:scale(0.9,0.9)
 	
+	bgProp.reLoadButtonBox = display.newRect(sceneGroup, bgProp.reLoadButton.x, bgProp.reLoadButton.y, 30, 30)
+	bgProp.reLoadButtonBox:setFillColor( 1, 1, 1, 0 )
+	bgProp.reLoadButtonBox.isHitTestable = true
+	
 	bgProp.crossButton = display.newImageRect( sceneGroup, "cross2.png", 30, 30 )
 	bgProp.crossButton.x = totalHeight - 40
 	bgProp.crossButton.y =  50
 	bgProp.crossButton:scale(0.8,0.8)
+	
+	bgProp.crossButtonBox = display.newRect(sceneGroup, bgProp.crossButton.x, bgProp.crossButton.y, 30, 30)
+	bgProp.crossButtonBox:setFillColor( 1, 1, 1, 0 )
+	bgProp.crossButtonBox.isHitTestable = true
 end
 
 M.drawButtons = drawButtons

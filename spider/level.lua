@@ -334,6 +334,10 @@ local function on_frame( event )
 		print("heartPhase = " .. heartPhase .. " heartProp.Scale = " .. heartProp.Scale)
 		for i = 1,#(heartProp.PosiX) do
 			heart[i]:scale(heartProp.Scale, heartProp.Scale)
+			if(distance(spider[1], heart[i]) <= spiderProp.SpiderRadius / 2) then
+				spiderProp.leg[lastLegTouched].exists = 1
+				spiderProp.leg[lastLegTouched]:setFillColor( 1, 1, 1, 1 )
+			end
 		end
 	end
 	

@@ -8,8 +8,8 @@ M[1] = {}
 M[1].spider = {}
 M[1].spider.MyScale = 0.2
 M[1].spider.PosiX = 220
-M[1].spider.PosiY = 150
-M[1].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[1].spider.PosiY = 170
+M[1].spider.LegExists = {0,0,0,0,1,0,1,0}
 
 M[1].collider = {}
 M[1].collider.GroupX = {100}
@@ -25,6 +25,13 @@ M[1].goal.PosiY = 530
 M[1].bg = {}
 M[1].bg.Img = "bbg2.jpg"
 M[1].bg.Opacity = 1
+M[1].bg.ExtraImgExists = 1
+M[1].bg.ExtraImg = {"tap_here.png"}
+M[1].bg.ExtraImgX = {90}
+M[1].bg.ExtraImgY = {120}
+M[1].bg.ExtraImgWidth = {285}
+M[1].bg.ExtraImgHeight = {457}
+M[1].bg.ExtraImgScale = {0.2}
 
 M[1].eye = {}
 M[1].eye.Opacity = 0

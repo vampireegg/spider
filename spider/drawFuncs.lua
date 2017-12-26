@@ -30,6 +30,14 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	bg[1].y = totalWidth/2
 	bg[1]:setFillColor( 1, 1, 1, bgProp.Opacity )
 	
+	bgProp.extra = {}
+	if(bgProp.ExtraImgExists == 1) then
+		bgProp.extra.ExtraImg = display.newImageRect( sceneGroup, bgProp.ExtraImg[1], bgProp.ExtraImgWidth[1], bgProp.ExtraImgHeight[1] )
+		bgProp.extra.ExtraImg.x = bgProp.ExtraImgX[1]
+		bgProp.extra.ExtraImg.y = bgProp.ExtraImgY[1]
+		bgProp.extra.ExtraImg:scale (bgProp.ExtraImgScale[1], bgProp.ExtraImgScale[1])
+	end
+	
 end
 
 M.drawBackGround = drawBackGround

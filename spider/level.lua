@@ -371,6 +371,13 @@ function scene:create( event )
 	
 	bgProp.Img = levelProp[Level].bg.Img
 	bgProp.Opacity = levelProp[Level].bg.Opacity
+	bgProp.ExtraImgExists = levelProp[Level].bg.ExtraImgExists
+	bgProp.ExtraImg = levelProp[Level].bg.ExtraImg
+	bgProp.ExtraImgX = levelProp[Level].bg.ExtraImgX
+	bgProp.ExtraImgY = levelProp[Level].bg.ExtraImgY
+	bgProp.ExtraImgWidth = levelProp[Level].bg.ExtraImgWidth
+	bgProp.ExtraImgHeight = levelProp[Level].bg.ExtraImgHeight
+	bgProp.ExtraImgScale = levelProp[Level].bg.ExtraImgScale
 	
 	borderProp.borderWidth = commonProp.border.Width
 	borderProp.CommonName = commonProp.border.CommonName

@@ -468,7 +468,7 @@ M[11].heart.PosiY = {323}
 
 M[11].dos_donts = {}
 M[11].dos_donts.Img = "dos_donts_11.png"
-M[11].dos_donts.Color = {0.4, 0.1, 0.2, 1}
+M[11].dos_donts.Color = {0.25, 0.0, 0.12, 1}
 
 M[11].icon = {}
 M[11].icon.Img = "li_11.png"

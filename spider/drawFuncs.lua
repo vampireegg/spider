@@ -32,10 +32,13 @@ local function drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
 	
 	bgProp.extra = {}
 	if(bgProp.ExtraImgExists == 1) then
-		bgProp.extra.ExtraImg = display.newImageRect( sceneGroup, bgProp.ExtraImg[1], bgProp.ExtraImgWidth[1], bgProp.ExtraImgHeight[1] )
-		bgProp.extra.ExtraImg.x = bgProp.ExtraImgX[1]
-		bgProp.extra.ExtraImg.y = bgProp.ExtraImgY[1]
-		bgProp.extra.ExtraImg:scale (bgProp.ExtraImgScale[1], bgProp.ExtraImgScale[1])
+		for i = 1, #bgProp.ExtraImg do
+			bgProp.extra.ExtraImg = display.newImageRect( sceneGroup, bgProp.ExtraImg[i], bgProp.ExtraImgWidth[i], bgProp.ExtraImgHeight[i] )
+			bgProp.extra.ExtraImg.x = bgProp.ExtraImgX[i]
+			bgProp.extra.ExtraImg.y = bgProp.ExtraImgY[i]
+			bgProp.extra.ExtraImg:scale (bgProp.ExtraImgScale[i], bgProp.ExtraImgScale[i])
+			bgProp.extra.ExtraImg:setFillColor (1,1,1, bgProp.ExtraImgOpacity[i])
+		end
 	end
 	
 end

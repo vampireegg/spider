@@ -391,15 +391,15 @@ M[10].spider.PosiY = 90
 M[10].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[10].collider = {}
-M[10].collider.GroupX = {350, 90, 390, 480}
-M[10].collider.GroupY = {90, 350, 480, 390}
-M[10].collider.Num = {2, 2, 2, 2}
-M[10].collider.Orientation = {2, 1, 1, 2}
-M[10].collider.ColliderType = {1, 1, 1, 1}
+M[10].collider.GroupX = {350, 90}
+M[10].collider.GroupY = {90, 350}
+M[10].collider.Num = {2, 2}
+M[10].collider.Orientation = {2, 1}
+M[10].collider.ColliderType = {1, 1}
 
 M[10].goal = {}
-M[10].goal.PosiX = 80
-M[10].goal.PosiY = 400
+M[10].goal.PosiX = 746
+M[10].goal.PosiY = 550
 
 M[10].bg = {}
 M[10].bg.Img = "bricks.jpg"
@@ -409,15 +409,15 @@ M[10].eye = {}
 M[10].eye.Opacity = 0
 
 M[10].portal = {}
-M[10].portal.Exists = 0
-M[10].portal.Types = {}
-M[10].portal.PosiX = {}
-M[10].portal.PosiY = {}
+M[10].portal.Exists = 1
+M[10].portal.Types = {5}
+M[10].portal.PosiX = {{536,OOF}}
+M[10].portal.PosiY = {{536,OOF}}
 
 M[10].heartExists = 1
 M[10].heart = {}
-M[10].heart.PosiX = {300}
-M[10].heart.PosiY = {300}
+M[10].heart.PosiX = {290}
+M[10].heart.PosiY = {290}
 
 M[10].dos_donts = {}
 M[10].dos_donts.Img = "dos_donts_10.png"

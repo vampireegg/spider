@@ -331,7 +331,7 @@ local function on_frame( event )
 		else
 			heartProp.Scale = 1/0.99
 		end
-		print("heartPhase = " .. heartPhase .. " heartProp.Scale = " .. heartProp.Scale)
+		--print("heartPhase = " .. heartPhase .. " heartProp.Scale = " .. heartProp.Scale)
 		for i = 1,#(heartProp.PosiX) do
 			heart[i]:scale(heartProp.Scale, heartProp.Scale)
 			if(distance(spider[1], heart[i]) <= spiderProp.SpiderRadius / 2) then
@@ -386,11 +386,11 @@ local function on_frame( event )
 		
 	end
 	if(needtoReload == true or needtoCross == true) then
-		local vx, vy = spider[1]:getLinearVelocity()
-		if(vx == 0 and vy == 0) then
+		--local vx, vy = spider[1]:getLinearVelocity()
+		--if(vx == 0 and vy == 0) then
 			Runtime:removeEventListener( "enterFrame", on_frame )
 			myTimers[#myTimers+1] = timer.performWithDelay( 500, endGame )
-		end
+		--end
 	end
 	local vx, vy = spider[1]:getLinearVelocity()
 	if(vx == 0 and vy == 0) then

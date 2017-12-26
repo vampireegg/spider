@@ -151,6 +151,10 @@ local function endGame()
 			display.remove(heart[i])
 		end
 	end
+	display.remove(reLoadButton)
+	display.remove(crossButton)
+	display.remove(reLoadButtonBox)
+	display.remove(crossButtonBox)
 	display.remove( bg[1] )
 	display.remove( spider[1] )
 	display.remove( goal[1] )

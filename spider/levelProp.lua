@@ -385,17 +385,17 @@ M[10] = {}
 
 
 M[10].spider = {}
-M[10].spider.MyScale = 0.2
+M[10].spider.MyScale = 0.15
 M[10].spider.PosiX = 90
-M[10].spider.PosiY = 150
+M[10].spider.PosiY = 90
 M[10].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[10].collider = {}
-M[10].collider.GroupX = {3000}
-M[10].collider.GroupY = {300}
-M[10].collider.Num = {8}
-M[10].collider.Orientation = {1}
-M[10].collider.ColliderType = {1}
+M[10].collider.GroupX = {350, 90, 390, 480}
+M[10].collider.GroupY = {90, 350, 480, 390}
+M[10].collider.Num = {2, 2, 2, 2}
+M[10].collider.Orientation = {2, 1, 1, 2}
+M[10].collider.ColliderType = {1, 1, 1, 1}
 
 M[10].goal = {}
 M[10].goal.PosiX = 80
@@ -416,8 +416,8 @@ M[10].portal.PosiY = {}
 
 M[10].heartExists = 1
 M[10].heart = {}
-M[10].heart.PosiX = {350}
-M[10].heart.PosiY = {350}
+M[10].heart.PosiX = {300}
+M[10].heart.PosiY = {300}
 
 M[10].dos_donts = {}
 M[10].dos_donts.Img = "dos_donts_10.png"

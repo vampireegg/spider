@@ -386,8 +386,8 @@ M[10] = {}
 
 M[10].spider = {}
 M[10].spider.MyScale = 0.15
-M[10].spider.PosiX = 90
-M[10].spider.PosiY = 90
+M[10].spider.PosiX = 70
+M[10].spider.PosiY = 70
 M[10].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[10].collider = {}

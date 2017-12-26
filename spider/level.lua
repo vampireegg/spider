@@ -57,7 +57,9 @@ local myTimers = {}
 local lastLegTouched
 local spiderReachedGoal
 local legPhase
+local heartPhase
 local legPhaseCounter
+local heartPhaseCounter
 local needtoReload
 local needtoCross
 local nextSpiderx
@@ -317,6 +319,24 @@ local function on_frame( event )
 	end
 	goal[1].rotation = goal[1].rotation + .2
 	
+	if(heartProp.Exists == 1) then
+		heartPhaseCounter = heartPhaseCounter + 1
+		if(heartPhaseCounter > 30) then
+				heartPhaseCounter = 0
+				heartPhase = heartPhase * -1				
+		end
+		
+		if(heartPhase == -1) then
+			heartProp.Scale = 0.99
+		else
+			heartProp.Scale = 1/0.99
+		end
+		print("heartPhase = " .. heartPhase .. " heartProp.Scale = " .. heartProp.Scale)
+		for i = 1,#(heartProp.PosiX) do
+			heart[i]:scale(heartProp.Scale, heartProp.Scale)
+		end
+	end
+	
 	if (portalProp.Exists == 1) then
 		for i = 1,#(portalProp.Types) do
 			for j = 1, 2 do
@@ -462,12 +482,17 @@ function scene:create( event )
 		heartProp.PosiX = levelProp[Level].heart.PosiX
 		heartProp.PosiY = levelProp[Level].heart.PosiY
 		heartProp.Exists = 1
+		heartProp.Scale = 1
+	else
+		heartProp.Exists = 0
 	end
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false
 	legPhase = -1
+	heartPhase = -1
 	legPhaseCounter = 0
+	heartPhaseCounter = 0
 	needtoReload = false
 	needtoCross= false
 	nextSpiderx = 0

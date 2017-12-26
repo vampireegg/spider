@@ -399,7 +399,7 @@ M[10].collider.ColliderType = {1, 1}
 
 M[10].goal = {}
 M[10].goal.PosiX = 746
-M[10].goal.PosiY = 550
+M[10].goal.PosiY = 536
 
 M[10].bg = {}
 M[10].bg.Img = "bricks.jpg"
@@ -410,9 +410,9 @@ M[10].eye.Opacity = 0
 
 M[10].portal = {}
 M[10].portal.Exists = 1
-M[10].portal.Types = {5}
-M[10].portal.PosiX = {{536,OOF}}
-M[10].portal.PosiY = {{536,OOF}}
+M[10].portal.Types = {5, 4}
+M[10].portal.PosiX = {{536,OOF}, {882, -OOF}}
+M[10].portal.PosiY = {{536,OOF}, {393, -OOF}}
 
 M[10].heartExists = 1
 M[10].heart = {}

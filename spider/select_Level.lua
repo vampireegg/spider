@@ -171,6 +171,9 @@ function scene:create( event )
 		if(spiderProp.leg[i].level > MaxCompletedLevel) then
 			spiderProp.leg[i]:setFillColor(1,1,1,0.3)
 		end
+		if(spiderProp.leg[i].level > MaxLevel) then
+			spiderProp.leg[i]:setFillColor(1,1,1,0)
+		end
 		levelCount = levelCount + 1
 	end
 

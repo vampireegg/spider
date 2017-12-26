@@ -415,8 +415,8 @@ M[10].portal.PosiX = {}
 M[10].portal.PosiY = {}
 
 M[10].dos_donts = {}
-M[10].dos_donts.Img = "dos_donts_2.png"
-M[10].dos_donts.Color = {0.6, 0.4, 0.3, 1}
+M[10].dos_donts.Img = "dos_donts_10.png"
+M[10].dos_donts.Color = {0.3, 0.1, 0.2, 1}
 
 M[10].icon = {}
 M[10].icon.Img = "li_10.png"

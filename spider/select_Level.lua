@@ -110,7 +110,7 @@ function scene:create( event )
 	print("dos_donts MaxCompletedLevel = " .. MaxCompletedLevel)
 	
 	needtoGoToSelectLevel = false
-	MaxLevel = 9
+	MaxLevel = #levelProp
 	current1st_Level = composer.getVariable("1st_level")
 	gotoSelectedLevel= true
 	print("current1st_Level = " .. current1st_Level)

@@ -439,14 +439,14 @@ M[11].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[11].collider = {}
 M[11].collider.GroupX = {640, 296}
-M[11].collider.GroupY = {60, 323}
-M[11].collider.Num = {2, 2}
+M[11].collider.GroupY = {60, 60}
+M[11].collider.Num = {2, 7}
 M[11].collider.Orientation = {2, 2}
 M[11].collider.ColliderType = {1, 1}
 
 M[11].goal = {}
-M[11].goal.PosiX = OOF
-M[11].goal.PosiY = OOF
+M[11].goal.PosiX = 360
+M[11].goal.PosiY = 63
 
 M[11].bg = {}
 M[11].bg.Img = "bricks.jpg"
@@ -457,9 +457,9 @@ M[11].eye.Opacity = 0
 
 M[11].portal = {}
 M[11].portal.Exists = 1
-M[11].portal.Types = {5, 4}
-M[11].portal.PosiX = {{458,OOF}, {OOF, -OOF}}
-M[11].portal.PosiY = {{63,OOF}, {OOF, -OOF}}
+M[11].portal.Types = {5}
+M[11].portal.PosiX = {{458,OOF}}
+M[11].portal.PosiY = {{63,OOF}}
 
 M[11].heartExists = 1
 M[11].heart = {}

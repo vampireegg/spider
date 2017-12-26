@@ -70,6 +70,7 @@ local options
 local filePath
 local legTapCount
 local currentLegTapOrder = {}
+local legTappedOutOfOrder
 
 
  
@@ -113,11 +114,12 @@ local function pushLeg(event )
 		if (Level == 1) then
 			currentLegTapOrder[legTapCount] = leg.i
 			if(currentLegTapOrder[legTapCount] ~= spiderProp.LegTapOrder[legTapCount]) then
+				legTappedOutOfOrder = true
 				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 1)
 				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
 				bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 0)
 			else
-				if(legTapCount == 1 or legTapCount == 2) then
+				if((legTapCount == 1 or legTapCount == 2) and legTappedOutOfOrder == false) then
 					bgProp.extra[legTapCount].ExtraImg:setFillColor (1,1,1, 0)
 				end					
 			end
@@ -132,7 +134,11 @@ local function endGame()
     for k, v in pairs(myTimers) do
         timer.cancel(v)
     end
-
+	if (Level == 1) then
+		for i = 1, #bgProp.extra do
+			display.remove(bgProp.extra[i].ExtraImg)
+		end
+	end
 	display.remove( bg[1] )
 	display.remove( spider[1] )
 	display.remove( goal[1] )
@@ -252,7 +258,7 @@ local function spiderCollided( self, event )
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, bounceSpider )
 		end
 		
-		if (Level == 1 and event.other.CommonName == "border") then
+		if (Level == 1 and event.other.CommonName == "border" and legTappedOutOfOrder == false) then
 			bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 1)
 			if(spiderReachedGoal == true) then
 				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
@@ -463,6 +469,7 @@ function scene:create( event )
 	spiderPreCollisionDirY = 0
 	lastCollidedWith.Name = ""
 	legTapCount = 0
+	legTappedOutOfOrder = false
 	filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	options = 
 	{

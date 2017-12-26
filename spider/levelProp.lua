@@ -410,9 +410,9 @@ M[10].eye.Opacity = 0
 
 M[10].portal = {}
 M[10].portal.Exists = 1
-M[10].portal.Types = {5, 4}
-M[10].portal.PosiX = {{536,OOF}, {882, -OOF}}
-M[10].portal.PosiY = {{536,OOF}, {393, -OOF}}
+M[10].portal.Types = {5, 4, 3}
+M[10].portal.PosiX = {{536,OOF}, {882, -OOF}, {1002, OOF}}
+M[10].portal.PosiY = {{536,OOF}, {393, -OOF}, {319, -OOF}}
 
 M[10].heartExists = 1
 M[10].heart = {}

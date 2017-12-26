@@ -308,6 +308,9 @@ local function portSpider( event )
 end
 
 local function on_frame( event )
+	if(spider[1].x > totalHeight or spider[1].y > totalWidth or spider[1].x < 0 or spider[1].y < 0) then
+		spider[1]:setLinearVelocity( 0, 0 )
+	end
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
 		local legCount = 0

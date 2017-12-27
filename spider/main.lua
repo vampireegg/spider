@@ -38,4 +38,4 @@ local options = {
 composer.setVariable( "1st_level", 1 )
 composer.setVariable( "level", 11 )
 composer.setVariable( "max_completed_level", levelTable[1] )
-composer.gotoScene( "level", options )
+composer.gotoScene( "select_level", options )

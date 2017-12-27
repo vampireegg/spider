@@ -47,10 +47,11 @@ end
 M.drawBackGround = drawBackGround
 
 local function drawReloadHere(sceneGroup, reload_here, reload_hereProp)
-	reload_here[1] = display.newImageRect( sceneGroup, reload_hereProp.Img, reload_hereProp.Height, reload_hereProp.Height )
+	reload_here[1] = display.newImageRect( sceneGroup, reload_hereProp.Img, reload_hereProp.Width, reload_hereProp.Height )
 	reload_here[1].x = reload_hereProp.PosiX
 	reload_here[1].y = reload_hereProp.PosiY
 	reload_here[1]:setFillColor( 1, 1, 1, reload_hereProp.Opacity )
+	reload_here[1]:scale(reload_hereProp.Scale, reload_hereProp.Scale)
 end
 
 M.drawReloadHere = drawReloadHere

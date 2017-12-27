@@ -27,8 +27,13 @@ local gameLoopTimer
 
 local totalWidth
 local totalHeight
+
+
 local bgProp = {}
 local bg = {}
+
+local reload_hereProp = {}
+local reload_here = {}
 
 local eyeProp = {}
 local eyes = {}
@@ -460,6 +465,14 @@ function scene:create( event )
 	bgProp.ExtraImgScale = levelProp[Level].bg.ExtraImgScale
 	bgProp.ExtraImgOpacity = levelProp[Level].bg.ExtraImgOpacity
 	
+	reload_hereProp.Img = commonProp.reload_here.Img
+	reload_hereProp.PosiX = commonProp.reload_here.PosiX
+	reload_hereProp.PosiY = commonProp.reload_here.PosiY
+	reload_hereProp.Width = commonProp.reload_here.Width
+	reload_hereProp.Height = commonProp.reload_here.Height
+	reload_hereProp.Scale = commonProp.reload_here.Scale
+	reload_hereProp.Opacity = 1
+	
 	borderProp.borderWidth = commonProp.border.Width
 	borderProp.CommonName = commonProp.border.CommonName
 	
@@ -552,6 +565,7 @@ function scene:create( event )
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
+	drawFuncs.drawReloadHere(sceneGroup, reload_here, reload_hereProp)
 
 	for i = 1,8 do
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )

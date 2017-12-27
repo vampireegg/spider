@@ -29,6 +29,7 @@ M.reload_here.PosiX = 910
 M.reload_here.PosiY = 50
 M.reload_here.Width = 572
 M.reload_here.Height = 106
+M.reload_here.Scale = 0.2
 
 M.heart = {}
 M.heart.Img = "heart1.png"

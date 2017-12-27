@@ -438,11 +438,11 @@ M[11].spider.PosiY = -80
 M[11].spider.LegExists = {1,0,1,0,1,0,1,0}
 
 M[11].collider = {}
-M[11].collider.GroupX = {300, 400, 700, 800, 125, 415}
-M[11].collider.GroupY = {170, 280, 170, 170, 130, 130}
-M[11].collider.Num = {8, 6, 8, 8, 4, 6}
-M[11].collider.Orientation = {2, 2, 2, 2, 1, 1}
-M[11].collider.ColliderType = {2, 1, 2, 1, 1, 1}
+M[11].collider.GroupX = {300, 400, 700, 800, 125, 415, 815}
+M[11].collider.GroupY = {170, 280, 170, 170, 130, 130, 130}
+M[11].collider.Num = {8, 6, 8, 8, 4, 6, 5}
+M[11].collider.Orientation = {2, 2, 2, 2, 1, 1, 1}
+M[11].collider.ColliderType = {2, 1, 2, 1, 1, 1, 2}
 
 M[11].goal = {}
 M[11].goal.PosiX = OOF

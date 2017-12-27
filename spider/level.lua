@@ -557,7 +557,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
-	drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
+	--drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)

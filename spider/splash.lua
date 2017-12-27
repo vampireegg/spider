@@ -2,13 +2,19 @@
 local commonProp = require("commonProp")
 local levelProp = require("levelProp")
 local composer = require( "composer" )
+local drawFuncs = require("drawFuncs")
 local scene = composer.newScene()
 
 
 local Level
 local bgProp = {}
+local colliderProp = {}
+local collider = {}
 local totalHeight
 local totalWidth
+local counter
+local collideCounter
+local numCollider
 
 local function gotoGame()
 	local options = {
@@ -19,11 +25,24 @@ local function gotoGame()
 end
 
 local function on_frame( event )
+	counter = counter + 1
+	if(counter == 12) then
+		collideCounter = collideCounter + 1
+		counter = 0
+	end
+	if (collideCounter > 0 and collideCounter <= numCollider) then
+		collider[1][collideCounter]:setFillColor( 1, 1, 1, 1)
+	end
+	if(collideCounter == numCollider) then
+		Runtime:removeEventListener( "enterFrame", on_frame )
+		timer.performWithDelay( 100, gotoGame )
+	end
 end
 
 function scene:create( event )
  
 	print("splash")
+	numCollider = 14
 	
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -43,8 +62,29 @@ function scene:create( event )
 	
 	
 	
-	background:addEventListener( "tap", gotoGame )
+	--background:addEventListener( "tap", gotoGame )
 	Runtime:addEventListener( "enterFrame", on_frame )
+	
+	colliderProp.MyScale = commonProp.collider.MyScale / 1.5
+	colliderProp.colliderHeight = commonProp.collider.Height / 1.5
+	colliderProp.colliderWidth = commonProp.collider.Width
+	colliderProp.colliderWidth[1] = colliderProp.colliderWidth[1] / 1.5
+	colliderProp.colliderGroupx = {300}
+	colliderProp.colliderGroupy = {590}
+	colliderProp.numColliders = {numCollider}
+	colliderProp.Orientation = {1}
+	colliderProp.ColliderType = {1}
+	colliderProp.Img = commonProp.collider.Img
+	colliderProp.CommonName = commonProp.collider.CommonName
+	
+	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
+	
+	for i = 1,numCollider do
+		collider[1][i]:setFillColor( 1, 1, 1, 0)
+	end
+	counter = 1
+	collideCounter = 0
+	
 end
 
 

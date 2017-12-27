@@ -15,13 +15,12 @@ local function gotoGame()
 		effect = "fade",
 		time = 800
 	}
-    composer.gotoScene( "level" , options)
+    composer.gotoScene( "select_level" , options)
 end
 
 function scene:create( event )
  
-	Level = composer.getVariable("level")
-	print("dos_donts Level = " .. Level)
+	print("splash")
 	
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
@@ -29,10 +28,8 @@ function scene:create( event )
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
 	
-	bgProp.Img = levelProp[Level].dos_donts.Img
-	bgProp.Color = levelProp[Level].dos_donts.Color
-	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
-	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
+	bgProp.Img = commonProp.splash.Img
+
 	
 	
  

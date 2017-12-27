@@ -49,7 +49,7 @@ local function endSelection()
 	display.remove(prevScreenButton[1])
 	ending_level = true
 	local options = {
-		effect = "slideLeft",
+		effect = "fade",
 		time = 800
 	}
 	if(gotoSelectedLevel == true) then

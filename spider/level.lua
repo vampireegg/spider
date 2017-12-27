@@ -549,7 +549,7 @@ function scene:create( event )
 	filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	options = 
 	{
-		effect = "slideLeft",
+		effect = "fade",
 		time = 800
 	}
 	

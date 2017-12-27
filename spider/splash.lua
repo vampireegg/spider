@@ -18,6 +18,9 @@ local function gotoGame()
     composer.gotoScene( "select_level" , options)
 end
 
+local function on_frame( event )
+end
+
 function scene:create( event )
  
 	print("splash")
@@ -41,6 +44,7 @@ function scene:create( event )
 	
 	
 	background:addEventListener( "tap", gotoGame )
+	Runtime:addEventListener( "enterFrame", on_frame )
 end
 
 

@@ -56,34 +56,34 @@ M[2] = {}
 
 
 M[2].spider = {}
-M[2].spider.MyScale = 0.2
-M[2].spider.PosiX = 90
-M[2].spider.PosiY = 150
+M[2].spider.MyScale = 0.5
+M[2].spider.PosiX = 500
+M[2].spider.PosiY = 300
 M[2].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[2].collider = {}
-M[2].collider.GroupX = {30}
-M[2].collider.GroupY = {300}
-M[2].collider.Num = {8}
-M[2].collider.Orientation = {1}
-M[2].collider.ColliderType = {1}
+M[2].collider.GroupX = {700, 300}
+M[2].collider.GroupY = {480, 480}
+M[2].collider.Num = {1, 1}
+M[2].collider.Orientation = {1, 1}
+M[2].collider.ColliderType = {2, 1}
 
 M[2].goal = {}
-M[2].goal.PosiX = 80
-M[2].goal.PosiY = 400
+M[2].goal.PosiX = 700
+M[2].goal.PosiY = 120
 
 M[2].bg = {}
-M[2].bg.Img = "bbg2.jpg"
-M[2].bg.Opacity = 1
+M[2].bg.Img = "bricks.jpg"
+M[2].bg.Opacity = 0.3
 
 M[2].eye = {}
 M[2].eye.Opacity = 0
 
 M[2].portal = {}
-M[2].portal.Exists = 0
-M[2].portal.Types = {}
-M[2].portal.PosiX = {}
-M[2].portal.PosiY = {}
+M[2].portal.Exists = 1
+M[2].portal.Types = {2}
+M[2].portal.PosiX = {{310,OOF}}
+M[2].portal.PosiY = {{110,OOF}}
 
 M[2].dos_donts = {}
 M[2].dos_donts.Img = "dos_donts_2.png"

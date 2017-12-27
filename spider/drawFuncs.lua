@@ -46,6 +46,15 @@ end
 
 M.drawBackGround = drawBackGround
 
+local function drawReloadHere(sceneGroup, reload_here, reload_hereProp)
+	reload_here[1] = display.newImageRect( sceneGroup, reload_hereProp.Img, reload_hereProp.Height, reload_hereProp.Height )
+	reload_here[1].x = reload_hereProp.PosiX
+	reload_here[1].y = reload_hereProp.PosiY
+	reload_here[1]:setFillColor( 1, 1, 1, reload_hereProp.Opacity )
+end
+
+M.drawReloadHere = drawReloadHere
+
 local function drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 	bgProp.reLoadButton = display.newImageRect( sceneGroup, "reload2.png", 30, 30 )
 	bgProp.reLoadButton.x = totalHeight - 80

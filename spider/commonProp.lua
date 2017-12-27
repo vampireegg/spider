@@ -23,6 +23,13 @@ M.portal = {}
 M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png",  "ptfw.png", "ptfb.png", "ptbl.png", "ptrb.png"}
 M.portal.Size = 50
 
+M.reload_here = {}
+M.reload_here.Img = "reload_here.png"
+M.reload_here.PosiX = 910
+M.reload_here.PosiY = 50
+M.reload_here.Width = 572
+M.reload_here.Height = 106
+
 M.heart = {}
 M.heart.Img = "heart1.png"
 M.heart.Size = 100

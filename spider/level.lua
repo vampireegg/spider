@@ -156,6 +156,7 @@ local function endGame()
 			display.remove(heart[i])
 		end
 	end
+	display.remove(reload_here[1])
 	display.remove(bgProp.reLoadButton)
 	display.remove(bgProp.crossButton)
 	display.remove(bgProp.reLoadButtonBox)
@@ -319,6 +320,7 @@ end
 local function on_frame( event )
 	if(spider[1].x > totalHeight or spider[1].y > totalWidth or spider[1].x < 0 or spider[1].y < 0) then
 		spider[1]:setLinearVelocity( 0, 0 )
+		reload_here[1]:setFillColor( 1, 1, 1, 1 )
 	end
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
@@ -471,7 +473,7 @@ function scene:create( event )
 	reload_hereProp.Width = commonProp.reload_here.Width
 	reload_hereProp.Height = commonProp.reload_here.Height
 	reload_hereProp.Scale = commonProp.reload_here.Scale
-	reload_hereProp.Opacity = 1
+	reload_hereProp.Opacity = 0
 	
 	borderProp.borderWidth = commonProp.border.Width
 	borderProp.CommonName = commonProp.border.CommonName

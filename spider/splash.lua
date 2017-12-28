@@ -15,6 +15,7 @@ local totalWidth
 local counter
 local collideCounter
 local numCollider
+local counterResetter
 
 local function gotoGame()
 	local options = {
@@ -26,9 +27,10 @@ end
 
 local function on_frame( event )
 	counter = counter + 1
-	if(counter == 12) then
+	if(counter == counterResetter) then
 		collideCounter = collideCounter + 1
 		counter = 0
+		counterResetter = counterResetter - 1
 	end
 	if (collideCounter > 0 and collideCounter <= numCollider) then
 		collider[1][collideCounter]:setFillColor( 1, 1, 1, 1)
@@ -43,6 +45,7 @@ function scene:create( event )
  
 	print("splash")
 	numCollider = 14
+	counterResetter = 18
 	
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen

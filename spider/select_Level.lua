@@ -132,6 +132,9 @@ function scene:create( event )
 	
 	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color
+	bgProp.bg = display.newImageRect( sceneGroup, commonProp.level_select_screen.Img, totalHeight, totalWidth )
+	bgProp.bg.x = totalHeight/2
+	bgProp.bg.y = totalWidth/2
 	bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	

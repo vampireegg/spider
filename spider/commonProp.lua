@@ -36,8 +36,8 @@ M.heart.Img = "heart1.png"
 M.heart.Size = 100
 
 M.level_select_screen = {}
-M.level_select_screen.Color = {0.7, 0.5, 0.3, 1}
-M.level_select_screen.Img = "level_select3.jpg"
+M.level_select_screen.Color = {0.9, 0.9, 0.9, 0.4}
+M.level_select_screen.Img = "splash3.jpg"
 
 M.splash = {}
 M.splash.Img = "splash2.jpg"

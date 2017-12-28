@@ -113,7 +113,9 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 				collider[i][j].x = colliderProp.colliderGroupx[i] + (j - 1) * colliderProp.colliderWidth[colliderProp.ColliderType[i]]
 				collider[i][j].y = colliderProp.colliderGroupy[i]
 				collider[i][j].Orientation = colliderProp.Orientation[i]
-				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
+				if(physics ~= nil) then
+					physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
+				end
 				collider[i][j].Name = "collider_" .. i
 				collider[i][j].CommonName = colliderProp.CommonName[colliderProp.ColliderType[i]]
 			end
@@ -123,8 +125,10 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 				collider[i][j].x = colliderProp.colliderGroupx[i] 
 				collider[i][j].y = colliderProp.colliderGroupy[i] + (j - 1) * colliderProp.colliderWidth[colliderProp.ColliderType[i]]
 				collider[i][j].Orientation = colliderProp.Orientation[i]
+				if(physics ~= nil) then
+					physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
+				end
 				collider[i][j].rotation = 90
-				physics.addBody( collider[i][j], "static", { friction=0, bounce=0} )
 				collider[i][j].Name = "collider_" .. i
 				collider[i][j].CommonName = colliderProp.CommonName[colliderProp.ColliderType[i]]
 			end

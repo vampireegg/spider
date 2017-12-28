@@ -77,7 +77,7 @@ function scene:create( event )
 	colliderProp.Img = commonProp.collider.Img
 	colliderProp.CommonName = commonProp.collider.CommonName
 	
-	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
+	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, nil)
 	
 	for i = 1,numCollider do
 		collider[1][i]:setFillColor( 1, 1, 1, 0)

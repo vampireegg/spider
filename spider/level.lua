@@ -314,6 +314,7 @@ end
 local function portSpider( event )
 	spider[1].x = nextSpiderx
 	spider[1].y = nextSpidery
+	spider[1]:setLinearVelocity(0,0)
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
 end
 

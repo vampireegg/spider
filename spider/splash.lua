@@ -67,8 +67,8 @@ function scene:create( event )
 	
 	colliderProp.MyScale = commonProp.collider.MyScale / 1.5
 	colliderProp.colliderHeight = commonProp.collider.Height / 1.5
-	colliderProp.colliderWidth = commonProp.collider.Width
-	colliderProp.colliderWidth[1] = colliderProp.colliderWidth[1] / 1.5
+	colliderProp.colliderWidth = {}
+	colliderProp.colliderWidth[1] = commonProp.collider.Width[1] / 1.5
 	colliderProp.colliderGroupx = {300}
 	colliderProp.colliderGroupy = {590}
 	colliderProp.numColliders = {numCollider}

@@ -480,16 +480,16 @@ M[12] = {}
 
 M[12].spider = {}
 M[12].spider.MyScale = 0.15
-M[12].spider.PosiX = 730
+M[12].spider.PosiX = 630
 M[12].spider.PosiY = 80
 M[12].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[12].collider = {}
-M[12].collider.GroupX = {630, 830, 330}
-M[12].collider.GroupY = {60, 200, 200}
-M[12].collider.Num = {3, 3, 3}
-M[12].collider.Orientation = {2, 1, 1}
-M[12].collider.ColliderType = {1, 1, 1}
+M[12].collider.GroupX = {530, 730, 230, 180, 910}
+M[12].collider.GroupY = {60, 200, 200, 50, 50}
+M[12].collider.Num = {3, 3, 3, 10, 10}
+M[12].collider.Orientation = {2, 1, 1, 2, 2}
+M[12].collider.ColliderType = {1, 1, 1, 1, 1}
 
 M[12].goal = {}
 M[12].goal.PosiX = 260

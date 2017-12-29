@@ -403,7 +403,7 @@ M[10].goal.PosiY = 536
 
 M[10].bg = {}
 M[10].bg.Img = "bricks.jpg"
-M[10].bg.Opacity = 0.3
+M[10].bg.Opacity = 0.2
 
 M[10].eye = {}
 M[10].eye.Opacity = 0
@@ -450,7 +450,7 @@ M[11].goal.PosiY = 530
 
 M[11].bg = {}
 M[11].bg.Img = "bricks.jpg"
-M[11].bg.Opacity = 0.4
+M[11].bg.Opacity = 0.2
 
 M[11].eye = {}
 M[11].eye.Opacity = 0

@@ -32,7 +32,7 @@ M.reload_here.Height = 106
 M.reload_here.Scale = 0.2
 
 M.heart = {}
-M.heart.Img = "heart1.png"
+M.heart.Img = "heart7.png"
 M.heart.Size = 100
 
 M.level_select_screen = {}

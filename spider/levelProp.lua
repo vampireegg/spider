@@ -480,7 +480,7 @@ M[12] = {}
 
 M[12].spider = {}
 M[12].spider.MyScale = 0.15
-M[12].spider.PosiX = 630
+M[12].spider.PosiX = 730
 M[12].spider.PosiY = 80
 M[12].spider.LegExists = {1,1,1,1,1,1,1,1}
 

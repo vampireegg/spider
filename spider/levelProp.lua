@@ -514,8 +514,8 @@ M[12].heart.PosiX = {378}
 M[12].heart.PosiY = {332}
 
 M[12].dos_donts = {}
-M[12].dos_donts.Img = "dos_donts_11.png"
-M[12].dos_donts.Color = {0.25, 0.0, 0.12, 1}
+M[12].dos_donts.Img = "dos_donts_12.png"
+M[12].dos_donts.Color = {0.12, 0.25, 0.35, 1}
 
 M[12].icon = {}
 M[12].icon.Img = "li_12.png"

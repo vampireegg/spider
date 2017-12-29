@@ -485,7 +485,7 @@ M[12].spider.PosiY = 80
 M[12].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[12].collider = {}
-M[12].collider.GroupX = {530, 730, 230, 180, 910}
+M[12].collider.GroupX = {550, 730, 230, 180, 910}
 M[12].collider.GroupY = {60, 200, 200, 50, 50}
 M[12].collider.Num = {3, 3, 3, 10, 10}
 M[12].collider.Orientation = {2, 1, 1, 2, 2}
@@ -511,7 +511,7 @@ M[12].portal.PosiY = {}
 M[12].heartExists = 1
 M[12].heart = {}
 M[12].heart.PosiX = {378}
-M[12].heart.PosiY = {273}
+M[12].heart.PosiY = {332}
 
 M[12].dos_donts = {}
 M[12].dos_donts.Img = "dos_donts_11.png"

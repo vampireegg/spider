@@ -473,4 +473,51 @@ M[11].dos_donts.Color = {0.25, 0.0, 0.12, 1}
 M[11].icon = {}
 M[11].icon.Img = "li_11.png"
 
+---------------------------------------- Level 12----------------------------------------
+
+M[12] = {}
+
+
+M[12].spider = {}
+M[12].spider.MyScale = 0.15
+M[12].spider.PosiX = 600
+M[12].spider.PosiY = 80
+M[12].spider.LegExists = {1,1,1,1,1,1,1,1}
+
+M[12].collider = {}
+M[12].collider.GroupX = {530}
+M[12].collider.GroupY = {60}
+M[12].collider.Num = {2}
+M[12].collider.Orientation = {2}
+M[12].collider.ColliderType = {1}
+
+M[12].goal = {}
+M[12].goal.PosiX = 60
+M[12].goal.PosiY = 63
+
+M[12].bg = {}
+M[12].bg.Img = "bricks.jpg"
+M[12].bg.Opacity = 0.3
+
+M[12].eye = {}
+M[12].eye.Opacity = 0
+
+M[12].portal = {}
+M[12].portal.Exists = 0
+M[12].portal.Types = {}
+M[12].portal.PosiX = {}
+M[12].portal.PosiY = {}
+
+M[12].heartExists = 1
+M[12].heart = {}
+M[12].heart.PosiX = {578}
+M[12].heart.PosiY = {323}
+
+M[12].dos_donts = {}
+M[12].dos_donts.Img = "dos_donts_11.png"
+M[12].dos_donts.Color = {0.25, 0.0, 0.12, 1}
+
+M[12].icon = {}
+M[12].icon.Img = "li_11.png"
+
 return M

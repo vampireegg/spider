@@ -36,6 +36,6 @@ local options = {
  
 -- Go to the menu screen
 composer.setVariable( "1st_level", 1 )
-composer.setVariable( "level", 11 )
+composer.setVariable( "level", 12 )
 composer.setVariable( "max_completed_level", levelTable[1] )
 composer.gotoScene( "splash", options )

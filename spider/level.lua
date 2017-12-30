@@ -595,17 +595,20 @@ function scene:create( event )
 	if(levelProp[Level].heartExists == 1) then
 		drawFuncs.drawHearts(sceneGroup, heart, heartProp)
 	end
-	if(levelProp[Level].switchSystemExists == 1) then
-		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
-	end
+	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 	drawFuncs.drawReloadHere(sceneGroup, reload_here, reload_hereProp)
+	if(levelProp[Level].switchSystemExists == 1) then
+		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
+	end
 
 	for i = 1,8 do
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
+	
+	
 	bgProp.reLoadButton:addEventListener("tap", reLoad)
 	bgProp.reLoadButtonBox:addEventListener("tap", reLoad)
 	bgProp.crossButton:addEventListener("tap", cross)

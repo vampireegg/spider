@@ -372,6 +372,15 @@ local function on_frame( event )
 		end
 	end
 	
+	if(switchSystemProp.Exists == 1) then
+		for i = 1,switchSystemProp.Num do
+			if(distance(spider[1], switchSystem.switch[i]) <= spiderProp.SpiderRadius / 2 and switchSystem.switch[i].SpiderEntered == false) then
+				print("spider near switch")
+				switchSystem.switch[i].SpiderEntered = true
+			end
+		end
+	end
+	
 	if (portalProp.Exists == 1) then
 		for i = 1,#(portalProp.Types) do
 			for j = 1, 2 do

@@ -142,6 +142,7 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 		switchSystem.switch[i] = display.newImageRect(sceneGroup, switchSystemProp.switch.Img, switchSystemProp.switch.Width, switchSystemProp.switch.Height)
 		switchSystem.switch[i].x = switchSystemProp.switch.PosiX[i]
 		switchSystem.switch[i].y = switchSystemProp.switch.PosiY[i]
+		switchSystem.switch[i].SpiderEntered = false
 		switchSystem.switch[i]:scale(switchSystemProp.switch.Scale, switchSystemProp.switch.Scale)
 		
 		switchSystem.window[i] = {}

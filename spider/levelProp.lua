@@ -624,6 +624,7 @@ M[14].switchSystem.switch = {}
 M[14].switchSystem.switch.PosiX = {214, 500}
 M[14].switchSystem.switch.PosiY = {224, 536}
 M[14].switchSystem.window = {}
+M[14].switchSystem.window.Orientation = {{1, 1}, {1, 1}}
 M[14].switchSystem.window.State = {{1, 0},{1, 0}}
 M[14].switchSystem.window.Num = {{7, 10}, {1, 10}}
 M[14].switchSystem.window.PosiX = {{30, 800},{323, 500}}

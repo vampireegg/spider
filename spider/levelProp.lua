@@ -527,19 +527,19 @@ M[13] = {}
 
 M[13].spider = {}
 M[13].spider.MyScale = 0.15
-M[13].spider.PosiX = 730
+M[13].spider.PosiX = 70
 M[13].spider.PosiY = 80
 M[13].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[13].collider = {}
-M[13].collider.GroupX = {550, 730, 230, 180, 910}
-M[13].collider.GroupY = {60, 200, 200, 50, 50}
-M[13].collider.Num = {3, 3, 3, 10, 10}
-M[13].collider.Orientation = {2, 1, 1, 2, 2}
-M[13].collider.ColliderType = {1, 1, 1, 1, 1}
+M[13].collider.GroupX = {550, 730, 230}
+M[13].collider.GroupY = {60, 300, 300}
+M[13].collider.Num = {3, 3, 3}
+M[13].collider.Orientation = {2, 1, 1}
+M[13].collider.ColliderType = {1, 1, 1}
 
 M[13].goal = {}
-M[13].goal.PosiX = 260
+M[13].goal.PosiX = 860
 M[13].goal.PosiY = 63
 
 M[13].bg = {}
@@ -555,10 +555,17 @@ M[13].portal.Types = {}
 M[13].portal.PosiX = {}
 M[13].portal.PosiY = {}
 
-M[13].heartExists = 1
-M[13].heart = {}
-M[13].heart.PosiX = {378}
-M[13].heart.PosiY = {332}
+M[13].heartExists = 0
+
+M[13].switchSystemExists = 1
+M[13].switchSystem = {}
+M[13].switchSystem.switch = {}
+M[13].switchSystem.switch.PosiX = {214}
+M[13].switchSystem.switch.PosiY = {224}
+M[13].switchSystem.window = {}
+M[13].switchSystem.window.Type = {{1, 0}}
+M[13].switchSystem.window.PosiX = {{60, 700}}
+M[13].switchSystem.window.PosiY = {{300, 300}}
 
 M[13].dos_donts = {}
 M[13].dos_donts.Img = "dos_donts_12.png"

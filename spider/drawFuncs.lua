@@ -138,7 +138,7 @@ end
 M.drawCollider = drawCollider
 
 local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
-	for i = 1,#(switchSystemProp.PosiX) do
+	for i = 1,switchSystemProp.Num do
 		switchSystem.switch[i] = display.newImageRect(sceneGroup, switchSystemProp.switch.Img, switchSystemProp.switch.Width, switchSystemProp.switch.Height)
 		switchSystem.switch[i].x = switchSystemProp.switch.PosiX[i]
 		switchSystem.switch[i].y = switchSystemProp.switch.PosiY[i]

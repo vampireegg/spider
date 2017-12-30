@@ -532,6 +532,7 @@ function scene:create( event )
 	
 	if(levelProp[Level].switchSystemExists == 1) then
 		switchSystemProp.Exists = 1
+		switchSystemProp.Num = levelProp[Level].switchSystem.Num
 		switchSystemProp.switch = {}
 		switchSystemProp.switch.Img = commonProp.switchSystem.switch.Img
 		switchSystemProp.switch.Width = commonProp.switchSystem.switch.Width
@@ -547,9 +548,9 @@ function scene:create( event )
 		switchSystemProp.window.Scale = commonProp.switchSystem.window.Scale
 		switchSystemProp.window.PosiX = levelProp[Level].switchSystem.window.PosiX
 		switchSystemProp.window.PosiY = levelProp[Level].switchSystem.window.PosiY
-	end
-		switchSystemProp.Exists = 0
 	else
+		switchSystemProp.Exists = 0
+	end
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false
@@ -588,6 +589,9 @@ function scene:create( event )
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
 	if(levelProp[Level].heartExists == 1) then
 		drawFuncs.drawHearts(sceneGroup, heart, heartProp)
+	end
+	if(levelProp[Level].switchSystemExists == 1) then
+		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
 	end
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	

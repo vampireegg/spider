@@ -559,6 +559,7 @@ M[13].heartExists = 0
 
 M[13].switchSystemExists = 1
 M[13].switchSystem = {}
+M[13].switchSystem.Num = 1
 M[13].switchSystem.switch = {}
 M[13].switchSystem.switch.PosiX = {214}
 M[13].switchSystem.switch.PosiY = {224}

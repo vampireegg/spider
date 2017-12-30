@@ -138,6 +138,7 @@ end
 M.drawCollider = drawCollider
 
 local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
+	switchSystemProp.window.CurState = {}
 	for i = 1,switchSystemProp.Num do
 		switchSystem.switch[i] = display.newImageRect(sceneGroup, switchSystemProp.switch.Img, switchSystemProp.switch.Width, switchSystemProp.switch.Height)
 		switchSystem.switch[i].x = switchSystemProp.switch.PosiX[i]
@@ -145,7 +146,8 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 		switchSystem.switch[i].SpiderEntered = false
 		switchSystem.switch[i]:scale(switchSystemProp.switch.Scale, switchSystemProp.switch.Scale)
 		
-		switchSystem.window[i] = {}
+		switchSystem.window[i] = {}	
+		switchSystemProp.window.CurState[i] = {}		
 		for j = 1, 2 do
 			switchSystem.window[i][j] = {}
 			for k = 1, switchSystemProp.window.Num[i][j] do
@@ -154,7 +156,8 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 				switchSystem.window[i][j][k].y = switchSystemProp.window.PosiY[i][j]
 				switchSystem.window[i][j][k].Name = "window_" .. i .. j
 				switchSystem.window[i][j][k].CommonName = "window"
-				if(switchSystemProp.window.State[i][j] == 0) then
+				switchSystemProp.window.CurState[i][j] = switchSystemProp.window.State[i][j]
+				if(switchSystemProp.window.CurState[i][j] == 0) then
 					switchSystem.window[i][j][k]:setFillColor( 1, 1, 1, 0.3 )
 				else
 					physics.addBody( switchSystem.window[i][j][k], "static", { friction=0, bounce=0} )

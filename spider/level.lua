@@ -390,14 +390,14 @@ local function on_frame( event )
 				switchSystem.switch[i].SpiderEntered = true
 				switchSystem.switch[i]:scale(-1,1)
 				for j = 1, 2 do
-					if(switchSystemProp.window.State[i][j] == 0) then
-						switchSystemProp.window.State[i][j] = 1
+					if(switchSystemProp.window.CurState[i][j] == 0) then
+						switchSystemProp.window.CurState[i][j] = 1
 						for k = 1, switchSystemProp.window.Num[i][j] do
 							physics.addBody( switchSystem.window[i][j][k], "static", { friction=0, bounce=0} )
 							switchSystem.window[i][j][k]:setFillColor( 1, 1, 1, 1 )
 						end
 					else
-						switchSystemProp.window.State[i][j] = 0
+						switchSystemProp.window.CurState[i][j] = 0
 						for k = 1, switchSystemProp.window.Num[i][j] do
 							physics.removeBody( switchSystem.window[i][j][k])
 							switchSystem.window[i][j][k]:setFillColor( 1, 1, 1, 0.3 )

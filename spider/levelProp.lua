@@ -560,6 +560,7 @@ M[13].heartExists = 0
 M[13].switchSystemExists = 1
 M[13].switchSystem = {}
 M[13].switchSystem.Num = 2
+M[13].switchSystem.Color = {{1,1,1}, {1,0.7,0.3}}
 M[13].switchSystem.switch = {}
 M[13].switchSystem.switch.PosiX = {214, 500}
 M[13].switchSystem.switch.PosiY = {224, 536}

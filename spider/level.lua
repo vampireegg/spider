@@ -394,13 +394,13 @@ local function on_frame( event )
 						switchSystemProp.window.CurState[i][j] = 1
 						for k = 1, switchSystemProp.window.Num[i][j] do
 							physics.addBody( switchSystem.window[i][j][k], "static", { friction=0, bounce=0} )
-							switchSystem.window[i][j][k]:setFillColor( 1, 1, 1, 1 )
+							switchSystem.window[i][j][k]:setFillColor(switchSystemProp.Color[i][1], switchSystemProp.Color[i][2], switchSystemProp.Color[i][3], 1 )
 						end
 					else
 						switchSystemProp.window.CurState[i][j] = 0
 						for k = 1, switchSystemProp.window.Num[i][j] do
 							physics.removeBody( switchSystem.window[i][j][k])
-							switchSystem.window[i][j][k]:setFillColor( 1, 1, 1, 0.3 )
+							switchSystem.window[i][j][k]:setFillColor(switchSystemProp.Color[i][1], switchSystemProp.Color[i][2], switchSystemProp.Color[i][3], 0.3 )
 						end
 					end
 				end
@@ -570,6 +570,7 @@ function scene:create( event )
 	
 	if(levelProp[Level].switchSystemExists == 1) then
 		switchSystemProp.Exists = 1
+		switchSystemProp.Color = levelProp[Level].switchSystem.Color
 		switchSystemProp.Num = levelProp[Level].switchSystem.Num
 		switchSystemProp.switch = {}
 		switchSystemProp.switch.Img = commonProp.switchSystem.switch.Img

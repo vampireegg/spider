@@ -377,6 +377,9 @@ local function on_frame( event )
 			if(distance(spider[1], switchSystem.switch[i]) <= spiderProp.SpiderRadius / 2 and switchSystem.switch[i].SpiderEntered == false) then
 				print("spider near switch")
 				switchSystem.switch[i].SpiderEntered = true
+				switchSystem.switch[i]:scale(-1,1)
+			elseif (distance(spider[1], switchSystem.switch[i]) > spiderProp.SpiderRadius / 2) then
+				switchSystem.switch[i].SpiderEntered = false
 			end
 		end
 	end

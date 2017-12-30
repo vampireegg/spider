@@ -153,8 +153,13 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 			switchSystem.window[i][j] = {}
 			for k = 1, switchSystemProp.window.Num[i][j] do
 				switchSystem.window[i][j][k] = display.newImageRect(sceneGroup, switchSystemProp.window.Img, switchSystemProp.window.Width, switchSystemProp.window.Height)
-				switchSystem.window[i][j][k].x = switchSystemProp.window.PosiX[i][j] + (k - 1) * switchSystemProp.window.Width
-				switchSystem.window[i][j][k].y = switchSystemProp.window.PosiY[i][j]
+				if(switchSystemProp.window.Orientation[i] == 1) then
+					switchSystem.window[i][j][k].x = switchSystemProp.window.PosiX[i][j] + (k - 1) * switchSystemProp.window.Width
+					switchSystem.window[i][j][k].y = switchSystemProp.window.PosiY[i][j]
+				else
+					switchSystem.window[i][j][k].x = switchSystemProp.window.PosiX[i][j] 
+					switchSystem.window[i][j][k].y = switchSystemProp.window.PosiY[i][j] + (k - 1) * switchSystemProp.window.Height
+				end
 				switchSystem.window[i][j][k].Name = "window_" .. i .. j
 				switchSystem.window[i][j][k].CommonName = "window"
 				switchSystemProp.window.CurState[i][j] = switchSystemProp.window.State[i][j]

@@ -589,6 +589,7 @@ function scene:create( event )
 		switchSystemProp.window.PosiY = levelProp[Level].switchSystem.window.PosiY
 		switchSystemProp.window.Num = levelProp[Level].switchSystem.window.Num
 		switchSystemProp.window.State = levelProp[Level].switchSystem.window.State
+		switchSystemProp.window.Orientation = levelProp[Level].switchSystem.window.Orientation
 		
 		switchSystem.switch = {}
 		switchSystem.window = {}

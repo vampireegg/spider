@@ -23,6 +23,18 @@ M.portal = {}
 M.portal.Img = {"ptr.png", "ptw.png", "ptb.png", "ptg.png",  "ptfw.png", "ptfb.png", "ptbl.png", "ptrb.png"}
 M.portal.Size = 50
 
+M.switchSystem = {}
+M.switchSystem.switch = {}
+M.switchSystem.switch.Img = "switch.png"
+M.switchSystem.switch.Width = 275
+M.switchSystem.switch.Height = 239
+M.switchSystem.switch.Scale = 0.8
+M.switchSystem.window = {}
+M.switchSystem.window.Img = "barricade.png"
+M.switchSystem.window.Width = 384
+M.switchSystem.window.Height = 122
+M.switchSystem.window.Scale = 0.23
+
 M.reload_here = {}
 M.reload_here.Img = "reload_here.png"
 M.reload_here.PosiX = 910

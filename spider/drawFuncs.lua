@@ -153,7 +153,7 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 			switchSystem.window[i][j] = {}
 			for k = 1, switchSystemProp.window.Num[i][j] do
 				switchSystem.window[i][j][k] = display.newImageRect(sceneGroup, switchSystemProp.window.Img, switchSystemProp.window.Width, switchSystemProp.window.Height)
-				if(switchSystemProp.window.Orientation[i] == 1) then
+				if(switchSystemProp.window.Orientation[i][j] == 1) then
 					switchSystem.window[i][j][k].x = switchSystemProp.window.PosiX[i][j] + (k - 1) * switchSystemProp.window.Width
 					switchSystem.window[i][j][k].y = switchSystemProp.window.PosiY[i][j]
 				else

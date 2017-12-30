@@ -33,7 +33,7 @@ M.switchSystem.window = {}
 M.switchSystem.window.Img = "barricade3.png"
 M.switchSystem.window.Scale = 0.17
 M.switchSystem.window.Width = 161 * M.switchSystem.window.Scale
-M.switchSystem.window.Height = 172 * M.switchSystem.window.Scale
+M.switchSystem.window.Height = 161 * M.switchSystem.window.Scale
  
 
 M.reload_here = {}

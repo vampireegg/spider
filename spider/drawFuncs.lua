@@ -145,12 +145,15 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 		switchSystem.switch[i]:scale(switchSystemProp.switch.Scale, switchSystemProp.switch.Scale)
 		
 		for j = 1, 2 do
-			local Type = switchSystemProp.window.Type[i][j]
-			switchSystem.window[i][j] = display.newImageRect(sceneGroup, switchSystemProp.window[Type].Img, switchSystemProp.window[Type].Width, switchSystemProp.window[Type].Height)
+			switchSystem.window[i][j] = display.newImageRect(sceneGroup, switchSystemProp.window.Img, switchSystemProp.window.Width, switchSystemProp.window.Height)
 			switchSystem.window[i][j].x = switchSystemProp.window.PosiX[i][j]
 			switchSystem.window[i][j].y = switchSystemProp.window.PosiY[i][j]
-			switchSystem.window[i][j]:scale(switchSystemProp.window[Type].Scale, switchSystemProp.window[Type].Scale)
+			switchSystem.window[i][j]:scale(switchSystemProp.window[Type].Scale, switchSystemProp.window.Scale)
+			physics.addBody( switchSystem.window[i][j], "static", { friction=0, bounce=0} )
 		end
+		switchSystem.window[i][2]:setFillColor( 1, 1, 1, 0 )
+		switchSystem.window[i][1].pair = switchSystem.window[i][2]
+		switchSystem.window[i][2].pair = switchSystem.window[i][1]
 	end
 end
 M.drawSwitchSystem = drawSwitchSystem

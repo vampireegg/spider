@@ -572,8 +572,8 @@ M[13].switchSystem.window.PosiX = {{30, 500}}
 M[13].switchSystem.window.PosiY = {{300, 350}}
 
 M[13].dos_donts = {}
-M[13].dos_donts.Img = "dos_donts_12.png"
-M[13].dos_donts.Color = {0.12, 0.25, 0.35, 1}
+M[13].dos_donts.Img = "dos_donts_13.png"
+M[13].dos_donts.Color = {0.25, 0.12, 0.12, 1}
 
 M[13].icon = {}
 M[13].icon.Img = "li_13.png"

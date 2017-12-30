@@ -539,8 +539,8 @@ M[13].collider.Orientation = {}
 M[13].collider.ColliderType = {}
 
 M[13].goal = {}
-M[13].goal.PosiX = 520
-M[13].goal.PosiY = 63
+M[13].goal.PosiX = 375
+M[13].goal.PosiY = 536
 
 M[13].bg = {}
 M[13].bg.Img = "zebra.jpg"
@@ -562,14 +562,14 @@ M[13].switchSystem = {}
 M[13].switchSystem.Num = 1
 M[13].switchSystem.Color = {{1,1,1}}
 M[13].switchSystem.switch = {}
-M[13].switchSystem.switch.PosiX = {214}
+M[13].switchSystem.switch.PosiX = {1002}
 M[13].switchSystem.switch.PosiY = {224}
 M[13].switchSystem.window = {}
 M[13].switchSystem.window.Orientation = {{1, 2}}
 M[13].switchSystem.window.State = {{1, 0}}
-M[13].switchSystem.window.Num = {{7, 10}}
-M[13].switchSystem.window.PosiX = {{30, 800}}
-M[13].switchSystem.window.PosiY = {{300, 300}}
+M[13].switchSystem.window.Num = {{37, 8}}
+M[13].switchSystem.window.PosiX = {{30, 500}}
+M[13].switchSystem.window.PosiY = {{300, 350}}
 
 M[13].dos_donts = {}
 M[13].dos_donts.Img = "dos_donts_12.png"

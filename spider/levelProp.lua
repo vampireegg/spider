@@ -539,7 +539,7 @@ M[13].collider.Orientation = {2, 1, 1}
 M[13].collider.ColliderType = {1, 1, 1}
 
 M[13].goal = {}
-M[13].goal.PosiX = 860
+M[13].goal.PosiX = 520
 M[13].goal.PosiY = 63
 
 M[13].bg = {}
@@ -552,8 +552,8 @@ M[13].eye.Opacity = 0
 M[13].portal = {}
 M[13].portal.Exists = 1
 M[13].portal.Types = {3}
-M[13].portal.PosiX = {{1002,-OOF}}
-M[13].portal.PosiY = {{536, -OOF}}
+M[13].portal.PosiX = {{1002, 373}}
+M[13].portal.PosiY = {{536, 63}}
 
 M[13].heartExists = 0
 
@@ -565,9 +565,9 @@ M[13].switchSystem.switch.PosiX = {214, 500}
 M[13].switchSystem.switch.PosiY = {224, 536}
 M[13].switchSystem.window = {}
 M[13].switchSystem.window.State = {{1, 0},{1, 0}}
-M[13].switchSystem.window.Num = {{5, 5}, {1, 1}}
-M[13].switchSystem.window.PosiX = {{60, 900},{323, OOF}}
-M[13].switchSystem.window.PosiY = {{300, 300},{113, OOF}}
+M[13].switchSystem.window.Num = {{6, 6}, {1, 7}}
+M[13].switchSystem.window.PosiX = {{30, 900},{323, 500}}
+M[13].switchSystem.window.PosiY = {{300, 300},{113, 300}}
 
 M[13].dos_donts = {}
 M[13].dos_donts.Img = "dos_donts_12.png"

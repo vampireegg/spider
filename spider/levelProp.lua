@@ -520,4 +520,51 @@ M[12].dos_donts.Color = {0.12, 0.25, 0.35, 1}
 M[12].icon = {}
 M[12].icon.Img = "li_12.png"
 
+---------------------------------------- Level 13----------------------------------------
+
+M[13] = {}
+
+
+M[13].spider = {}
+M[13].spider.MyScale = 0.15
+M[13].spider.PosiX = 730
+M[13].spider.PosiY = 80
+M[13].spider.LegExists = {1,1,1,1,1,1,1,1}
+
+M[13].collider = {}
+M[13].collider.GroupX = {550, 730, 230, 180, 910}
+M[13].collider.GroupY = {60, 200, 200, 50, 50}
+M[13].collider.Num = {3, 3, 3, 10, 10}
+M[13].collider.Orientation = {2, 1, 1, 2, 2}
+M[13].collider.ColliderType = {1, 1, 1, 1, 1}
+
+M[13].goal = {}
+M[13].goal.PosiX = 260
+M[13].goal.PosiY = 63
+
+M[13].bg = {}
+M[13].bg.Img = "bricks.jpg"
+M[13].bg.Opacity = 0.3
+
+M[13].eye = {}
+M[13].eye.Opacity = 0
+
+M[13].portal = {}
+M[13].portal.Exists = 0
+M[13].portal.Types = {}
+M[13].portal.PosiX = {}
+M[13].portal.PosiY = {}
+
+M[13].heartExists = 1
+M[13].heart = {}
+M[13].heart.PosiX = {378}
+M[13].heart.PosiY = {332}
+
+M[13].dos_donts = {}
+M[13].dos_donts.Img = "dos_donts_12.png"
+M[13].dos_donts.Color = {0.12, 0.25, 0.35, 1}
+
+M[13].icon = {}
+M[13].icon.Img = "li_12.png"
+
 return M

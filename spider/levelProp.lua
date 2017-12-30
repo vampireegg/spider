@@ -577,4 +577,62 @@ M[13].dos_donts.Color = {0.12, 0.25, 0.35, 1}
 M[13].icon = {}
 M[13].icon.Img = "li_12.png"
 
+
+---------------------------------------- Level 14----------------------------------------
+
+M[14] = {}
+
+
+M[14].spider = {}
+M[14].spider.MyScale = 0.15
+M[14].spider.PosiX = 70
+M[14].spider.PosiY = 80
+M[14].spider.LegExists = {1,1,1,1,1,1,1,1}
+
+M[14].collider = {}
+M[14].collider.GroupX = {450, 260}
+M[14].collider.GroupY = {60,  300}
+M[14].collider.Num = {7, 3}
+M[14].collider.Orientation = {2, 1}
+M[14].collider.ColliderType = {1, 1}
+
+M[14].goal = {}
+M[14].goal.PosiX = 520
+M[14].goal.PosiY = 63
+
+M[14].bg = {}
+M[14].bg.Img = "zebra.jpg"
+M[14].bg.Opacity = 0.3
+
+M[14].eye = {}
+M[14].eye.Opacity = 0
+
+M[14].portal = {}
+M[14].portal.Exists = 1
+M[14].portal.Types = {1}
+M[14].portal.PosiX = {{1002, 373}}
+M[14].portal.PosiY = {{536, 63}}
+
+M[14].heartExists = 0
+
+M[14].switchSystemExists = 1
+M[14].switchSystem = {}
+M[14].switchSystem.Num = 2
+M[14].switchSystem.Color = {{1,1,1}, {1,1,0.3}}
+M[14].switchSystem.switch = {}
+M[14].switchSystem.switch.PosiX = {214, 500}
+M[14].switchSystem.switch.PosiY = {224, 536}
+M[14].switchSystem.window = {}
+M[14].switchSystem.window.State = {{1, 0},{1, 0}}
+M[14].switchSystem.window.Num = {{7, 10}, {1, 10}}
+M[14].switchSystem.window.PosiX = {{30, 800},{323, 500}}
+M[14].switchSystem.window.PosiY = {{300, 300},{113, 300}}
+
+M[14].dos_donts = {}
+M[14].dos_donts.Img = "dos_donts_12.png"
+M[14].dos_donts.Color = {0.12, 0.25, 0.35, 1}
+
+M[14].icon = {}
+M[14].icon.Img = "li_12.png"
+
 return M

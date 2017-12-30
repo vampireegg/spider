@@ -548,6 +548,9 @@ function scene:create( event )
 		switchSystemProp.window.Scale = commonProp.switchSystem.window.Scale
 		switchSystemProp.window.PosiX = levelProp[Level].switchSystem.window.PosiX
 		switchSystemProp.window.PosiY = levelProp[Level].switchSystem.window.PosiY
+		
+		switchSystem.switch = {}
+		switchSystem.window = {}
 	else
 		switchSystemProp.Exists = 0
 	end

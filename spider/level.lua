@@ -159,6 +159,17 @@ local function endGame()
 			display.remove(heart[i])
 		end
 	end
+	
+	if(switchSystemProp.Exists == 1) then
+		for i = 1,switchSystemProp.Num do
+			display.remove(switchSystem.switch[i])
+			for j = 1, 2 do
+				for k = 1, switchSystemProp.window.Num[i][j] do
+					display.remove(switchSystem.window[i][j][k])
+				end
+			end	
+		end
+	end
 	display.remove(reload_here[1])
 	display.remove(bgProp.reLoadButton)
 	display.remove(bgProp.crossButton)

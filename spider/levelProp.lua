@@ -543,7 +543,7 @@ M[13].goal.PosiX = 860
 M[13].goal.PosiY = 63
 
 M[13].bg = {}
-M[13].bg.Img = "bricks.jpg"
+M[13].bg.Img = "zebra.jpg"
 M[13].bg.Opacity = 0.3
 
 M[13].eye = {}
@@ -566,7 +566,7 @@ M[13].switchSystem.switch.PosiY = {224}
 M[13].switchSystem.window = {}
 M[13].switchSystem.window.Type = {{1, 0}}
 M[13].switchSystem.window.Num = {{5, 5}}
-M[13].switchSystem.window.PosiX = {{60, 700}}
+M[13].switchSystem.window.PosiX = {{60, 900}}
 M[13].switchSystem.window.PosiY = {{300, 300}}
 
 M[13].dos_donts = {}

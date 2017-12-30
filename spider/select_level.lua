@@ -44,6 +44,7 @@ local function endSelection()
 	for i = current1st_Level,current1st_Level + 7 do
 		display.remove(levelIcons[i])
 	end
+	display.remove(bgProp.bg)
 	display.remove(bgRect)
 	display.remove(nextScreenButton[1])
 	display.remove(prevScreenButton[1])

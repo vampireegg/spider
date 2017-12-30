@@ -30,10 +30,11 @@ M.switchSystem.switch.Width = 275
 M.switchSystem.switch.Height = 239
 M.switchSystem.switch.Scale = 0.2
 M.switchSystem.window = {}
-M.switchSystem.window.Img = "barricade.png"
-M.switchSystem.window.Width = 384
-M.switchSystem.window.Height = 122
-M.switchSystem.window.Scale = 0.23
+M.switchSystem.window.Img = "barricade3.png"
+M.switchSystem.window.Scale = 0.17
+M.switchSystem.window.Width = 161 * M.switchSystem.window.Scale
+M.switchSystem.window.Height = 172 * M.switchSystem.window.Scale
+ 
 
 M.reload_here = {}
 M.reload_here.Img = "reload_here.png"

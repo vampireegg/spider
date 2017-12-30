@@ -146,16 +146,19 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 		
 		switchSystem.window[i] = {}
 		for j = 1, 2 do
-			switchSystem.window[i][j] = display.newImageRect(sceneGroup, switchSystemProp.window.Img, switchSystemProp.window.Width, switchSystemProp.window.Height)
-			switchSystem.window[i][j].x = switchSystemProp.window.PosiX[i][j]
-			switchSystem.window[i][j].y = switchSystemProp.window.PosiY[i][j]
-			switchSystem.window[i][j]:scale(switchSystemProp.window.Scale, switchSystemProp.window.Scale)
-			switchSystem.window[i][j].Name = "window_" .. i .. j
-			physics.addBody( switchSystem.window[i][j], "static", { friction=0, bounce=0} )
-			if(switchSystem.window[i][j].Type == 0) then
-				switchSystem.window[i][j]:setFillColor( 1, 1, 1, 0 )
+			switchSystem.window[i][j] = {}
+			for k = 1, switchSystemProp.window.Num[i][j] do
+				switchSystem.window[i][j][k] = display.newImageRect(sceneGroup, switchSystemProp.window.Img, switchSystemProp.window.Width, switchSystemProp.window.Height)
+				switchSystem.window[i][j][k].x = switchSystemProp.window.PosiX[i][j] + (k - 1) * switchSystemProp.window.Width
+				switchSystem.window[i][j][k].y = switchSystemProp.window.PosiY[i][j]
+				switchSystem.window[i][j][k].Name = "window_" .. i .. j
+				switchSystem.window[i][j][k].CommonName = "window"
+				physics.addBody( switchSystem.window[i][j][k], "static", { friction=0, bounce=0} )
+				if(switchSystem.window[i][j].Type == 0) then
+					switchSystem.window[i][j][k]:setFillColor( 1, 1, 1, 0 )
+				end
 			end
-		end		
+		end	
 		switchSystem.window[i][1].pair = switchSystem.window[i][2]
 		switchSystem.window[i][2].pair = switchSystem.window[i][1]
 	end

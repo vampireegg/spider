@@ -532,7 +532,7 @@ M[13].spider.PosiY = 80
 M[13].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[13].collider = {}
-M[13].collider.GroupX = {450, 730, 230}
+M[13].collider.GroupX = {450, 730, 260}
 M[13].collider.GroupY = {60, 300, 300}
 M[13].collider.Num = {7, 3, 3}
 M[13].collider.Orientation = {2, 1, 1}
@@ -565,7 +565,7 @@ M[13].switchSystem.switch.PosiX = {214, 500}
 M[13].switchSystem.switch.PosiY = {224, 536}
 M[13].switchSystem.window = {}
 M[13].switchSystem.window.State = {{1, 0},{1, 0}}
-M[13].switchSystem.window.Num = {{6, 6}, {1, 7}}
+M[13].switchSystem.window.Num = {{7, 6}, {1, 7}}
 M[13].switchSystem.window.PosiX = {{30, 900},{323, 500}}
 M[13].switchSystem.window.PosiY = {{300, 300},{113, 300}}
 

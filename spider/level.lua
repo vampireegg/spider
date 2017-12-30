@@ -57,6 +57,9 @@ local portal = {}
 local heartProp = {}
 local heart = {}
 
+local switchSystemProp = {}
+local switchSystem = {}
+
 local myTimers = {}
 
 local lastLegTouched
@@ -526,6 +529,27 @@ function scene:create( event )
 	else
 		heartProp.Exists = 0
 	end
+	
+	if(levelProp[Level].switchSystemExists == 1) then
+		switchSystemProp.Exists = 1
+		switchSystemProp.switch = {}
+		switchSystemProp.switch.Img = commonProp.switchSystem.switch.Img
+		switchSystemProp.switch.Width = commonProp.switchSystem.switch.Width
+		switchSystemProp.switch.Height = commonProp.switchSystem.switch.Height
+		switchSystemProp.switch.Scale = commonProp.switchSystem.switch.Scale
+		switchSystemProp.switch.PosiX = levelProp[Level].switchSystem.switch.PosiX
+		switchSystemProp.switch.PosiY = levelProp[Level].switchSystem.switch.PosiY
+		
+		switchSystemProp.window = {}
+		switchSystemProp.window.Img = commonProp.switchSystem.window.Img
+		switchSystemProp.window.Width = commonProp.switchSystem.window.Width
+		switchSystemProp.window.Height = commonProp.switchSystem.window.Height
+		switchSystemProp.window.Scale = commonProp.switchSystem.window.Scale
+		switchSystemProp.window.PosiX = levelProp[Level].switchSystem.window.PosiX
+		switchSystemProp.window.PosiY = levelProp[Level].switchSystem.window.PosiY
+	end
+		switchSystemProp.Exists = 0
+	else
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false

@@ -144,6 +144,7 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 		switchSystem.switch[i].y = switchSystemProp.switch.PosiY[i]
 		switchSystem.switch[i]:scale(switchSystemProp.switch.Scale, switchSystemProp.switch.Scale)
 		
+		switchSystem.window[i] = {}
 		for j = 1, 2 do
 			switchSystem.window[i][j] = display.newImageRect(sceneGroup, switchSystemProp.window.Img, switchSystemProp.window.Width, switchSystemProp.window.Height)
 			switchSystem.window[i][j].x = switchSystemProp.window.PosiX[i][j]

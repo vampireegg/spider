@@ -457,9 +457,9 @@ M[11].eye.Opacity = 0
 
 M[11].portal = {}
 M[11].portal.Exists = 1
-M[11].portal.Types = {1, 5, 4, 7}
-M[11].portal.PosiX = {{63,  570}, {470, 570}, {470, 970}, {630, OOF}}
-M[11].portal.PosiY = {{120, 300}, {206, 530}, {530, 300}, {206, OOF}}
+M[11].portal.Types = {1, 5, 4, 2, 3}
+M[11].portal.PosiX = {{63,  570}, {470, 570}, {470, 970}, {630, OOF}, {230, -OOF}}
+M[11].portal.PosiY = {{120, 300}, {206, 530}, {530, 300}, {206, OOF}, {250, -OOF}}
 
 M[11].heartExists = 1
 M[11].heart = {}

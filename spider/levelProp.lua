@@ -550,10 +550,10 @@ M[13].eye = {}
 M[13].eye.Opacity = 0
 
 M[13].portal = {}
-M[13].portal.Exists = 0
-M[13].portal.Types = {}
-M[13].portal.PosiX = {}
-M[13].portal.PosiY = {}
+M[13].portal.Exists = 1
+M[13].portal.Types = {3}
+M[13].portal.PosiX = {{1002,-OOF}}
+M[13].portal.PosiY = {{536, -OOF}}
 
 M[13].heartExists = 0
 
@@ -561,8 +561,8 @@ M[13].switchSystemExists = 1
 M[13].switchSystem = {}
 M[13].switchSystem.Num = 2
 M[13].switchSystem.switch = {}
-M[13].switchSystem.switch.PosiX = {214, -OOF}
-M[13].switchSystem.switch.PosiY = {224, -OOF}
+M[13].switchSystem.switch.PosiX = {214, 500}
+M[13].switchSystem.switch.PosiY = {224, 536}
 M[13].switchSystem.window = {}
 M[13].switchSystem.window.State = {{1, 0},{1, 0}}
 M[13].switchSystem.window.Num = {{5, 5}, {1, 1}}

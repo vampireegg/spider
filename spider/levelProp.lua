@@ -543,7 +543,7 @@ M[13].goal.PosiX = 375
 M[13].goal.PosiY = 536
 
 M[13].bg = {}
-M[13].bg.Img = "zebra.jpg"
+M[13].bg.Img = "splash3.jpg"
 M[13].bg.Opacity = 0.3
 
 M[13].eye = {}
@@ -602,7 +602,7 @@ M[14].goal.PosiX = 520
 M[14].goal.PosiY = 63
 
 M[14].bg = {}
-M[14].bg.Img = "zebra.jpg"
+M[14].bg.Img = "splash3.jpg"
 M[14].bg.Opacity = 0.3
 
 M[14].eye = {}

@@ -137,6 +137,16 @@ local function drawCollider(sceneGroup, collider, colliderProp, physics)
 end
 M.drawCollider = drawCollider
 
+local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
+	for i = 1,#(switchSystemProp.PosiX) do
+		switchSystem.switch[i] = display.newImageRect(sceneGroup, switchSystemProp.switch.Img, switchSystemProp.switch.Width, switchSystemProp.switch.Height  )
+		switchSystem.switch[i].x = switchSystemProp.switch.PosiX[i]
+		switchSystem.switch[i].y = switchSystemProp.switch.PosiY[i]
+		switchSystem.switch[i]:scale(switchSystemProp.switch.Scale, switchSystemProp.switch.Scale)
+	end
+end
+M.drawSwitchSystem = drawSwitchSystem
+
 local function drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 	eyeProp.Sheet = graphics.newImageSheet("eyesheet.png", eyesheetInfo:getSheet())
 	eyeProp.eye_movement = {}

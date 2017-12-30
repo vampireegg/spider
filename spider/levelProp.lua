@@ -532,9 +532,9 @@ M[13].spider.PosiY = 80
 M[13].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[13].collider = {}
-M[13].collider.GroupX = {550, 730, 230}
+M[13].collider.GroupX = {450, 730, 230}
 M[13].collider.GroupY = {60, 300, 300}
-M[13].collider.Num = {3, 3, 3}
+M[13].collider.Num = {7, 3, 3}
 M[13].collider.Orientation = {2, 1, 1}
 M[13].collider.ColliderType = {1, 1, 1}
 
@@ -559,15 +559,15 @@ M[13].heartExists = 0
 
 M[13].switchSystemExists = 1
 M[13].switchSystem = {}
-M[13].switchSystem.Num = 1
+M[13].switchSystem.Num = 2
 M[13].switchSystem.switch = {}
-M[13].switchSystem.switch.PosiX = {214}
-M[13].switchSystem.switch.PosiY = {224}
+M[13].switchSystem.switch.PosiX = {214, -OOF}
+M[13].switchSystem.switch.PosiY = {224, -OOF}
 M[13].switchSystem.window = {}
-M[13].switchSystem.window.State = {{1, 0}}
-M[13].switchSystem.window.Num = {{5, 5}}
-M[13].switchSystem.window.PosiX = {{60, 900}}
-M[13].switchSystem.window.PosiY = {{300, 300}}
+M[13].switchSystem.window.State = {{1, 0},{1, 0}}
+M[13].switchSystem.window.Num = {{5, 5}, {1, 1}}
+M[13].switchSystem.window.PosiX = {{60, 900},{323, OOF}}
+M[13].switchSystem.window.PosiY = {{300, 300},{113, OOF}}
 
 M[13].dos_donts = {}
 M[13].dos_donts.Img = "dos_donts_12.png"

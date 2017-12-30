@@ -139,10 +139,18 @@ M.drawCollider = drawCollider
 
 local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
 	for i = 1,#(switchSystemProp.PosiX) do
-		switchSystem.switch[i] = display.newImageRect(sceneGroup, switchSystemProp.switch.Img, switchSystemProp.switch.Width, switchSystemProp.switch.Height  )
+		switchSystem.switch[i] = display.newImageRect(sceneGroup, switchSystemProp.switch.Img, switchSystemProp.switch.Width, switchSystemProp.switch.Height)
 		switchSystem.switch[i].x = switchSystemProp.switch.PosiX[i]
 		switchSystem.switch[i].y = switchSystemProp.switch.PosiY[i]
 		switchSystem.switch[i]:scale(switchSystemProp.switch.Scale, switchSystemProp.switch.Scale)
+		
+		for j = 1, 2 do
+			local Type = switchSystemProp.window.Type[i][j]
+			switchSystem.window[i][j] = display.newImageRect(sceneGroup, switchSystemProp.window[Type].Img, switchSystemProp.window[Type].Width, switchSystemProp.window[Type].Height)
+			switchSystem.window[i][j].x = switchSystemProp.window.PosiX[i][j]
+			switchSystem.window[i][j].y = switchSystemProp.window.PosiY[i][j]
+			switchSystem.window[i][j]:scale(switchSystemProp.window[Type].Scale, switchSystemProp.window[Type].Scale)
+		end
 	end
 end
 M.drawSwitchSystem = drawSwitchSystem

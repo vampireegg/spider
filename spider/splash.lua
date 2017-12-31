@@ -71,7 +71,7 @@ function scene:create( event )
 	
 	
 	--background:addEventListener( "tap", gotoGame )
-	Runtime:addEventListener( "enterFrame", on_frame )
+	
 	
 	colliderProp.MyScale = commonProp.collider.MyScale / 1.5
 	colliderProp.colliderHeight = commonProp.collider.Height / 1.5
@@ -110,7 +110,7 @@ function scene:show( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
-
+		Runtime:addEventListener( "enterFrame", on_frame )
 	end
 end
 

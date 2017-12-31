@@ -17,7 +17,12 @@ local collideCounter
 local numCollider
 local counterResetter
 
+local backgroundMusic
+local backgroundMusicChannel
+
 local function gotoGame()
+	audio.stop( backgroundMusicChannel)
+	audio.stop(backgroundMusicChannel)
 	local options = {
 		effect = "fade",
 		time = 800
@@ -87,6 +92,9 @@ function scene:create( event )
 	end
 	counter = 1
 	collideCounter = 0
+	
+	backgroundMusic = audio.loadStream( "start.mp3" )
+	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
 	
 end
 

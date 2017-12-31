@@ -624,7 +624,7 @@ function scene:create( event )
 	portalMusic = audio.loadStream( "beam.wav" )
 	collideMusic = audio.loadStream( "thud.mp3" )
 	--legMusic = audio.loadStream( "kick.mp3" )
-	goalMusic = audio.loadStream( "tada.wav" )
+	goalMusic = audio.loadStream( "tada.flac" )
 	bounceMusic = audio.loadStream( "spin.mp3" )
 	
 		

@@ -56,9 +56,9 @@ M.splash = {}
 M.splash.Img = "splash2.jpg"
 
 M.title = {}
-M.title.Img = {"amazeing.png", "spider.png"}
-M.title.Width = {1613, 603}
-M.title.Height = {550, 191}
+M.title.Img = {"amazeing.png", "spider.png", "vampireegg.png"}
+M.title.Width = {1613, 603, 1920}
+M.title.Height = {550, 191, 1080}
 M.title.Color = {0.18, 0.09, 0.09, 1}
 
 return M

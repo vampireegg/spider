@@ -64,14 +64,20 @@ function scene:create( event )
     background[1] = display.newImageRect( sceneGroup, bgProp.Img[1], bgProp.Width[1], bgProp.Height[1] )
     background[1].x = display.contentCenterX
     background[1].y = display.contentCenterY
-	background[1]:translate(-50, -30)
+	background[1]:translate(-35, -30)
 	background[1]:scale(0.25,0.25)
 	
 	background[2] = display.newImageRect( sceneGroup, bgProp.Img[2], bgProp.Width[2], bgProp.Height[2] )
     background[2].x = display.contentCenterX
     background[2].y = display.contentCenterY
-	background[2]:translate(100, 60)
+	background[2]:translate(115, 60)
 	background[2]:scale(0.18,0.18)
+	
+	background[3] = display.newImageRect( sceneGroup, bgProp.Img[3], bgProp.Width[3], bgProp.Height[3] )
+    background[3].x = display.contentCenterX
+    background[3].y = display.contentCenterY
+	background[3]:translate(450, 250)
+	background[3]:scale(0.06,0.06)
 	
 	Runtime:addEventListener( "enterFrame", on_frame )
 	

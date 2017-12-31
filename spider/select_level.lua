@@ -40,6 +40,7 @@ local backgroundMusic
 local backgroundMusicChannel
 
 local function endSelection()
+	audio.setVolume( 1/0.3, { channel=1 } )
 	audio.stop( backgroundMusicChannel)
 	audio.stop(backgroundMusicChannel)
 	backgroundMusicChannel = nil

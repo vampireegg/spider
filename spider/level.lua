@@ -163,7 +163,7 @@ local function pushLeg(event )
 end
 
 local function endGame()
-
+	audio.setVolume( 1/0.3, { channel=1 } )
 	audio.stop(backgroundMusicChannel)
 	backgroundMusicChannel = nil
 	audio.dispose( backgroundMusicChannel )

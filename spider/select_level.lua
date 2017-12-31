@@ -46,17 +46,17 @@ local function endSelection()
 	backgroundMusicChannel = nil
 	audio.dispose( backgroundMusicChannel )
 	display.remove(sceneGroup)
-	-- for i = 1, 8 do
-		-- display.remove(spiderProp.leg[i])
-	-- end
-	-- display.remove( spider[1] )
-	-- for i = current1st_Level,current1st_Level + 7 do
-		-- display.remove(levelIcons[i])
-	-- end
-	-- display.remove(bgProp.bg)
-	-- display.remove(bgRect)
-	-- display.remove(nextScreenButton[1])
-	-- display.remove(prevScreenButton[1])
+	for i = 1, 8 do
+		display.remove(spiderProp.leg[i])
+	end
+	display.remove( spider[1] )
+	for i = current1st_Level,current1st_Level + 7 do
+		display.remove(levelIcons[i])
+	end
+	display.remove(bgProp.bg)
+	display.remove(bgRect)
+	display.remove(nextScreenButton[1])
+	display.remove(prevScreenButton[1])
 	ending_level = true
 	local options = {
 		effect = "fade",

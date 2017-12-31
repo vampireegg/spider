@@ -106,7 +106,11 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen
-		composer.removeScene( "title" )
+		timer.performWithDelay( 30, 
+		   function()
+			  composer.removeScene( "title" )
+		   end 
+	   )
 
 	end
 end

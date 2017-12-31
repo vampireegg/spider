@@ -100,6 +100,8 @@ local goalMusic
 local goalMusicChannel
 local heartMusic
 local heartMusicChannel
+local windowMusic
+local windowMusicChannel
 
 
  
@@ -412,6 +414,7 @@ local function on_frame( event )
 		for i = 1,switchSystemProp.Num do
 			if(distance(spider[1], switchSystem.switch[i]) <= spiderProp.SpiderRadius / 2 and switchSystem.switch[i].SpiderEntered == false) then
 				print("spider near switch")
+				windowMusicChannel = audio.play( windowMusic, { channel=8, loops=0, duration = 3000, fadeout=2000 } )
 				switchSystem.switch[i].SpiderEntered = true
 				switchSystem.switch[i]:scale(-1,1)
 				for j = 1, 2 do
@@ -630,6 +633,7 @@ function scene:create( event )
 	goalMusic = audio.loadStream( "tada.flac" )
 	bounceMusic = audio.loadStream( "spin.mp3" )
 	heartMusic = audio.loadStream( "magic.mp3" )
+	windowMusic = audio.loadStream( "door.mp3" )
 	
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 

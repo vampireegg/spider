@@ -306,12 +306,12 @@ local function spiderCollided( self, event )
 		spider[1].angularVelocity = 0
 		spider[1]:setLinearVelocity(0,0)
 		if(event.other.CommonName ~= "bouncer") then
-			audio.stop(collideMusicChannel)
+			--audio.stop(collideMusicChannel)
 			collideMusicChannel = audio.play( collideMusic, { channel=3, loops=0, duration = 3000, fadeout=2000 } )
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 		else
 			print("event.other.Orientation " .. event.other.Orientation)
-			audio.stop(bounceMusicChannel)
+			--audio.stop(bounceMusicChannel)
 			bounceMusicChannel = audio.play( bounceMusic, { channel=6, loops=0, duration = 3000, fadeout=2000 } )
 			if(event.other.Orientation == 1) then
 				spiderMoveDirX = -1

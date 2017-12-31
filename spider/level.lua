@@ -86,6 +86,11 @@ local legTapCount
 local currentLegTapOrder = {}
 local legTappedOutOfOrder
 
+local backgroundMusic
+local backgroundMusicChannel
+local portalMusic
+local portalMusicChannel
+
 
  
 local levelTable = {}
@@ -145,6 +150,7 @@ end
 
 local function endGame()
 
+	audio.stop(backgroundMusicChannel)
     for k, v in pairs(myTimers) do
         timer.cancel(v)
     end
@@ -329,6 +335,9 @@ local function portSpider( event )
 	spider[1].x = nextSpiderx
 	spider[1].y = nextSpidery
 	spider[1]:setLinearVelocity(0,0)
+	--audio.pause( backgroundMusic)
+	
+	portalMusicChannel = audio.play( portalMusic, { channel=2, loops=0, duration = 3000, fadeout=2000 } )
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
 end
 
@@ -596,6 +605,12 @@ function scene:create( event )
 	else
 		switchSystemProp.Exists = 0
 	end
+	
+	backgroundMusic = audio.loadStream( "riddle.mp3" )
+	portalMusic = audio.loadStream( "beam.wav" )
+	
+	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 
+	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false

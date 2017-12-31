@@ -22,7 +22,7 @@ local function gotoGame()
 	
 	local options = {
 		effect = "fade",
-		time = 1800
+		time = 800
 	}
     composer.gotoScene( "splash" , options)
 end

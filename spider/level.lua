@@ -92,6 +92,10 @@ local portalMusic
 local portalMusicChannel
 local collideMusic
 local collideMusicChannel
+local legMusic
+local legMusicChannel
+local goalMusic
+local goalMusicChannel
 
 
  
@@ -106,6 +110,8 @@ local function pushLeg(event )
 	local vx, vy = spider[1]:getLinearVelocity()
 
 	if(vx == 0 and vy == 0 and leg.exists == 1) then
+		--audio.stop(legMusicChannel)
+		--legMusicChannel = audio.play( legMusic, { channel=4, loops=0, duration = 3000, fadeout=2000 } )
 		leg.exists = 0
 		leg:setFillColor( 1, 1, 1, 0.1 )
 		lastLegTouched = event.target.leg.i
@@ -454,6 +460,7 @@ local function on_frame( event )
 	end
 	if(distance(spider[1],goal[1]) < spiderProp.SpiderRadius / 4.48 and spiderReachedGoal == false) then
 		print("reached goal")
+		goalMusicChannel = audio.play( goalMusic, { channel=5, loops=0, duration = 3000, fadeout=2000 } )
 		goal[1]:setFillColor( 1, 1, 1, 0 )
 		
 		Runtime:removeEventListener( "enterFrame", on_frame )
@@ -612,6 +619,8 @@ function scene:create( event )
 	backgroundMusic = audio.loadStream( "riddle.mp3" )
 	portalMusic = audio.loadStream( "beam.wav" )
 	collideMusic = audio.loadStream( "thud.mp3" )
+	--legMusic = audio.loadStream( "kick.mp3" )
+	goalMusic = audio.loadStream( "tada.wav" )
 	
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 

@@ -90,6 +90,8 @@ local backgroundMusic
 local backgroundMusicChannel
 local portalMusic
 local portalMusicChannel
+local collideMusic
+local collideMusicChannel
 
 
  
@@ -290,6 +292,8 @@ local function spiderCollided( self, event )
 		spider[1].angularVelocity = 0
 		spider[1]:setLinearVelocity(0,0)
 		if(event.other.CommonName ~= "bouncer") then
+			audio.stop(collideMusicChannel)
+			collideMusicChannel = audio.play( collideMusic, { channel=3, loops=0, duration = 3000, fadeout=2000 } )
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 		else
 			print("event.other.Orientation " .. event.other.Orientation)
@@ -335,7 +339,6 @@ local function portSpider( event )
 	spider[1].x = nextSpiderx
 	spider[1].y = nextSpidery
 	spider[1]:setLinearVelocity(0,0)
-	--audio.pause( backgroundMusic)
 	audio.stop(portalMusicChannel)
 	portalMusicChannel = audio.play( portalMusic, { channel=2, loops=0, duration = 3000, fadeout=2000 } )
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
@@ -608,6 +611,7 @@ function scene:create( event )
 	
 	backgroundMusic = audio.loadStream( "riddle.mp3" )
 	portalMusic = audio.loadStream( "beam.wav" )
+	collideMusic = audio.loadStream( "thud.mp3" )
 	
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 
 	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )

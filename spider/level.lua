@@ -165,6 +165,8 @@ end
 local function endGame()
 
 	audio.stop(backgroundMusicChannel)
+	backgroundMusicChannel = nil
+	audio.dispose( backgroundMusicChannel )
     for k, v in pairs(myTimers) do
         timer.cancel(v)
     end

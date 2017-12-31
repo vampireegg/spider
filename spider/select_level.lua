@@ -41,6 +41,9 @@ local backgroundMusicChannel
 
 local function endSelection()
 	audio.stop( backgroundMusicChannel)
+	audio.stop(backgroundMusicChannel)
+	backgroundMusicChannel = nil
+	audio.dispose( backgroundMusicChannel )
 	for i = 1, 8 do
 		display.remove(spiderProp.leg[i])
 	end

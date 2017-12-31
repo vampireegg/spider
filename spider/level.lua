@@ -336,7 +336,7 @@ local function portSpider( event )
 	spider[1].y = nextSpidery
 	spider[1]:setLinearVelocity(0,0)
 	--audio.pause( backgroundMusic)
-	
+	audio.stop(portalMusicChannel)
 	portalMusicChannel = audio.play( portalMusic, { channel=2, loops=0, duration = 3000, fadeout=2000 } )
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
 end

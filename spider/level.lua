@@ -98,6 +98,8 @@ local legMusic
 local legMusicChannel
 local goalMusic
 local goalMusicChannel
+local heartMusic
+local heartMusicChannel
 
 
  
@@ -401,6 +403,7 @@ local function on_frame( event )
 			if(distance(spider[1], heart[i]) <= spiderProp.SpiderRadius / 2) then
 				spiderProp.leg[lastLegTouched].exists = 1
 				spiderProp.leg[lastLegTouched]:setFillColor( 1, 0, 1, 1 )
+				heartMusicChannel = audio.play( heartMusic, { channel=7, loops=0, duration = 3000, fadeout=2000 } )
 			end
 		end
 	end
@@ -626,6 +629,7 @@ function scene:create( event )
 	--legMusic = audio.loadStream( "kick.mp3" )
 	goalMusic = audio.loadStream( "tada.flac" )
 	bounceMusic = audio.loadStream( "spin.mp3" )
+	heartMusic = audio.loadStream( "magic.mp3" )
 	
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 

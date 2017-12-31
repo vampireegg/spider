@@ -203,9 +203,9 @@ function scene:create( event )
 		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
 	end
 	
-	backgroundMusic = audio.loadStream( "riddle.mp3" )
+	backgroundMusic = audio.loadStream( "jungle.mp3" )
 	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
-	audio.setVolume( 0.5, { channel=1 } )
+	audio.setVolume( 0.3, { channel=1 } )
  
 	Runtime:addEventListener( "enterFrame", on_frame )
 	

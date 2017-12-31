@@ -626,7 +626,7 @@ function scene:create( event )
 		switchSystemProp.Exists = 0
 	end
 	
-	backgroundMusic = audio.loadStream( "riddle.mp3" )
+	backgroundMusic = audio.loadStream( "jungle.mp3" )
 	portalMusic = audio.loadStream( "beam.wav" )
 	collideMusic = audio.loadStream( "thud.mp3" )
 	--legMusic = audio.loadStream( "kick.mp3" )
@@ -638,7 +638,7 @@ function scene:create( event )
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 
 	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
-	audio.setVolume( 0.5, { channel=1 } )
+	audio.setVolume( 0.3, { channel=1 } )
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false

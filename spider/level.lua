@@ -92,6 +92,8 @@ local portalMusic
 local portalMusicChannel
 local collideMusic
 local collideMusicChannel
+local bounceMusic
+local bounceMusicChannel
 local legMusic
 local legMusicChannel
 local goalMusic
@@ -303,6 +305,8 @@ local function spiderCollided( self, event )
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 		else
 			print("event.other.Orientation " .. event.other.Orientation)
+			audio.stop(bounceMusicChannel)
+			bounceMusicChannel = audio.play( bounceMusic, { channel=6, loops=0, duration = 3000, fadeout=2000 } )
 			if(event.other.Orientation == 1) then
 				spiderMoveDirX = -1
 				spiderMoveDirY = 1
@@ -621,6 +625,7 @@ function scene:create( event )
 	collideMusic = audio.loadStream( "thud.mp3" )
 	--legMusic = audio.loadStream( "kick.mp3" )
 	goalMusic = audio.loadStream( "tada.wav" )
+	bounceMusic = audio.loadStream( "spin.mp3" )
 	
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 

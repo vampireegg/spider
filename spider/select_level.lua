@@ -36,7 +36,11 @@ local ending_level
 local needtoGoToSelectLevel
 local gotoSelectedLevel
 
+local backgroundMusic
+local backgroundMusicChannel
+
 local function endSelection()
+	audio.stop( backgroundMusicChannel)
 	for i = 1, 8 do
 		display.remove(spiderProp.leg[i])
 	end
@@ -198,6 +202,10 @@ function scene:create( event )
 		prevScreenButton[1].target1stLevel = current1st_Level - 8
 		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
 	end
+	
+	backgroundMusic = audio.loadStream( "riddle.mp3" )
+	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
+	audio.setVolume( 0.5, { channel=1 } )
  
 	Runtime:addEventListener( "enterFrame", on_frame )
 	

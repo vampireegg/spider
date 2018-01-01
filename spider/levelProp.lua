@@ -136,6 +136,49 @@ M[lvlno].dos_donts.Color = {0.5, 0.4, 0.3, 1}
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_3.png"
 
+---------------------------------------- sl - 1----------------------------------------
+lvlno = lvlno + 1
+M[lvlno] = {}
+
+M[lvlno].levelType  = 2
+
+M[lvlno].spider = {}
+M[lvlno].spider.MyScale = 0.2
+M[lvlno].spider.PosiX = 230
+M[lvlno].spider.PosiY = 150
+M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+
+M[lvlno].collider = {}
+M[lvlno].collider.GroupX = {70, 550}
+M[lvlno].collider.GroupY = {280, 410}
+M[lvlno].collider.Num = {5, 8}
+M[lvlno].collider.Orientation = {1, 1}
+M[lvlno].collider.ColliderType = {1,1}
+
+M[lvlno].goal = {}
+M[lvlno].goal.PosiX = 980
+M[lvlno].goal.PosiY = 530
+
+M[lvlno].bg = {}
+M[lvlno].bg.Img = "bbg2.jpg"
+M[lvlno].bg.Opacity = 1
+
+M[lvlno].eye = {}
+M[lvlno].eye.Opacity = 0
+
+M[lvlno].portal = {}
+M[lvlno].portal.Exists = 0
+M[lvlno].portal.Types = {}
+M[lvlno].portal.PosiX = {}
+M[lvlno].portal.PosiY = {}
+
+M[lvlno].dos_donts = {}
+M[lvlno].dos_donts.Img = "sl_1.png"
+M[lvlno].dos_donts.Color = {0.4, 0.3, 0.2, 1}
+
+M[lvlno].icon = {}
+M[lvlno].icon.Img = "sli_1.png"
+
 ---------------------------------------- Level 4----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}

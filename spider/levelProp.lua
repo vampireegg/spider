@@ -185,9 +185,9 @@ M[lvlno] = {}
 
 
 M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.15
+M[lvlno].spider.MyScale = 0.2
 M[lvlno].spider.PosiX = 90
-M[lvlno].spider.PosiY = 70
+M[lvlno].spider.PosiY = 90
 M[lvlno].spider.LegExists = {1,0,1,0,1,0,1,0}
 
 M[lvlno].collider = {}
@@ -212,7 +212,7 @@ M[lvlno].portal = {}
 M[lvlno].portal.Exists = 1
 M[lvlno].portal.Types = {4}
 M[lvlno].portal.PosiX = {{800,800}}
-M[lvlno].portal.PosiY = {{70,400}}
+M[lvlno].portal.PosiY = {{90,400}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_4.png"

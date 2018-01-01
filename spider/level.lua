@@ -26,8 +26,8 @@ local Level
 local gameLoopTimer
 local levelType
 
-local totalWidth
-local totalHeight
+local totalWidth = {}
+local totalHeight = {}
 
 
 local bgProp = {}
@@ -36,8 +36,9 @@ local bg = {}
 local reload_hereProp = {}
 local reload_here = {}
 
-local eyeProp = {}
-local eyes = {}
+local use_all_legs = {}
+local use_all_legsProp = {}
+
 
 local borderProp = {}
 local borders = {}
@@ -155,6 +156,9 @@ local function endGame()
     for k, v in pairs(myTimers) do
         timer.cancel(v)
     end
+	
+	display.remove(use_all_legsProp.rect)
+	display.remove(use_all_legs[1])
 	if (Level == 1) then
 		for i = 1, #bgProp.extra do
 			display.remove(bgProp.extra[i].ExtraImg)
@@ -185,9 +189,10 @@ local function endGame()
 	display.remove( bg[1] )
 	display.remove( spider[1] )
 	display.remove( goal[1] )
-	for i = 1, 16 do
-		display.remove( eyes[i] )
-	end
+
+	-- for i = 1, 16 do
+		-- display.remove( eyes[i] )
+	-- end
 	for i = 1, 4 do
 		display.remove( borders[i] )
 	end
@@ -348,7 +353,7 @@ local function portSpider( event )
 end
 
 local function on_frame( event )
-	if(spider[1].x > totalHeight or spider[1].y > totalWidth or spider[1].x < 0 or spider[1].y < 0) then
+	if(spider[1].x > totalHeight[1] or spider[1].y > totalWidth[1] or spider[1].x < 0 or spider[1].y < 0) then
 		spider[1]:setLinearVelocity( 0, 0 )
 		reload_here[1]:setFillColor( 1, 1, 1, 1 )
 	end
@@ -471,8 +476,11 @@ local function on_frame( event )
 			end
 			if(legCount == 0) then
 				goalFlag = true
-			else
+			else				
 				goalFlag = false
+				use_all_legsProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
+				use_all_legs[1]:setFillColor( 1, 1, 1, 1)
+				needtoReload = true
 			end
 		end
 		
@@ -531,8 +539,8 @@ function scene:create( event )
 	Level = composer.getVariable("level")
 	print("Level = " .. Level)
 	
-	totalWidth = commonProp.total.Width
-	totalHeight = commonProp.total.Height
+	totalWidth[1] = commonProp.total.Width
+	totalHeight[1] = commonProp.total.Height
 	
 	levelType = levelProp[Level].levelType
 	
@@ -555,10 +563,12 @@ function scene:create( event )
 	reload_hereProp.Scale = commonProp.reload_here.Scale
 	reload_hereProp.Opacity = 0
 	
+	
+	
 	borderProp.borderWidth = commonProp.border.Width
 	borderProp.CommonName = commonProp.border.CommonName
 	
-	eyeProp.Opacity = levelProp[Level].eye.Opacity
+	-- eyeProp.Opacity = levelProp[Level].eye.Opacity
 	
 	colliderProp.MyScale = commonProp.collider.MyScale
 	colliderProp.colliderHeight = commonProp.collider.Height
@@ -587,6 +597,15 @@ function scene:create( event )
 	goalProp.Size = commonProp.goal.Size
 	goalProp.x = levelProp[Level].goal.PosiX
 	goalProp.y = levelProp[Level].goal.PosiY
+	
+	use_all_legsProp.Img = commonProp.use_all_legs.Img
+	use_all_legsProp.PosiX = commonProp.use_all_legs.PosiX
+	use_all_legsProp.PosiY = commonProp.use_all_legs.PosiY
+	use_all_legsProp.Width = commonProp.use_all_legs.Width
+	use_all_legsProp.Height = commonProp.use_all_legs.Height
+	use_all_legsProp.Scale = commonProp.use_all_legs.Scale
+	use_all_legsProp.Opacity = 0
+	use_all_legsProp.RectOpacity = 0
 	
 	portalProp.Size = commonProp.portal.Size
 	portalProp.Img = commonProp.portal.Img
@@ -679,9 +698,9 @@ function scene:create( event )
 	physics.pause()
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
-	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth, totalHeight, bgProp)
+	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth[1], totalHeight[1], bgProp)
 	--drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
-	drawFuncs.drawBorder(sceneGroup, borders, totalWidth, totalHeight, borderProp, physics)
+	drawFuncs.drawBorder(sceneGroup, borders, totalWidth[1], totalHeight[1], borderProp, physics)
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
 	if(levelProp[Level].heartExists == 1) then
@@ -690,8 +709,10 @@ function scene:create( event )
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
-	drawFuncs.drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
+	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
 	drawFuncs.drawReloadHere(sceneGroup, reload_here, reload_hereProp)
+	drawFuncs.drawNotiFication(sceneGroup, use_all_legs, use_all_legsProp, totalWidth[1], totalHeight[1])
+	
 	if(levelProp[Level].switchSystemExists == 1) then
 		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
 	end

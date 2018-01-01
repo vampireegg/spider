@@ -56,6 +56,18 @@ end
 
 M.drawReloadHere = drawReloadHere
 
+local function drawNotiFication(sceneGroup, noti, notiProp, totalWidth, totalHeight)
+	notiProp.rect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
+	notiProp.rect:setFillColor( 0.3, 0.3, 0.3, RectOpacity)
+	noti[1] = display.newImageRect( sceneGroup, notiProp.Img, notiProp.Width, notiProp.Height )
+	noti[1].x = notiProp.PosiX
+	noti[1].y = notiProp.PosiY
+	noti[1]:setFillColor( 1, 1, 1, notiProp.Opacity )
+	noti[1]:scale(notiProp.Scale, notiProp.Scale)
+end
+
+M.drawNotiFication = drawNotiFication
+
 local function drawButtons(sceneGroup, totalWidth, totalHeight, bgProp)
 	bgProp.reLoadButton = display.newImageRect( sceneGroup, "reload2.png", 30, 30 )
 	bgProp.reLoadButton.x = totalHeight - 80

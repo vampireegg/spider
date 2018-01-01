@@ -44,6 +44,15 @@ M.reload_here.Width = 572
 M.reload_here.Height = 106
 M.reload_here.Scale = 0.2
 
+M.use_all_legs = {}
+M.use_all_legs.Img = "use_all_legs.png"
+M.use_all_legs.PosiX = M.total.Height / 2
+M.use_all_legs.PosiY = M.total.Width / 2
+M.use_all_legs.Width = 439
+M.use_all_legs.Height = 73
+M.use_all_legs.Scale = 0.5
+
+
 M.heart = {}
 M.heart.Img = "heart7.png"
 M.heart.Size = 100

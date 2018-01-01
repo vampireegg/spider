@@ -24,6 +24,7 @@ physics.setGravity( 0, 0 )
 
 local Level
 local gameLoopTimer
+local levelType
 
 local totalWidth
 local totalHeight
@@ -61,6 +62,8 @@ local switchSystemProp = {}
 local switchSystem = {}
 
 local myTimers = {}
+local lastCollidedWith = {}
+local currentLegTapOrder = {}
 
 local lastLegTouched
 local spiderReachedGoal
@@ -79,32 +82,14 @@ local spiderMoveDirX
 local spiderMoveDirY
 local spiderPreCollisionDirX
 local spiderPreCollisionDirY
-local lastCollidedWith = {}
+
 local options
 local filePath
 local legTapCount
-local currentLegTapOrder = {}
 local legTappedOutOfOrder
 
-local backgroundMusic
-local backgroundMusicChannel
-local portalMusic
-local portalMusicChannel
-local collideMusic
-local collideMusicChannel
-local bounceMusic
-local bounceMusicChannel
-local legMusic
-local legMusicChannel
-local goalMusic
-local goalMusicChannel
-local heartMusic
-local heartMusicChannel
-local windowMusic
-local windowMusicChannel
 
-
- 
+local music = {}
 local levelTable = {}
 
 
@@ -164,9 +149,9 @@ end
 
 local function endGame()
 	audio.setVolume( 1/0.3, { channel=1 } )
-	audio.stop(backgroundMusicChannel)
-	backgroundMusicChannel = nil
-	audio.dispose( backgroundMusicChannel )
+	audio.stop(music.backgroundMusicChannel)
+	music.backgroundMusicChannel = nil
+	audio.dispose( music.backgroundMusicChannel )
     for k, v in pairs(myTimers) do
         timer.cancel(v)
     end
@@ -306,13 +291,13 @@ local function spiderCollided( self, event )
 		spider[1].angularVelocity = 0
 		spider[1]:setLinearVelocity(0,0)
 		if(event.other.CommonName ~= "bouncer") then
-			--audio.stop(collideMusicChannel)
-			collideMusicChannel = audio.play( collideMusic, { channel=3, loops=0, duration = 3000, fadeout=2000 } )
+			--audio.stop(music.collideMusicChannel)
+			music.collideMusicChannel = audio.play( music.collideMusic, { channel=3, loops=0, duration = 3000, fadeout=2000 } )
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, shiftSpider )
 		else
 			print("event.other.Orientation " .. event.other.Orientation)
-			--audio.stop(bounceMusicChannel)
-			bounceMusicChannel = audio.play( bounceMusic, { channel=6, loops=0, duration = 3000, fadeout=2000 } )
+			--audio.stop(music.bounceMusicChannel)
+			music.bounceMusicChannel = audio.play( music.bounceMusic, { channel=6, loops=0, duration = 3000, fadeout=2000 } )
 			if(event.other.Orientation == 1) then
 				spiderMoveDirX = -1
 				spiderMoveDirY = 1
@@ -355,10 +340,10 @@ local function portSpider( event )
 	spider[1].x = nextSpiderx
 	spider[1].y = nextSpidery
 	spider[1]:setLinearVelocity(0,0)
-	if (portalMusicChannel ~= nil) then
-		audio.stop(portalMusicChannel)
+	if (music.portalMusicChannel ~= nil) then
+		audio.stop(music.portalMusicChannel)
 	end
-	portalMusicChannel = audio.play( portalMusic, { channel=2, loops=0, duration = 3000, fadeout=2000 } )
+	music.portalMusicChannel = audio.play( music.portalMusic, { channel=2, loops=0, duration = 3000, fadeout=2000 } )
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
 end
 
@@ -409,7 +394,7 @@ local function on_frame( event )
 			if(distance(spider[1], heart[i]) <= spiderProp.SpiderRadius / 2) then
 				spiderProp.leg[lastLegTouched].exists = 1
 				spiderProp.leg[lastLegTouched]:setFillColor( 1, 0, 1, 1 )
-				heartMusicChannel = audio.play( heartMusic, { channel=7, loops=0, duration = 3000, fadeout=2000 } )
+				music.heartMusicChannel = audio.play( music.heartMusic, { channel=7, loops=0, duration = 3000, fadeout=2000 } )
 			end
 		end
 	end
@@ -418,7 +403,7 @@ local function on_frame( event )
 		for i = 1,switchSystemProp.Num do
 			if(distance(spider[1], switchSystem.switch[i]) <= spiderProp.SpiderRadius / 2 and switchSystem.switch[i].SpiderEntered == false) then
 				print("spider near switch")
-				windowMusicChannel = audio.play( windowMusic, { channel=8, loops=0, duration = 3000, fadeout=2000 } )
+				music.windowMusicChannel = audio.play( music.windowMusic, { channel=8, loops=0, duration = 3000, fadeout=2000 } )
 				switchSystem.switch[i].SpiderEntered = true
 				switchSystem.switch[i]:scale(-1,1)
 				for j = 1, 2 do
@@ -474,18 +459,36 @@ local function on_frame( event )
 	end
 	if(distance(spider[1],goal[1]) < spiderProp.SpiderRadius / 4.48 and spiderReachedGoal == false) then
 		print("reached goal")
-		goalMusicChannel = audio.play( goalMusic, { channel=5, loops=0, duration = 3000, fadeout=2000 } )
-		goal[1]:setFillColor( 1, 1, 1, 0 )
-		
-		Runtime:removeEventListener( "enterFrame", on_frame )
-		if(Level < #levelProp) then
-			composer.setVariable( "level", Level + 1 )
+		local goalFlag = false
+		if(levelType ~=2) then
+			goalFlag = true
 		else
-			composer.setVariable( "level", 1 )
+			local legCount = 0
+			for i = 1, 8 do
+				if(spiderProp.leg[i].exists == 1) then
+					legCount = legCount + 1
+				end
+			end
+			if(legCount == 0) then
+				goalFlag = true
+			else
+				goalFlag = false
+			end
 		end
-		spiderReachedGoal = true
-		myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
 		
+		if(goalFlag == true) then
+			music.goalMusicChannel = audio.play( music.goalMusic, { channel=5, loops=0, duration = 3000, fadeout=2000 } )
+			goal[1]:setFillColor( 1, 1, 1, 0 )
+			
+			Runtime:removeEventListener( "enterFrame", on_frame )
+			if(Level < #levelProp) then
+				composer.setVariable( "level", Level + 1 )
+			else
+				composer.setVariable( "level", 1 )
+			end
+			spiderReachedGoal = true
+			myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
+		end		
 	end
 	if(needtoReload == true or needtoCross == true) then
 		--local vx, vy = spider[1]:getLinearVelocity()
@@ -530,6 +533,8 @@ function scene:create( event )
 	
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
+	
+	levelType = levelProp[Level].levelType
 	
 	bgProp.Img = levelProp[Level].bg.Img
 	bgProp.Opacity = levelProp[Level].bg.Opacity
@@ -630,18 +635,18 @@ function scene:create( event )
 		switchSystemProp.Exists = 0
 	end
 	
-	backgroundMusic = audio.loadStream( "jungle.mp3" )
-	portalMusic = audio.loadStream( "beam.wav" )
-	collideMusic = audio.loadStream( "thud.mp3" )
+	music.backgroundMusic = audio.loadStream( "jungle.mp3" )
+	music.portalMusic = audio.loadStream( "beam.wav" )
+	music.collideMusic = audio.loadStream( "thud.mp3" )
 	--legMusic = audio.loadStream( "kick.mp3" )
-	goalMusic = audio.loadStream( "tada.mp3" )
-	bounceMusic = audio.loadStream( "spin.mp3" )
-	heartMusic = audio.loadStream( "magic.mp3" )
-	windowMusic = audio.loadStream( "door.mp3" )
+	music.goalMusic = audio.loadStream( "tada.mp3" )
+	music.bounceMusic = audio.loadStream( "spin.mp3" )
+	music.heartMusic = audio.loadStream( "magic.mp3" )
+	music.windowMusic = audio.loadStream( "door.mp3" )
 	
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 
-	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
+	music.backgroundMusicChannel = audio.play( music.backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
 	audio.setVolume( 0.3, { channel=1 } )
 	
 	lastLegTouched = -1

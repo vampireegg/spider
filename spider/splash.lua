@@ -50,7 +50,7 @@ function scene:create( event )
  
 	print("splash")
 	numCollider = 14
-	counterResetter = 18
+	counterResetter = 16
 	
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen

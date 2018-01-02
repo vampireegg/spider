@@ -30,7 +30,7 @@ end
 local function on_frame( event )
 	counter = counter + 1
 
-	if(counter == 60) then
+	if(counter == 115) then
 		--display.remove(bgRect)
 		--display.remove(background[1])
 		--display.remove(background[2])

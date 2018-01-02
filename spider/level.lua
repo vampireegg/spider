@@ -6,7 +6,8 @@
 
 -- Your code here
 
--- admob: ca-app-pub-3541871007849876~4925110585
+-- admob app id: ca-app-pub-3541871007849876~4925110585
+-- admob ad unit id: ca-app-pub-3541871007849876/3951117876
 
 
 local physics = require( "physics" )

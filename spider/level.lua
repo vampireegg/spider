@@ -17,6 +17,7 @@ local commonProp = require("commonProp")
 local levelProp = require("levelProp")
 local composer = require( "composer" )
 local json = require( "json" )
+local startapp = require( "plugin.startapp" )
  
  -- Hide the status bar
 display.setStatusBar( display.HiddenStatusBar )
@@ -96,6 +97,33 @@ local music = {}
 local levelTable = {}
 
 
+local function showAdd( event )
+	if ( startapp.isLoaded( "interstitial" ) ) then
+		startapp.show( "interstitial" )
+	end
+end
+
+local function adListener( event )
+	if ( event.phase == "init" ) then  -- Successful initialization
+        print( event.provider )
+		startapp.load( "interstitial" )
+	elseif ( event.phase == "loaded" ) then  -- The ad was successfully loaded
+        print( event.type )
+		
+    elseif ( event.phase == "failed" ) then  -- The ad failed to load
+        print( event.type )
+        print( event.isError )
+        print( event.response )
+	elseif ( event.phase == "displayed" ) then  -- The ad was displayed/played
+        print( event.type )
+    elseif ( event.phase == "hidden" ) then  -- The ad was closed/hidden
+        print( event.type )
+    elseif ( event.phase == "clicked" ) then  -- The ad was clicked/tapped
+        print( event.type )
+    elseif ( event.phase == "reward" ) then  -- Rewarded video ad playback completed
+        print( event.type )
+    end
+end
 
 local function pushLeg(event )	
 	local leg = event.target.leg
@@ -553,6 +581,7 @@ end
 function scene:create( event )
 	Level = composer.getVariable("level")
 	print("Level = " .. Level)
+	startapp.init( adListener, { appId="200202265", enableReturnAds = true } )
 	
 	totalWidth[1] = commonProp.total.Width
 	totalHeight[1] = commonProp.total.Height
@@ -780,7 +809,7 @@ function scene:hide( event )
 		-- Code here runs immediately after the scene goes entirely off screen
 		physics.pause()
 		composer.removeScene( "level" )
-
+		myTimers[#myTimers+1] = timer.performWithDelay( 300, showAdd )
 	end
 end
 

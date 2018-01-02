@@ -34,7 +34,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
-	admob.init( adListener, { appId="YOUR_ADMOB_APP_ID" } )
+	admob.init( adListener, { appId="ca-app-pub-3541871007849876~4925110585" } )
 	
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height

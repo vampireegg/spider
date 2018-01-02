@@ -11,19 +11,18 @@ local bgProp = {}
 local totalHeight
 local totalWidth
 local myTimers = {}
+local bgRect
 
 local function gotoGame()
-	local options = {
-		effect = "fade",
-		time = 800
-	}
-    composer.gotoScene( "dos_donts" , options)
+	display.remove(bgRect)
+    composer.gotoScene( "dos_donts" )
 end
 
 local function showAdd( event )
 	if ( startapp.isLoaded( "interstitial" ) ) then
 		startapp.show( "interstitial" )
 	end
+	myTimers[#myTimers+1] = timer.performWithDelay( 1000, gotoGame )
 end
 
 local function adListener( event )
@@ -64,19 +63,15 @@ function scene:create( event )
 	
 	bgProp.Img = levelProp[Level].dos_donts.Img
 	bgProp.Color = levelProp[Level].dos_donts.Color
-	local bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
+	bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
 	
- 
-	
-    local background = display.newImageRect( sceneGroup, bgProp.Img, totalHeight, totalWidth )
-    background.x = display.contentCenterX
-    background.y = display.contentCenterY
+
 	
 	
 	
-	background:addEventListener( "tap", gotoGame )
+	bgRect:addEventListener( "tap", gotoGame )
 end
 
 

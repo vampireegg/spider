@@ -2,7 +2,7 @@
 local commonProp = require("commonProp")
 local levelProp = require("levelProp")
 local composer = require( "composer" )
-local admob = require( "plugin.admob" )
+local startapp = require( "plugin.startapp" )
 local scene = composer.newScene()
 
 
@@ -16,13 +16,33 @@ local function gotoGame()
 		effect = "fade",
 		time = 800
 	}
-    composer.gotoScene( "level" , options)
+    composer.gotoScene( "dos_donts" , options)
+end
+
+local function showListener( event )
+	if ( startapp.isLoaded( "interstitial" ) ) then
+		startapp.show( "interstitial" )
+	end
 end
 
 local function adListener( event )
- 
-    if ( event.phase == "init" ) then  -- Successful initialization
+	if ( event.phase == "init" ) then  -- Successful initialization
         print( event.provider )
+		startapp.load( "interstitial" )
+	elseif ( event.phase == "loaded" ) then  -- The ad was successfully loaded
+        print( event.type )
+    elseif ( event.phase == "failed" ) then  -- The ad failed to load
+        print( event.type )
+        print( event.isError )
+        print( event.response )
+		elseif ( event.phase == "displayed" ) then  -- The ad was displayed/played
+        print( event.type )
+    elseif ( event.phase == "hidden" ) then  -- The ad was closed/hidden
+        print( event.type )
+    elseif ( event.phase == "clicked" ) then  -- The ad was clicked/tapped
+        print( event.type )
+    elseif ( event.phase == "reward" ) then  -- Rewarded video ad playback completed
+        print( event.type )
     end
 end
 
@@ -34,7 +54,8 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
-	admob.init( adListener, { appId="ca-app-pub-3541871007849876~4925110585" } )
+	startapp.init( adListener, { appId="200202265", enableReturnAds = true } )
+
 	
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height

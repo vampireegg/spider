@@ -51,9 +51,9 @@ settings =
 	--
 	plugins =
     {
-        ["plugin.admob"] =
+        ["plugin.startapp"] =
         {
-            publisherId = "com.coronalabs"
+            publisherId = "com.startapp"
         },
     },
 

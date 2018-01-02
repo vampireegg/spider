@@ -8,6 +8,7 @@
 
 -- admob app id: ca-app-pub-3541871007849876~4925110585
 -- admob ad unit id: ca-app-pub-3541871007849876/3951117876
+--startapp ad id: 200202265
 
 
 local physics = require( "physics" )
@@ -236,7 +237,7 @@ local function endGame()
 	-- Go to the menu screen
 	if(spiderReachedGoal == true) then
 		print("going to dos_donts")
-		composer.gotoScene( "dos_donts" , options)
+		composer.gotoScene( "ad" , options)
 	elseif(needtoCross == false) then
 		print("going to level")
 		composer.gotoScene( "level" , options)

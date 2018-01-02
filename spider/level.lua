@@ -158,7 +158,11 @@ local function endGame()
     end
 	
 	display.remove(notiProp.rect)
-	display.remove(noti[1])
+	
+	for i = 1, #notiProp.Img do
+		display.remove(noti[i])
+	end
+	
 	if (Level == 1) then
 		for i = 1, #bgProp.extra do
 			display.remove(bgProp.extra[i].ExtraImg)
@@ -358,7 +362,9 @@ local function on_frame( event )
 	if(spider[1].x > totalHeight[1] + spiderProp.SpiderRadius or spider[1].y > totalWidth[1] + spiderProp.SpiderRadius
 	or spider[1].x < -spiderProp.SpiderRadius or spider[1].y < -spiderProp.SpiderRadius) then
 		spider[1]:setLinearVelocity( 0, 0 )
-		reload_here[1]:setFillColor( 1, 1, 1, 1 )
+		notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
+		noti[2]:setFillColor( 1, 1, 1, 1)
+		needtoReload = true
 	end
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then

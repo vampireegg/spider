@@ -149,7 +149,7 @@ local function pushLeg(event )
 end
 
 local function endGame()
-	audio.setVolume( 1/0.3, { channel=1 } )
+	audio.setVolume( 1/0.15, { channel=1 } )
 	audio.stop(music.backgroundMusicChannel)
 	music.backgroundMusicChannel = nil
 	audio.dispose( music.backgroundMusicChannel )
@@ -666,7 +666,7 @@ function scene:create( event )
 		
 	-- Play the background music on channel 1, loop infinitely, and fade in over 5 seconds 
 	music.backgroundMusicChannel = audio.play( music.backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
-	audio.setVolume( 0.3, { channel=1 } )
+	audio.setVolume( 0.15, { channel=1 } )
 	
 	lastLegTouched = -1
 	spiderReachedGoal = false

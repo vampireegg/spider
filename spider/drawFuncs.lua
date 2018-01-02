@@ -240,7 +240,7 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, hasSheet)
 	}
 	spiderProp.bodySheet = graphics.newImageSheet("sheet.png", sheetInfo:getSheet())
 	for i = 1,8 do
-		spiderProp.leg[i] = display.newImageRect(sceneGroup, spiderProp.LegImg, spiderProp.ArrowSize,spiderProp.ArrowSize  )
+		spiderProp.leg[i] = display.newImageRect(spiderProp.LegImg, spiderProp.ArrowSize,spiderProp.ArrowSize  )
 		spiderProp.leg[i].angle = i * 45
 		spiderProp.leg[i].radAngle = (spiderProp.leg[i].angle + 135) * math.pi / 180
 		spiderProp.leg[i].exists = true
@@ -276,11 +276,11 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, hasSheet)
 	spiderProp.leg[2].pair = spiderProp.leg[4]
 	spiderProp.leg[4].pair = spiderProp.leg[2]
 	if(hasSheet == 1)then
-		spiderProp.body = display.newSprite(sceneGroup, spiderProp.bodySheet, spiderProp.spd_movement )
+		spiderProp.body = display.newSprite(spiderProp.bodySheet, spiderProp.spd_movement )
 		spiderProp.body:play()
 		spiderProp.body:scale(spiderProp.MyScale,spiderProp.MyScale)
 	else
-		spiderProp.body = display.newImageRect(sceneGroup, spiderProp.Img, 629, 710 )
+		spiderProp.body = display.newImageRect(spiderProp.Img, 629, 710 )
 		spiderProp.body:scale(spiderProp.MyScale * 0.7 ,spiderProp.MyScale * 0.7)
 	end
 

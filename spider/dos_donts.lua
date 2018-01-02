@@ -9,8 +9,13 @@ local Level
 local bgProp = {}
 local totalHeight
 local totalWidth
+local myTimers = {}
+local startapp = require( "plugin.startapp" )
 
 local function gotoGame()
+	for k, v in pairs(myTimers) do
+        timer.cancel(v)
+    end
 	local options = {
 		effect = "fade",
 		time = 800
@@ -18,10 +23,45 @@ local function gotoGame()
     composer.gotoScene( "level" , options)
 end
 
+local function showAdd( event )
+	if ( startapp.isLoaded( "interstitial" ) ) then
+		startapp.show( "interstitial" )
+	end
+end
+
+local function adListener( event )
+	if ( event.phase == "init" ) then  -- Successful initialization
+        print( event.provider )
+		startapp.load( "interstitial" )
+	elseif ( event.phase == "loaded" ) then  -- The ad was successfully loaded
+        print( event.type )
+		myTimers[#myTimers+1] = timer.performWithDelay( 300, showAdd )
+    elseif ( event.phase == "failed" ) then  -- The ad failed to load
+        print( event.type )
+        print( event.isError )
+        print( event.response )
+		myTimers[#myTimers+1] = timer.performWithDelay( 30, gotoGame )
+	elseif ( event.phase == "displayed" ) then  -- The ad was displayed/played
+        print( event.type )
+		myTimers[#myTimers+1] = timer.performWithDelay( 30, gotoGame )
+    elseif ( event.phase == "hidden" ) then  -- The ad was closed/hidden
+        print( event.type )
+		myTimers[#myTimers+1] = timer.performWithDelay( 30, gotoGame )
+    elseif ( event.phase == "clicked" ) then  -- The ad was clicked/tapped
+        print( event.type )
+		myTimers[#myTimers+1] = timer.performWithDelay( 30, gotoGame )
+    elseif ( event.phase == "reward" ) then  -- Rewarded video ad playback completed
+        print( event.type )
+		myTimers[#myTimers+1] = timer.performWithDelay( 30, gotoGame )
+    end
+end
+
 function scene:create( event )
  
 	Level = composer.getVariable("level")
 	print("dos_donts Level = " .. Level)
+	
+	startapp.init( adListener, { appId="200202265", enableReturnAds = true } )
 	
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen

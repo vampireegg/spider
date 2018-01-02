@@ -237,7 +237,7 @@ local function endGame()
 	-- Go to the menu screen
 	if(spiderReachedGoal == true) then
 		print("going to dos_donts")
-		composer.gotoScene( "ad" , options)
+		composer.gotoScene( "dos_donts" , options)
 	elseif(needtoCross == false) then
 		print("going to level")
 		composer.gotoScene( "level" , options)

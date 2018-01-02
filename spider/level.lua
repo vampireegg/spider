@@ -790,6 +790,7 @@ function scene:hide( event )
 		physics.pause()
 		composer.removeScene( "level" )
 		showAdd()
+		startapp.load( "interstitial" )
 	end
 end
 

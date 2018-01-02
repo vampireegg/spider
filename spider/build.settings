@@ -50,9 +50,12 @@ settings =
 	-- Plugins section
 	--
 	plugins =
-	{
-
-	},
+    {
+        ["plugin.admob"] =
+        {
+            publisherId = "com.coronalabs"
+        },
+    },
 
 	--
 	-- Project section

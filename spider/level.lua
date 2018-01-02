@@ -6,7 +6,7 @@
 
 -- Your code here
 
-
+-- admob: ca-app-pub-3541871007849876~4925110585
 
 
 local physics = require( "physics" )

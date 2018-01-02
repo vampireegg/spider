@@ -358,13 +358,17 @@ local function portSpider( event )
 	myTimers[#myTimers+1] = timer.performWithDelay( 50, moveSpider )
 end
 
+local function setNeedToReload(event)
+	needtoReload = true
+end
+
 local function on_frame( event )
 	if(spider[1].x > totalHeight[1] + spiderProp.SpiderRadius or spider[1].y > totalWidth[1] + spiderProp.SpiderRadius
 	or spider[1].x < -spiderProp.SpiderRadius or spider[1].y < -spiderProp.SpiderRadius) then
 		spider[1]:setLinearVelocity( 0, 0 )
 		notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
 		noti[2]:setFillColor( 1, 1, 1, 1)
-		needtoReload = true
+		myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
 	end
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
@@ -489,7 +493,7 @@ local function on_frame( event )
 				goalFlag = false
 				notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
 				noti[1]:setFillColor( 1, 1, 1, 1)
-				needtoReload = true
+				myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
 			end
 		end
 		

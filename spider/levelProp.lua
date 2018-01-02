@@ -300,7 +300,7 @@ M[lvlno].portal.PosiY = {{70,490}, {270,490}, {270,170}, {490,490}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_6.png"
-M[lvlno].dos_donts.Color = {0.2, 0.4, 0.5, 1}
+M[lvlno].dos_donts.Color = {0.3, 0.2, 0.5, 1}
 
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_6.png"
@@ -342,8 +342,8 @@ M[lvlno].portal.PosiX = {{189, 734}, {636, 100}}
 M[lvlno].portal.PosiY = {{361, 337}, {337, 537}}
 
 M[lvlno].dos_donts = {}
-M[lvlno].dos_donts.Img = "dos_donts_2.png"
-M[lvlno].dos_donts.Color = {0.6, 0.4, 0.3, 1}
+M[lvlno].dos_donts.Img = "sl_2.png"
+M[lvlno].dos_donts.Color = {0.1, 0.05, 0.2, 1}
 
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "sli_2.png"

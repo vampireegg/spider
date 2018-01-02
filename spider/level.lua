@@ -193,8 +193,10 @@ local function endGame()
 	-- for i = 1, 16 do
 		-- display.remove( eyes[i] )
 	-- end
-	for i = 1, 4 do
-		display.remove( borders[i] )
+	if(levelType ~= 3) then
+		for i = 1, 4 do
+			display.remove( borders[i] )
+		end
 	end
 	for i = 1,#(colliderProp.numColliders) do
 		for j = 1, colliderProp.numColliders[i] do
@@ -700,7 +702,9 @@ function scene:create( event )
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth[1], totalHeight[1], bgProp)
 	--drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
-	drawFuncs.drawBorder(sceneGroup, borders, totalWidth[1], totalHeight[1], borderProp, physics)
+	if(levelType ~= 3) then
+		drawFuncs.drawBorder(sceneGroup, borders, totalWidth[1], totalHeight[1], borderProp, physics)
+	end
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
 	if(levelProp[Level].heartExists == 1) then

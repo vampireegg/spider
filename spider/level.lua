@@ -668,7 +668,7 @@ function scene:create( event )
 	end
 	
 	music.backgroundMusic = audio.loadStream( "jungle.mp3" )
-	music.portalMusic = audio.loadStream( "beam.wav" )
+	music.portalMusic = audio.loadStream( "beam.mp3" )
 	music.collideMusic = audio.loadStream( "thud.mp3" )
 	--legMusic = audio.loadStream( "kick.mp3" )
 	music.goalMusic = audio.loadStream( "tada.mp3" )

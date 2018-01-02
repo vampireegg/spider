@@ -313,20 +313,20 @@ M[lvlno].levelType  = 3
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.15
-M[lvlno].spider.PosiX = 164
+M[lvlno].spider.PosiX = 189
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {30, 300, 550, 820}
+M[lvlno].collider.GroupX = {30, 350, 500, 870}
 M[lvlno].collider.GroupY = {50, 50, 50, 50}
 M[lvlno].collider.Num = {10, 10, 10, 10}
 M[lvlno].collider.Orientation = {2, 2, 2, 2}
 M[lvlno].collider.ColliderType = {1, 1, 1, 1}
 
 M[lvlno].goal = {}
-M[lvlno].goal.PosiX = OOF
-M[lvlno].goal.PosiY = OOF
+M[lvlno].goal.PosiX = 189
+M[lvlno].goal.PosiY = 464
 
 M[lvlno].bg = {}
 M[lvlno].bg.Img = "water.jpg"
@@ -337,9 +337,9 @@ M[lvlno].eye.Opacity = 0
 
 M[lvlno].portal = {}
 M[lvlno].portal.Exists = 1
-M[lvlno].portal.Types = {2}
-M[lvlno].portal.PosiX = {{164, -OOF}}
-M[lvlno].portal.PosiY = {{277, -OOF}}
+M[lvlno].portal.Types = {2, 3}
+M[lvlno].portal.PosiX = {{189, 734}, {636, 100}}
+M[lvlno].portal.PosiY = {{361, 337}, {337, 537}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_2.png"

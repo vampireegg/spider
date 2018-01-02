@@ -36,8 +36,8 @@ local bg = {}
 local reload_hereProp = {}
 local reload_here = {}
 
-local use_all_legs = {}
-local use_all_legsProp = {}
+local noti = {}
+local notiProp = {}
 
 
 local borderProp = {}
@@ -157,8 +157,8 @@ local function endGame()
         timer.cancel(v)
     end
 	
-	display.remove(use_all_legsProp.rect)
-	display.remove(use_all_legs[1])
+	display.remove(notiProp.rect)
+	display.remove(noti[1])
 	if (Level == 1) then
 		for i = 1, #bgProp.extra do
 			display.remove(bgProp.extra[i].ExtraImg)
@@ -481,8 +481,8 @@ local function on_frame( event )
 				goalFlag = true
 			else				
 				goalFlag = false
-				use_all_legsProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
-				use_all_legs[1]:setFillColor( 1, 1, 1, 1)
+				notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
+				noti[1]:setFillColor( 1, 1, 1, 1)
 				needtoReload = true
 			end
 		end
@@ -601,14 +601,14 @@ function scene:create( event )
 	goalProp.x = levelProp[Level].goal.PosiX
 	goalProp.y = levelProp[Level].goal.PosiY
 	
-	use_all_legsProp.Img = commonProp.use_all_legs.Img
-	use_all_legsProp.PosiX = commonProp.use_all_legs.PosiX
-	use_all_legsProp.PosiY = commonProp.use_all_legs.PosiY
-	use_all_legsProp.Width = commonProp.use_all_legs.Width
-	use_all_legsProp.Height = commonProp.use_all_legs.Height
-	use_all_legsProp.Scale = commonProp.use_all_legs.Scale
-	use_all_legsProp.Opacity = 0
-	use_all_legsProp.RectOpacity = 0
+	notiProp.Img = commonProp.noti.Img
+	notiProp.PosiX = commonProp.noti.PosiX
+	notiProp.PosiY = commonProp.noti.PosiY
+	notiProp.Width = commonProp.noti.Width
+	notiProp.Height = commonProp.noti.Height
+	notiProp.Scale = commonProp.noti.Scale
+	notiProp.Opacity = commonProp.noti.Opacity
+	notiProp.RectOpacity = commonProp.noti.RectOpacity
 	
 	portalProp.Size = commonProp.portal.Size
 	portalProp.Img = commonProp.portal.Img
@@ -716,7 +716,7 @@ function scene:create( event )
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
 	drawFuncs.drawReloadHere(sceneGroup, reload_here, reload_hereProp)
-	drawFuncs.drawNotiFication(sceneGroup, use_all_legs, use_all_legsProp, totalWidth[1], totalHeight[1])
+	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
 	
 	if(levelProp[Level].switchSystemExists == 1) then
 		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)

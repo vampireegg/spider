@@ -36,6 +36,17 @@ M.switchSystem.window.Width = 161 * M.switchSystem.window.Scale
 M.switchSystem.window.Height = 161 * M.switchSystem.window.Scale
  
 
+ 
+M.noti = {}
+M.noti.Img = {"use_all_legs.png", "out_of_the_world.png"}
+M.noti.PosiX = {M.total.Height / 2, M.total.Height / 2}
+M.noti.PosiY = {M.total.Width / 2, M.total.Width / 2}
+M.noti.Width = {449, 398}
+M.noti.Height = {52, 63}
+M.noti.Scale = {0.5, 0.5}
+M.noti.Opacity = {0, 0}
+M.noti.RectOpacity = {0, 0}
+
 M.reload_here = {}
 M.reload_here.Img = "reload_here.png"
 M.reload_here.PosiX = 910
@@ -44,13 +55,6 @@ M.reload_here.Width = 572
 M.reload_here.Height = 106
 M.reload_here.Scale = 0.2
 
-M.use_all_legs = {}
-M.use_all_legs.Img = "use_all_legs.png"
-M.use_all_legs.PosiX = M.total.Height / 2
-M.use_all_legs.PosiY = M.total.Width / 2
-M.use_all_legs.Width = 449
-M.use_all_legs.Height = 52
-M.use_all_legs.Scale = 0.5
 
 
 M.heart = {}

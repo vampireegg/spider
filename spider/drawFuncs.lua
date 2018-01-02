@@ -59,11 +59,13 @@ M.drawReloadHere = drawReloadHere
 local function drawNotiFication(sceneGroup, noti, notiProp, totalWidth, totalHeight)
 	notiProp.rect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	notiProp.rect:setFillColor( 0.3, 0.3, 0.3, RectOpacity)
-	noti[1] = display.newImageRect( sceneGroup, notiProp.Img, notiProp.Width, notiProp.Height )
-	noti[1].x = notiProp.PosiX
-	noti[1].y = notiProp.PosiY
-	noti[1]:setFillColor( 1, 1, 1, notiProp.Opacity )
-	noti[1]:scale(notiProp.Scale, notiProp.Scale)
+	for i = 1, #notiProp.Img do
+		noti[1] = display.newImageRect( sceneGroup, notiProp.Img[i], notiProp.Width[i], notiProp.Height[i] )
+		noti[1].x = notiProp.PosiX
+		noti[1].y = notiProp.PosiY
+		noti[1]:setFillColor( 1, 1, 1, notiProp.Opacity[i] )
+		noti[1]:scale(notiProp.Scale[i], notiProp.Scale[i])
+	end
 end
 
 M.drawNotiFication = drawNotiFication

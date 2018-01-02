@@ -10,6 +10,7 @@ local Level
 local bgProp = {}
 local totalHeight
 local totalWidth
+local myTimers = {}
 
 local function gotoGame()
 	local options = {
@@ -19,7 +20,7 @@ local function gotoGame()
     composer.gotoScene( "dos_donts" , options)
 end
 
-local function showListener( event )
+local function showAdd( event )
 	if ( startapp.isLoaded( "interstitial" ) ) then
 		startapp.show( "interstitial" )
 	end
@@ -31,11 +32,12 @@ local function adListener( event )
 		startapp.load( "interstitial" )
 	elseif ( event.phase == "loaded" ) then  -- The ad was successfully loaded
         print( event.type )
+		myTimers[#myTimers+1] = timer.performWithDelay( 300, showAdd )
     elseif ( event.phase == "failed" ) then  -- The ad failed to load
         print( event.type )
         print( event.isError )
         print( event.response )
-		elseif ( event.phase == "displayed" ) then  -- The ad was displayed/played
+	elseif ( event.phase == "displayed" ) then  -- The ad was displayed/played
         print( event.type )
     elseif ( event.phase == "hidden" ) then  -- The ad was closed/hidden
         print( event.type )

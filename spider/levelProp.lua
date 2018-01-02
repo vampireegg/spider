@@ -318,11 +318,11 @@ M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {30, 300}
-M[lvlno].collider.GroupY = {50, 50}
-M[lvlno].collider.Num = {10, 10}
-M[lvlno].collider.Orientation = {2, 2}
-M[lvlno].collider.ColliderType = {1, 1}
+M[lvlno].collider.GroupX = {30, 300, 550, 820}
+M[lvlno].collider.GroupY = {50, 50, 50, 50}
+M[lvlno].collider.Num = {10, 10, 10, 10}
+M[lvlno].collider.Orientation = {2, 2, 2, 2}
+M[lvlno].collider.ColliderType = {1, 1, 1, 1}
 
 M[lvlno].goal = {}
 M[lvlno].goal.PosiX = OOF

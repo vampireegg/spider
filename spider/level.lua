@@ -355,7 +355,8 @@ local function portSpider( event )
 end
 
 local function on_frame( event )
-	if(spider[1].x > totalHeight[1] or spider[1].y > totalWidth[1] or spider[1].x < 0 or spider[1].y < 0) then
+	if(spider[1].x > totalHeight[1] + spiderProp.SpiderRadius or spider[1].y > totalWidth[1] + spiderProp.SpiderRadius
+	or spider[1].x < -spiderProp.SpiderRadius or spider[1].y < -spiderProp.SpiderRadius) then
 		spider[1]:setLinearVelocity( 0, 0 )
 		reload_here[1]:setFillColor( 1, 1, 1, 1 )
 	end

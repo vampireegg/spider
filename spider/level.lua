@@ -789,8 +789,10 @@ function scene:hide( event )
 		-- Code here runs immediately after the scene goes entirely off screen
 		physics.pause()
 		composer.removeScene( "level" )
-		showAdd()
-		startapp.load( "interstitial" )
+		if(needtoReload == false and math.random() < 0.3 ) then
+			showAdd()
+			startapp.load( "interstitial" )
+		end
 	end
 end
 

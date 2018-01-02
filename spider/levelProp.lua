@@ -60,7 +60,7 @@ M[lvlno] = {}
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.2
 M[lvlno].spider.PosiX = 90
-M[lvlno].spider.PosiY = 150
+M[lvlno].spider.PosiY = 170
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 
 M[lvlno].collider = {}

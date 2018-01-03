@@ -59,14 +59,14 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
-	sheet = graphics.newImageSheet( "litl_b.png", options )
+	sheet = graphics.newImageSheet( "litl3.png", options )
 	
 	local sequenceData =
 	{
-		name="title_sequence",
-		start=1,
-		count=5,
-		time=1500,
+		name = "title_sequence",
+		start = 1,
+		count = 5,
+		time = 2000,
 		loopCount = 1,   -- Optional ; default is 0 (loop indefinitely)
 		loopDirection = "forward"    -- Optional ; values include "forward" or "bounce"
 	}

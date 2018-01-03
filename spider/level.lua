@@ -29,6 +29,7 @@ physics.setGravity( 0, 0 )
 local Level
 local gameLoopTimer
 local levelType
+local nextMoveExists
 
 local totalWidth = {}
 local totalHeight = {}
@@ -567,6 +568,7 @@ function scene:create( event )
 	totalHeight[1] = commonProp.total.Height
 	
 	levelType = levelProp[Level].levelType
+	nextMoveExists = levelProp[Level].nextMoveExists
 	
 	bgProp.Img = levelProp[Level].bg.Img
 	bgProp.Opacity = levelProp[Level].bg.Opacity
@@ -579,13 +581,15 @@ function scene:create( event )
 	bgProp.ExtraImgScale = levelProp[Level].bg.ExtraImgScale
 	bgProp.ExtraImgOpacity = levelProp[Level].bg.ExtraImgOpacity
 	
-	nextMoveProp.Img = commonProp.nextMove.Img
-	nextMoveProp.PosiX = commonProp.nextMove.PosiX
-	nextMoveProp.PosiY = commonProp.nextMove.PosiY
-	nextMoveProp.Width = commonProp.nextMove.Width
-	nextMoveProp.Height = commonProp.nextMove.Height
-	nextMoveProp.Scale = commonProp.nextMove.Scale
-	nextMoveProp.Opacity = 0
+	if(nextMoveExists == true) then
+		nextMoveProp.Img = commonProp.nextMove.Img
+		nextMoveProp.PosiX = levelProp[Level].PosiX
+		nextMoveProp.PosiY = levelProp[Level].PosiY
+		nextMoveProp.Width = commonProp.nextMove.Width
+		nextMoveProp.Height = commonProp.nextMove.Height
+		nextMoveProp.Scale = commonProp.nextMove.Scale
+		nextMoveProp.Opacity = 1
+	end
 	
 	
 	
@@ -736,7 +740,9 @@ function scene:create( event )
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
-	drawFuncs.drawReloadHere(sceneGroup, nextMove, nextMoveProp)
+	if(nextMoveExists == true) then
+		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
+	end
 	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
 	
 	if(levelProp[Level].switchSystemExists == 1) then

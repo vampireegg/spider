@@ -46,15 +46,15 @@ end
 
 M.drawBackGround = drawBackGround
 
-local function drawReloadHere(sceneGroup, reload_here, reload_hereProp)
-	reload_here[1] = display.newImageRect( sceneGroup, reload_hereProp.Img, reload_hereProp.Width, reload_hereProp.Height )
-	reload_here[1].x = reload_hereProp.PosiX
-	reload_here[1].y = reload_hereProp.PosiY
-	reload_here[1]:setFillColor( 1, 1, 1, reload_hereProp.Opacity )
-	reload_here[1]:scale(reload_hereProp.Scale, reload_hereProp.Scale)
+local function drawNextMove(sceneGroup, nextMove, nextMoveProp)
+	nextMove[1] = display.newImageRect( sceneGroup, nextMoveProp.Img, nextMoveProp.Width, nextMoveProp.Height )
+	nextMove[1].x = nextMoveProp.PosiX
+	nextMove[1].y = nextMoveProp.PosiY
+	nextMove[1]:setFillColor( 1, 1, 1, nextMoveProp.Opacity )
+	nextMove[1]:scale(nextMoveProp.Scale, nextMoveProp.Scale)
 end
 
-M.drawReloadHere = drawReloadHere
+M.drawNextMove = drawNextMove
 
 local function drawNotiFication(sceneGroup, noti, notiProp, totalWidth, totalHeight)
 	notiProp.rect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)

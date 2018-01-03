@@ -62,6 +62,7 @@ M[lvlno].spider.MyScale = 0.2
 M[lvlno].spider.PosiX = 90
 M[lvlno].spider.PosiY = 150
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegTapOrder = {5, 7, 1, 3}
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {30}
@@ -109,6 +110,7 @@ M[lvlno].spider.MyScale = 0.2
 M[lvlno].spider.PosiX = 230
 M[lvlno].spider.PosiY = 150
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegTapOrder = {4, 2, 1, 7, 5}
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {70, 550}

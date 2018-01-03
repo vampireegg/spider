@@ -98,6 +98,11 @@ M[lvlno].icon.Img = "li_2.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 
+M[lvlno].nextMoveExists = true
+M[lvlno].nextMove = {}
+M[lvlno].nextMove.PosiX = 100
+M[lvlno].nextMove.PosiY = 530
+
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.2

@@ -589,8 +589,8 @@ function scene:create( event )
 	
 	if(nextMoveExists == true) then
 		nextMoveProp.Img = commonProp.nextMove.Img
-		nextMoveProp.PosiX = levelProp[Level].PosiX
-		nextMoveProp.PosiY = levelProp[Level].PosiY
+		nextMoveProp.PosiX = levelProp[Level].nextMove.PosiX
+		nextMoveProp.PosiY = levelProp[Level].nextMove.PosiY
 		nextMoveProp.Width = commonProp.nextMove.Width
 		nextMoveProp.Height = commonProp.nextMove.Height
 		nextMoveProp.Scale = commonProp.nextMove.Scale
@@ -758,7 +758,7 @@ function scene:create( event )
 	end
 	if(nextMoveExists == true) then
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
-		nextMove:addEventListener("tap", tapNextMove)
+		nextMove[1]:addEventListener("tap", tapNextMove)
 	end
 	
 	bgProp.reLoadButton:addEventListener("tap", reLoad)

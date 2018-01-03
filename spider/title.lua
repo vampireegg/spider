@@ -59,7 +59,7 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
-	sheet = graphics.newImageSheet( "litl.png", options )
+	sheet = graphics.newImageSheet( "litl_b.png", options )
 	
 	local sequenceData =
 	{

@@ -17,6 +17,16 @@ local backgroundMusic
 local backgroundMusicChannel
 local bgRect
 local background = {}
+local sheet
+local titleAnimation
+
+local options =
+{
+    width = 538,
+    height = 448,
+    numFrames = 5
+}
+
 
 local function gotoGame()
 	
@@ -30,7 +40,7 @@ end
 local function on_frame( event )
 	counter = counter + 1
 
-	if(counter == 115) then
+	if(counter == 160) then
 		--display.remove(bgRect)
 		--display.remove(background[1])
 		--display.remove(background[2])
@@ -49,6 +59,20 @@ function scene:create( event )
     local sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
+	sheet = graphics.newImageSheet( "litl.png", options )
+	
+	local sequenceData =
+	{
+		name="title_sequence",
+		start=1,
+		count=5,
+		time=2000,
+		loopCount = 1,   -- Optional ; default is 0 (loop indefinitely)
+		loopDirection = "forward"    -- Optional ; values include "forward" or "bounce"
+	}
+	
+	
+	
 	totalWidth = commonProp.total.Width
 	totalHeight = commonProp.total.Height
 	
@@ -61,17 +85,23 @@ function scene:create( event )
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
  
 	
-    background[1] = display.newImageRect( sceneGroup, bgProp.Img[1], bgProp.Width[1], bgProp.Height[1] )
-    background[1].x = display.contentCenterX
-    background[1].y = display.contentCenterY
-	background[1]:translate(-35, -30)
-	background[1]:scale(0.25,0.25)
+    -- background[1] = display.newImageRect( sceneGroup, bgProp.Img[1], bgProp.Width[1], bgProp.Height[1] )
+    -- background[1].x = display.contentCenterX
+    -- background[1].y = display.contentCenterY
+	-- background[1]:translate(-35, -30)
+	-- background[1]:scale(0.25,0.25)
 	
-	background[2] = display.newImageRect( sceneGroup, bgProp.Img[2], bgProp.Width[2], bgProp.Height[2] )
-    background[2].x = display.contentCenterX
-    background[2].y = display.contentCenterY
-	background[2]:translate(115, 60)
-	background[2]:scale(0.18,0.18)
+	-- background[2] = display.newImageRect( sceneGroup, bgProp.Img[2], bgProp.Width[2], bgProp.Height[2] )
+    -- background[2].x = display.contentCenterX
+    -- background[2].y = display.contentCenterY
+	-- background[2]:translate(115, 60)
+	-- background[2]:scale(0.18,0.18)
+	
+	titleAnimation = display.newSprite( sceneGroup, sheet, sequenceData )
+	titleAnimation.x = display.contentCenterX
+	titleAnimation.y = display.contentCenterY
+	titleAnimation:scale(0.5,0.5)
+	titleAnimation:play()
 	
 	background[3] = display.newImageRect( sceneGroup, bgProp.Img[3], bgProp.Width[3], bgProp.Height[3] )
     background[3].x = display.contentCenterX

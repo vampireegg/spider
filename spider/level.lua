@@ -371,9 +371,24 @@ end
 
 local function showScore()
 	notiProp.rect:setFillColor( levelProp[Level].dos_donts.Color[1], levelProp[Level].dos_donts.Color[2], levelProp[Level].dos_donts.Color[3], 1)
+	control.linePosiY = totalWidth[1]/2 - 60
+	local lineGap = 50
 	control.scoreText = {}
-	control.scoreText[1] = display.newText( "Congrats", totalHeight[1]/2, totalWidth[1]/2,  "comic.ttf", 36 )
+	control.scoreText[1] = display.newText( "Congrats", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 36 )
 	control.scoreText[1]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	control.linePosiY = control.linePosiY + lineGap
+	control.scoreText[2] = display.newText( "Optimal Number of Moves : " .. #spiderProp.LegTapOrder, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	
+	control.linePosiY = control.linePosiY + lineGap
+	control.scoreText[3] = display.newText( "Your Number of Moves : " .. #currentLegTapOrder, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	
+	local score = math.ceil(10 * #spiderProp.LegTapOrder / #currentLegTapOrder)
+	
+	control.linePosiY = control.linePosiY + lineGap
+	control.scoreText[4] = display.newText( "Your Score : " .. score .. "/10", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
 	notiProp.rect:addEventListener( "tap", endGame )
 end
 

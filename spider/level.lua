@@ -362,12 +362,31 @@ local function showNotiAndReload(num)
 	myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
 end
 
+local function makeNextMoveVisible(event)
+	local vx, vy = spider[1]:getLinearVelocity()
+	if(control.nextMoveExists == true and vx == 0 and vy == 0) then
+		nextMove[1]:setFillColor(1, 1, 1, 1)
+	end
+	control.MakingNextMoveVisible = false
+end
+
 local function on_frame( event )
+	local vx, vy = spider[1]:getLinearVelocity()
+
+	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.MakingNextMoveVisible == false) then
+		control.MakingNextMoveVisible = true
+		myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
+	elseif(vx ~= 0 or vy ~= 0) then
+		nextMove[1]:setFillColor(1, 1, 1, 0)
+	end
+
+
 	if(spider[1].x > totalHeight[1] + spiderProp.SpiderRadius or spider[1].y > totalWidth[1] + spiderProp.SpiderRadius
 	or spider[1].x < -spiderProp.SpiderRadius or spider[1].y < -spiderProp.SpiderRadius) then
 		spider[1]:setLinearVelocity( 0, 0 )
 		showNotiAndReload(2)
 	end
+	
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
 		local legCount = 0
@@ -546,7 +565,7 @@ end
 local function tapNextMove(event )
 	print("next move tapped")
 	local vx, vy = spider[1]:getLinearVelocity()
-
+	
 	if(vx == 0 and vy == 0) then
 		local wrongMove = 0
 		for i = 1, control.legTapCount do
@@ -729,6 +748,7 @@ function scene:create( event )
 	lastCollidedWith.Name = ""
 	control.legTapCount = 0
 	control.legTappedOutOfOrder = false
+	control.MakingNextMoveVisible = false
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	control.screenTransitionOptions = 
 	{

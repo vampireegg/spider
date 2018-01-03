@@ -47,13 +47,11 @@ M.noti.Scale = {0.5, 0.5}
 M.noti.Opacity = {0, 0}
 M.noti.RectOpacity = {0, 0}
 
-M.reload_here = {}
-M.reload_here.Img = "reload_here.png"
-M.reload_here.PosiX = 910
-M.reload_here.PosiY = 50
-M.reload_here.Width = 572
-M.reload_here.Height = 106
-M.reload_here.Scale = 0.2
+M.nextMove = {}
+M.nextMove.Img = "nextMove.png"
+M.nextMove.Width = 290
+M.nextMove.Height = 61
+M.nextMove.Scale = 0.4
 
 
 

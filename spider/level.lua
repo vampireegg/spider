@@ -37,8 +37,8 @@ local totalHeight = {}
 local bgProp = {}
 local bg = {}
 
-local reload_hereProp = {}
-local reload_here = {}
+local nextMoveProp = {}
+local nextMove = {}
 
 local noti = {}
 local notiProp = {}
@@ -195,7 +195,7 @@ local function endGame()
 			end	
 		end
 	end
-	display.remove(reload_here[1])
+	display.remove(nextMove[1])
 	display.remove(bgProp.reLoadButton)
 	display.remove(bgProp.crossButton)
 	display.remove(bgProp.reLoadButtonBox)
@@ -579,13 +579,13 @@ function scene:create( event )
 	bgProp.ExtraImgScale = levelProp[Level].bg.ExtraImgScale
 	bgProp.ExtraImgOpacity = levelProp[Level].bg.ExtraImgOpacity
 	
-	reload_hereProp.Img = commonProp.reload_here.Img
-	reload_hereProp.PosiX = commonProp.reload_here.PosiX
-	reload_hereProp.PosiY = commonProp.reload_here.PosiY
-	reload_hereProp.Width = commonProp.reload_here.Width
-	reload_hereProp.Height = commonProp.reload_here.Height
-	reload_hereProp.Scale = commonProp.reload_here.Scale
-	reload_hereProp.Opacity = 0
+	nextMoveProp.Img = commonProp.nextMove.Img
+	nextMoveProp.PosiX = commonProp.nextMove.PosiX
+	nextMoveProp.PosiY = commonProp.nextMove.PosiY
+	nextMoveProp.Width = commonProp.nextMove.Width
+	nextMoveProp.Height = commonProp.nextMove.Height
+	nextMoveProp.Scale = commonProp.nextMove.Scale
+	nextMoveProp.Opacity = 0
 	
 	
 	
@@ -736,7 +736,7 @@ function scene:create( event )
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
-	drawFuncs.drawReloadHere(sceneGroup, reload_here, reload_hereProp)
+	drawFuncs.drawReloadHere(sceneGroup, nextMove, nextMoveProp)
 	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
 	
 	if(levelProp[Level].switchSystemExists == 1) then

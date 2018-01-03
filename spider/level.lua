@@ -540,14 +540,20 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
-	local wrongMove = false
+	local wrongMove = 0
 	for i = 1, control.legTapCount do
 		print("tapped: " .. currentLegTapOrder[i])
 		if(currentLegTapOrder[i] ~= spiderProp.LegTapOrder[i]) then
-				wrongMove = true
+				wrongMove = 1
 		end
 	end
 	print("wrongMove = " .. wrongMove)
+	if(wrongMove == 0) then
+		local event = {}
+		event.target = spiderProp.legSquare[spiderProp.LegTapOrder[control.legTapCount + 1]]
+		pushLeg(event )
+	end
+	
 end
 
 

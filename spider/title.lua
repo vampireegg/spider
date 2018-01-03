@@ -66,7 +66,7 @@ function scene:create( event )
 		name="title_sequence",
 		start=1,
 		count=5,
-		time=2000,
+		time=1500,
 		loopCount = 1,   -- Optional ; default is 0 (loop indefinitely)
 		loopDirection = "forward"    -- Optional ; values include "forward" or "bounce"
 	}
@@ -101,7 +101,7 @@ function scene:create( event )
 	titleAnimation.x = display.contentCenterX
 	titleAnimation.y = display.contentCenterY
 	titleAnimation:scale(0.5,0.5)
-	titleAnimation:play()
+	
 	
 	background[3] = display.newImageRect( sceneGroup, bgProp.Img[3], bgProp.Width[3], bgProp.Height[3] )
     background[3].x = display.contentCenterX
@@ -126,7 +126,7 @@ function scene:show( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs when the scene is entirely on screen
-
+		titleAnimation:play()
 	end
 end
 

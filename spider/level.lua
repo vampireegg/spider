@@ -141,8 +141,8 @@ local function pushLeg(event )
 		spider[1].angularVelocity = 0
 		lastCollidedWith.Name = ""
 		legTapCount = legTapCount + 1
+		currentLegTapOrder[legTapCount] = leg.i
 		if (Level == 1) then
-			currentLegTapOrder[legTapCount] = leg.i
 			if(currentLegTapOrder[legTapCount] ~= spiderProp.LegTapOrder[legTapCount]) then
 				legTappedOutOfOrder = true
 				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 1)
@@ -562,6 +562,9 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
+	for i = 1, legTapCount do
+		print("tapped: " .. currentLegTapOrder[i])
+	end
 end
 
 

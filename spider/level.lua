@@ -84,7 +84,10 @@ local function showAdd()
 end
 
 
-local function pushLeg(event )	
+local function pushLeg(event )
+	if(event.target == nil) then
+		return
+	end
 	local leg = event.target.leg
 	print("touched" .. event.target.leg.i)
 	
@@ -542,24 +545,28 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
-	local wrongMove = 0
-	for i = 1, control.legTapCount do
-		print("tapped: " .. currentLegTapOrder[i])
-		if(currentLegTapOrder[i] ~= spiderProp.LegTapOrder[i]) then
-				wrongMove = 1
+	local vx, vy = spider[1]:getLinearVelocity()
+
+	if(vx == 0 and vy == 0) then
+		local wrongMove = 0
+		for i = 1, control.legTapCount do
+			print("tapped: " .. currentLegTapOrder[i])
+			if(currentLegTapOrder[i] ~= spiderProp.LegTapOrder[i]) then
+					wrongMove = 1
+			end
 		end
-	end
-	print("wrongMove = " .. wrongMove)
-	if(wrongMove == 0) then
-		local event = {}
-		event.target = spiderProp.legSquare[spiderProp.LegTapOrder[control.legTapCount + 1]]
-				if(control.show_1st_move == 1) then
-			control.show_1st_move = 0
+		print("wrongMove = " .. wrongMove)
+		if(wrongMove == 0) then
+			local event = {}
+			event.target = spiderProp.legSquare[spiderProp.LegTapOrder[control.legTapCount + 1]]
+					if(control.show_1st_move == 1) then
+				control.show_1st_move = 0
+			end
+			pushLeg(event )
+		else
+			composer.setVariable( "show_1st_move", 1 )
+			showNotiAndReload(3)
 		end
-		pushLeg(event )
-	else
-		composer.setVariable( "show_1st_move", 1 )
-		showNotiAndReload(3)
 	end
 	
 end

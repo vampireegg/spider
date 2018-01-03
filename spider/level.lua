@@ -29,7 +29,6 @@ physics.setGravity( 0, 0 )
 local Level
 local gameLoopTimer
 local levelType
-local nextMoveExists
 
 local totalWidth = {}
 local totalHeight = {}
@@ -71,28 +70,7 @@ local myTimers = {}
 local lastCollidedWith = {}
 local currentLegTapOrder = {}
 
-local lastLegTouched
-local spiderReachedGoal
-local legPhase
-local heartPhase
-local legPhaseCounter
-local heartPhaseCounter
-local needtoReload
-local needtoCross
-local nextSpiderx
-local nextSpidery
-local SpiderPorting
-local LastPortal
-local LastPortalPair
-local spiderMoveDirX
-local spiderMoveDirY
-local spiderPreCollisionDirX
-local spiderPreCollisionDirY
-
-local options
-local filePath
-local legTapCount
-local legTappedOutOfOrder
+local control = {}
 
 
 local music = {}
@@ -117,7 +95,7 @@ local function pushLeg(event )
 		--legMusicChannel = audio.play( legMusic, { channel=4, loops=0, duration = 3000, fadeout=2000 } )
 		leg.exists = 0
 		leg:setFillColor( 1, 1, 1, 0.1 )
-		lastLegTouched = event.target.leg.i
+		control.lastLegTouched = event.target.leg.i
 		local rx = (spiderProp.SpiderRadius / 23) * math.cos(leg.radAngle)
 		local ry = (spiderProp.SpiderRadius / 23) * math.sin(leg.radAngle)
 		if(math.abs(rx) < 0.5)then
@@ -128,29 +106,29 @@ local function pushLeg(event )
 		end
 		print("applying velocity " ..  rx .. "," .. ry .. " x = " .. spider[1].x .. " y = " .. spider[1].y )
 		if(rx == 0) then
-			spiderPreCollisionDirX = 0
+			control.spiderPreCollisionDirX = 0
 		else
-			spiderPreCollisionDirX = -rx / math.abs(rx)
+			control.spiderPreCollisionDirX = -rx / math.abs(rx)
 		end
 		if(ry == 0) then
-			spiderPreCollisionDirY = 0
+			control.spiderPreCollisionDirY = 0
 		else
-			spiderPreCollisionDirY = -ry / math.abs(ry)
+			control.spiderPreCollisionDirY = -ry / math.abs(ry)
 		end
 		spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
 		spider[1].angularVelocity = 0
 		lastCollidedWith.Name = ""
-		legTapCount = legTapCount + 1
-		currentLegTapOrder[legTapCount] = leg.i
+		control.legTapCount = control.legTapCount + 1
+		currentLegTapOrder[control.legTapCount] = leg.i
 		if (Level == 1) then
-			if(currentLegTapOrder[legTapCount] ~= spiderProp.LegTapOrder[legTapCount]) then
-				legTappedOutOfOrder = true
+			if(currentLegTapOrder[control.legTapCount] ~= spiderProp.LegTapOrder[control.legTapCount]) then
+				control.legTappedOutOfOrder = true
 				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 1)
 				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
 				bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 0)
 			else
-				if((legTapCount == 1 or legTapCount == 2) and legTappedOutOfOrder == false) then
-					bgProp.extra[legTapCount].ExtraImg:setFillColor (1,1,1, 0)
+				if((control.legTapCount == 1 or control.legTapCount == 2) and control.legTappedOutOfOrder == false) then
+					bgProp.extra[control.legTapCount].ExtraImg:setFillColor (1,1,1, 0)
 				end					
 			end
 		end
@@ -196,7 +174,7 @@ local function endGame()
 			end	
 		end
 	end
-	if(nextMoveExists == true) then
+	if(control.nextMoveExists == true) then
 		display.remove(nextMove[1])
 	end
 	display.remove(bgProp.reLoadButton)
@@ -237,7 +215,7 @@ local function endGame()
 	composer.setVariable( "max_completed_level", maxCompletedLevel )
 	
 	levelTable[1] = maxCompletedLevel
-	local file = io.open( filePath, "w" )
+	local file = io.open( control.filePath, "w" )
 	if file then
 		print("writing to file: " .. json.encode( levelTable ))
         file:write( json.encode( levelTable ) )
@@ -246,25 +224,25 @@ local function endGame()
 		print("writing to file failed")
     end
 	-- Go to the menu screen
-	if(spiderReachedGoal == true) then
+	if(control.spiderReachedGoal == true) then
 		print("going to dos_donts")
-		composer.gotoScene( "dos_donts" , options)
-	elseif(needtoCross == false) then
+		composer.gotoScene( "dos_donts" , control.screenTransitionOptions)
+	elseif(control.needtoCross == false) then
 		print("going to level")
-		composer.gotoScene( "level" , options)
+		composer.gotoScene( "level" , control.screenTransitionOptions)
 	else
-		composer.gotoScene( "select_level" , options)
+		composer.gotoScene( "select_level" , control.screenTransitionOptions)
 	end
 end
 
 local function shiftSpiderByOne()
-	spider[1].x = spider[1].x + spiderPreCollisionDirX
-	spider[1].y = spider[1].y + spiderPreCollisionDirY
+	spider[1].x = spider[1].x + control.spiderPreCollisionDirX
+	spider[1].y = spider[1].y + control.spiderPreCollisionDirY
 end
 
 local function shiftSpiderByInDir()
-	spider[1].x = spider[1].x + spiderMoveDirX * spiderProp.leg[lastLegTouched].dirx
-	spider[1].y = spider[1].y + spiderMoveDirY * spiderProp.leg[lastLegTouched].diry
+	spider[1].x = spider[1].x + control.spiderMoveDirX * spiderProp.leg[control.lastLegTouched].dirx
+	spider[1].y = spider[1].y + control.spiderMoveDirY * spiderProp.leg[control.lastLegTouched].diry
 end
 
 
@@ -275,19 +253,19 @@ end
 
 local function moveSpiderInDirection()
 	print("moveSpiderInDirection called")
-	print("spiderProp.leg[lastLegTouched].dirx = " .. spiderProp.leg[lastLegTouched].dirx .. " spiderProp.leg[lastLegTouched].diry = " .. spiderProp.leg[lastLegTouched].diry)
-	print("spiderPreCollisionDirX = " .. spiderPreCollisionDirX .. " spiderPreCollisionDirY = " .. spiderPreCollisionDirY)
-	local rx = spiderMoveDirX * (spiderProp.SpiderRadius / 23) * spiderPreCollisionDirX
-	local ry = spiderMoveDirY * (spiderProp.SpiderRadius / 23) * spiderPreCollisionDirY
+	print("spiderProp.leg[control.lastLegTouched].dirx = " .. spiderProp.leg[control.lastLegTouched].dirx .. " spiderProp.leg[control.lastLegTouched].diry = " .. spiderProp.leg[control.lastLegTouched].diry)
+	print("control.spiderPreCollisionDirX = " .. control.spiderPreCollisionDirX .. " control.spiderPreCollisionDirY = " .. control.spiderPreCollisionDirY)
+	local rx = control.spiderMoveDirX * (spiderProp.SpiderRadius / 23) * control.spiderPreCollisionDirX
+	local ry = control.spiderMoveDirY * (spiderProp.SpiderRadius / 23) * control.spiderPreCollisionDirY
 	if(rx == 0) then
-		spiderPreCollisionDirX = 0
+		control.spiderPreCollisionDirX = 0
 	else
-		spiderPreCollisionDirX = -rx / math.abs(rx)
+		control.spiderPreCollisionDirX = -rx / math.abs(rx)
 	end
 	if(ry == 0) then
-		spiderPreCollisionDirY = 0
+		control.spiderPreCollisionDirY = 0
 	else
-		spiderPreCollisionDirY = -ry / math.abs(ry)
+		control.spiderPreCollisionDirY = -ry / math.abs(ry)
 	end
 	print("applyLinearImpulse rx = " .. rx .. " ry = " .. ry)
 	spider[1]:applyLinearImpulse( rx, ry, 0 , 0 )
@@ -323,19 +301,19 @@ local function spiderCollided( self, event )
 			--audio.stop(music.bounceMusicChannel)
 			music.bounceMusicChannel = audio.play( music.bounceMusic, { channel=6, loops=0, duration = 3000, fadeout=2000 } )
 			if(event.other.Orientation == 1) then
-				spiderMoveDirX = -1
-				spiderMoveDirY = 1
+				control.spiderMoveDirX = -1
+				control.spiderMoveDirY = 1
 			else
-				spiderMoveDirX = 1
-				spiderMoveDirY = -1
+				control.spiderMoveDirX = 1
+				control.spiderMoveDirY = -1
 			end
 			
 			myTimers[#myTimers+1] = timer.performWithDelay( 50, bounceSpider )
 		end
 		
-		if (Level == 1 and event.other.CommonName == "border" and legTappedOutOfOrder == false) then
+		if (Level == 1 and event.other.CommonName == "border" and control.legTappedOutOfOrder == false) then
 			bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 1)
-			if(spiderReachedGoal == true) then
+			if(control.spiderReachedGoal == true) then
 				bgProp.extra[1].ExtraImg:setFillColor (1,1,1, 0)
 				bgProp.extra[2].ExtraImg:setFillColor (1,1,1, 0)
 				bgProp.extra[3].ExtraImg:setFillColor (1,1,1, 0)
@@ -354,15 +332,15 @@ end
 
 
 local function moveSpider( event )
-	spiderMoveDirX = -1
-	spiderMoveDirY = -1
+	control.spiderMoveDirX = -1
+	control.spiderMoveDirY = -1
 	moveSpiderInDirection()
-	SpiderPorting = 0
+	control.SpiderPorting = 0
 end
 
 local function portSpider( event )
-	spider[1].x = nextSpiderx
-	spider[1].y = nextSpidery
+	spider[1].x = control.nextSpiderx
+	spider[1].y = control.nextSpidery
 	spider[1]:setLinearVelocity(0,0)
 	if (music.portalMusicChannel ~= nil) then
 		audio.stop(music.portalMusicChannel)
@@ -372,7 +350,7 @@ local function portSpider( event )
 end
 
 local function setNeedToReload(event)
-	needtoReload = true
+	control.needtoReload = true
 end
 
 local function on_frame( event )
@@ -408,23 +386,23 @@ local function on_frame( event )
 	goal[1].rotation = goal[1].rotation + .2
 	
 	if(heartProp.Exists == 1) then
-		heartPhaseCounter = heartPhaseCounter + 1
-		if(heartPhaseCounter > 30) then
-				heartPhaseCounter = 0
-				heartPhase = heartPhase * -1				
+		control.heartPhaseCounter = control.heartPhaseCounter + 1
+		if(control.heartPhaseCounter > 30) then
+				control.heartPhaseCounter = 0
+				control.heartPhase = control.heartPhase * -1				
 		end
 		
-		if(heartPhase == -1) then
+		if(control.heartPhase == -1) then
 			heartProp.Scale = 0.99
 		else
 			heartProp.Scale = 1/0.99
 		end
-		--print("heartPhase = " .. heartPhase .. " heartProp.Scale = " .. heartProp.Scale)
+		--print("control.heartPhase = " .. control.heartPhase .. " heartProp.Scale = " .. heartProp.Scale)
 		for i = 1,#(heartProp.PosiX) do
 			heart[i]:scale(heartProp.Scale, heartProp.Scale)
 			if(distance(spider[1], heart[i]) <= spiderProp.SpiderRadius / 2) then
-				spiderProp.leg[lastLegTouched].exists = 1
-				spiderProp.leg[lastLegTouched]:setFillColor( 1, 0, 1, 1 )
+				spiderProp.leg[control.lastLegTouched].exists = 1
+				spiderProp.leg[control.lastLegTouched]:setFillColor( 1, 0, 1, 1 )
 				music.heartMusicChannel = audio.play( music.heartMusic, { channel=7, loops=0, duration = 3000, fadeout=2000 } )
 			end
 		end
@@ -464,31 +442,31 @@ local function on_frame( event )
 				portal[i][j].rotation = portal[i][j].rotation  + 5
 				--print("distance = " .. distance(spider[1], portal[i][j]) .. " i  = " .. i .. " j = " .. j .. " sensitive = " .. portal[i][j].sensitive)
 				if(distance(spider[1], portal[i][j]) <= spiderProp.SpiderRadius / 4.48 and portal[i][j].sensitive == 1) then
-					nextSpiderx = portal[i][j].pair.x
-					nextSpidery = portal[i][j].pair.y
+					control.nextSpiderx = portal[i][j].pair.x
+					control.nextSpidery = portal[i][j].pair.y
 					portal[i][j].sensitive = 0
 					portal[i][j].pair.sensitive = 0
-					LastPortal = portal[i][j]
-					LastPortalPair = LastPortal.pair
+					control.LastPortal = portal[i][j]
+					control.LastPortalPair = control.LastPortal.pair
 					lastCollidedWith.Name = ""
 					print("portal, lastCollidedWith.Name = " .. lastCollidedWith.Name)
-					SpiderPorting = 1
+					control.SpiderPorting = 1
 					myTimers[#myTimers+1] = timer.performWithDelay( 50, portSpider )
 				end
 			end
 		end
 	end
-	if(LastPortal ~= nil and SpiderPorting == 0) then
-		if(distance(spider[1], LastPortal) > spiderProp.SpiderRadius / 4.48) then
-			LastPortal.sensitive = 1
+	if(control.LastPortal ~= nil and control.SpiderPorting == 0) then
+		if(distance(spider[1], control.LastPortal) > spiderProp.SpiderRadius / 4.48) then
+			control.LastPortal.sensitive = 1
 		end
 	end
-	if(LastPortalPair ~= nil and SpiderPorting == 0) then
-		if(distance(spider[1], LastPortalPair) > spiderProp.SpiderRadius / 4.48) then
-			LastPortalPair.sensitive = 1
+	if(control.LastPortalPair ~= nil and control.SpiderPorting == 0) then
+		if(distance(spider[1], control.LastPortalPair) > spiderProp.SpiderRadius / 4.48) then
+			control.LastPortalPair.sensitive = 1
 		end
 	end
-	if(distance(spider[1],goal[1]) < spiderProp.SpiderRadius / 4.48 and spiderReachedGoal == false) then
+	if(distance(spider[1],goal[1]) < spiderProp.SpiderRadius / 4.48 and control.spiderReachedGoal == false) then
 		print("reached goal")
 		local goalFlag = false
 		if(levelType ~=2) then
@@ -520,11 +498,11 @@ local function on_frame( event )
 			else
 				composer.setVariable( "level", 1 )
 			end
-			spiderReachedGoal = true
+			control.spiderReachedGoal = true
 			myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
 		end		
 	end
-	if(needtoReload == true or needtoCross == true) then
+	if(control.needtoReload == true or control.needtoCross == true) then
 		--local vx, vy = spider[1]:getLinearVelocity()
 		--if(vx == 0 and vy == 0) then
 			Runtime:removeEventListener( "enterFrame", on_frame )
@@ -533,11 +511,11 @@ local function on_frame( event )
 	end
 	local vx, vy = spider[1]:getLinearVelocity()
 	if(vx == 0 and vy == 0) then
-	legPhaseCounter = legPhaseCounter + 1
-		if(legPhaseCounter == 10) then
+	control.legPhaseCounter = control.legPhaseCounter + 1
+		if(control.legPhaseCounter == 10) then
 			for i = 1, 8 do
 				if(spiderProp.leg[i].exists == 1)then
-					if(legPhase == 1) then
+					if(control.legPhase == 1) then
 						spiderProp.leg[i].x = spiderProp.leg[i].x + spiderProp.leg[i].dirx
 						spiderProp.leg[i].y = spiderProp.leg[i].y + spiderProp.leg[i].diry
 					else
@@ -546,25 +524,30 @@ local function on_frame( event )
 					end
 				end
 			end
-			legPhase = legPhase * -1
-			legPhaseCounter = 0
+			control.legPhase = control.legPhase * -1
+			control.legPhaseCounter = 0
 		end
 	end
 end 
 
 local function reLoad(event )
-	needtoReload = true
+	control.needtoReload = true
 end
 
 local function cross(event )
-	needtoCross = true
+	control.needtoCross = true
 end
 
 local function tapNextMove(event )
 	print("next move tapped")
-	for i = 1, legTapCount do
+	local wrongMove = false
+	for i = 1, control.legTapCount do
 		print("tapped: " .. currentLegTapOrder[i])
+		if(currentLegTapOrder[i] ~= spiderProp.LegTapOrder[i]) then
+				wrongMove = true
+		end
 	end
+	print("wrongMove = " .. wrongMove)
 end
 
 
@@ -577,7 +560,7 @@ function scene:create( event )
 	totalHeight[1] = commonProp.total.Height
 	
 	levelType = levelProp[Level].levelType
-	nextMoveExists = levelProp[Level].nextMoveExists
+	control.nextMoveExists = levelProp[Level].nextMoveExists
 	
 	bgProp.Img = levelProp[Level].bg.Img
 	bgProp.Opacity = levelProp[Level].bg.Opacity
@@ -590,7 +573,7 @@ function scene:create( event )
 	bgProp.ExtraImgScale = levelProp[Level].bg.ExtraImgScale
 	bgProp.ExtraImgOpacity = levelProp[Level].bg.ExtraImgOpacity
 	
-	if(nextMoveExists == true) then
+	if(control.nextMoveExists == true) then
 		nextMoveProp.Img = commonProp.nextMove.Img
 		nextMoveProp.PosiX = levelProp[Level].nextMove.PosiX
 		nextMoveProp.PosiY = levelProp[Level].nextMove.PosiY
@@ -705,28 +688,28 @@ function scene:create( event )
 	music.backgroundMusicChannel = audio.play( music.backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
 	audio.setVolume( 0.15, { channel=1 } )
 	
-	lastLegTouched = -1
-	spiderReachedGoal = false
-	legPhase = -1
-	heartPhase = -1
-	legPhaseCounter = 0
-	heartPhaseCounter = 0
-	needtoReload = false
-	needtoCross= false
-	nextSpiderx = 0
-	nextSpidery = 0
-	SpiderPorting = 0
-	LastPortal = nil
-	LastPortalPair = nil
-	spiderMoveDirX = 0
-	spiderMoveDirY = 0
-	spiderPreCollisionDirX = 0
-	spiderPreCollisionDirY = 0
+	control.lastLegTouched = -1
+	control.spiderReachedGoal = false
+	control.legPhase = -1
+	control.heartPhase = -1
+	control.legPhaseCounter = 0
+	control.heartPhaseCounter = 0
+	control.needtoReload = false
+	control.needtoCross= false
+	control.nextSpiderx = 0
+	control.nextSpidery = 0
+	control.SpiderPorting = 0
+	control.LastPortal = nil
+	control.LastPortalPair = nil
+	control.spiderMoveDirX = 0
+	control.spiderMoveDirY = 0
+	control.spiderPreCollisionDirX = 0
+	control.spiderPreCollisionDirY = 0
 	lastCollidedWith.Name = ""
-	legTapCount = 0
-	legTappedOutOfOrder = false
-	filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
-	options = 
+	control.legTapCount = 0
+	control.legTappedOutOfOrder = false
+	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
+	control.screenTransitionOptions = 
 	{
 		effect = "fade",
 		time = 800
@@ -759,7 +742,7 @@ function scene:create( event )
 	for i = 1,8 do
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
-	if(nextMoveExists == true) then
+	if(control.nextMoveExists == true) then
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
 		nextMove[1]:addEventListener("tap", tapNextMove)
 	end
@@ -805,7 +788,7 @@ function scene:hide( event )
 		-- Code here runs immediately after the scene goes entirely off screen
 		physics.pause()
 		composer.removeScene( "level" )
-		if(needtoReload == false and math.random() < 0.3 ) then
+		if(control.needtoReload == false and math.random() < 0.3 ) then
 			showAdd()
 			startapp.load( "interstitial" )
 		end

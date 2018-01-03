@@ -100,7 +100,7 @@ function scene:create( event )
 	titleAnimation = display.newSprite( sceneGroup, sheet, sequenceData )
 	titleAnimation.x = display.contentCenterX
 	titleAnimation.y = display.contentCenterY
-	titleAnimation:scale(0.5,0.5)
+	titleAnimation:scale(0.4,0.4)
 	
 	
 	background[3] = display.newImageRect( sceneGroup, bgProp.Img[3], bgProp.Width[3], bgProp.Height[3] )

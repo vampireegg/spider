@@ -362,6 +362,11 @@ local function showNotiAndReload(num)
 	myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
 end
 
+local function showScore()
+	notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
+	local displayText = display.newText( "Congrats", totalHeight[1], totalWidth[1],  "comic.ttf", 48 )
+end
+
 local function makeNextMoveVisible(event)
 	local vx, vy = spider[1]:getLinearVelocity()
 	if(control.nextMoveExists == true and vx == 0 and vy == 0) then
@@ -376,7 +381,7 @@ local function on_frame( event )
 	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.MakingNextMoveVisible == false) then
 		control.MakingNextMoveVisible = true
 		myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
-	elseif(vx ~= 0 or vy ~= 0) then
+	elseif(control.nextMoveExists == true and (vx ~= 0 or vy ~= 0)) then
 		nextMove[1]:setFillColor(1, 1, 1, 0)
 	end
 
@@ -523,6 +528,7 @@ local function on_frame( event )
 				composer.setVariable( "level", 1 )
 			end
 			control.spiderReachedGoal = true
+			--showScore()
 			myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
 		end		
 	end

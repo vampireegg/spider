@@ -90,7 +90,7 @@ local function pushLeg(event )
 	
 	local vx, vy = spider[1]:getLinearVelocity()
 
-	if(vx == 0 and vy == 0 and leg.exists == 1) then
+	if(vx == 0 and vy == 0 and leg.exists == 1 and control.show_1st_move == 0) then
 		--audio.stop(legMusicChannel)
 		--legMusicChannel = audio.play( legMusic, { channel=4, loops=0, duration = 3000, fadeout=2000 } )
 		leg.exists = 0
@@ -353,13 +353,17 @@ local function setNeedToReload(event)
 	control.needtoReload = true
 end
 
+local function showNotiAndReload(num)
+	notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
+	noti[num]:setFillColor( 1, 1, 1, 1)
+	myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
+end
+
 local function on_frame( event )
 	if(spider[1].x > totalHeight[1] + spiderProp.SpiderRadius or spider[1].y > totalWidth[1] + spiderProp.SpiderRadius
 	or spider[1].x < -spiderProp.SpiderRadius or spider[1].y < -spiderProp.SpiderRadius) then
 		spider[1]:setLinearVelocity( 0, 0 )
-		notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
-		noti[2]:setFillColor( 1, 1, 1, 1)
-		myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
+		showNotiAndReload(2)
 	end
 	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
 	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
@@ -482,9 +486,7 @@ local function on_frame( event )
 				goalFlag = true
 			else				
 				goalFlag = false
-				notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
-				noti[1]:setFillColor( 1, 1, 1, 1)
-				myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
+				showNotiAndReload(1)
 			end
 		end
 		
@@ -551,7 +553,13 @@ local function tapNextMove(event )
 	if(wrongMove == 0) then
 		local event = {}
 		event.target = spiderProp.legSquare[spiderProp.LegTapOrder[control.legTapCount + 1]]
+				if(control.show_1st_move == 1) then
+			control.show_1st_move = 0
+		end
 		pushLeg(event )
+	else
+		composer.setVariable( "show_1st_move", 1 )
+		showNotiAndReload(3)
 	end
 	
 end
@@ -757,6 +765,12 @@ function scene:create( event )
 	bgProp.reLoadButtonBox:addEventListener("tap", reLoad)
 	bgProp.crossButton:addEventListener("tap", cross)
 	bgProp.crossButtonBox:addEventListener("tap", cross)
+	
+	control.show_1st_move = composer.getVariable( "show_1st_move")
+	if(control.show_1st_move == 1) then
+		composer.setVariable( "show_1st_move", 0)
+		myTimers[#myTimers+1] = timer.performWithDelay( 300, tapNextMove )
+	end
 end
 
 

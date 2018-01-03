@@ -38,14 +38,14 @@ M.switchSystem.window.Height = 161 * M.switchSystem.window.Scale
 
  
 M.noti = {}
-M.noti.Img = {"use_all_legs.png", "out_of_the_world.png"}
-M.noti.PosiX = {M.total.Height / 2, M.total.Height / 2}
-M.noti.PosiY = {M.total.Width / 2, M.total.Width / 2}
-M.noti.Width = {449, 398}
-M.noti.Height = {52, 63}
-M.noti.Scale = {0.5, 0.5}
-M.noti.Opacity = {0, 0}
-M.noti.RectOpacity = {0, 0}
+M.noti.Img = {"use_all_legs.png", "out_of_the_world.png", "bad_moves_reloading.png"}
+M.noti.PosiX = {M.total.Height / 2, M.total.Height / 2, M.total.Height / 2}
+M.noti.PosiY = {M.total.Width / 2, M.total.Width / 2, M.total.Width / 2}
+M.noti.Width = {449, 398, 973}
+M.noti.Height = {52, 63, 85}
+M.noti.Scale = {0.5, 0.5, 0.5}
+M.noti.Opacity = {0, 0, 0}
+M.noti.RectOpacity = {0, 0, 0}
 
 M.nextMove = {}
 M.nextMove.Img = "nextMove.png"

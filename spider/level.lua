@@ -29,6 +29,7 @@ physics.setGravity( 0, 0 )
 local Level
 local gameLoopTimer
 local levelType
+local sceneGroup
 
 local totalWidth = {}
 local totalHeight = {}
@@ -150,6 +151,12 @@ local function endGame()
     end
 	
 	display.remove(notiProp.rect)
+	
+	if(control.spiderReachedGoal == true) then
+		for i = 1, #control.scoreText do
+			display.remove(control.scoreText[i])
+		end
+	end
 	
 	for i = 1, #notiProp.Img do
 		display.remove(noti[i])
@@ -363,8 +370,11 @@ local function showNotiAndReload(num)
 end
 
 local function showScore()
-	notiProp.rect:setFillColor( 0.3, 0.3, 0.3, 0.7)
-	local displayText = display.newText( "Congrats", totalHeight[1], totalWidth[1],  "comic.ttf", 48 )
+	notiProp.rect:setFillColor( levelProp[Level].dos_donts.Color[1], levelProp[Level].dos_donts.Color[2], levelProp[Level].dos_donts.Color[3], 1)
+	control.scoreText = {}
+	control.scoreText[1] = display.newText( "Congrats", totalHeight[1]/2, totalWidth[1]/2,  "comic.ttf", 36 )
+	control.scoreText[1]:setFillColor( 0.9, 0.9, 0.65, 1)
+	notiProp.rect:addEventListener( "tap", endGame )
 end
 
 local function makeNextMoveVisible(event)
@@ -528,8 +538,8 @@ local function on_frame( event )
 				composer.setVariable( "level", 1 )
 			end
 			control.spiderReachedGoal = true
-			--showScore()
-			myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
+			showScore()
+			--myTimers[#myTimers+1] = timer.performWithDelay( 100, endGame )
 		end		
 	end
 	if(control.needtoReload == true or control.needtoCross == true) then
@@ -763,7 +773,7 @@ function scene:create( event )
 	}
 	
 	physics.pause()
-    local sceneGroup = self.view
+    sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	drawFuncs.drawBackGround(sceneGroup, bg, totalWidth[1], totalHeight[1], bgProp)
 	--drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)

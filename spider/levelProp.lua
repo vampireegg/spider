@@ -381,12 +381,18 @@ M[lvlno].icon.Img = "sli_2.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 
+M[lvlno].nextMoveExists = true
+M[lvlno].nextMove = {}
+M[lvlno].nextMove.PosiX = 200
+M[lvlno].nextMove.PosiY = 530
+
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.15
 M[lvlno].spider.PosiX = 90
 M[lvlno].spider.PosiY = 90
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegTapOrder = {6, 5, 2, 1}
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {50, 250}

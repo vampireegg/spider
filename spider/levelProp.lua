@@ -534,6 +534,7 @@ M[lvlno].spider.MyScale = 0.15
 M[lvlno].spider.PosiX = 70
 M[lvlno].spider.PosiY = 70
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegTapOrder = {5, 7, 4, 7}
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {350, 90}
@@ -541,7 +542,7 @@ M[lvlno].collider.GroupY = {90, 350}
 M[lvlno].collider.Num = {2, 2}
 M[lvlno].collider.Orientation = {2, 1}
 M[lvlno].collider.ColliderType = {1, 1}
-M[lvlno].spider.LegTapOrder = {5, 7, 4, 7}
+
 
 M[lvlno].goal = {}
 M[lvlno].goal.PosiX = 746
@@ -576,12 +577,18 @@ M[lvlno].icon.Img = "li_10.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 
+M[lvlno].nextMoveExists = true
+M[lvlno].nextMove = {}
+M[lvlno].nextMove.PosiX = 520
+M[lvlno].nextMove.PosiY = 60
+
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.15
 M[lvlno].spider.PosiX = 150
 M[lvlno].spider.PosiY = 250
 M[lvlno].spider.LegExists = {1,0,1,0,1,0,1,0}
+M[lvlno].spider.LegTapOrder = {7, 5, 3, 1, 3}
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {300, 400, 700, 800, 180, 415, 815}

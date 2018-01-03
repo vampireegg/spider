@@ -196,7 +196,9 @@ local function endGame()
 			end	
 		end
 	end
-	display.remove(nextMove[1])
+	if(nextMoveExists == true) then
+		display.remove(nextMove[1])
+	end
 	display.remove(bgProp.reLoadButton)
 	display.remove(bgProp.crossButton)
 	display.remove(bgProp.reLoadButtonBox)
@@ -558,6 +560,10 @@ local function cross(event )
 	needtoCross = true
 end
 
+local function tapNextMove(event )
+	print("next move tapped")
+end
+
 
 function scene:create( event )
 	Level = composer.getVariable("level")
@@ -740,9 +746,7 @@ function scene:create( event )
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
-	if(nextMoveExists == true) then
-		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
-	end
+	
 	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
 	
 	if(levelProp[Level].switchSystemExists == 1) then
@@ -752,7 +756,10 @@ function scene:create( event )
 	for i = 1,8 do
 			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
-	
+	if(nextMoveExists == true) then
+		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
+		nextMove:addEventListener("tap", tapNextMove)
+	end
 	
 	bgProp.reLoadButton:addEventListener("tap", reLoad)
 	bgProp.reLoadButtonBox:addEventListener("tap", reLoad)

@@ -394,7 +394,7 @@ end
 
 local function makeNextMoveVisible(event)
 	local vx, vy = spider[1]:getLinearVelocity()
-	if(control.nextMoveExists == true and vx == 0 and vy == 0) then
+	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.spiderReachedGoal == false) then
 		nextMove[1]:setFillColor(1, 1, 1, 1)
 	end
 	control.MakingNextMoveVisible = false

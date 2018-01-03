@@ -334,11 +334,17 @@ M[lvlno] = {}
 
 M[lvlno].levelType  = 3
 
+M[lvlno].nextMoveExists = true
+M[lvlno].nextMove = {}
+M[lvlno].nextMove.PosiX = 700
+M[lvlno].nextMove.PosiY = 530
+
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.15
 M[lvlno].spider.PosiX = 189
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegTapOrder = {5, 8, 6, 1, 4}
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {30, 350, 500, 870}

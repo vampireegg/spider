@@ -536,6 +536,16 @@ end
 
 local function on_frame( event )
 	local vx, vy = spider[1]:getLinearVelocity()
+	if(vx == 0 and vy == 0) then
+		control.spiderStillCount = control.spiderStillCount + 1
+	else
+		control.spiderStillCount = 0
+		control.nextMoveSensitive = 0 
+	end
+	if(control.spiderStillCount > 25) then
+		control.nextMoveSensitive = 1
+	end
+	
 	if(control.nextMoveExists == true and currentProgressTable.totalFreeMove > 0) then
 		--control.MakingNextMoveVisible = true
 		--myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
@@ -729,8 +739,8 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
-	local vx, vy = spider[1]:getLinearVelocity()
-	if(vx ~= 0 or vy ~= 0) then
+	if(control.nextMoveSensitive == 0) then
+		print("insensitive")
 		return
 	end
 	control.UsedFreeMoves = control.UsedFreeMoves + 1
@@ -949,6 +959,8 @@ function scene:create( event )
 	control.legTappedOutOfOrder = false
 	control.MakingNextMoveVisible = false
 	control.UsedFreeMoves = 0
+	control.spiderStillCount = 0
+	control.nextMoveSensitive = 1
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	control.screenTransitionOptions = 
 	{

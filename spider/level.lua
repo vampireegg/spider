@@ -163,6 +163,10 @@ local function endGame()
 		for i = 1, #scoreboard.scoreText do
 			display.remove(scoreboard.scoreText[i])
 		end
+		for i = 1, #scoreboard.img do
+			display.remove(scoreboard.img[i])
+		end
+		display.remove(scoreboard.line)
 	end
 	
 	for i = 1, #notiProp.Img do
@@ -481,7 +485,7 @@ local function showScore()
 	scoreboardProp.StartPosiY = totalWidth[1]/2 - 200
 	scoreboardProp.StartPosiX = totalHeight[1]/2
 	scoreboardProp.LineGap = 50
-	scoreboardProp.rectColor = {levelProp[Level].dos_donts.Color[1] / 2, levelProp[Level].dos_donts.Color[2] / 2, levelProp[Level].dos_donts.Color[3] / 2, 1}
+	scoreboardProp.rectColor = {levelProp[Level].dos_donts.Color[1] / 3, levelProp[Level].dos_donts.Color[2] / 2.5, levelProp[Level].dos_donts.Color[3] / 2, 1}
 	scoreboardProp.rect = notiProp.rect
 	
 	drawFuncs.drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth, totalHeight)

@@ -3,16 +3,17 @@
 local composer = require( "composer" )
 local json = require( "json" )
 local startapp = require( "plugin.startapp" )
+local levelProp = require("levelProp")
+local composer = require( "composer" )
 local filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 local levelTable = {}
+local scoreTable = {}
  
 -- Hide status bar
 display.setStatusBar( display.HiddenStatusBar )
  
 -- Seed the random number generator
 math.randomseed( os.time() )
-
-local file = io.open( filePath, "r" )
 
 local function adListener( event )
 	if ( event.phase == "init" ) then  -- Successful initialization
@@ -36,6 +37,7 @@ local function adListener( event )
     end
 end
 
+local file = io.open( filePath, "r" )
 if file then
 	local contents = file:read( "*a" )
 	io.close( file )
@@ -47,10 +49,11 @@ if file then
 else
 	print("file not found")
 end
-
 if ( levelTable == nil or #levelTable == 0 ) then
         levelTable = { 1 }
 end
+
+
 
 local options = {
     effect = "fade",

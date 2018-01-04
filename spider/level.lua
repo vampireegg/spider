@@ -31,6 +31,8 @@ local gameLoopTimer
 local levelType
 local sceneGroup
 
+local scoreTable = {}
+
 local totalWidth = {}
 local totalHeight = {}
 
@@ -385,9 +387,49 @@ local function showScore()
 	
 	local score = math.ceil(10 * #spiderProp.LegTapOrder / #currentLegTapOrder)
 	
+	local scorePath = system.pathForFile( "score.json", system.DocumentsDirectory )
+	local scoreFile = io.open(scorePath, "r" )
+	if scoreFile then
+		local contents = scoreFile:read( "*a" )
+		io.close( scoreFile )
+		scoreTable = json.decode( contents )
+	end
+	
+	local prevScore = 0
+	if(scoreTable == nil) then
+		print("scoreTable == nil")
+		scoreTable = {}
+	end
+	if (scoreTable[Level] == nil) then
+		scoreTable[Level] = {}
+		scoreTable[Level].Completed = true
+		scoreTable[Level].Score = score
+		scoreTable[Level].Score1stTime = score
+	else
+		prevScore = scoreTable[Level].Score1stTime
+		if(score > scoreTable[Level].Score) then
+			scoreTable[Level].Score = score
+		end
+	end
+	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[4] = display.newText( "Your Score : " .. score .. "/10", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[4] = display.newText( "Previous Score : " .. prevScore .. "/10", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	control.linePosiY = control.linePosiY + lineGap
+	control.scoreText[5] = display.newText( "Current Score : " .. score .. "/10", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	
+	control.scorePath = system.pathForFile( "score.json", system.DocumentsDirectory )
+	local file = io.open( control.scorePath, "w" )
+	if file then
+		print("writing to file: " .. json.encode( scoreTable, { indent=true } ))
+        file:write( json.encode( scoreTable ) )
+        io.close( file )
+	else
+		print("writing to file failed")
+    end
 	
 	notiProp.rect:addEventListener( "tap", endGame )
 end

@@ -476,52 +476,14 @@ local function showScore()
 	scoreboardProp.EarnedFreeMove = control.earnedFreeMove
 	scoreboardProp.TotalGold = control.totalGold
 	scoreboardProp.TotalFreeMove = control.totalFreeMove
+	scoreboardProp.LevelGold = control.levelGold
 	scoreboardProp.StartPosiY = totalWidth[1]/2 - 200
 	scoreboardProp.StartPosiX = totalHeight[1]/2
 	scoreboardProp.LineGap = 50
 	scoreboardProp.rectColor = {0.18, 0.1, 0.09, 1}
 	scoreboardProp.rect = notiProp.rect
 	
-	scoreboardProp.rect:setFillColor( scoreboardProp.rectColor[1], scoreboardProp.rectColor[2], scoreboardProp.rectColor[3], 1)
-	
-	local posiY = scoreboardProp.StartPosiY
-	local posiX = scoreboardProp.StartPosiX
-	
-	scoreboard.scoreText = {}
-	scoreboard.scoreText[1] = display.newText( "Congrats", posiX, posiY,  "comic.ttf", 36 )
-	scoreboard.scoreText[1]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[2] = display.newText( "Optimal Number of Moves : " .. scoreboardProp.OptimalMoves, posiX, posiY,  "comic.ttf", 24 )
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[3] = display.newText( "Your Number of Moves : " .. scoreboardProp.PlayerMoves, posiX, posiY,  "comic.ttf", 24 )
-
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[4] = display.newText( "Previous Score : " .. control.prevScore .. "/" .. control.levelGold, posiX, posiY,  "comic.ttf", 24 )
-	scoreboard.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[5] = display.newText( "Current Score : " .. scoreboardProp.Score .. "/" .. control.levelGold, posiX, posiY,  "comic.ttf", 24 )
-	scoreboard.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[6] = display.newText( "You Earned Gold : " .. scoreboardProp.EarnedGold, posiX, posiY,  "comic.ttf", 24 )
-	scoreboard.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[7] = display.newText( "You Earned Free Move : " .. scoreboardProp.EarnedFreeMove, posiX, posiY,  "comic.ttf", 24 )
-	scoreboard.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[8] = display.newText( "Total Gold : " .. scoreboardProp.TotalGold, posiX, posiY,  "comic.ttf", 24 )
-	scoreboard.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	posiY = posiY + scoreboardProp.LineGap
-	scoreboard.scoreText[9] = display.newText( "Total Free Moves : " .. scoreboardProp.TotalFreeMove, posiX, posiY,  "comic.ttf", 24 )
-	scoreboard.scoreText[9]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
+	drawFuncs.drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth, totalHeight)
 	
 	
 	

@@ -61,6 +61,10 @@ local function drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	nextMove[1]:insert(nextMove[1].txt)
 	nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
 	
+	nextMove[1].txt2 = display.newText( nextMoveProp.totalFreeMove .. "", 25, 20,  "comic.ttf", 12 )
+	nextMove[1]:insert(nextMove[1].txt2)
+	nextMove[1].txt2:setFillColor( 0.9, 0.9, 0.65, 1)
+	
 	
 	sceneGroup:insert(nextMove[1])
 end

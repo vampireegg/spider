@@ -190,6 +190,7 @@ local function endGame()
 	end
 	if(control.nextMoveExists == true) then
 		display.remove(nextMove[1].txt)
+		display.remove(nextMove[1].txt2)
 		display.remove(nextMove[1].img)
 		display.remove(nextMove[1])
 	end
@@ -531,6 +532,8 @@ local function makeNextMoveVisible(event)
 	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.spiderReachedGoal == false and currentProgressTable.totalFreeMove > 0) then
 		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
 		nextMove[1].img:setFillColor(1, 1, 1, 1)
+		nextMove[1].txt2.text =  currentProgressTable.totalFreeMove .. ""
+		nextMove[1].txt2:setFillColor( 0.9, 0.9, 0.65, 1)
 	end
 	control.MakingNextMoveVisible = false
 end
@@ -539,6 +542,7 @@ local function makeNextMoveInVisible()
 	if(control.nextMoveExists == true) then
 		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 0)
 		nextMove[1].img:setFillColor(1, 1, 1, 0)
+		nextMove[1].txt2:setFillColor( 0.9, 0.9, 0.65, 0)
 	end
 end
 
@@ -784,6 +788,22 @@ function scene:create( event )
 	levelType = levelProp[Level].levelType
 	control.nextMoveExists = levelProp[Level].nextMoveExists
 	
+	local progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
+	local progressFile = io.open(progressPath, "r" )
+	if progressFile then
+		local contents = progressFile:read( "*a" )
+		io.close( progressFile )
+		currentProgressTable = json.decode( contents )
+	end
+	
+	if(currentProgressTable.totalFreeMove == nil) then
+		currentProgressTable.totalFreeMove = 0
+	end
+	
+	if(currentProgressTable.totalGold == nil) then
+		currentProgressTable.totalGold = 0
+	end
+	
 	bgProp.Img = levelProp[Level].bg.Img
 	bgProp.Opacity = levelProp[Level].bg.Opacity
 	bgProp.ExtraImgExists = levelProp[Level].bg.ExtraImgExists
@@ -803,6 +823,7 @@ function scene:create( event )
 		nextMoveProp.Height = commonProp.nextMove.Height
 		nextMoveProp.Scale = commonProp.nextMove.Scale
 		nextMoveProp.Opacity = 1
+		nextMoveProp.totalFreeMove = currentProgressTable.totalFreeMove
 	end
 	
 	
@@ -896,21 +917,7 @@ function scene:create( event )
 		switchSystemProp.Exists = 0
 	end
 	
-	local progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
-	local progressFile = io.open(progressPath, "r" )
-	if progressFile then
-		local contents = progressFile:read( "*a" )
-		io.close( progressFile )
-		currentProgressTable = json.decode( contents )
-	end
-	
-	if(currentProgressTable.totalFreeMove == nil) then
-		currentProgressTable.totalFreeMove = 0
-	end
-	
-	if(currentProgressTable.totalGold == nil) then
-		currentProgressTable.totalGold = 0
-	end
+
 	
 	music.backgroundMusic = audio.loadStream( "jungle.mp3" )
 	music.portalMusic = audio.loadStream( "beam.mp3" )

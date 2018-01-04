@@ -773,6 +773,7 @@ local function tapNextMove(event )
 			end
 			pushLeg(event )
 		else
+			control.nextMoveSensitive = 0
 			composer.setVariable( "show_1st_move", 1 )
 			showNotiAndReload(3)
 		end

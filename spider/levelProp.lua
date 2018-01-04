@@ -501,8 +501,8 @@ M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
-M[lvlno].nextMove.PosiX = 100
-M[lvlno].nextMove.PosiY = 530
+M[lvlno].nextMove.PosiX = 30
+M[lvlno].nextMove.PosiY = 520
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.1
@@ -661,8 +661,8 @@ M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
-M[lvlno].nextMove.PosiX = 80
-M[lvlno].nextMove.PosiY = 60
+M[lvlno].nextMove.PosiX = 470
+M[lvlno].nextMove.PosiY = 550
 
 
 M[lvlno].spider = {}
@@ -716,7 +716,7 @@ M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
-M[lvlno].nextMove.PosiX = 960
+M[lvlno].nextMove.PosiX = 900
 M[lvlno].nextMove.PosiY = 530
 
 

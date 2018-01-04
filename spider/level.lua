@@ -515,15 +515,15 @@ local function showScore()
 	notiProp.rect:addEventListener( "tap", endGame )
 end
 
-local function makeNextMoveVisible(event)
+local function makeNextMoveVisible()
 	local vx, vy = spider[1]:getLinearVelocity()
-	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.spiderReachedGoal == false and currentProgressTable.totalFreeMove > 0) then
+	if(control.nextMoveExists == true and control.spiderReachedGoal == false and currentProgressTable.totalFreeMove > 0) then
 		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
 		nextMove[1].img:setFillColor(1, 1, 1, 1)
 		nextMove[1].txt2.text =  currentProgressTable.totalFreeMove .. ""
 		nextMove[1].txt2:setFillColor( 0.9, 0.9, 0.65, 1)
 	end
-	control.MakingNextMoveVisible = false
+	--control.MakingNextMoveVisible = false
 end
 
 local function makeNextMoveInVisible()
@@ -536,10 +536,11 @@ end
 
 local function on_frame( event )
 	local vx, vy = spider[1]:getLinearVelocity()
-	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.MakingNextMoveVisible == false and currentProgressTable.totalFreeMove > 0) then
-		control.MakingNextMoveVisible = true
-		myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
-	elseif(control.nextMoveExists == true and (vx ~= 0 or vy ~= 0)) then
+	if(control.nextMoveExists == true and currentProgressTable.totalFreeMove > 0) then
+		--control.MakingNextMoveVisible = true
+		--myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
+		makeNextMoveVisible()
+	elseif(control.nextMoveExists == true) then
 		makeNextMoveInVisible()
 	end
 
@@ -728,6 +729,10 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
+	local vx, vy = spider[1]:getLinearVelocity()
+	if(vx ~= 0 or vy ~= 0) then
+		return
+	end
 	control.UsedFreeMoves = control.UsedFreeMoves + 1
 	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove - 1
 	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )

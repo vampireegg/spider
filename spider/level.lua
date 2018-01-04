@@ -739,10 +739,11 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
-	if(control.nextMoveSensitive == 0) then
+	if(control.nextMoveSensitive == 0 or system.getTimer() - control.nextMoveTapTime < 1000) then
 		print("insensitive")
 		return
 	end
+	control.nextMoveTapTime = system.getTimer()
 	control.UsedFreeMoves = control.UsedFreeMoves + 1
 	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove - 1
 	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
@@ -962,6 +963,7 @@ function scene:create( event )
 	control.UsedFreeMoves = 0
 	control.spiderStillCount = 0
 	control.nextMoveSensitive = 1
+	control.nextMoveTapTime = system.getTimer()
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	control.screenTransitionOptions = 
 	{

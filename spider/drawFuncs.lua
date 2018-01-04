@@ -93,9 +93,9 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	
 	posiY = posiY + 50
 	
-	scoreboard.line = display.newLine( sceneGroup, 50, posiY, 1030, posiY)
+	scoreboard.line = display.newLine( sceneGroup, 50, posiY, totalHeight - 50, posiY)
 	scoreboard.line:setStrokeColor( 0.9, 0.9, 0.65, 1)
-	scoreboard.line.strokeWidth = 8
+	scoreboard.line.strokeWidth = 6
 	
 	
 	posiY = posiY + 50
@@ -158,7 +158,7 @@ local function drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	nextMove[1]:insert(nextMove[1].txt)
 	nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
 	
-	nextMove[1].txt2 = display.newText( nextMoveProp.totalFreeMove .. "", 25, 20,  "comic.ttf", 12 )
+	nextMove[1].txt2 = display.newText( nextMoveProp.totalFreeMove .. "", 28, 20,  "comic.ttf", 12 )
 	nextMove[1]:insert(nextMove[1].txt2)
 	nextMove[1].txt2:setFillColor( 0.9, 0.9, 0.65, 1)
 	

@@ -74,6 +74,14 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	scoreboard.img[1].y = posiY - 50
 	scoreboard.img[1]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
+	scoreboard.scoreText[8] = display.newText( "Time : " .. "Unknown", posiX, posiY,  "comic.ttf", 12 )
+	scoreboard.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	scoreboard.img[6] = display.newImageRect( sceneGroup, "clock.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[6].x = posiX
+	scoreboard.img[6].y = posiY - 50
+	scoreboard.img[6]:scale(scoreboard.iconScale, scoreboard.iconScale)
+	
 	scoreboard.scoreText[3] = display.newText( "Free Moves : " .. scoreboardProp.UsedFreeMoves, posiX + 300, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[3]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
@@ -95,16 +103,33 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	scoreboard.scoreText[4] = display.newText( "You Earned: ", posiX, posiY,  "comic.ttf", 24 )
 	scoreboard.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
+	
+	
 	posiY = posiY + 200
 	
 	scoreboard.scoreText[5] = display.newText( "Score : " .. scoreboardProp.Score .. "/" .. scoreboardProp.LevelGold, posiX - 300, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
+	scoreboard.img[3] = display.newImageRect( sceneGroup, "star2.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[3].x = posiX - 300
+	scoreboard.img[3].y = posiY - 50
+	scoreboard.img[3]:scale(scoreboard.iconScale, scoreboard.iconScale)
+	
 	scoreboard.scoreText[6] = display.newText( "Gold : " .. scoreboardProp.EarnedGold, posiX, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
+	scoreboard.img[4] = display.newImageRect( sceneGroup, "taka3.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[4].x = posiX
+	scoreboard.img[4].y = posiY - 50
+	scoreboard.img[4]:scale(scoreboard.iconScale, scoreboard.iconScale)
+	
 	scoreboard.scoreText[7] = display.newText( "Free Moves : " .. scoreboardProp.EarnedFreeMove, posiX + 300, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	scoreboard.img[4] = display.newImageRect( sceneGroup, "bulb2.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[4].x = posiX + 300
+	scoreboard.img[4].y = posiY - 50
+	scoreboard.img[4]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
 	-- posiY = posiY + scoreboardProp.LineGap
 	-- scoreboard.scoreText[8] = display.newText( "Total Gold : " .. scoreboardProp.TotalGold, posiX, posiY,  "comic.ttf", 24 )

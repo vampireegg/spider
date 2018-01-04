@@ -382,8 +382,8 @@ end
 local function showScore()
 	
 	
-	local score = math.ceil(10 * #spiderProp.LegTapOrder / #currentLegTapOrder)
-	
+	local score = math.ceil(10 * #spiderProp.LegTapOrder / #currentLegTapOrder) 
+	score = score - score * control.UsedFreeMoves * 0.2
 	local scorePath = system.pathForFile( "score.json", system.DocumentsDirectory )
 	local scoreFile = io.open(scorePath, "r" )
 	if scoreFile then
@@ -468,6 +468,7 @@ local function showScore()
 	progressTable.totalGold = control.totalGold
 	progressTable.totalFreeMove = control.totalFreeMove
 	
+	scoreboardProp.UsedFreeMoves = control.UsedFreeMoves
 	scoreboardProp.OptimalMoves = #spiderProp.LegTapOrder
 	scoreboardProp.PlayerMoves = #currentLegTapOrder
 	scoreboardProp.PrevScore = control.prevScore
@@ -723,6 +724,7 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
+	control.UsedFreeMoves = control.UsedFreeMoves + 1
 	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove - 1
 	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
 	file = io.open( control.progressPath, "w" )
@@ -937,6 +939,7 @@ function scene:create( event )
 	control.legTapCount = 0
 	control.legTappedOutOfOrder = false
 	control.MakingNextMoveVisible = false
+	control.UsedFreeMoves = 0
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	control.screenTransitionOptions = 
 	{

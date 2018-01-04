@@ -481,7 +481,7 @@ local function showScore()
 	scoreboardProp.StartPosiY = totalWidth[1]/2 - 200
 	scoreboardProp.StartPosiX = totalHeight[1]/2
 	scoreboardProp.LineGap = 50
-	scoreboardProp.rectColor = {0.18, 0.1, 0.09, 1}
+	scoreboardProp.rectColor = {levelProp[Level].dos_donts.Color[1] / 2, levelProp[Level].dos_donts.Color[2] / 2, levelProp[Level].dos_donts.Color[3] / 2, 1}
 	scoreboardProp.rect = notiProp.rect
 	
 	drawFuncs.drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth, totalHeight)
@@ -959,9 +959,10 @@ function scene:create( event )
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
 	if(levelProp[Level].heartExists == 1) then
 		drawFuncs.drawHearts(sceneGroup, heart, heartProp)
-	end	
+	end
+	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)		
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
-	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
+	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
 	if(levelProp[Level].switchSystemExists == 1) then
 		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)

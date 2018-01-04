@@ -400,7 +400,7 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, hasSheet)
 	spider[1]:insert( spiderProp.body )
 	for i = 1,8 do
 		--print('spiderProp.leg[i].x' .. spiderProp.leg[i].x .. 'spiderProp.leg[i].y' .. spiderProp.leg[i].y)
-		spiderProp.legSquare[i] = display.newRect(sceneGroup, spiderProp.leg[i].x, spiderProp.leg[i].y, spiderProp.ArrowSize * 4, spiderProp.ArrowSize * 4)
+		spiderProp.legSquare[i] = display.newRect(spiderProp.leg[i].x, spiderProp.leg[i].y, spiderProp.ArrowSize * 4, spiderProp.ArrowSize * 4)
 		spiderProp.legSquare[i]:setFillColor( 1, 1, 1, 0 )
 		spiderProp.legSquare[i].leg = spiderProp.leg[i]
 		spiderProp.legSquare[i].isHitTestable = true

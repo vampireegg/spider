@@ -415,9 +415,17 @@ local function showScore()
 		if(scoreTable[Level].Score1stTime ~= nil) then
 			control.score1stTime = scoreTable[Level].Score1stTime
 		else
-			scoreTable[Level].Score = 0
+			scoreTable[Level].Score1stTime = 0
 			control.score1stTime = 0
 		end
+		
+		if(scoreTable[Level].Score ~= nil) then
+			control.prevScore = scoreTable[Level].Score
+		else
+			scoreTable[Level].Score = 0
+			control.prevScore = 0
+		end
+		
 		if(scoreTable[Level].Gold ~= nil) then
 			control.prevGold = scoreTable[Level].Gold
 		else
@@ -439,41 +447,53 @@ local function showScore()
 	if(control.currentGold >= control.prevGold) then
 		scoreTable[Level].Gold = control.currentGold
 		control.earnedGold = control.currentGold - control.prevGold
+	else
+		control.earnedGold = 0
 	end
 	
 	if(control.currentFreeMove >= control.prevFreeMove) then
 		scoreTable[Level].FreeMove = control.currentFreeMove
 		control.earnedFreeMove = control.currentGold - control.prevFreeMove
+	else
+		control.earnedFreeMove = 0
 	end
 	
 	control.totalGold = 0
-	control.totalFreeMove= 0
+	control.totalFreeMove = 0
 	for i = 1, #scoreTable do
 		if(scoreTable[i].Gold ~= nil) then
 			control.totalGold = control.totalGold + scoreTable[i].Gold
 		end
 		if(scoreTable[i].FreeMove ~= nil) then
-			control.totalFreeMove = control.totalGold + scoreTable[i].FreeMove
+			control.totalFreeMove = control.totalFreeMove + scoreTable[i].FreeMove
 		end		
 	end
 	composer.setVariable("totalGold", control.totalGold)
 	composer.setVariable("totalFreeMove", control.totalFreeMove)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[4] = display.newText( "Previous Score : " .. control.score1stTime .. "/10", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[4] = display.newText( "Previous Score : " .. control.prevGold .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[5] = display.newText( "Current Score : " .. score .. "/10", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[5] = display.newText( "Current Score : " .. scoreTable[Level].Gold .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[6] = display.newText( "You Earned Gold : " .. scoreTable[Level].Gold .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[6] = display.newText( "You Earned Gold : " .. control.earnedGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[7] = display.newText( "You Earned Free Move : " .. scoreTable[Level].FreeMove .. "/" .. control.currentFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[7] = display.newText( "You Earned Free Move : " .. scoreTable[Level].FreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	control.linePosiY = control.linePosiY + lineGap
+	control.scoreText[8] = display.newText( "Total Gold : " .. control.totalGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	control.linePosiY = control.linePosiY + lineGap
+	control.scoreText[9] = display.newText( "Total Free Moves : " .. control.totalFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[9]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	
 	

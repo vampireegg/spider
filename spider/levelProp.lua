@@ -58,7 +58,7 @@ M[lvlno].icon.Img = "li_1.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 20
-M[lvlno].freeMove = 0
+M[lvlno].freeMove = 1
 
 
 M[lvlno].spider = {}

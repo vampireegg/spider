@@ -32,6 +32,8 @@ local levelType
 local sceneGroup
 
 local scoreTable = {}
+local progressTable = {}
+local currentProgressTable = {}
 
 local totalWidth = {}
 local totalHeight = {}
@@ -397,7 +399,14 @@ local function showScore()
 	
 	control.levelGold = levelProp[Level].goldMax
 	control.currentGold = score * control.levelGold / 10
+	control.currentScore = control.currentGold
 	control.currentFreeMove = levelProp[Level].freeMove
+	control.score1stTime = 0
+	control.prevScore = 0
+	control.prevGold = 0
+	control.prevFreeMove = 0
+	
+	print("control.currentGold  = " .. control.currentGold )
 	
 	control.score1stTime = 0
 	if(scoreTable == nil) then
@@ -416,33 +425,31 @@ local function showScore()
 			control.score1stTime = scoreTable[Level].Score1stTime
 		else
 			scoreTable[Level].Score1stTime = 0
-			control.score1stTime = 0
 		end
 		
 		if(scoreTable[Level].Score ~= nil) then
 			control.prevScore = scoreTable[Level].Score
 		else
-			scoreTable[Level].Score = 0
-			control.prevScore = 0
+			scoreTable[Level].Score = 0			
 		end
 		
 		if(scoreTable[Level].Gold ~= nil) then
 			control.prevGold = scoreTable[Level].Gold
 		else
-			scoreTable[Level].Gold = 0
-			control.prevGold = 0
+			scoreTable[Level].Gold = 0			
 		end
 		
 		if(scoreTable[Level].FreeMove ~= nil) then
 			control.prevFreeMove = scoreTable[Level].FreeMove
 		else
-			scoreTable[Level].FreeMove = 0
-			control.prevFreeMove = 0
+			scoreTable[Level].FreeMove = 0			
 		end
 	end
 	
-	if(score > scoreTable[Level].Score) then
-		scoreTable[Level].Score = score
+	print("control.prevGold  = " .. control.prevGold )
+	
+	if(control.currentScore > scoreTable[Level].Score) then
+		scoreTable[Level].Score = control.currentScore
 	end
 	if(control.currentGold >= control.prevGold) then
 		scoreTable[Level].Gold = control.currentGold
@@ -453,30 +460,26 @@ local function showScore()
 	
 	if(control.currentFreeMove >= control.prevFreeMove) then
 		scoreTable[Level].FreeMove = control.currentFreeMove
-		control.earnedFreeMove = control.currentGold - control.prevFreeMove
+		control.earnedFreeMove = control.currentFreeMove - control.prevFreeMove
 	else
 		control.earnedFreeMove = 0
 	end
 	
-	control.totalGold = 0
-	control.totalFreeMove = 0
-	for i = 1, #scoreTable do
-		if(scoreTable[i].Gold ~= nil) then
-			control.totalGold = control.totalGold + scoreTable[i].Gold
-		end
-		if(scoreTable[i].FreeMove ~= nil) then
-			control.totalFreeMove = control.totalFreeMove + scoreTable[i].FreeMove
-		end		
-	end
-	composer.setVariable("totalGold", control.totalGold)
-	composer.setVariable("totalFreeMove", control.totalFreeMove)
+	control.totalGold = currentProgressTable.totalGold + control.earnedGold
+	control.totalFreeMove = currentProgressTable.totalFreeMove + control.earnedFreeMove
+	
+	
+	
+	progressTable.totalGold = control.totalGold
+	progressTable.totalFreeMove = control.totalFreeMove
+
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[4] = display.newText( "Previous Score : " .. control.prevGold .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[4] = display.newText( "Previous Score : " .. control.prevScore .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[5] = display.newText( "Current Score : " .. scoreTable[Level].Gold .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[5] = display.newText( "Current Score : " .. scoreTable[Level].Score .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
@@ -484,7 +487,7 @@ local function showScore()
 	control.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[7] = display.newText( "You Earned Free Move : " .. scoreTable[Level].FreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	control.scoreText[7] = display.newText( "You Earned Free Move : " .. control.earnedFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	control.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
@@ -503,6 +506,16 @@ local function showScore()
 	if file then
 		print("writing to file: " .. json.encode( scoreTable, { indent=true } ))
         file:write( json.encode( scoreTable ) )
+        io.close( file )
+	else
+		print("writing to file failed")
+    end
+	
+	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
+	file = io.open( control.progressPath, "w" )
+	if file then
+		print("writing to file: " .. json.encode( progressTable, { indent=true } ))
+        file:write( json.encode( progressTable ) )
         io.close( file )
 	else
 		print("writing to file failed")
@@ -868,6 +881,22 @@ function scene:create( event )
 		switchSystem.window = {}
 	else
 		switchSystemProp.Exists = 0
+	end
+	
+	local progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
+	local progressFile = io.open(progressPath, "r" )
+	if progressFile then
+		local contents = progressFile:read( "*a" )
+		io.close( progressFile )
+		currentProgressTable = json.decode( contents )
+	end
+	
+	if(currentProgressTable.totalFreeMove == nil) then
+		currentProgressTable.totalFreeMove = 0
+	end
+	
+	if(currentProgressTable.totalGold == nil) then
+		currentProgressTable.totalGold = 0
 	end
 	
 	music.backgroundMusic = audio.loadStream( "jungle.mp3" )

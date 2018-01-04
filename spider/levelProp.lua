@@ -203,7 +203,7 @@ M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
-M[lvlno].nextMove.PosiX = 950
+M[lvlno].nextMove.PosiX = 900
 M[lvlno].nextMove.PosiY = 530
 
 M[lvlno].spider = {}

@@ -190,6 +190,8 @@ local function endGame()
 	end
 	if(control.nextMoveExists == true) then
 		display.remove(nextMove[1])
+		display.remove(nextMove[1].txt)
+		display.remove(nextMove[1].img)
 	end
 	display.remove(bgProp.reLoadButton)
 	display.remove(bgProp.crossButton)
@@ -535,8 +537,8 @@ end
 
 local function makeNextMoveInVisible()
 	if(control.nextMoveExists == true) then
-		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 0)
-		nextMove[1].img:setFillColor(1, 1, 1, 0)
+		--nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 0)
+		--nextMove[1].img:setFillColor(1, 1, 1, 0)
 	end
 end
 
@@ -964,30 +966,25 @@ function scene:create( event )
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)
 	if(levelProp[Level].heartExists == 1) then
 		drawFuncs.drawHearts(sceneGroup, heart, heartProp)
-	end
-	
+	end	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
-	
-	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
-	
 	if(levelProp[Level].switchSystemExists == 1) then
 		drawFuncs.drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, physics)
-	end
-
-	for i = 1,8 do
-			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
 	end
 	if(control.nextMoveExists == true) then
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
 		nextMove[1]:addEventListener("tap", tapNextMove)
 	end
-	
+	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
 	if(currentProgressTable.totalFreeMove <= 0) then
 		makeNextMoveInVisible()
 	end
 	
+	for i = 1,8 do
+			spiderProp.legSquare[i]:addEventListener( "tap", pushLeg )
+	end
 	bgProp.reLoadButton:addEventListener("tap", reLoad)
 	bgProp.reLoadButtonBox:addEventListener("tap", reLoad)
 	bgProp.crossButton:addEventListener("tap", cross)

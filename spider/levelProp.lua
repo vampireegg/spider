@@ -5,6 +5,8 @@ local lvlno = 1
 
 ----------------------------------------Level 1----------------------------------------
 M[lvlno] = {}
+M[lvlno].goldMax = 10
+M[lvlno].freeMove = 0
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.2
@@ -55,6 +57,8 @@ M[lvlno].icon.Img = "li_1.png"
 ---------------------------------------- Level 2----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 20
+M[lvlno].freeMove = 0
 
 
 M[lvlno].spider = {}
@@ -98,6 +102,8 @@ M[lvlno].icon.Img = "li_2.png"
 ---------------------------------------- Level 3----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 50
+M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -146,6 +152,8 @@ M[lvlno].icon.Img = "li_3.png"
 ---------------------------------------- sl - 1----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 50
+M[lvlno].freeMove = 0
 
 M[lvlno].levelType  = 2
 
@@ -190,6 +198,8 @@ M[lvlno].icon.Img = "sli_1.png"
 ---------------------------------------- Level 4----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 10
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -237,6 +247,8 @@ M[lvlno].icon.Img = "li_4.png"
 ---------------------------------------- Level 5----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 40
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -284,6 +296,8 @@ M[lvlno].icon.Img = "li_5.png"
 ---------------------------------------- Level 6----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 100
+M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -332,6 +346,8 @@ M[lvlno].icon.Img = "li_6.png"
 ---------------------------------------- sl - 2----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 50
+M[lvlno].freeMove = 0
 
 M[lvlno].levelType  = 3
 
@@ -381,6 +397,8 @@ M[lvlno].icon.Img = "sli_2.png"
 ---------------------------------------- Level 7----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 10
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -429,6 +447,8 @@ M[lvlno].icon.Img = "li_7.png"
 ---------------------------------------- Level 8----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 30
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -476,6 +496,8 @@ M[lvlno].icon.Img = "li_8.png"
 ---------------------------------------- Level 9----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 120
+M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -523,6 +545,8 @@ M[lvlno].icon.Img = "li_9.png"
 ---------------------------------------- Level 10----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 40
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -577,6 +601,8 @@ M[lvlno].icon.Img = "li_10.png"
 ---------------------------------------- Level 11----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 70
+M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -630,6 +656,8 @@ M[lvlno].icon.Img = "li_11.png"
 ---------------------------------------- Level 12----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 150
+M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -683,6 +711,8 @@ M[lvlno].icon.Img = "li_12.png"
 ---------------------------------------- Level 13----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 40
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -748,6 +778,8 @@ M[lvlno].icon.Img = "li_13.png"
 ---------------------------------------- Level 14----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
+M[lvlno].goldMax = 100
+M[lvlno].freeMove = 1
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}

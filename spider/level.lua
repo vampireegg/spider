@@ -437,9 +437,15 @@ end
 local function makeNextMoveVisible(event)
 	local vx, vy = spider[1]:getLinearVelocity()
 	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.spiderReachedGoal == false) then
-		nextMove[1]:setFillColor(1, 1, 1, 1)
+		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
+		nextMove[1].img:setFillColor(1, 1, 1, 1)
 	end
 	control.MakingNextMoveVisible = false
+end
+
+local function makeNextMoveInVisible()
+	nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 0)
+	nextMove[1].img:setFillColor(1, 1, 1, 0)
 end
 
 local function on_frame( event )
@@ -449,7 +455,7 @@ local function on_frame( event )
 		control.MakingNextMoveVisible = true
 		myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
 	elseif(control.nextMoveExists == true and (vx ~= 0 or vy ~= 0)) then
-		nextMove[1]:setFillColor(1, 1, 1, 0)
+		makeNextMoveInVisible()
 	end
 
 

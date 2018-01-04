@@ -48,10 +48,10 @@ M.noti.Opacity = {0, 0, 0}
 M.noti.RectOpacity = {0, 0, 0}
 
 M.nextMove = {}
-M.nextMove.Img = "nextMove.png"
-M.nextMove.Width = 290
-M.nextMove.Height = 61
-M.nextMove.Scale = 0.4
+M.nextMove.Img = "bulb.png"
+M.nextMove.Width = 264
+M.nextMove.Height = 371
+M.nextMove.Scale = 0.15
 
 
 

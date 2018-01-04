@@ -47,11 +47,22 @@ end
 M.drawBackGround = drawBackGround
 
 local function drawNextMove(sceneGroup, nextMove, nextMoveProp)
-	nextMove[1] = display.newImageRect( sceneGroup, nextMoveProp.Img, nextMoveProp.Width, nextMoveProp.Height )
+	nextMove[1] = display.newGroup()
 	nextMove[1].x = nextMoveProp.PosiX
 	nextMove[1].y = nextMoveProp.PosiY
-	nextMove[1]:setFillColor( 1, 1, 1, nextMoveProp.Opacity )
-	nextMove[1]:scale(nextMoveProp.Scale, nextMoveProp.Scale)
+	
+	nextMove[1].img = display.newImageRect(nextMoveProp.Img, nextMoveProp.Width, nextMoveProp.Height )
+	nextMove[1]:insert(nextMove[1].img)
+	nextMove[1].img.x = 0
+	nextMove[1].img.y = 0
+	nextMove[1].img:scale(nextMoveProp.Scale, nextMoveProp.Scale)
+	
+	nextMove[1].txt = display.newText( "Use one Free Move?", 80, 0,  "comic.ttf", 12 )
+	nextMove[1]:insert(nextMove[1].txt)
+	nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	
+	sceneGroup:insert(nextMove[1])
 end
 
 M.drawNextMove = drawNextMove

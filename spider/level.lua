@@ -526,7 +526,7 @@ end
 
 local function makeNextMoveVisible(event)
 	local vx, vy = spider[1]:getLinearVelocity()
-	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.spiderReachedGoal == false) then
+	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.spiderReachedGoal == false and currentProgressTable.totalFreeMove > 0) then
 		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 1)
 		nextMove[1].img:setFillColor(1, 1, 1, 1)
 	end
@@ -534,14 +534,15 @@ local function makeNextMoveVisible(event)
 end
 
 local function makeNextMoveInVisible()
-	nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 0)
-	nextMove[1].img:setFillColor(1, 1, 1, 0)
+	if(control.nextMoveExists == true) then
+		nextMove[1].txt:setFillColor( 0.9, 0.9, 0.65, 0)
+		nextMove[1].img:setFillColor(1, 1, 1, 0)
+	end
 end
 
 local function on_frame( event )
 	local vx, vy = spider[1]:getLinearVelocity()
-
-	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.MakingNextMoveVisible == false) then
+	if(control.nextMoveExists == true and vx == 0 and vy == 0 and control.MakingNextMoveVisible == false and currentProgressTable.totalFreeMove > 0) then
 		control.MakingNextMoveVisible = true
 		myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
 	elseif(control.nextMoveExists == true and (vx ~= 0 or vy ~= 0)) then
@@ -733,6 +734,16 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
+	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove - 1
+	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
+	file = io.open( control.progressPath, "w" )
+	if file then
+		print("writing to file: " .. json.encode( currentProgressTable, { indent=true } ))
+        file:write( json.encode( currentProgressTable ) )
+        io.close( file )
+	else
+		print("writing to file failed")
+    end
 	local vx, vy = spider[1]:getLinearVelocity()
 	
 	if(vx == 0 and vy == 0) then
@@ -747,7 +758,7 @@ local function tapNextMove(event )
 		if(wrongMove == 0) then
 			local event = {}
 			event.target = spiderProp.legSquare[spiderProp.LegTapOrder[control.legTapCount + 1]]
-					if(control.show_1st_move == 1) then
+			if(control.show_1st_move == 1) then
 				control.show_1st_move = 0
 			end
 			pushLeg(event )
@@ -971,6 +982,10 @@ function scene:create( event )
 	if(control.nextMoveExists == true) then
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
 		nextMove[1]:addEventListener("tap", tapNextMove)
+	end
+	
+	if(currentProgressTable.totalFreeMove <= 0) then
+		makeNextMoveInVisible()
 	end
 	
 	bgProp.reLoadButton:addEventListener("tap", reLoad)

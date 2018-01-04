@@ -45,6 +45,9 @@ local bg = {}
 local nextMoveProp = {}
 local nextMove = {}
 
+local scoreboardProp = {}
+local scoreboard = {}
+
 local noti = {}
 local notiProp = {}
 
@@ -157,8 +160,8 @@ local function endGame()
 	display.remove(notiProp.rect)
 	
 	if(control.spiderReachedGoal == true) then
-		for i = 1, #control.scoreText do
-			display.remove(control.scoreText[i])
+		for i = 1, #scoreboard.scoreText do
+			display.remove(scoreboard.scoreText[i])
 		end
 	end
 	
@@ -467,40 +470,40 @@ local function showScore()
 	progressTable.totalGold = control.totalGold
 	progressTable.totalFreeMove = control.totalFreeMove
 	
-	control.scoreText = {}
-	control.scoreText[1] = display.newText( "Congrats", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 36 )
-	control.scoreText[1]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText = {}
+	scoreboard.scoreText[1] = display.newText( "Congrats", totalHeight[1]/2, control.linePosiY,  "comic.ttf", 36 )
+	scoreboard.scoreText[1]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[2] = display.newText( "Optimal Number of Moves : " .. #spiderProp.LegTapOrder, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[2] = display.newText( "Optimal Number of Moves : " .. #spiderProp.LegTapOrder, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[3] = display.newText( "Your Number of Moves : " .. #currentLegTapOrder, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[3] = display.newText( "Your Number of Moves : " .. #currentLegTapOrder, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
 
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[4] = display.newText( "Previous Score : " .. control.prevScore .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
-	control.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText[4] = display.newText( "Previous Score : " .. control.prevScore .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[4]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[5] = display.newText( "Current Score : " .. scoreTable[Level].Score .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
-	control.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText[5] = display.newText( "Current Score : " .. scoreTable[Level].Score .. "/" .. control.levelGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[5]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[6] = display.newText( "You Earned Gold : " .. control.earnedGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
-	control.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText[6] = display.newText( "You Earned Gold : " .. control.earnedGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[7] = display.newText( "You Earned Free Move : " .. control.earnedFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
-	control.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText[7] = display.newText( "You Earned Free Move : " .. control.earnedFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[8] = display.newText( "Total Gold : " .. control.totalGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
-	control.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText[8] = display.newText( "Total Gold : " .. control.totalGold, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	control.linePosiY = control.linePosiY + lineGap
-	control.scoreText[9] = display.newText( "Total Free Moves : " .. control.totalFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
-	control.scoreText[9]:setFillColor( 0.9, 0.9, 0.65, 1)
+	scoreboard.scoreText[9] = display.newText( "Total Free Moves : " .. control.totalFreeMove, totalHeight[1]/2, control.linePosiY,  "comic.ttf", 24 )
+	scoreboard.scoreText[9]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	
 	

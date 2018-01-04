@@ -51,13 +51,15 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	
 	local posiY = 0
 	local posiX = scoreboardProp.StartPosiX
-	scoreboard.iconWidth = 1090
-	scoreboard.iconHeight = 1080
-	scoreboard.iconScale = 0.05
+	scoreboard.iconWidth = 1920
+	scoreboard.iconHeight = 1040
+	scoreboard.iconScale = 0.06
 	
 	posiY = posiY + 50
 	
 	scoreboard.scoreText = {}
+	scoreboard.img = {}
+	
 	scoreboard.scoreText[1] = display.newText( "You Spent: ", posiX, posiY,  "comic.ttf", 24 )
 	scoreboard.scoreText[1]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
@@ -65,8 +67,20 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	
 	posiY = posiY + 200
 	scoreboard.scoreText[2] = display.newText( "Moves : " .. scoreboardProp.PlayerMoves .. "/" .. scoreboardProp.OptimalMoves, posiX - 300, posiY,  "comic.ttf", 12 )
+	scoreboard.scoreText[2]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	scoreboard.img[1] = display.newImageRect( sceneGroup, "moves.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[1].x = posiX - 300
+	scoreboard.img[1].y = posiY - 50
+	scoreboard.img[1]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
 	scoreboard.scoreText[3] = display.newText( "Free Moves : " .. scoreboardProp.UsedFreeMoves, posiX + 300, posiY,  "comic.ttf", 12 )
+	scoreboard.scoreText[3]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	scoreboard.img[2] = display.newImageRect( sceneGroup, "bulb2.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[2].x = posiX + 300
+	scoreboard.img[2].y = posiY - 50
+	scoreboard.img[2]:scale(scoreboard.iconScale, scoreboard.iconScale)
 
 	
 	posiY = posiY + 50

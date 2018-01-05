@@ -392,8 +392,8 @@ local function drawSpider(sceneGroup, spider, spiderProp, physics, hasSheet)
 		spiderProp.body:play()
 		spiderProp.body:scale(spiderProp.MyScale,spiderProp.MyScale)
 	else
-		spiderProp.body = display.newImageRect(sceneGroup, spiderProp.Img, 629, 710 )
-		spiderProp.body:scale(spiderProp.MyScale * 0.7 ,spiderProp.MyScale * 0.7)
+		spiderProp.body = display.newImageRect(sceneGroup, spiderProp.Img, spiderProp.ImgWidth, spiderProp.ImgHeight)
+		spiderProp.body:scale(spiderProp.MyScale * 0.65 ,spiderProp.MyScale * 0.65)
 	end
 
 	

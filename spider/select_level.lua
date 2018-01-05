@@ -161,6 +161,8 @@ function scene:create( event )
 	spiderProp.legSquare = {}
 	spiderProp.LegImg = "arrow_icon.png"
 	spiderProp.Img = "spider_icon.png"
+	spiderProp.ImgWidth = 629
+	spiderProp.ImgHeight = 710
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 0)
 	

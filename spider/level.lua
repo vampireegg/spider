@@ -416,6 +416,12 @@ local function showScore()
 		writeTableIntoFile("time.json", timeTable)
 	end
 	timeTable = readFileIntoTable("time.json")
+	if(timeTable == nil) then
+		print("timeTable == nil")
+	end
+	if(timeTable[Level] == nil) then
+		print("timeTable[Level] == nil")
+	end
 	
 	control.LevelGold = levelProp[Level].goldMax
 	control.LevelFreeMoves = levelProp[Level].freeMove
@@ -914,14 +920,17 @@ function scene:create( event )
 	
 	spiderProp.MyScale = levelProp[Level].spider.MyScale
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
-	spiderProp.BodySize = 487 * spiderProp.MyScale
+	spiderProp.BodySize = 387 * spiderProp.MyScale
 	spiderProp.ArrowDistance = 365 * spiderProp.MyScale
 	spiderProp.SpiderRadius = spiderProp.ArrowSize + spiderProp.ArrowDistance
 	spiderProp.PosiX = levelProp[Level].spider.PosiX
 	spiderProp.PosiY = levelProp[Level].spider.PosiY
 	spiderProp.LegExists = levelProp[Level].spider.LegExists
 	spiderProp.LegTapOrder = levelProp[Level].spider.LegTapOrder
-	spiderProp.LegImg = "arrow.png"
+	spiderProp.LegImg = "nerdArrow.png"
+	spiderProp.Img = "nerdspider.png"
+	spiderProp.ImgWidth = 1269
+	spiderProp.ImgHeight = 917
 	spiderProp.leg = {}
 	spiderProp.legSquare = {}
 	
@@ -1047,7 +1056,7 @@ function scene:create( event )
 		drawFuncs.drawHearts(sceneGroup, heart, heartProp)
 	end
 	drawFuncs.drawGoal(sceneGroup, goal, goalProp, physics)		
-	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 1)
+	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, physics, 0)
 	
 	drawFuncs.drawButtons(sceneGroup, totalWidth[1], totalHeight[1], bgProp)
 	if(levelProp[Level].switchSystemExists == 1) then

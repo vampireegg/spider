@@ -419,7 +419,7 @@ local function showScore()
 	
 	control.LevelGold = levelProp[Level].goldMax
 	control.LevelFreeMoves = levelProp[Level].freeMove
-	control.LevelTime = 100
+	control.LevelTime = levelProp[Level].goldMax * 1.1
 	control.LevelMoves = #spiderProp.LegTapOrder
 	
 	control.CurrentUsedFreeMoves = control.UsedFreeMoves
@@ -488,7 +488,12 @@ local function showScore()
 	
 	
 	local ScoreBasedOnMove = math.ceil(10 * control.LevelMoves / control.CurrentMoves) 
-	local ScoreBasedOnTime = math.ceil(10 * control.LevelTime / control.Time1stTime)
+	local ScoreBasedOnTime
+	if(control.Time1stTime < control.LevelTime) then
+		ScoreBasedOnTime = 10
+	else
+		ScoreBasedOnTime = math.ceil(10 * control.LevelTime / control.Time1stTime)
+	end
 	control.CurrentUsedFreeMoves = control.CurrentUsedFreeMoves + control.PrevUsedFreeMoves
 	local ScoreBasedOnFreeMoves = math.ceil(10 * control.CurrentUsedFreeMoves / control.LevelMoves)
 	print("ScoreBasedOnMove = " .. ScoreBasedOnMove .. " ScoreBasedOnTime = " .. ScoreBasedOnTime .. " ScoreBasedOnFreeMoves = " .. ScoreBasedOnFreeMoves )

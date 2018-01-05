@@ -383,18 +383,36 @@ local function showNotiAndReload(num)
 	myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
 end
 
+local function readFileIntoTable(filename, tablename)
+	local path = system.pathForFile( filename, system.DocumentsDirectory )
+	local file = io.open(path, "r" )
+	if file then
+		local contents = file:read( "*a" )
+		io.close( file )
+		tablename = json.decode( contents )
+	end
+end
+
+local function writeTableIntoFile(filename, tablename)
+	local path = system.pathForFile( filename, system.DocumentsDirectory )
+	local file = io.open( path, "w" )
+	if file then
+		print("writing to file: " .. json.encode( tablename, { indent=true } ))
+        file:write( json.encode( tablename ) )
+        io.close( file )
+	else
+		print("writing to file failed")
+    end
+end
+
 local function showScore()
 	
 	
 	local score = math.ceil(10 * #spiderProp.LegTapOrder / #currentLegTapOrder) 
 	score = score - score * control.UsedFreeMoves * 0.2
-	local scorePath = system.pathForFile( "score.json", system.DocumentsDirectory )
-	local scoreFile = io.open(scorePath, "r" )
-	if scoreFile then
-		local contents = scoreFile:read( "*a" )
-		io.close( scoreFile )
-		scoreTable = json.decode( contents )
-	end
+	
+	readFileIntoTable("score.json", scoreTable)
+	
 	
 	control.levelGold = levelProp[Level].goldMax
 	control.currentGold = score * control.levelGold / 10
@@ -419,6 +437,7 @@ local function showScore()
 		scoreTable[Level].Score1stTime = score
 		scoreTable[Level].Gold = control.currentGold
 		scoreTable[Level].FreeMove = control.currentFreeMove
+		scoreTable[Level].UsedFreeMove = control.UsedFreeMove
 	else
 		if(scoreTable[Level].Score1stTime ~= nil) then
 			control.score1stTime = scoreTable[Level].Score1stTime
@@ -491,26 +510,8 @@ local function showScore()
 	drawFuncs.drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth[1], totalHeight[1])
 	
 	
-	
-	control.scorePath = system.pathForFile( "score.json", system.DocumentsDirectory )
-	local file = io.open( control.scorePath, "w" )
-	if file then
-		print("writing to file: " .. json.encode( scoreTable, { indent=true } ))
-        file:write( json.encode( scoreTable ) )
-        io.close( file )
-	else
-		print("writing to file failed")
-    end
-	
-	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
-	file = io.open( control.progressPath, "w" )
-	if file then
-		print("writing to file: " .. json.encode( progressTable, { indent=true } ))
-        file:write( json.encode( progressTable ) )
-        io.close( file )
-	else
-		print("writing to file failed")
-    end
+	writeTableIntoFile("score.json", scoreTable)
+	writeTableIntoFile("progress.json", progressTable)
 	
 	notiProp.rect:addEventListener( "tap", endGame )
 end
@@ -746,15 +747,7 @@ local function tapNextMove(event )
 	control.nextMoveTapTime = system.getTimer()
 	control.UsedFreeMoves = control.UsedFreeMoves + 1
 	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove - 1
-	control.progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
-	file = io.open( control.progressPath, "w" )
-	if file then
-		print("writing to file: " .. json.encode( currentProgressTable, { indent=true } ))
-        file:write( json.encode( currentProgressTable ) )
-        io.close( file )
-	else
-		print("writing to file failed")
-    end
+	writeTableIntoFile("progress.json", progressTable)
 	local vx, vy = spider[1]:getLinearVelocity()
 	
 	if(vx == 0 and vy == 0) then
@@ -794,13 +787,7 @@ function scene:create( event )
 	levelType = levelProp[Level].levelType
 	control.nextMoveExists = levelProp[Level].nextMoveExists
 	
-	local progressPath = system.pathForFile( "progress.json", system.DocumentsDirectory )
-	local progressFile = io.open(progressPath, "r" )
-	if progressFile then
-		local contents = progressFile:read( "*a" )
-		io.close( progressFile )
-		currentProgressTable = json.decode( contents )
-	end
+	readFileIntoTable("progress.json", progressFile)
 	
 	if(currentProgressTable.totalFreeMove == nil) then
 		currentProgressTable.totalFreeMove = 0

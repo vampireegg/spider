@@ -927,7 +927,7 @@ function scene:create( event )
 	spiderProp.PosiY = levelProp[Level].spider.PosiY
 	spiderProp.LegExists = levelProp[Level].spider.LegExists
 	spiderProp.LegTapOrder = levelProp[Level].spider.LegTapOrder
-	spiderProp.LegImg = "nerdArrow.png"
+	spiderProp.LegImg = "nerdarrow.png"
 	spiderProp.Img = "nerdspider.png"
 	spiderProp.ImgWidth = 1269
 	spiderProp.ImgHeight = 917

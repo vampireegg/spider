@@ -464,7 +464,7 @@ local function showScore()
 			control.PrevGold = 0			
 		end
 		
-		if(scoreTable[Level].FreeMove ~= nil) then
+		if(scoreTable[Level].FreeMoves ~= nil) then
 			control.PrevFreeMoves = scoreTable[Level].FreeMoves
 		else
 			control.PrevFreeMoves = 0			
@@ -477,6 +477,7 @@ local function showScore()
 		end
 	end
 	
+	print("control.PrevFreeMoves = " .. control.PrevFreeMoves) 
 	
 	
 	local ScoreBasedOnMove = math.ceil(10 * control.LevelMoves / control.CurrentMoves) 
@@ -484,7 +485,7 @@ local function showScore()
 	control.CurrentUsedFreeMoves = control.CurrentUsedFreeMoves + control.PrevUsedFreeMoves
 	local ScoreBasedOnFreeMoves = math.ceil(10 * control.CurrentUsedFreeMoves / control.LevelMoves)
 	print("ScoreBasedOnMove = " .. ScoreBasedOnMove .. " ScoreBasedOnTime = " .. ScoreBasedOnTime .. " ScoreBasedOnFreeMoves = " .. ScoreBasedOnFreeMoves )
-	control.CurrentScore = 0.4 * ScoreBasedOnMove + 0.6 *  ScoreBasedOnTime - 0.6 * ScoreBasedOnFreeMoves
+	control.CurrentScore = 0.4 * ScoreBasedOnMove + 0.6 *  ScoreBasedOnTime -  ScoreBasedOnFreeMoves
 	control.CurrentScore = control.CurrentScore * control.LevelGold / 10
 	if(control.CurrentScore < 0) then
 		control.CurrentScore = 0
@@ -773,7 +774,7 @@ end
 
 local function tapNextMove(event )
 	print("next move tapped")
-	if(control.nextMoveSensitive == 0 or system.getTimer() - control.nextMoveTapTime < 1000) then
+	if(control.nextMoveSensitive == 0 or (control.nextMoveTapTime ~= -1 and system.getTimer() - control.nextMoveTapTime < 1000)) then
 		print("insensitive")
 		return
 	end
@@ -986,7 +987,7 @@ function scene:create( event )
 	control.UsedFreeMoves = 0
 	control.spiderStillCount = 0
 	control.nextMoveSensitive = 1
-	control.nextMoveTapTime = system.getTimer()
+	control.nextMoveTapTime = -1
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	control.screenTransitionOptions = 
 	{

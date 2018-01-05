@@ -383,13 +383,14 @@ local function showNotiAndReload(num)
 	myTimers[#myTimers+1] = timer.performWithDelay( 1000, setNeedToReload )
 end
 
-local function readFileIntoTable(filename, tablename)
+local function readFileIntoTable(filename)
 	local path = system.pathForFile( filename, system.DocumentsDirectory )
 	local file = io.open(path, "r" )
 	if file then
 		local contents = file:read( "*a" )
 		io.close( file )
-		tablename = json.decode( contents )
+		local tablename = json.decode( contents )
+		return tablename
 	end
 end
 
@@ -406,8 +407,7 @@ local function writeTableIntoFile(filename, tablename)
 end
 
 local function showScore()
-	
-	readFileIntoTable("score.json", scoreTable)
+	scoreTable = readFileIntoTable("score.json")
 	
 	
 	control.LevelGold = levelProp[Level].goldMax
@@ -465,9 +465,9 @@ local function showScore()
 		end
 		
 		if(scoreTable[Level].FreeMove ~= nil) then
-			control.PrevFreeMove = scoreTable[Level].FreeMoves
+			control.PrevFreeMoves = scoreTable[Level].FreeMoves
 		else
-			control.PrevFreeMove = 0			
+			control.PrevFreeMoves = 0			
 		end
 		
 		if(scoreTable[Level].UsedFreeMoves ~= nil) then
@@ -820,7 +820,10 @@ function scene:create( event )
 	levelType = levelProp[Level].levelType
 	control.nextMoveExists = levelProp[Level].nextMoveExists
 	
-	readFileIntoTable("progress.json", progressFile)
+	currentProgressTable = readFileIntoTable("progress.json")
+	if(currentProgressTable == nil) then
+		currentProgressTable = {}
+	end
 	
 	if(currentProgressTable.totalFreeMove == nil) then
 		currentProgressTable.totalFreeMove = 0

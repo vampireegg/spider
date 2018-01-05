@@ -103,7 +103,7 @@ M[lvlno].icon.Img = "li_2.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 50
-M[lvlno].freeMove = 1
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -602,7 +602,7 @@ M[lvlno].icon.Img = "li_10.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 70
-M[lvlno].freeMove = 1
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -779,7 +779,7 @@ M[lvlno].icon.Img = "li_13.png"
 lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 100
-M[lvlno].freeMove = 1
+M[lvlno].freeMove = 0
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}

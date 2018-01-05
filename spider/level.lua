@@ -418,9 +418,13 @@ local function showScore()
 	timeTable = readFileIntoTable("time.json")
 	if(timeTable == nil) then
 		print("timeTable == nil")
+		timeTable = {}
 	end
 	if(timeTable[Level] == nil) then
 		print("timeTable[Level] == nil")
+		timeTable[Level] = {}
+		timeTable[Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
+		timeTable[Level].Completed = true
 	end
 	
 	control.LevelGold = levelProp[Level].goldMax
@@ -858,7 +862,7 @@ function scene:create( event )
 		control.neverCompletedThisLevel = true
 		timeTable[Level] = {}
 		timeTable[Level].Completed = false
-		timeTable[Level].SpentTime = 0
+		timeTable[Level].SpentTime = 1
 	else
 		if(timeTable[Level].Completed == false) then
 			control.neverCompletedThisLevel = true

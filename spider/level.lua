@@ -34,6 +34,7 @@ local sceneGroup
 local scoreTable = {}
 local progressTable = {}
 local currentProgressTable = {}
+local timeTable = {}
 
 local totalWidth = {}
 local totalHeight = {}
@@ -398,7 +399,7 @@ local function writeTableIntoFile(filename, tablename)
 	local path = system.pathForFile( filename, system.DocumentsDirectory )
 	local file = io.open( path, "w" )
 	if file then
-		print("writing to file: " .. json.encode( tablename, { indent=true } ))
+		--print("writing to file: " .. json.encode( tablename, { indent=true } ))
         file:write( json.encode( tablename ) )
         io.close( file )
 	else
@@ -409,14 +410,20 @@ end
 local function showScore()
 	scoreTable = readFileIntoTable("score.json")
 	
+	if(timeTable[Level].Completed == false) then
+		timeTable[Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
+		timeTable[Level].Completed = true
+		writeTableIntoFile("time.json", timeTable)
+	end
+	timeTable = readFileIntoTable("time.json")
 	
 	control.LevelGold = levelProp[Level].goldMax
 	control.LevelFreeMoves = levelProp[Level].freeMove
-	control.LevelTime = 60 ---Will Be Updated
+	control.LevelTime = 100
 	control.LevelMoves = #spiderProp.LegTapOrder
 	
 	control.CurrentUsedFreeMoves = control.UsedFreeMoves
-	control.CurrentTime = 60 ---Will Be Updated
+	control.CurrentTime = timeTable[Level].SpentTime
 	control.CurrentMoves = #currentLegTapOrder
 	
 
@@ -481,7 +488,7 @@ local function showScore()
 	
 	
 	local ScoreBasedOnMove = math.ceil(10 * control.LevelMoves / control.CurrentMoves) 
-	local ScoreBasedOnTime = math.ceil(10 * control.Time1stTime / control.LevelTime)
+	local ScoreBasedOnTime = math.ceil(10 * control.LevelTime / control.Time1stTime)
 	control.CurrentUsedFreeMoves = control.CurrentUsedFreeMoves + control.PrevUsedFreeMoves
 	local ScoreBasedOnFreeMoves = math.ceil(10 * control.CurrentUsedFreeMoves / control.LevelMoves)
 	print("ScoreBasedOnMove = " .. ScoreBasedOnMove .. " ScoreBasedOnTime = " .. ScoreBasedOnTime .. " ScoreBasedOnFreeMoves = " .. ScoreBasedOnFreeMoves )
@@ -532,6 +539,7 @@ local function showScore()
 	scoreboardProp.UsedFreeMoves = control.CurrentUsedFreeMoves
 	scoreboardProp.OptimalMoves = control.LevelMoves
 	scoreboardProp.PlayerMoves = control.CurrentMoves
+	scoreboardProp.SpentTime = control.Time1stTime
 	scoreboardProp.Score = scoreTable[Level].Score
 	scoreboardProp.EarnedGold = control.EarnedGold
 	scoreboardProp.EarnedFreeMoves = control.EarnedFreeMoves
@@ -570,6 +578,10 @@ local function makeNextMoveInVisible()
 end
 
 local function on_frame( event )
+	if(timeTable[Level].Completed == false) then
+		timeTable[Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
+		writeTableIntoFile("time.json", timeTable)
+	end
 	local vx, vy = spider[1]:getLinearVelocity()
 	if(vx == 0 and vy == 0) then
 		control.spiderStillCount = control.spiderStillCount + 1
@@ -825,6 +837,27 @@ function scene:create( event )
 	if(currentProgressTable == nil) then
 		currentProgressTable = {}
 	end
+	
+	control.startingTime = os.time()
+	timeTable = readFileIntoTable("time.json")
+	if(timeTable == nil) then
+		timeTable = {}
+	end
+	if(timeTable[Level] == nil) then
+		control.neverCompletedThisLevel = true
+		timeTable[Level] = {}
+		timeTable[Level].Completed = false
+		timeTable[Level].SpentTime = 0
+	else
+		if(timeTable[Level].Completed == false) then
+			control.neverCompletedThisLevel = true
+		else
+			control.neverCompletedThisLevel = false
+		end
+	end
+	control.PrevSpentTime = timeTable[Level].SpentTime
+	writeTableIntoFile("time.json", timeTable)
+	
 	
 	if(currentProgressTable.totalFreeMove == nil) then
 		currentProgressTable.totalFreeMove = 0

@@ -74,7 +74,7 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	scoreboard.img[1].y = posiY - 50
 	scoreboard.img[1]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
-	scoreboard.scoreText[8] = display.newText( "Time : " .. "Unknown", posiX, posiY,  "comic.ttf", 12 )
+	scoreboard.scoreText[8] = display.newText( "Time : " .. scoreboardProp.SpentTime, posiX, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	scoreboard.img[6] = display.newImageRect( sceneGroup, "clock.png", scoreboard.iconWidth, scoreboard.iconHeight )

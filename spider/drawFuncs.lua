@@ -115,10 +115,10 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	scoreboard.img[3].y = posiY - 50
 	scoreboard.img[3]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
-	scoreboard.scoreText[6] = display.newText( "Gold : " .. scoreboardProp.EarnedGold, posiX, posiY,  "comic.ttf", 12 )
+	scoreboard.scoreText[6] = display.newText( "Gems : " .. scoreboardProp.EarnedGold, posiX, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[6]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
-	scoreboard.img[4] = display.newImageRect( sceneGroup, "taka3.png", scoreboard.iconWidth, scoreboard.iconHeight )
+	scoreboard.img[4] = display.newImageRect( sceneGroup, "gem.png", scoreboard.iconWidth, scoreboard.iconHeight )
 	scoreboard.img[4].x = posiX
 	scoreboard.img[4].y = posiY - 50
 	scoreboard.img[4]:scale(scoreboard.iconScale, scoreboard.iconScale)

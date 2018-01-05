@@ -123,7 +123,7 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	scoreboard.img[4].y = posiY - 50
 	scoreboard.img[4]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
-	scoreboard.scoreText[7] = display.newText( "Free Moves : " .. scoreboardProp.EarnedFreeMove, posiX + 300, posiY,  "comic.ttf", 12 )
+	scoreboard.scoreText[7] = display.newText( "Free Moves : " .. scoreboardProp.EarnedFreeMoves, posiX + 300, posiY,  "comic.ttf", 12 )
 	scoreboard.scoreText[7]:setFillColor( 0.9, 0.9, 0.65, 1)
 	
 	scoreboard.img[5] = display.newImageRect( sceneGroup, "bulb2.png", scoreboard.iconWidth, scoreboard.iconHeight )

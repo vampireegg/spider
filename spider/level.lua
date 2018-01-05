@@ -407,104 +407,137 @@ end
 
 local function showScore()
 	
-	
-	local score = math.ceil(10 * #spiderProp.LegTapOrder / #currentLegTapOrder) 
-	score = score - score * control.UsedFreeMoves * 0.2
-	
 	readFileIntoTable("score.json", scoreTable)
 	
 	
-	control.levelGold = levelProp[Level].goldMax
-	control.currentGold = score * control.levelGold / 10
-	control.currentScore = control.currentGold
-	control.currentFreeMove = levelProp[Level].freeMove
-	control.score1stTime = 0
-	control.prevScore = 0
-	control.prevGold = 0
-	control.prevFreeMove = 0
+	control.LevelGold = levelProp[Level].goldMax
+	control.LevelFreeMoves = levelProp[Level].freeMove
+	control.LevelTime = 60 ---Will Be Updated
+	control.LevelMoves = #spiderProp.LegTapOrder
 	
-	print("control.currentGold  = " .. control.currentGold )
+	control.CurrentUsedFreeMoves = control.UsedFreeMoves
+	control.CurrentTime = 60 ---Will Be Updated
+	control.CurrentMoves = #currentLegTapOrder
 	
-	control.score1stTime = 0
+
 	if(scoreTable == nil) then
 		print("scoreTable == nil")
 		scoreTable = {}
 	end
 	if (scoreTable[Level] == nil) then
 		scoreTable[Level] = {}
-		scoreTable[Level].Completed = true
-		scoreTable[Level].Score = score
-		scoreTable[Level].Score1stTime = score
-		scoreTable[Level].Gold = control.currentGold
-		scoreTable[Level].FreeMove = control.currentFreeMove
-		scoreTable[Level].UsedFreeMove = control.UsedFreeMove
+		
+		control.JustCompletedLevel = true
+		
+		control.Score1stTime = 0
+		control.Time1stTime = control.CurrentTime
+		
+		control.PrevScore = 0
+		control.PrevGold = 0
+		control.PrevFreeMoves = 0		
+		control.PrevUsedFreeMoves = 0
+
 	else
+		control.JustCompletedLevel = false
+		
 		if(scoreTable[Level].Score1stTime ~= nil) then
-			control.score1stTime = scoreTable[Level].Score1stTime
+			control.Score1stTime = scoreTable[Level].Score1stTime
 		else
-			scoreTable[Level].Score1stTime = 0
+			control.Score1stTime = 0
+		end
+		
+		if(scoreTable[Level].Time1stTime ~= nil) then
+			control.Time1stTime = scoreTable[Level].Time1stTime
+		else
+			control.Time1stTime = 0
 		end
 		
 		if(scoreTable[Level].Score ~= nil) then
-			control.prevScore = scoreTable[Level].Score
+			control.PrevScore = scoreTable[Level].Score
 		else
-			scoreTable[Level].Score = 0			
+			control.PrevScore = 0			
 		end
 		
 		if(scoreTable[Level].Gold ~= nil) then
-			control.prevGold = scoreTable[Level].Gold
+			control.PrevGold = scoreTable[Level].Gold
 		else
-			scoreTable[Level].Gold = 0			
+			control.PrevGold = 0			
 		end
 		
 		if(scoreTable[Level].FreeMove ~= nil) then
-			control.prevFreeMove = scoreTable[Level].FreeMove
+			control.PrevFreeMove = scoreTable[Level].FreeMoves
 		else
-			scoreTable[Level].FreeMove = 0			
+			control.PrevFreeMove = 0			
+		end
+		
+		if(scoreTable[Level].UsedFreeMoves ~= nil) then
+			control.PrevUsedFreeMoves = scoreTable[Level].UsedFreeMoves
+		else
+			control.PrevUsedFreeMoves = 0			
 		end
 	end
 	
-	print("control.prevGold  = " .. control.prevGold )
 	
-	if(control.currentScore > scoreTable[Level].Score) then
-		scoreTable[Level].Score = control.currentScore
-	end
-	if(control.currentGold >= control.prevGold) then
-		scoreTable[Level].Gold = control.currentGold
-		control.earnedGold = control.currentGold - control.prevGold
-	else
-		control.earnedGold = 0
-	end
 	
-	if(control.currentFreeMove >= control.prevFreeMove) then
-		scoreTable[Level].FreeMove = control.currentFreeMove
-		control.earnedFreeMove = control.currentFreeMove - control.prevFreeMove
-	else
-		control.earnedFreeMove = 0
+	local ScoreBasedOnMove = math.ceil(10 * control.LevelMoves / control.CurrentMoves) 
+	local ScoreBasedOnTime = math.ceil(10 * control.Time1stTime / control.LevelTime)
+	control.CurrentUsedFreeMoves = control.CurrentUsedFreeMoves + control.PrevUsedFreeMoves
+	local ScoreBasedOnFreeMoves = math.ceil(10 * control.CurrentUsedFreeMoves / control.LevelMoves)
+	print("ScoreBasedOnMove = " .. ScoreBasedOnMove .. " ScoreBasedOnTime = " .. ScoreBasedOnTime .. " ScoreBasedOnFreeMoves = " .. ScoreBasedOnFreeMoves )
+	control.CurrentScore = 0.4 * ScoreBasedOnMove + 0.6 *  ScoreBasedOnTime - 0.6 * ScoreBasedOnFreeMoves
+	control.CurrentScore = control.CurrentScore * control.LevelGold / 10
+	if(control.CurrentScore < 0) then
+		control.CurrentScore = 0
+	end
+	if(control.JustCompletedLevel == true) then
+		control.Score1stTime = control.CurrentScore
 	end
 	
-	control.totalGold = currentProgressTable.totalGold + control.earnedGold
-	control.totalFreeMove = currentProgressTable.totalFreeMove + control.earnedFreeMove
+	control.CurrentGold = control.CurrentScore
+	if(control.CurrentGold < control.PrevGold) then
+		control.CurrentGold = control.PrevGold
+	end
+	control.EarnedGold = control.CurrentGold - control.PrevGold
+	
+	control.CurrentFreeMoves = control.LevelFreeMoves
+	if(control.CurrentFreeMoves < 0) then
+		control.CurrentFreeMoves = 0
+	end
+	if(control.CurrentFreeMoves < control.PrevFreeMoves) then
+		control.CurrentFreeMoves = control.PrevFreeMoves
+	end
+	control.EarnedFreeMoves = control.CurrentFreeMoves - control.PrevFreeMoves
+	
+	
+	
+	--------------everything is ready in control, we need to insert them-------
+	
+	scoreTable[Level].Score1stTime = control.Score1stTime
+	scoreTable[Level].Time1stTime = control.Time1stTime
+	scoreTable[Level].Score = control.CurrentScore
+	scoreTable[Level].Gold = control.CurrentGold
+	scoreTable[Level].FreeMoves = control.CurrentFreeMoves
+	scoreTable[Level].UsedFreeMoves = control.CurrentUsedFreeMoves
+	
+
+	control.totalGold = currentProgressTable.totalGold + control.EarnedGold
+	control.totalFreeMove = currentProgressTable.totalFreeMove + control.EarnedFreeMoves
 	
 	
 	
 	progressTable.totalGold = control.totalGold
 	progressTable.totalFreeMove = control.totalFreeMove
 	
-	scoreboardProp.UsedFreeMoves = control.UsedFreeMoves
-	scoreboardProp.OptimalMoves = #spiderProp.LegTapOrder
-	scoreboardProp.PlayerMoves = #currentLegTapOrder
-	scoreboardProp.PrevScore = control.prevScore
+	scoreboardProp.UsedFreeMoves = control.CurrentUsedFreeMoves
+	scoreboardProp.OptimalMoves = control.LevelMoves
+	scoreboardProp.PlayerMoves = control.CurrentMoves
 	scoreboardProp.Score = scoreTable[Level].Score
-	scoreboardProp.EarnedGold = control.earnedGold
-	scoreboardProp.EarnedFreeMove = control.earnedFreeMove
-	scoreboardProp.TotalGold = control.totalGold
-	scoreboardProp.TotalFreeMove = control.totalFreeMove
-	scoreboardProp.LevelGold = control.levelGold
+	scoreboardProp.EarnedGold = control.EarnedGold
+	scoreboardProp.EarnedFreeMoves = control.EarnedFreeMoves
+	scoreboardProp.LevelGold = control.LevelGold
 	scoreboardProp.StartPosiY = totalWidth[1]/2 - 200
 	scoreboardProp.StartPosiX = totalHeight[1]/2
-	scoreboardProp.LineGap = 50
-	scoreboardProp.rectColor = {levelProp[Level].dos_donts.Color[1] / 3, levelProp[Level].dos_donts.Color[2] / 2.5, levelProp[Level].dos_donts.Color[3] / 2, 1}
+	scoreboardProp.rectColor = {levelProp[Level].dos_donts.Color[1] / 2.5, levelProp[Level].dos_donts.Color[2] / 2.8, levelProp[Level].dos_donts.Color[3] / 1.8, 1}
 	scoreboardProp.rect = notiProp.rect
 	
 	drawFuncs.drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth[1], totalHeight[1])

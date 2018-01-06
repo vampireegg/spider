@@ -100,6 +100,9 @@ local function pushLeg(event )
 	if(spider[1] == nil) then
 		return
 	end
+	if(control.spiderReachedGoal == true) then
+		return
+	end
 	local leg = event.target.leg
 	print("touched" .. event.target.leg.i)
 	
@@ -210,7 +213,9 @@ local function endGame()
 	display.remove(bgProp.reLoadButtonBox)
 	display.remove(bgProp.crossButtonBox)
 	display.remove( bg[1] )
-	display.remove( spider[1] )
+	if(spider[1] ~= nil) then
+		display.remove( spider[1] )
+	end
 	display.remove( goal[1] )
 
 	-- for i = 1, 16 do
@@ -410,6 +415,10 @@ local function writeTableIntoFile(filename, tablename)
     end
 end
 
+local function hideAll()
+	--display.remove( spider[1] )
+end
+
 local function showScore()
 	scoreTable = readFileIntoTable("score.json")
 	
@@ -567,6 +576,7 @@ local function showScore()
 	scoreboardProp.rectColor = {levelProp[Level].dos_donts.Color[1] / 2.5, levelProp[Level].dos_donts.Color[2] / 2.8, levelProp[Level].dos_donts.Color[3] / 1.8, 1}
 	scoreboardProp.rect = notiProp.rect
 	
+	hideAll()
 	drawFuncs.drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth[1], totalHeight[1])
 	
 	

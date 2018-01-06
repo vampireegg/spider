@@ -623,10 +623,10 @@ local function on_frame( event )
 		control.nextMoveSensitive = 1
 	end
 	
-	if(control.nextMoveExists == true) then
-		--control.MakingNextMoveVisible = true
-		--myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
+	if(control.nextMoveExists == true and currentProgressTable.totalGold >= control.moveCost) then
 		makeNextMoveVisible()
+	elseif(control.nextMoveExists == true) then
+		makeNextMoveInVisible()
 	end
 
 
@@ -1095,7 +1095,7 @@ function scene:create( event )
 	control.nextMoveSensitive = 1
 	control.nextMoveTapTime = -1
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
-	control.moveCost = 200
+	control.moveCost = 300
 	control.moveMarketExists = 0
 	control.screenTransitionOptions = 
 	{
@@ -1127,6 +1127,9 @@ function scene:create( event )
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	end
 	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
+	if(currentProgressTable.totalGold < control.moveCost) then
+		makeNextMoveInVisible()
+	end
 	
 	
 end

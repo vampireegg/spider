@@ -97,6 +97,9 @@ local function pushLeg(event )
 	if(event.target == nil) then
 		return
 	end
+	if(spider[1] == nil) then
+		return
+	end
 	local leg = event.target.leg
 	print("touched" .. event.target.leg.i)
 	
@@ -623,8 +626,8 @@ local function on_frame( event )
 		showNotiAndReload(2)
 	end
 	
-	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius
-	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius) then
+	if(distance(spider[1], bgProp.reLoadButton) < spiderProp.SpiderRadius * 1.2
+	or distance(spider[1], bgProp.crossButton) < spiderProp.SpiderRadius * 1.2) then
 		local legCount = 0
 		for i = 1, 8 do
 			if(spiderProp.leg[i].exists == 1) then

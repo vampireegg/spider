@@ -163,6 +163,7 @@ function scene:create( event )
 	spiderProp.Img = "spider_icon.png"
 	spiderProp.ImgWidth = 629
 	spiderProp.ImgHeight = 710
+	spiderProp.BodyRatio = 0.65
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 0)
 	

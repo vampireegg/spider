@@ -424,15 +424,15 @@ M[lvlno].spider.BodyImgHeight = 917
 M[lvlno].spider.BodyRatio = 0.65
 
 M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {30, 350, 500, 870}
+M[lvlno].collider.GroupX = {30, 350, 620, 940}
 M[lvlno].collider.GroupY = {50, 50, 50, 50}
 M[lvlno].collider.Num = {10, 10, 10, 10}
 M[lvlno].collider.Orientation = {2, 2, 2, 2}
 M[lvlno].collider.ColliderType = {1, 1, 1, 1}
 
 M[lvlno].goal = {}
-M[lvlno].goal.PosiX = 189
-M[lvlno].goal.PosiY = 464
+M[lvlno].goal.PosiX = 544
+M[lvlno].goal.PosiY = 100
 
 M[lvlno].bg = {}
 M[lvlno].bg.Img = "water.jpg"
@@ -443,9 +443,9 @@ M[lvlno].eye.Opacity = 0
 
 M[lvlno].portal = {}
 M[lvlno].portal.Exists = 1
-M[lvlno].portal.Types = {2, 3}
-M[lvlno].portal.PosiX = {{189, 734}, {636, 100}}
-M[lvlno].portal.PosiY = {{361, 337}, {337, 537}}
+M[lvlno].portal.Types = {2, 3, 4}
+M[lvlno].portal.PosiX = {{189, 780}, {780, 189}, {780, 544}, {780, 544}}
+M[lvlno].portal.PosiY = {{361, 361}, {445, 445}, {192, 361}, {830, 510}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "sl_2.png"

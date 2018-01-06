@@ -180,9 +180,8 @@ function scene:create( event )
 			levelIcons[levelCount].level = levelCount
 			
 			
-			levelIcons[levelCount].txt2 = display.newText(levelProp[levelCount].levelName, levelIcons[levelCount].x + 10, levelIcons[levelCount].y + 40,  "comic.ttf", 10 )
-			levelIcons[levelCount].txt = display.newText(levelProp[levelCount].levelNumber .. ".", levelIcons[levelCount].txt2.x - levelIcons[levelCount].txt2.width/2 - 10,
-				levelIcons[levelCount].txt2.y,  "comic.ttf", 12 )
+			levelIcons[levelCount].txt2 = display.newText(sceneGroup,levelProp[levelCount].levelName, levelIcons[levelCount].x + 10, levelIcons[levelCount].y + 40,  "comic.ttf", 10 )
+			levelIcons[levelCount].txt = display.newText(sceneGroup,levelProp[levelCount].levelNumber .. ".", levelIcons[levelCount].txt2.x - levelIcons[levelCount].txt2.width/2 - 10, levelIcons[levelCount].txt2.y,  "comic.ttf", 12 )
 			levelIcons[levelCount].txt:setFillColor( 0.2, 0.2, 0.0, 1)
 			levelIcons[levelCount].txt2:setFillColor( 0.2, 0.2, 0.0, 1)
 			
@@ -190,6 +189,8 @@ function scene:create( event )
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			else
 				levelIcons[levelCount]:setFillColor(1,1,1,0.3)
+				levelIcons[levelCount].txt2:setFillColor( 0.2, 0.2, 0.0, 0.3)
+				levelIcons[levelCount].txt:setFillColor( 0.2, 0.2, 0.0, 0.3)
 			end
 		end
 		spiderProp.leg[i].level = levelCount

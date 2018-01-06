@@ -177,7 +177,7 @@ M[lvlno].icon.Img = "li_3.png"
 ---------------------------------------- sl - 1----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
-M[lvlno].goldMax = 50
+M[lvlno].goldMax = 20
 M[lvlno].freeMove = 0
 M[lvlno].levelName = "LegLess"
 M[lvlno].levelNumber = "S1"

@@ -139,10 +139,14 @@ local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth
 	moveMarketProp.Group = display.newGroup()
 	moveMarketProp.rect = display.newRect(moveMarketProp.Group, totalHeight/2, totalWidth/2, totalHeight , totalWidth)
 	moveMarketProp.rect:setFillColor( moveMarketProp.rectColor[1], moveMarketProp.rectColor[2], moveMarketProp.rectColor[3], 1)
+	
+	moveMarketProp.iconWidth = 1920
+	moveMarketProp.iconHeight = 1040
+	moveMarketProp.iconScale = 0.03
 	moveMarketProp.txt = {}
 	
 	local posiX = totalHeight / 2
-	local posiY = totalWidth / 2
+	local posiY = totalWidth / 2 - 200
 	moveMarketProp.txt[1] = display.newText( "Buy 1 Free Move with " .. moveMarketProp.moveCost .. " gems?", posiX, posiY,  "comic.ttf", 16 )
 	moveMarketProp.txt[1]:setFillColor( 0.9, 0.9, 0.4, 1)
 	
@@ -157,6 +161,18 @@ local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth
 	moveMarketProp.crossButton = display.newImageRect( moveMarketProp.Group, "cross2.png", 20, 20 )
 	moveMarketProp.crossButton.x = moveMarketProp.txt[1].x - moveMarketProp.txt[1].width/2 - 20 
 	moveMarketProp.crossButton.y = posiY
+	
+	posiY= posiY+ 200
+	
+	moveMarketProp.txt[2] = display.newText( moveMarketProp.Group, "You have " .. moveMarketProp.gems, posiX, posiY,  "comic.ttf", 12 )
+	moveMarketProp.txt[2]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	moveMarketProp.img = {}
+	moveMarketProp.img[1] = display.newImageRect( moveMarketProp.Group, "gem.png", moveMarketProp.iconWidth, moveMarketProp.iconHeight )
+	moveMarketProp.img[1].x = posiX + moveMarketProp.txt[2].width/2 + 10
+	moveMarketProp.img[1].y = posiY
+	moveMarketProp.img[1]:scale(moveMarketProp.iconScale, moveMarketProp.iconScale)
+	
 	
 	sceneGroup:insert(moveMarketProp.Group)
 end

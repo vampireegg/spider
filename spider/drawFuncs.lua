@@ -131,17 +131,22 @@ local function drawScoreBoard(sceneGroup, scoreboard, scoreboardProp, totalWidth
 	scoreboard.img[5].y = posiY - 50
 	scoreboard.img[5]:scale(scoreboard.iconScale, scoreboard.iconScale)
 	
-	-- posiY = posiY + scoreboardProp.LineGap
-	-- scoreboard.scoreText[8] = display.newText( "Total Gold : " .. scoreboardProp.TotalGold, posiX, posiY,  "comic.ttf", 24 )
-	-- scoreboard.scoreText[8]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
-	-- posiY = posiY + scoreboardProp.LineGap
-	-- scoreboard.scoreText[9] = display.newText( "Total Free Moves : " .. scoreboardProp.TotalFreeMove, posiX, posiY,  "comic.ttf", 24 )
-	-- scoreboard.scoreText[9]:setFillColor( 0.9, 0.9, 0.65, 1)
-	
 end
 
 M.drawScoreBoard = drawScoreBoard
+
+local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth, totalHeight)
+	moveMarketProp.rect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight / 2, totalWidth / 2)
+	moveMarketProp.rect:setFillColor( moveMarketProp.rectColor[1], moveMarketProp.rectColor[2], moveMarketProp.rectColor[3], 0.3)
+	moveMarketProp.txt = {}
+	
+	local posiX = totalHeight / 2
+	local posiY = totalWidth / 2
+	moveMarketProp.txt[1] = display.newText( "Buy 1 Free Move with " .. moveMarketProp.moveCost .. " gems?", posiX, posiY,  "comic.ttf", 12 )
+	moveMarketProp.txt[1]:setFillColor( 0.9, 0.9, 0.65, 1)
+end
+
+M.drawMoveMarket = drawMoveMarket
 
 local function drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	nextMove[1] = display.newGroup()

@@ -69,6 +69,8 @@ local goal = {}
 local portalProp = {}
 local portal = {}
 
+local moveMarketProp = {}
+
 local heartProp = {}
 local heart = {}
 
@@ -818,6 +820,9 @@ local function tapNextMove(event )
 	end
 	if(currentProgressTable.totalFreeMove <= 0) then
 		print("cant use free move")
+		moveMarketProp.rectColor = levelProp[Level].dos_donts.Color
+		moveMarketProp.moveCost = 200
+		drawFuncs.drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth[1], totalHeight[1])
 		return
 	end
 	control.nextMoveTapTime = system.getTimer()

@@ -820,7 +820,7 @@ local function tapNextMove(event )
 	end
 	if(currentProgressTable.totalFreeMove <= 0) then
 		print("cant use free move")
-		moveMarketProp.rectColor = levelProp[Level].dos_donts.Color
+		moveMarketProp.rectColor = {levelProp[Level].dos_donts.Color[1]/2, levelProp[Level].dos_donts.Color[2]/2, levelProp[Level].dos_donts.Color[3]/2}
 		moveMarketProp.moveCost = 200
 		drawFuncs.drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth[1], totalHeight[1])
 		return

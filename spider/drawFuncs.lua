@@ -136,14 +136,29 @@ end
 M.drawScoreBoard = drawScoreBoard
 
 local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth, totalHeight)
-	moveMarketProp.rect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight / 2, totalWidth / 2)
-	moveMarketProp.rect:setFillColor( moveMarketProp.rectColor[1], moveMarketProp.rectColor[2], moveMarketProp.rectColor[3], 0.3)
+	moveMarketProp.Group = display.newGroup()
+	moveMarketProp.rect = display.newRect(moveMarketProp.Group, totalHeight/2, totalWidth/2, totalHeight , totalWidth)
+	moveMarketProp.rect:setFillColor( moveMarketProp.rectColor[1], moveMarketProp.rectColor[2], moveMarketProp.rectColor[3], 1)
 	moveMarketProp.txt = {}
 	
 	local posiX = totalHeight / 2
 	local posiY = totalWidth / 2
-	moveMarketProp.txt[1] = display.newText( "Buy 1 Free Move with " .. moveMarketProp.moveCost .. " gems?", posiX, posiY,  "comic.ttf", 12 )
-	moveMarketProp.txt[1]:setFillColor( 0.9, 0.9, 0.65, 1)
+	moveMarketProp.txt[1] = display.newText( "Buy 1 Free Move with " .. moveMarketProp.moveCost .. " gems?", posiX, posiY,  "comic.ttf", 16 )
+	moveMarketProp.txt[1]:setFillColor( 0.9, 0.9, 0.4, 1)
+	
+	moveMarketProp.tickButton = display.newImageRect( moveMarketProp.Group, "tick.png", 20, 20 )
+	moveMarketProp.tickButton.x = moveMarketProp.txt[1].x + moveMarketProp.txt[1].width/2 + 20 
+	moveMarketProp.tickButton.y = posiY
+	
+	moveMarketProp.tickButton = display.newImageRect( moveMarketProp.Group, "tick.png", 20, 20 )
+	moveMarketProp.tickButton.x = moveMarketProp.txt[1].x + moveMarketProp.txt[1].width/2 + 20 
+	moveMarketProp.tickButton.y = posiY
+	
+	moveMarketProp.crossButton = display.newImageRect( moveMarketProp.Group, "cross2.png", 20, 20 )
+	moveMarketProp.crossButton.x = moveMarketProp.txt[1].x - moveMarketProp.txt[1].width/2 - 20 
+	moveMarketProp.crossButton.y = posiY
+	
+	sceneGroup:insert(moveMarketProp.Group)
 end
 
 M.drawMoveMarket = drawMoveMarket

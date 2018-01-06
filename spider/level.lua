@@ -621,12 +621,10 @@ local function on_frame( event )
 		control.nextMoveSensitive = 1
 	end
 	
-	if(control.nextMoveExists == true and currentProgressTable.totalFreeMove > 0) then
+	if(control.nextMoveExists == true) then
 		--control.MakingNextMoveVisible = true
 		--myTimers[#myTimers+1] = timer.performWithDelay( 2000, makeNextMoveVisible )
 		makeNextMoveVisible()
-	elseif(control.nextMoveExists == true) then
-		makeNextMoveInVisible()
 	end
 
 
@@ -816,6 +814,10 @@ local function tapNextMove(event )
 	print("next move tapped")
 	if(control.nextMoveSensitive == 0 or (control.nextMoveTapTime ~= -1 and system.getTimer() - control.nextMoveTapTime < 1000)) then
 		print("insensitive")
+		return
+	end
+	if(currentProgressTable.totalFreeMove <= 0) then
+		print("cant use free move")
 		return
 	end
 	control.nextMoveTapTime = system.getTimer()
@@ -1084,9 +1086,6 @@ function scene:create( event )
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	end
 	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
-	if(currentProgressTable.totalFreeMove <= 0) then
-		makeNextMoveInVisible()
-	end
 	
 	
 end

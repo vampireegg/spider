@@ -65,6 +65,6 @@ startapp.init( adListener, { appId="200202265", enableReturnAds = true } )
 -- Go to the menu screen
 composer.setVariable( "1st_level", 1 )
 composer.setVariable( "show_1st_move", 0 )
-composer.setVariable( "level", 12 )
+composer.setVariable( "level", 16 )
 composer.setVariable( "max_completed_level", levelTable[1] )
-composer.gotoScene( "title", options )
+composer.gotoScene( "level", options )

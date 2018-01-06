@@ -453,10 +453,10 @@ M[lvlno].spider.PosiY = 90
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 M[lvlno].spider.LegTapOrder = {6, 5, 2, 1}
 M[lvlno].spider.LegImg = "nerdarrow.png"
-M[lvlno].spider.BodyImg = "pizza_mini.png"
-M[lvlno].spider.BodyImgWidth = 930
-M[lvlno].spider.BodyImgHeight = 1028
-M[lvlno].spider.BodyRatio = 0.55
+M[lvlno].spider.BodyImg = "nerdspider.png"
+M[lvlno].spider.BodyImgWidth = 1269
+M[lvlno].spider.BodyImgHeight = 917
+M[lvlno].spider.BodyRatio = 0.65
 
 M[lvlno].collider = {}
 M[lvlno].collider.GroupX = {50, 250}

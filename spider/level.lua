@@ -410,9 +410,9 @@ end
 local function showScore()
 	scoreTable = readFileIntoTable("score.json")
 	
-	if(timeTable[Level].Completed == false) then
-		timeTable[Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
-		timeTable[Level].Completed = true
+	if(timeTable["L" ..  Level].Completed == false) then
+		timeTable["L" ..  Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
+		timeTable["L" ..  Level].Completed = true
 		writeTableIntoFile("time.json", timeTable)
 	end
 	timeTable = readFileIntoTable("time.json")
@@ -420,11 +420,11 @@ local function showScore()
 		print("timeTable == nil")
 		timeTable = {}
 	end
-	if(timeTable[Level] == nil) then
-		print("timeTable[Level] == nil")
-		timeTable[Level] = {}
-		timeTable[Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
-		timeTable[Level].Completed = true
+	if(timeTable["L" ..  Level] == nil) then
+		print("timeTable[\"L\" ..  Level] == nil")
+		timeTable["L" ..  Level] = {}
+		timeTable["L" ..  Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
+		timeTable["L" ..  Level].Completed = true
 	end
 	
 	control.LevelGold = levelProp[Level].goldMax
@@ -433,7 +433,7 @@ local function showScore()
 	control.LevelMoves = #spiderProp.LegTapOrder
 	
 	control.CurrentUsedFreeMoves = control.UsedFreeMoves
-	control.CurrentTime = timeTable[Level].SpentTime
+	control.CurrentTime = timeTable["L" ..  Level].SpentTime
 	control.CurrentMoves = #currentLegTapOrder
 	
 
@@ -441,8 +441,8 @@ local function showScore()
 		print("scoreTable == nil")
 		scoreTable = {}
 	end
-	if (scoreTable[Level] == nil) then
-		scoreTable[Level] = {}
+	if (scoreTable["L" ..  Level] == nil) then
+		scoreTable["L" ..  Level] = {}
 		
 		control.JustCompletedLevel = true
 		
@@ -457,38 +457,38 @@ local function showScore()
 	else
 		control.JustCompletedLevel = false
 		
-		if(scoreTable[Level].Score1stTime ~= nil) then
-			control.Score1stTime = scoreTable[Level].Score1stTime
+		if(scoreTable["L" ..  Level].Score1stTime ~= nil) then
+			control.Score1stTime = scoreTable["L" ..  Level].Score1stTime
 		else
 			control.Score1stTime = 0
 		end
 		
-		if(scoreTable[Level].Time1stTime ~= nil) then
-			control.Time1stTime = scoreTable[Level].Time1stTime
+		if(scoreTable["L" ..  Level].Time1stTime ~= nil) then
+			control.Time1stTime = scoreTable["L" ..  Level].Time1stTime
 		else
 			control.Time1stTime = 0
 		end
 		
-		if(scoreTable[Level].Score ~= nil) then
-			control.PrevScore = scoreTable[Level].Score
+		if(scoreTable["L" ..  Level].Score ~= nil) then
+			control.PrevScore = scoreTable["L" ..  Level].Score
 		else
 			control.PrevScore = 0			
 		end
 		
-		if(scoreTable[Level].Gold ~= nil) then
-			control.PrevGold = scoreTable[Level].Gold
+		if(scoreTable["L" ..  Level].Gold ~= nil) then
+			control.PrevGold = scoreTable["L" ..  Level].Gold
 		else
 			control.PrevGold = 0			
 		end
 		
-		if(scoreTable[Level].FreeMoves ~= nil) then
-			control.PrevFreeMoves = scoreTable[Level].FreeMoves
+		if(scoreTable["L" ..  Level].FreeMoves ~= nil) then
+			control.PrevFreeMoves = scoreTable["L" ..  Level].FreeMoves
 		else
 			control.PrevFreeMoves = 0			
 		end
 		
-		if(scoreTable[Level].UsedFreeMoves ~= nil) then
-			control.PrevUsedFreeMoves = scoreTable[Level].UsedFreeMoves
+		if(scoreTable["L" ..  Level].UsedFreeMoves ~= nil) then
+			control.PrevUsedFreeMoves = scoreTable["L" ..  Level].UsedFreeMoves
 		else
 			control.PrevUsedFreeMoves = 0			
 		end
@@ -535,12 +535,12 @@ local function showScore()
 	
 	--------------everything is ready in control, we need to insert them-------
 	
-	scoreTable[Level].Score1stTime = control.Score1stTime
-	scoreTable[Level].Time1stTime = control.Time1stTime
-	scoreTable[Level].Score = control.CurrentScore
-	scoreTable[Level].Gold = control.CurrentGold
-	scoreTable[Level].FreeMoves = control.CurrentFreeMoves
-	scoreTable[Level].UsedFreeMoves = control.CurrentUsedFreeMoves
+	scoreTable["L" ..  Level].Score1stTime = control.Score1stTime
+	scoreTable["L" ..  Level].Time1stTime = control.Time1stTime
+	scoreTable["L" ..  Level].Score = control.CurrentScore
+	scoreTable["L" ..  Level].Gold = control.CurrentGold
+	scoreTable["L" ..  Level].FreeMoves = control.CurrentFreeMoves
+	scoreTable["L" ..  Level].UsedFreeMoves = control.CurrentUsedFreeMoves
 	
 
 	control.totalGold = currentProgressTable.totalGold + control.EarnedGold
@@ -555,7 +555,7 @@ local function showScore()
 	scoreboardProp.OptimalMoves = control.LevelMoves
 	scoreboardProp.PlayerMoves = control.CurrentMoves
 	scoreboardProp.SpentTime = control.Time1stTime
-	scoreboardProp.Score = scoreTable[Level].Score
+	scoreboardProp.Score = scoreTable["L" ..  Level].Score
 	scoreboardProp.EarnedGold = control.EarnedGold
 	scoreboardProp.EarnedFreeMoves = control.EarnedFreeMoves
 	scoreboardProp.LevelGold = control.LevelGold
@@ -593,8 +593,8 @@ local function makeNextMoveInVisible()
 end
 
 local function on_frame( event )
-	if(timeTable[Level].Completed == false) then
-		timeTable[Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
+	if(timeTable["L" ..  Level].Completed == false) then
+		timeTable["L" ..  Level].SpentTime = control.PrevSpentTime + os.difftime( os.time(), control.startingTime )
 		writeTableIntoFile("time.json", timeTable)
 	end
 	local vx, vy = spider[1]:getLinearVelocity()
@@ -858,19 +858,19 @@ function scene:create( event )
 	if(timeTable == nil) then
 		timeTable = {}
 	end
-	if(timeTable[Level] == nil) then
+	if(timeTable["L" ..  Level] == nil) then
 		control.neverCompletedThisLevel = true
-		timeTable[Level] = {}
-		timeTable[Level].Completed = false
-		timeTable[Level].SpentTime = 1
+		timeTable["L" ..  Level] = {}
+		timeTable["L" ..  Level].Completed = false
+		timeTable["L" ..  Level].SpentTime = 1
 	else
-		if(timeTable[Level].Completed == false) then
+		if(timeTable["L" ..  Level].Completed == false) then
 			control.neverCompletedThisLevel = true
 		else
 			control.neverCompletedThisLevel = false
 		end
 	end
-	control.PrevSpentTime = timeTable[Level].SpentTime
+	control.PrevSpentTime = timeTable["L" ..  Level].SpentTime
 	writeTableIntoFile("time.json", timeTable)
 	
 	

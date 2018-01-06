@@ -186,8 +186,8 @@ M[lvlno].levelType  = 2
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.2
-M[lvlno].spider.PosiX = 230
-M[lvlno].spider.PosiY = 150
+M[lvlno].spider.PosiX = 100
+M[lvlno].spider.PosiY = 300
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 M[lvlno].spider.LegTapOrder = {4, 3, 2, 6, 1, 8, 7, 5}
 M[lvlno].spider.LegImg = "nerdarrow.png"
@@ -197,15 +197,15 @@ M[lvlno].spider.BodyImgHeight = 917
 M[lvlno].spider.BodyRatio = 0.65
 
 M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {70, 550}
-M[lvlno].collider.GroupY = {280, 410}
-M[lvlno].collider.Num = {5, 8}
-M[lvlno].collider.Orientation = {1, 1}
-M[lvlno].collider.ColliderType = {1,1}
+M[lvlno].collider.GroupX = {}
+M[lvlno].collider.GroupY = {}
+M[lvlno].collider.Num = {}
+M[lvlno].collider.Orientation = {}
+M[lvlno].collider.ColliderType = {}
 
 M[lvlno].goal = {}
-M[lvlno].goal.PosiX = 980
-M[lvlno].goal.PosiY = 530
+M[lvlno].goal.PosiX = 766
+M[lvlno].goal.PosiY = 300
 
 M[lvlno].bg = {}
 M[lvlno].bg.Img = "bbg2.jpg"

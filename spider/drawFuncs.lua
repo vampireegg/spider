@@ -137,8 +137,8 @@ M.drawScoreBoard = drawScoreBoard
 
 local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth, totalHeight)
 	moveMarketProp.Group = display.newGroup()
-	moveMarketProp.rect = display.newRect(moveMarketProp.Group, totalHeight/2, totalWidth/2, totalHeight , totalWidth)
-	moveMarketProp.rect:setFillColor( moveMarketProp.rectColor[1], moveMarketProp.rectColor[2], moveMarketProp.rectColor[3], 1)
+	moveMarketProp.rect = display.newRect(moveMarketProp.Group, totalHeight/2, totalWidth/2, totalHeight/2 , totalWidth/2)
+	moveMarketProp.rect:setFillColor( moveMarketProp.rectColor[1], moveMarketProp.rectColor[2], moveMarketProp.rectColor[3], 0.5)
 	
 	moveMarketProp.iconWidth = 1920
 	moveMarketProp.iconHeight = 1040
@@ -146,13 +146,15 @@ local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth
 	moveMarketProp.txt = {}
 	
 	local posiX = totalHeight / 2
-	local posiY = totalWidth / 2 - 200
-	moveMarketProp.txt[1] = display.newText( "Buy 1 Free Move with " .. moveMarketProp.moveCost .. " gems?", posiX, posiY,  "comic.ttf", 16 )
+	local posiY = totalWidth / 2 
+	moveMarketProp.txt[1] = display.newText( moveMarketProp.Group, "Buy 1 Free Move with " .. moveMarketProp.moveCost .. " gems?", posiX, posiY,  "comic.ttf", 16 )
 	moveMarketProp.txt[1]:setFillColor( 0.9, 0.9, 0.4, 1)
 	
 	moveMarketProp.tickButton = display.newImageRect( moveMarketProp.Group, "tick.png", 20, 20 )
 	moveMarketProp.tickButton.x = moveMarketProp.txt[1].x + moveMarketProp.txt[1].width/2 + 20 
 	moveMarketProp.tickButton.y = posiY
+	moveMarketProp.tickButton.Name = "moveMarketProp_tickButton"
+	moveMarketProp.tickButton.CommonName = "moveMarketProp_tickButton"
 	
 	moveMarketProp.tickButton = display.newImageRect( moveMarketProp.Group, "tick.png", 20, 20 )
 	moveMarketProp.tickButton.x = moveMarketProp.txt[1].x + moveMarketProp.txt[1].width/2 + 20 
@@ -162,7 +164,10 @@ local function drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth
 	moveMarketProp.crossButton.x = moveMarketProp.txt[1].x - moveMarketProp.txt[1].width/2 - 20 
 	moveMarketProp.crossButton.y = posiY
 	
-	posiY= posiY+ 200
+	moveMarketProp.crossButton.Name = "moveMarketProp_crossButton"
+	moveMarketProp.crossButton.CommonName = "moveMarketProp_crossButton"
+	
+	posiY= posiY+ 100
 	
 	moveMarketProp.txt[2] = display.newText( moveMarketProp.Group, "You have " .. moveMarketProp.gems, posiX, posiY,  "comic.ttf", 12 )
 	moveMarketProp.txt[2]:setFillColor( 0.9, 0.9, 0.65, 1)
@@ -189,6 +194,9 @@ local function drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	nextMove[1].img.x = 0
 	nextMove[1].img.y = 0
 	nextMove[1].img:scale(nextMoveProp.Scale, nextMoveProp.Scale)
+	
+	nextMove[1].Name = "nextMove"
+	nextMove[1].CommonName = "nextMove"
 	
 	nextMove[1].txt = display.newText( "Use one Free Move?", 80, 0,  "comic.ttf", 12 )
 	nextMove[1]:insert(nextMove[1].txt)

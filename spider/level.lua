@@ -812,19 +812,51 @@ local function cross(event )
 	control.needtoCross = true
 end
 
+local function removemoveMarket()
+	if(moveMarketProp.Group ~= nil) then
+		display.remove(moveMarketProp.Group)
+		control.moveMarketExists = 0
+		Runtime:removeEventListener( "tap", removemoveMarket )
+	end
+end
+
+local function buyMove(event)
+	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove + 1
+	currentProgressTable.totalGold = currentProgressTable.totalGold - control.moveCost
+	writeTableIntoFile("progress.json", currentProgressTable)
+	removemoveMarket()
+end
+
+local function cancelBuyMove(event)
+	removemoveMarket()
+end
+
+local function removemoveMarketConditionally(event)
+	--if(event.target.Name ~= "nextMove" and event.target.Name ~= "moveMarketProp_tickButton") then
+		removemoveMarket()
+	--end
+end
+
 local function tapNextMove(event )
 	print("next move tapped")
 	if(control.nextMoveSensitive == 0 or (control.nextMoveTapTime ~= -1 and system.getTimer() - control.nextMoveTapTime < 1000)) then
 		print("insensitive")
 		return
 	end
-	if(currentProgressTable.totalFreeMove <= 0) then
+	if(currentProgressTable.totalFreeMove <= 0 and control.moveMarketExists == 0) then
 		print("cant use free move")
 		moveMarketProp.rectColor = {levelProp[Level].dos_donts.Color[1]/2, levelProp[Level].dos_donts.Color[2]/2, levelProp[Level].dos_donts.Color[3]/2}
 		moveMarketProp.moveCost = control.moveCost
 		moveMarketProp.gems = currentProgressTable.totalGold
 		moveMarketProp.freemove = currentProgressTable.totalFreeMove
 		drawFuncs.drawMoveMarket(sceneGroup, moveMarket, moveMarketProp, totalWidth[1], totalHeight[1])
+		moveMarketProp.tickButton:addEventListener("tap", buyMove)
+		moveMarketProp.crossButton:addEventListener("tap", cancelBuyMove)
+		control.moveMarketExists = 1
+		--myTimers[#myTimers+1] = timer.performWithDelay( 500,  function() Runtime:addEventListener( "tap", removemoveMarketConditionally ) end)
+		--Runtime:addEventListener( "tap", removemoveMarketConditionally )
+		return
+	elseif (currentProgressTable.totalFreeMove <= 0) then
 		return
 	end
 	control.nextMoveTapTime = system.getTimer()
@@ -1064,6 +1096,7 @@ function scene:create( event )
 	control.nextMoveTapTime = -1
 	control.filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 	control.moveCost = 200
+	control.moveMarketExists = 0
 	control.screenTransitionOptions = 
 	{
 		effect = "fade",

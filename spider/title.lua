@@ -98,14 +98,14 @@ function scene:create( event )
 	-- background[2]:scale(0.18,0.18)
 	
 	titleAnimation = display.newSprite( sceneGroup, sheet, sequenceData )
-	titleAnimation.x = totalHeight/2
-	titleAnimation.y = totalWidth/2
+	titleAnimation.x = display.contentCenterX
+	titleAnimation.y = display.contentCenterY
 	titleAnimation:scale(0.4,0.4)
 	
 	
 	background[3] = display.newImageRect( sceneGroup, bgProp.Img[3], bgProp.Width[3], bgProp.Height[3] )
-    background[3].x = totalHeight/2
-    background[3].y = totalWidth/2
+    background[3].x = display.contentCenterX
+    background[3].y = display.contentCenterY
 	background[3]:translate(450, 250)
 	background[3]:scale(0.06,0.06)
 	

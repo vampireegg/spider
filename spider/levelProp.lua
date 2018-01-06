@@ -8,6 +8,9 @@ M[lvlno] = {}
 M[lvlno].goldMax = 10
 M[lvlno].freeMove = 0
 
+M[lvlno].levelName = "Hello World"
+M[lvlno].levelNumber = "1"
+
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.2
 M[lvlno].spider.PosiX = 220
@@ -56,6 +59,7 @@ M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_1.png"
 M[lvlno].dos_donts.Color = {0.4, 0.3, 0.2, 1}
 
+
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_1.png"
 
@@ -64,6 +68,9 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 20
 M[lvlno].freeMove = 1
+
+M[lvlno].levelName = "World with Borders"
+M[lvlno].levelNumber = "2"
 
 
 M[lvlno].spider = {}
@@ -114,6 +121,9 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 50
 M[lvlno].freeMove = 0
+
+M[lvlno].levelName = "First LightBulb"
+M[lvlno].levelNumber = "3"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -169,6 +179,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 50
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "LegLess"
+M[lvlno].levelNumber = "S1"
 
 M[lvlno].levelType  = 2
 
@@ -220,6 +232,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 10
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Portals"
+M[lvlno].levelNumber = "4"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -274,6 +288,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 40
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Portals - 2"
+M[lvlno].levelNumber = "5"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -328,6 +344,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 100
 M[lvlno].freeMove = 1
+M[lvlno].levelName = "Portals - 3"
+M[lvlno].levelNumber = "6"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -383,6 +401,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 50
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "BoundLess"
+M[lvlno].levelNumber = "S2"
 
 M[lvlno].levelType  = 3
 
@@ -439,6 +459,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 10
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Bouncers"
+M[lvlno].levelNumber = "7"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -494,6 +516,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 30
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Bouncers - 2"
+M[lvlno].levelNumber = "8"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -548,6 +572,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 120
 M[lvlno].freeMove = 1
+M[lvlno].levelName = "Backtracking"
+M[lvlno].levelNumber = "9"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -602,6 +628,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 40
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Go Get a Life"
+M[lvlno].levelNumber = "10"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -663,6 +691,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 70
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "3 Houses"
+M[lvlno].levelNumber = "11"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -723,6 +753,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 150
 M[lvlno].freeMove = 1
+M[lvlno].levelName = "Knots"
+M[lvlno].levelNumber = "12"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -783,6 +815,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 40
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Windows and Gates"
+M[lvlno].levelNumber = "7"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -855,6 +889,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 100
 M[lvlno].freeMove = 0
+M[lvlno].levelName = "Switches"
+M[lvlno].levelNumber = "14"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}

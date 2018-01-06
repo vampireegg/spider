@@ -52,6 +52,8 @@ local function endSelection()
 	display.remove( spider[1] )
 	for i = current1st_Level,current1st_Level + 7 do
 		display.remove(levelIcons[i])
+		display.remove(levelIcons[i].txt)
+		display.remove(levelIcons[i].txt2)
 	end
 	display.remove(bgProp.bg)
 	display.remove(bgRect)
@@ -176,6 +178,13 @@ function scene:create( event )
 			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
 			levelIcons[levelCount].level = levelCount
+			
+			
+			levelIcons[levelCount].txt2 = display.newText(levelProp[levelCount].levelName, levelIcons[levelCount].x + 10, levelIcons[levelCount].y + 40,  "comic.ttf", 10 )
+			levelIcons[levelCount].txt = display.newText(levelProp[levelCount].levelNumber .. ".", levelIcons[levelCount].txt2.x - levelIcons[levelCount].txt2.width/2 - 10,
+				levelIcons[levelCount].txt2.y,  "comic.ttf", 12 )
+			levelIcons[levelCount].txt:setFillColor( 0.2, 0.2, 0.0, 1)
+			levelIcons[levelCount].txt2:setFillColor( 0.2, 0.2, 0.0, 1)
 			
 			if(levelCount <= MaxCompletedLevel) then
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )

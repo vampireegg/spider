@@ -145,7 +145,7 @@ function scene:create( event )
 	ending_level = false
 	
 	bgProp.Img = commonProp.level_select_screen.Img
-	bgProp.Color = commonProp.level_select_screen.Color
+	bgProp.Color = commonProp.level_select_screen.Color[(current1st_Level + 7) / 8]
 	-- bgProp.bg = display.newImageRect( sceneGroup, commonProp.level_select_screen.Img, totalHeight, totalWidth )
 	-- bgProp.bg.x = totalHeight/2
 	-- bgProp.bg.y = totalWidth/2
@@ -175,7 +175,7 @@ function scene:create( event )
 	for i = 1,8 do
 		if(levelCount <= MaxLevel) then
 			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 1920, 1040 )
-			levelIcons[levelCount]:scale(0.03, 0.03)
+			levelIcons[levelCount]:scale(0.04, 0.04)
 			local radAngle = (i - 1) * 45 * math.pi / 180
 			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)

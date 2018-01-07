@@ -625,7 +625,7 @@ local function on_frame( event )
 		control.nextMoveSensitive = 1
 	end
 	
-	if(control.nextMoveExists == true and (currentProgressTable.totalGold >= control.moveCost o currentProgressTable.totalFreeMove ~= 0)) then
+	if(control.nextMoveExists == true and (currentProgressTable.totalGold >= control.moveCost or currentProgressTable.totalFreeMove ~= 0)) then
 		makeNextMoveVisible()
 	elseif(control.nextMoveExists == true) then
 		makeNextMoveInVisible()

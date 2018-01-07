@@ -113,8 +113,10 @@ local function pushLeg(event )
 	if(vx == 0 and vy == 0 and leg.exists == 1 and control.show_1st_move == 0) then
 		--audio.stop(legMusicChannel)
 		--legMusicChannel = audio.play( legMusic, { channel=4, loops=0, duration = 3000, fadeout=2000 } )
-		leg.exists = 0
-		leg:setFillColor( 1, 1, 1, 0.1 )
+		if(control.infiniteLegs == false) then
+			leg.exists = 0
+			leg:setFillColor( 1, 1, 1, 0.1 )
+		end
 		control.lastLegTouched = event.target.leg.i
 		local rx = (spiderProp.SpiderRadius / 23) * math.cos(leg.radAngle)
 		local ry = (spiderProp.SpiderRadius / 23) * math.sin(leg.radAngle)
@@ -1110,6 +1112,11 @@ function scene:create( event )
 	--drawFuncs.drawEyes(sceneGroup, eyes, eyeProp, totalWidth, totalHeight)
 	if(levelType ~= 3) then
 		drawFuncs.drawBorder(sceneGroup, borders, totalWidth[1], totalHeight[1], borderProp, physics)
+	end
+	if(levelType == 4) then
+		control.infiniteLegs = true
+	else
+		control.infiniteLegs = false
 	end
 	drawFuncs.drawCollider(sceneGroup, collider, colliderProp, physics)
 	drawFuncs.drawPortals(sceneGroup, portal, portalProp)

@@ -975,7 +975,7 @@ M[lvlno].nextMove.PosiY = 530
 
 
 M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.2
+M[lvlno].spider.MyScale = 0.18
 M[lvlno].spider.PosiX = 350
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
@@ -1023,7 +1023,7 @@ M[lvlno].switchSystem.window = {}
 M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1,2}, {1,2}, {1,2}}
 M[lvlno].switchSystem.window.State = {{1, 0},{1, 0}, {1,0}, {1, 0}}
 M[lvlno].switchSystem.window.Num = {{7, 7}, {7, 6}, {7, 6}, {7, 6}}
-M[lvlno].switchSystem.window.PosiX = {{274, 691}, {274, 450}, {480, 671}, {480, 671}}
+M[lvlno].switchSystem.window.PosiX = {{274, 691}, {274, 450}, {480, 671}, {480, 450}}
 M[lvlno].switchSystem.window.PosiY = {{200, 400}, {400, 30}, {200, 230}, {400, 430}}
 
 M[lvlno].dos_donts = {}

@@ -964,7 +964,7 @@ M[lvlno] = {}
 M[lvlno].goldMax = 100
 M[lvlno].freeMove = 0
 M[lvlno].levelName = "The Labyrinth"
-M[lvlno].levelNumber = "15"
+M[lvlno].levelNumber = "S3"
 
 M[lvlno].levelType = 4
 
@@ -1031,6 +1031,6 @@ M[lvlno].dos_donts.Img = "sl_3.png"
 M[lvlno].dos_donts.Color = {0.25, 0.12, 0.16, 1}
 
 M[lvlno].icon = {}
-M[lvlno].icon.Img = "li_14.png"
+M[lvlno].icon.Img = "sli_3.png"
 
 return M

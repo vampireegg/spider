@@ -1014,17 +1014,17 @@ M[lvlno].heartExists = 0
 
 M[lvlno].switchSystemExists = 1
 M[lvlno].switchSystem = {}
-M[lvlno].switchSystem.Num = 1
-M[lvlno].switchSystem.Color = {{1, 1, 1}}
+M[lvlno].switchSystem.Num = 2
+M[lvlno].switchSystem.Color = {{1, 1, 1}, {0.3, 0.3, 1}}
 M[lvlno].switchSystem.switch = {}
-M[lvlno].switchSystem.switch.PosiX = {888}
-M[lvlno].switchSystem.switch.PosiY = {300}
+M[lvlno].switchSystem.switch.PosiX = {888, 177}
+M[lvlno].switchSystem.switch.PosiY = {300, 300}
 M[lvlno].switchSystem.window = {}
-M[lvlno].switchSystem.window.Orientation = {{1, 1}}
-M[lvlno].switchSystem.window.State = {{1, 0}}
-M[lvlno].switchSystem.window.Num = {{11, 11}}
-M[lvlno].switchSystem.window.PosiX = {{30, 721}}
-M[lvlno].switchSystem.window.PosiY = {{200, 400}}
+M[lvlno].switchSystem.window.Orientation = {{1, 1},{1,2}}
+M[lvlno].switchSystem.window.State = {{1, 0},{0, 1}}
+M[lvlno].switchSystem.window.Num = {{11, 11}, {11, 6}}
+M[lvlno].switchSystem.window.PosiX = {{30, 721}, {30, 350}}
+M[lvlno].switchSystem.window.PosiY = {{200, 400}, {400, 30}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_14.png"

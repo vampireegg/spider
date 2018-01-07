@@ -975,7 +975,7 @@ M[lvlno].nextMove.PosiY = 530
 
 
 M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.18
+M[lvlno].spider.MyScale = 0.2
 M[lvlno].spider.PosiX = 100
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
@@ -1015,9 +1015,9 @@ M[lvlno].heartExists = 0
 M[lvlno].switchSystemExists = 1
 M[lvlno].switchSystem = {}
 M[lvlno].switchSystem.Num = 4
-M[lvlno].switchSystem.Color = {{1, 1, 1}, {0.3, 0.3, 1}, {1, 1, 0.3}, {0, 1, 0.3}}
+M[lvlno].switchSystem.Color = {{1, 1, 1}, {0.3, 0.3, 1}, {1, 1, 0.3}, {1, 0, 0.5}}
 M[lvlno].switchSystem.switch = {}
-M[lvlno].switchSystem.switch.PosiX = {888, 177, 533, 533}
+M[lvlno].switchSystem.switch.PosiX = {986, 80, 533, 533}
 M[lvlno].switchSystem.switch.PosiY = {300, 300, 500, 100}
 M[lvlno].switchSystem.window = {}
 M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1,2}, {1,2}, {1,2}}

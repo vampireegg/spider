@@ -229,22 +229,26 @@ function scene:create( event )
 		levelCount = levelCount + 1
 	end
 
+	nextScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
+	nextScreenButton[1].x = totalHeight - 50
+	nextScreenButton[1].y = totalWidth - 50
+	nextScreenButton[1].rotation = 45
 	if (current1st_Level + 8 <= MaxLevel) then
-		nextScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
-		nextScreenButton[1].x = totalHeight - 50
-		nextScreenButton[1].y = totalWidth - 50
-		nextScreenButton[1].rotation = 45
 		nextScreenButton[1].target1stLevel = current1st_Level + 8
 		nextScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
+	else
+		nextScreenButton[1]:setFillColor( 1, 1, 1, disabledColor)
 	end
 	
+	prevScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
+	prevScreenButton[1].x = 50
+	prevScreenButton[1].y = totalWidth - 50
+	prevScreenButton[1].rotation = -135
 	if (current1st_Level ~= 1) then
-		prevScreenButton[1] = display.newImageRect( sceneGroup, "arrow_icon.png", 50, 50 )
-		prevScreenButton[1].x = 50
-		prevScreenButton[1].y = totalWidth - 50
-		prevScreenButton[1].rotation = -135
 		prevScreenButton[1].target1stLevel = current1st_Level - 8
 		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
+	else
+		prevScreenButton[1]:setFillColor( 1, 1, 1, disabledColor)
 	end
 	
 	progressTable = readFileIntoTable("progress.json")

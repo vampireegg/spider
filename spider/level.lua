@@ -523,7 +523,7 @@ local function showScore()
 	control.CurrentUsedFreeMoves = control.CurrentUsedFreeMoves + control.PrevUsedFreeMoves
 	local ScoreBasedOnFreeMoves = math.ceil(10 * control.CurrentUsedFreeMoves / control.LevelMoves)
 	print("ScoreBasedOnMove = " .. ScoreBasedOnMove .. " ScoreBasedOnTime = " .. ScoreBasedOnTime .. " ScoreBasedOnFreeMoves = " .. ScoreBasedOnFreeMoves )
-	control.CurrentScore = 0.4 * ScoreBasedOnMove + 0.6 *  ScoreBasedOnTime -  ScoreBasedOnFreeMoves
+	control.CurrentScore = math.ceil(0.4 * ScoreBasedOnMove + 0.6 *  ScoreBasedOnTime -  ScoreBasedOnFreeMoves)
 	control.CurrentScore = control.CurrentScore * control.LevelGold / 10
 	if(control.CurrentScore < 0) then
 		control.CurrentScore = 0

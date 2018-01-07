@@ -976,7 +976,7 @@ M[lvlno].nextMove.PosiY = 530
 
 M[lvlno].spider = {}
 M[lvlno].spider.MyScale = 0.2
-M[lvlno].spider.PosiX = 100
+M[lvlno].spider.PosiX = 250
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 M[lvlno].spider.LegTapOrder = {6, 2, 7, 5, 8, 4, 3, 1}
@@ -1017,13 +1017,13 @@ M[lvlno].switchSystem = {}
 M[lvlno].switchSystem.Num = 4
 M[lvlno].switchSystem.Color = {{1, 1, 1}, {0.3, 0.3, 1}, {1, 1, 0.3}, {1, 0, 0.5}}
 M[lvlno].switchSystem.switch = {}
-M[lvlno].switchSystem.switch.PosiX = {986, 80, 533, 533}
+M[lvlno].switchSystem.switch.PosiX = {986, 250, 533, 533}
 M[lvlno].switchSystem.switch.PosiY = {300, 300, 500, 100}
 M[lvlno].switchSystem.window = {}
 M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1,2}, {1,2}, {1,2}}
 M[lvlno].switchSystem.window.State = {{1, 0},{1, 0}, {1,0}, {0, 1}}
-M[lvlno].switchSystem.window.Num = {{12, 12}, {12, 6}, {12, 6}, {12, 6}}
-M[lvlno].switchSystem.window.PosiX = {{30, 721}, {30, 350}, {380, 721}, {380, 721}}
+M[lvlno].switchSystem.window.Num = {{7, 7}, {7, 6}, {7, 6}, {7, 6}}
+M[lvlno].switchSystem.window.PosiX = {{174, 721}, {174, 350}, {380, 721}, {380, 721}}
 M[lvlno].switchSystem.window.PosiY = {{200, 400}, {400, 30}, {200, 230}, {400, 430}}
 
 M[lvlno].dos_donts = {}

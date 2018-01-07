@@ -696,8 +696,10 @@ local function on_frame( event )
 					if(switchSystemProp.window.CurState[i][j] == 0) then
 						switchSystemProp.window.CurState[i][j] = 1
 						for k = 1, switchSystemProp.window.Num[i][j] do
+							myTimers[#myTimers+1] = timer.performWithDelay( 200, function()
 							physics.addBody( switchSystem.window[i][j][k], "static", { friction=0, bounce=0} )
 							switchSystem.window[i][j][k]:setFillColor(switchSystemProp.Color[i][1], switchSystemProp.Color[i][2], switchSystemProp.Color[i][3], 1 )
+							end)
 						end
 					else
 						switchSystemProp.window.CurState[i][j] = 0

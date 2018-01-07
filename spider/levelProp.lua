@@ -975,7 +975,7 @@ M[lvlno].nextMove.PosiY = 530
 
 
 M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.2
+M[lvlno].spider.MyScale = 0.18
 M[lvlno].spider.PosiX = 350
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,0,1,0,1,0,1,0}

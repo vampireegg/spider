@@ -958,13 +958,15 @@ M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_14.png"
 
 
----------------------------------------- Level 15----------------------------------------
+---------------------------------------- sl - 3----------------------------------------
 lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 100
 M[lvlno].freeMove = 0
 M[lvlno].levelName = "Switches"
 M[lvlno].levelNumber = "14"
+
+M[lvlno].levelType = 4
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}
@@ -973,9 +975,9 @@ M[lvlno].nextMove.PosiY = 530
 
 
 M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.15
-M[lvlno].spider.PosiX = 70
-M[lvlno].spider.PosiY = 80
+M[lvlno].spider.MyScale = 0.18
+M[lvlno].spider.PosiX = 100
+M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
 M[lvlno].spider.LegTapOrder = {6, 2, 7, 5, 8, 4, 3, 1}
 M[lvlno].spider.LegImg = "nerdarrow.png"
@@ -1012,17 +1014,17 @@ M[lvlno].heartExists = 0
 
 M[lvlno].switchSystemExists = 1
 M[lvlno].switchSystem = {}
-M[lvlno].switchSystem.Num = 2
-M[lvlno].switchSystem.Color = {{1,1,1}, {1,1,0.3}}
+M[lvlno].switchSystem.Num = 1
+M[lvlno].switchSystem.Color = {{1, 1, 1}}
 M[lvlno].switchSystem.switch = {}
-M[lvlno].switchSystem.switch.PosiX = {214, 500}
-M[lvlno].switchSystem.switch.PosiY = {224, 536}
+M[lvlno].switchSystem.switch.PosiX = {888}
+M[lvlno].switchSystem.switch.PosiY = {300}
 M[lvlno].switchSystem.window = {}
-M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1, 1}}
-M[lvlno].switchSystem.window.State = {{1, 0},{1, 0}}
-M[lvlno].switchSystem.window.Num = {{7, 10}, {1, 10}}
-M[lvlno].switchSystem.window.PosiX = {{30, 800},{323, 500}}
-M[lvlno].switchSystem.window.PosiY = {{300, 300},{113, 300}}
+M[lvlno].switchSystem.window.Orientation = {{1, 1}}
+M[lvlno].switchSystem.window.State = {{1, 0}}
+M[lvlno].switchSystem.window.Num = {{11, 11}}
+M[lvlno].switchSystem.window.PosiX = {{30, 721}}
+M[lvlno].switchSystem.window.PosiY = {{200, 400}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_14.png"

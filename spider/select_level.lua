@@ -255,23 +255,27 @@ function scene:create( event )
 	if(progressTable == nil) then
 		print("nil progressTable")
 	else
-		gemIcon.img = display.newImageRect( sceneGroup, "gem.png", 1920, 1040 )
-		gemIcon.img:scale(0.03, 0.03)
-		gemIcon.img.x = 50
-		gemIcon.img.y = 50
+		if(progressTable.totalGold ~= nil) then
+			gemIcon.img = display.newImageRect( sceneGroup, "gem.png", 1920, 1040 )
+			gemIcon.img:scale(0.03, 0.03)
+			gemIcon.img.x = 50
+			gemIcon.img.y = 50
+			
+			gemIcon.txt = display.newText("Gems: " .. progressTable.totalGold, 50, 80,  "comic.ttf", 10 )
+			gemIcon.txt:setFillColor( 1, 1, 0.7, 1)
+			sceneGroup:insert(gemIcon.txt)
+		end
 		
-		gemIcon.txt = display.newText("Gems: " .. progressTable.totalGold, 50, 80,  "comic.ttf", 10 )
-		gemIcon.txt:setFillColor( 1, 1, 0.7, 1)
-		sceneGroup:insert(gemIcon.txt)
-		
-		freeMoveIcon.img = display.newImageRect( sceneGroup, "bulb2.png", 1920, 1040 )
-		freeMoveIcon.img:scale(0.03, 0.03)
-		freeMoveIcon.img.x = totalHeight - 50
-		freeMoveIcon.img.y = 50
-		
-		freeMoveIcon.txt = display.newText("Free Moves: " .. progressTable.totalFreeMove, totalHeight - 50, 80,   "comic.ttf", 10 )
-		freeMoveIcon.txt:setFillColor( 1, 1, 0.7, 1)
-		sceneGroup:insert(freeMoveIcon.txt)
+		if(progressTable.totalFreeMove ~= nil) then
+			freeMoveIcon.img = display.newImageRect( sceneGroup, "bulb2.png", 1920, 1040 )
+			freeMoveIcon.img:scale(0.03, 0.03)
+			freeMoveIcon.img.x = totalHeight - 50
+			freeMoveIcon.img.y = 50
+			
+			freeMoveIcon.txt = display.newText("Free Moves: " .. progressTable.totalFreeMove, totalHeight - 50, 80,   "comic.ttf", 10 )
+			freeMoveIcon.txt:setFillColor( 1, 1, 0.7, 1)
+			sceneGroup:insert(freeMoveIcon.txt)
+		end
 	end
 	
 	backgroundMusic = audio.loadStream( "jungle.mp3" )

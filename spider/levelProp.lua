@@ -979,7 +979,7 @@ M[lvlno].spider.MyScale = 0.18
 M[lvlno].spider.PosiX = 350
 M[lvlno].spider.PosiY = 100
 M[lvlno].spider.LegExists = {1,0,1,0,1,0,1,0}
-M[lvlno].spider.LegTapOrder = {6, 2, 7, 5, 8, 4, 3, 1}
+M[lvlno].spider.LegTapOrder = {5, 7, 1, 3, 7, 3, 1, 7}
 M[lvlno].spider.LegImg = "nerdarrow.png"
 M[lvlno].spider.BodyImg = "nerdspider.png"
 M[lvlno].spider.BodyImgWidth = 1269
@@ -994,8 +994,8 @@ M[lvlno].collider.Orientation = {2, 2}
 M[lvlno].collider.ColliderType = {1, 1}
 
 M[lvlno].goal = {}
-M[lvlno].goal.PosiX = OOF
-M[lvlno].goal.PosiY = OOF
+M[lvlno].goal.PosiX = 350
+M[lvlno].goal.PosiY = 500
 
 M[lvlno].bg = {}
 M[lvlno].bg.Img = "splash3.jpg"

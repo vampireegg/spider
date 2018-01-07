@@ -225,7 +225,7 @@ M[lvlno].dos_donts.Img = "sl_1.png"
 M[lvlno].dos_donts.Color = {0.4, 0.3, 0.2, 1}
 
 M[lvlno].icon = {}
-M[lvlno].icon.Img = "sli_1.png"
+M[lvlno].icon.Img = "sli_1_new.png"
 
 ---------------------------------------- Level 4----------------------------------------
 lvlno = lvlno + 1
@@ -281,7 +281,7 @@ M[lvlno].dos_donts.Img = "dos_donts_4.png"
 M[lvlno].dos_donts.Color = {0.3, 0.2, 0.4, 1}
 
 M[lvlno].icon = {}
-M[lvlno].icon.Img = "li_4.png"
+M[lvlno].icon.Img = "li_4_new.png"
 
 ---------------------------------------- Level 5----------------------------------------
 lvlno = lvlno + 1

@@ -334,7 +334,7 @@ local function drawSwitchSystem(sceneGroup, switchSystem, switchSystemProp, phys
 				switchSystem.window[i][j][k].CommonName = "window"
 				switchSystemProp.window.CurState[i][j] = switchSystemProp.window.State[i][j]
 				if(switchSystemProp.window.CurState[i][j] == 0) then
-					switchSystem.window[i][j][k]:setFillColor( switchSystemProp.Color[i][1], switchSystemProp.Color[i][2], switchSystemProp.Color[i][3], 0.3 )
+					switchSystem.window[i][j][k]:setFillColor( switchSystemProp.Color[i][1], switchSystemProp.Color[i][2], switchSystemProp.Color[i][3], 0.15 )
 				else
 					switchSystem.window[i][j][k]:setFillColor( switchSystemProp.Color[i][1], switchSystemProp.Color[i][2], switchSystemProp.Color[i][3], 1 )
 					physics.addBody( switchSystem.window[i][j][k], "static", { friction=0, bounce=0} )

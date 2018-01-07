@@ -174,8 +174,8 @@ function scene:create( event )
 	local levelCount = current1st_Level
 	for i = 1,8 do
 		if(levelCount <= MaxLevel) then
-			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 432, 468 )
-			levelIcons[levelCount]:scale(0.25, 0.25)
+			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 1920, 1040 )
+			levelIcons[levelCount]:scale(0.03, 0.03)
 			local radAngle = (i - 1) * 45 * math.pi / 180
 			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
@@ -184,8 +184,8 @@ function scene:create( event )
 			
 			levelIcons[levelCount].txt2 = display.newText(sceneGroup,levelProp[levelCount].levelName, levelIcons[levelCount].x + 10, levelIcons[levelCount].y + 40,  "comic.ttf", 10 )
 			levelIcons[levelCount].txt = display.newText(sceneGroup,levelProp[levelCount].levelNumber .. ".", levelIcons[levelCount].txt2.x - levelIcons[levelCount].txt2.width/2 - 10, levelIcons[levelCount].txt2.y,  "comic.ttf", 12 )
-			levelIcons[levelCount].txt:setFillColor( 0.2, 0.2, 0.0, 1)
-			levelIcons[levelCount].txt2:setFillColor( 0.2, 0.2, 0.0, 1)
+			levelIcons[levelCount].txt:setFillColor( 1, 1, 0.7, 1)
+			levelIcons[levelCount].txt2:setFillColor( 1, 1, 0.7, 1)
 			
 			if(levelCount <= MaxCompletedLevel) then
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )

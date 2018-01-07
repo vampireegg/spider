@@ -625,7 +625,7 @@ local function on_frame( event )
 		control.nextMoveSensitive = 1
 	end
 	
-	if(control.nextMoveExists == true and (currentProgressTable.totalGold >= control.moveCost or currentProgressTable.totalFreeMove ~= 0)) then
+	if(control.nextMoveExists == true and (currentProgressTable.totalGold >= control.moveCost o currentProgressTable.totalFreeMove ~= 0)) then
 		makeNextMoveVisible()
 	elseif(control.nextMoveExists == true) then
 		makeNextMoveInVisible()
@@ -866,6 +866,7 @@ local function tapNextMove(event )
 	control.nextMoveTapTime = system.getTimer()
 	control.UsedFreeMoves = control.UsedFreeMoves + 1
 	currentProgressTable.totalFreeMove = currentProgressTable.totalFreeMove - 1
+	nextMove[1].txt2.text =  currentProgressTable.totalFreeMove .. ""
 	writeTableIntoFile("progress.json", progressTable)
 	local vx, vy = spider[1]:getLinearVelocity()
 	

@@ -3,6 +3,7 @@ local commonProp = require("commonProp")
 local levelProp = require("levelProp")
 local composer = require( "composer" )
 local drawFuncs = require("drawFuncs")
+local json = require( "json" )
 
 local scene = composer.newScene()
 
@@ -12,6 +13,7 @@ local totalHeight
 local totalWidth
 local legPhase
 local legPhaseCount
+local sceneGroup
 
 local MaxCompletedLevel
 local Level_Per_Row
@@ -32,12 +34,28 @@ local bgRect
 local nextScreenButton = {}
 local prevScreenButton = {}
 
+local progressTable
+
 local ending_level
 local needtoGoToSelectLevel
 local gotoSelectedLevel
 
 local backgroundMusic
 local backgroundMusicChannel
+
+local gemIcon = {}
+local freeMoveIcon = {}
+
+local function readFileIntoTable(filename)
+	local path = system.pathForFile( filename, system.DocumentsDirectory )
+	local file = io.open(path, "r" )
+	if file then
+		local contents = file:read( "*a" )
+		io.close( file )
+		local tablename = json.decode( contents )
+		return tablename
+	end
+end
 
 local function endSelection()
 	audio.setVolume( 1/0.3, { channel=1 } )
@@ -46,31 +64,33 @@ local function endSelection()
 	backgroundMusicChannel = nil
 	audio.dispose( backgroundMusicChannel )
 	display.remove(sceneGroup)
-	for i = 1, 8 do
-		display.remove(spiderProp.leg[i])
-	end
-	display.remove( spider[1] )
-	for i = current1st_Level,current1st_Level + 7 do
-		if(levelIcons[i] ~= nil) then 
-			display.remove(levelIcons[i])
-			display.remove(levelIcons[i].txt)
-			display.remove(levelIcons[i].txt2)
-		end
-	end
-	display.remove(bgProp.bg)
-	display.remove(bgRect)
-	display.remove(nextScreenButton[1])
-	display.remove(prevScreenButton[1])
+	-- for i = 1, 8 do
+		-- display.remove(spiderProp.leg[i])
+	-- end
+	-- display.remove( spider[1] )
+	-- for i = current1st_Level,current1st_Level + 7 do
+		-- if(levelIcons[i] ~= nil) then 
+			-- display.remove(levelIcons[i])
+			-- display.remove(levelIcons[i].txt)
+			-- display.remove(levelIcons[i].txt2)
+		-- end
+	-- end
+	-- display.remove(bgProp.bg)
+	-- display.remove(bgRect)
+	-- display.remove(nextScreenButton[1])
+	-- display.remove(prevScreenButton[1])
 	ending_level = true
 	local options = {
 		effect = "fade",
 		time = 800
 	}
 	if(gotoSelectedLevel == true) then
-		print("going to select_level")
+		print("going to select_level")		
+		composer.removeScene( "select_level" )
 		composer.gotoScene( "select_level", options )
 	else
 		print("going to dos_donts")
+		composer.removeScene( "select_level" )
 		composer.gotoScene( "dos_donts" , options)
 	end
 	
@@ -131,7 +151,7 @@ function scene:create( event )
 	-- Level_Per_Row = 5
 	-- Rows = math.ceil(MaxLevel / Level_Per_Row)
 	
-    local sceneGroup = self.view
+    sceneGroup = self.view
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
 	totalWidth = commonProp.total.Width
@@ -188,6 +208,9 @@ function scene:create( event )
 			levelIcons[levelCount].txt:setFillColor( 1, 1, 0.7, 1)
 			levelIcons[levelCount].txt2:setFillColor( 1, 1, 0.7, 1)
 			
+			sceneGroup:insert(levelIcons[levelCount].txt2)
+			sceneGroup:insert(levelIcons[levelCount].txt)
+			
 			if(levelCount <= MaxCompletedLevel) then
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			else
@@ -222,6 +245,29 @@ function scene:create( event )
 		prevScreenButton[1].rotation = -135
 		prevScreenButton[1].target1stLevel = current1st_Level - 8
 		prevScreenButton[1]:addEventListener( "tap", gotoSelectLevel )
+	end
+	
+	progressTable = readFileIntoTable("progress.json")
+	if(progressTable == nil) then
+		print("nil progressTable")
+	else
+		gemIcon.img = display.newImageRect( sceneGroup, "gem.png", 1920, 1040 )
+		gemIcon.img:scale(0.03, 0.03)
+		gemIcon.img.x = 50
+		gemIcon.img.y = 50
+		
+		gemIcon.txt = display.newText("Gems: " .. progressTable.totalGold, 50, 80,  "comic.ttf", 10 )
+		gemIcon.txt:setFillColor( 1, 1, 0.7, 1)
+		sceneGroup:insert(gemIcon.txt)
+		
+		freeMoveIcon.img = display.newImageRect( sceneGroup, "bulb2.png", 1920, 1040 )
+		freeMoveIcon.img:scale(0.03, 0.03)
+		freeMoveIcon.img.x = totalHeight - 50
+		freeMoveIcon.img.y = 50
+		
+		freeMoveIcon.txt = display.newText("Free Moves: " .. progressTable.totalFreeMove, totalHeight - 50, 80,   "comic.ttf", 10 )
+		freeMoveIcon.txt:setFillColor( 1, 1, 0.7, 1)
+		sceneGroup:insert(freeMoveIcon.txt)
 	end
 	
 	backgroundMusic = audio.loadStream( "jungle.mp3" )

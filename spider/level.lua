@@ -625,7 +625,7 @@ local function on_frame( event )
 		control.nextMoveSensitive = 1
 	end
 	
-	if(control.nextMoveExists == true and currentProgressTable.totalGold >= control.moveCost) then
+	if(control.nextMoveExists == true and (currentProgressTable.totalGold >= control.moveCost or currentProgressTable.totalFreeMove ~= 0)) then
 		makeNextMoveVisible()
 	elseif(control.nextMoveExists == true) then
 		makeNextMoveInVisible()
@@ -1136,7 +1136,7 @@ function scene:create( event )
 		drawFuncs.drawNextMove(sceneGroup, nextMove, nextMoveProp)
 	end
 	drawFuncs.drawNotiFication(sceneGroup, noti, notiProp, totalWidth[1], totalHeight[1])
-	if(currentProgressTable.totalGold < control.moveCost) then
+	if(currentProgressTable.totalGold < control.moveCost and currentProgressTable.totalFreeMove == 0) then
 		makeNextMoveInVisible()
 	end
 	

@@ -975,10 +975,10 @@ M[lvlno].nextMove.PosiY = 530
 
 
 M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.18
+M[lvlno].spider.MyScale = 0.16
 M[lvlno].spider.PosiX = 350
 M[lvlno].spider.PosiY = 100
-M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegExists = {1,0,1,0,1,0,1,0}
 M[lvlno].spider.LegTapOrder = {6, 2, 7, 5, 8, 4, 3, 1}
 M[lvlno].spider.LegImg = "nerdarrow.png"
 M[lvlno].spider.BodyImg = "nerdspider.png"
@@ -987,7 +987,7 @@ M[lvlno].spider.BodyImgHeight = 917
 M[lvlno].spider.BodyRatio = 0.65
 
 M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {240, 890, 450}
+M[lvlno].collider.GroupX = {240, 890, 455}
 M[lvlno].collider.GroupY = {30, 30, 240}
 M[lvlno].collider.Num = {12, 12, 3}
 M[lvlno].collider.Orientation = {2, 2, 2}
@@ -1017,12 +1017,12 @@ M[lvlno].switchSystem = {}
 M[lvlno].switchSystem.Num = 4
 M[lvlno].switchSystem.Color = {{1, 1, 1}, {0.3, 0.3, 1}, {1, 1, 0.3}, {1, 0, 0.5}}
 M[lvlno].switchSystem.switch = {}
-M[lvlno].switchSystem.switch.PosiX = {776, 350, 553, 553}
-M[lvlno].switchSystem.switch.PosiY = {300, 300, 300, 100}
+M[lvlno].switchSystem.switch.PosiX = {553, 350, 553, 776}
+M[lvlno].switchSystem.switch.PosiY = {100, 300, 300, 300}
 M[lvlno].switchSystem.window = {}
 M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1,2}, {1,1}, {2,2}}
 M[lvlno].switchSystem.window.State = {{1, 0},{1, 0}, {1,0}, {1, 0}}
-M[lvlno].switchSystem.window.Num = {{7, 7}, {7, 6}, {7, 6}, {7, 6}}
+M[lvlno].switchSystem.window.Num = {{7, 7}, {7, 6}, {7, 7}, {6, 6}}
 M[lvlno].switchSystem.window.PosiX = {{274, 691}, {274, 450}, {480, 480}, {671, 450}}
 M[lvlno].switchSystem.window.PosiY = {{200, 400}, {400, 30}, {200, 400}, {230, 430}}
 

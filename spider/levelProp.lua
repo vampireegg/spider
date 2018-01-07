@@ -1020,11 +1020,11 @@ M[lvlno].switchSystem.switch = {}
 M[lvlno].switchSystem.switch.PosiX = {776, 350, 553, 553}
 M[lvlno].switchSystem.switch.PosiY = {300, 300, 300, 100}
 M[lvlno].switchSystem.window = {}
-M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1,2}, {1,2}, {1,2}}
+M[lvlno].switchSystem.window.Orientation = {{1, 1}, {1,2}, {1,1}, {2,2}}
 M[lvlno].switchSystem.window.State = {{1, 0},{1, 0}, {1,0}, {1, 0}}
 M[lvlno].switchSystem.window.Num = {{7, 7}, {7, 6}, {7, 6}, {7, 6}}
-M[lvlno].switchSystem.window.PosiX = {{274, 691}, {274, 450}, {480, 671}, {480, 450}}
-M[lvlno].switchSystem.window.PosiY = {{200, 400}, {400, 30}, {200, 230}, {400, 430}}
+M[lvlno].switchSystem.window.PosiX = {{274, 691}, {274, 450}, {480, 480}, {671, 450}}
+M[lvlno].switchSystem.window.PosiY = {{200, 400}, {400, 30}, {200, 400}, {230, 430}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "dos_donts_14.png"

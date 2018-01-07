@@ -168,6 +168,7 @@ function scene:create( event )
 	spiderProp.ImgWidth = 1269
 	spiderProp.ImgHeight = 917
 	spiderProp.BodyRatio = 0.65
+	local disabledColor = 0.2
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 0)
 	
@@ -190,14 +191,14 @@ function scene:create( event )
 			if(levelCount <= MaxCompletedLevel) then
 				levelIcons[levelCount]:addEventListener( "tap", gotoGame )
 			else
-				levelIcons[levelCount]:setFillColor(1,1,1,0.3)
-				levelIcons[levelCount].txt2:setFillColor( 0.2, 0.2, 0.0, 0.3)
-				levelIcons[levelCount].txt:setFillColor( 0.2, 0.2, 0.0, 0.3)
+				levelIcons[levelCount]:setFillColor(1,1,1,disabledColor)
+				levelIcons[levelCount].txt2:setFillColor( 1, 1, 0.7, disabledColor)
+				levelIcons[levelCount].txt:setFillColor( 1, 1, 0.7, disabledColor)
 			end
 		end
 		spiderProp.leg[i].level = levelCount
 		if(spiderProp.leg[i].level > MaxCompletedLevel) then
-			spiderProp.leg[i]:setFillColor(1,1,1,0.3)
+			spiderProp.leg[i]:setFillColor(1,1,1,disabledColor)
 		end
 		if(spiderProp.leg[i].level > MaxLevel) then
 			spiderProp.leg[i]:setFillColor(1,1,1,0)

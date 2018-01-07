@@ -146,9 +146,9 @@ function scene:create( event )
 	
 	bgProp.Img = commonProp.level_select_screen.Img
 	bgProp.Color = commonProp.level_select_screen.Color
-	bgProp.bg = display.newImageRect( sceneGroup, commonProp.level_select_screen.Img, totalHeight, totalWidth )
-	bgProp.bg.x = totalHeight/2
-	bgProp.bg.y = totalWidth/2
+	-- bgProp.bg = display.newImageRect( sceneGroup, commonProp.level_select_screen.Img, totalHeight, totalWidth )
+	-- bgProp.bg.x = totalHeight/2
+	-- bgProp.bg.y = totalWidth/2
 	bgRect = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
@@ -163,10 +163,10 @@ function scene:create( event )
 	spiderProp.LegExists = {1,1,1,1,1,1,1,1}
 	spiderProp.leg = {}
 	spiderProp.legSquare = {}
-	spiderProp.LegImg = "arrow_icon.png"
-	spiderProp.Img = "spider_icon.png"
-	spiderProp.ImgWidth = 629
-	spiderProp.ImgHeight = 710
+	spiderProp.LegImg = "nerdarrow.png"
+	spiderProp.Img = "nerdspider.png"
+	spiderProp.ImgWidth = 1269
+	spiderProp.ImgHeight = 917
 	spiderProp.BodyRatio = 0.65
 	
 	drawFuncs.drawSpider(sceneGroup, spider, spiderProp, nil, 0)

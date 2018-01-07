@@ -968,7 +968,7 @@ M[lvlno].levelNumber = "S3"
 
 M[lvlno].levelType = 4
 
-M[lvlno].nextMoveExists = true
+M[lvlno].nextMoveExists = false
 M[lvlno].nextMove = {}
 M[lvlno].nextMove.PosiX = 120
 M[lvlno].nextMove.PosiY = 530

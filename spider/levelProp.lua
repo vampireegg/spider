@@ -963,8 +963,8 @@ lvlno = lvlno + 1
 M[lvlno] = {}
 M[lvlno].goldMax = 100
 M[lvlno].freeMove = 0
-M[lvlno].levelName = "Switches"
-M[lvlno].levelNumber = "14"
+M[lvlno].levelName = "The Labyrinth"
+M[lvlno].levelNumber = "15"
 
 M[lvlno].levelType = 4
 
@@ -1015,7 +1015,7 @@ M[lvlno].heartExists = 0
 M[lvlno].switchSystemExists = 1
 M[lvlno].switchSystem = {}
 M[lvlno].switchSystem.Num = 5
-M[lvlno].switchSystem.Color = 					{{1, 1, 1},  {.3,.3, 1}, {1, 1, .3}, {1, 0, .5}, {0, .5, 0}}
+M[lvlno].switchSystem.Color = 					{{1, 1, 1},  {.3,.3, 1}, {1, 1, .3}, {1, 0, .5}, {1, 0, 0}}
 M[lvlno].switchSystem.switch = {}
 M[lvlno].switchSystem.switch.PosiX = 			{553, 		 350,  		 553, 		 776, 		  776}
 M[lvlno].switchSystem.switch.PosiY = 			{100,        310, 	     310, 		 310, 		  500}
@@ -1027,8 +1027,8 @@ M[lvlno].switchSystem.window.PosiX = 			{{274, 691}, {274, 450}, {480, 480}, {67
 M[lvlno].switchSystem.window.PosiY = 			{{200, 410}, {410,  30}, {200, 410}, {230, 440}, {230,  30}}
 
 M[lvlno].dos_donts = {}
-M[lvlno].dos_donts.Img = "dos_donts_14.png"
-M[lvlno].dos_donts.Color = {0.25, 0.12, 0.0, 1}
+M[lvlno].dos_donts.Img = "sl_3.png"
+M[lvlno].dos_donts.Color = {0.25, 0.12, 0.16, 1}
 
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_14.png"

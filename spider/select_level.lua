@@ -51,9 +51,11 @@ local function endSelection()
 	end
 	display.remove( spider[1] )
 	for i = current1st_Level,current1st_Level + 7 do
-		display.remove(levelIcons[i])
-		display.remove(levelIcons[i].txt)
-		display.remove(levelIcons[i].txt2)
+		if(levelIcons[i] ~= nil) then 
+			display.remove(levelIcons[i])
+			display.remove(levelIcons[i].txt)
+			display.remove(levelIcons[i].txt2)
+		end
 	end
 	display.remove(bgProp.bg)
 	display.remove(bgRect)

@@ -987,11 +987,11 @@ M[lvlno].spider.BodyImgHeight = 917
 M[lvlno].spider.BodyRatio = 0.65
 
 M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {}
-M[lvlno].collider.GroupY = {}
-M[lvlno].collider.Num = {}
-M[lvlno].collider.Orientation = {}
-M[lvlno].collider.ColliderType = {}
+M[lvlno].collider.GroupX = {240, 890}
+M[lvlno].collider.GroupY = {30, 30}
+M[lvlno].collider.Num = {12, 12}
+M[lvlno].collider.Orientation = {2, 2}
+M[lvlno].collider.ColliderType = {1, 1}
 
 M[lvlno].goal = {}
 M[lvlno].goal.PosiX = OOF

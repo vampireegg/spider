@@ -396,63 +396,6 @@ M[lvlno].dos_donts.Color = {0.3, 0.2, 0.5, 1}
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_6_new.png"
 
----------------------------------------- sl - 2----------------------------------------
-lvlno = lvlno + 1
-M[lvlno] = {}
-M[lvlno].goldMax = 70
-M[lvlno].freeMove = 0
-M[lvlno].levelName = "BoundLess"
-M[lvlno].levelNumber = "S2"
-
-M[lvlno].levelType  = 3
-
-M[lvlno].nextMoveExists = true
-M[lvlno].nextMove = {}
-M[lvlno].nextMove.PosiX = 700
-M[lvlno].nextMove.PosiY = 530
-
-M[lvlno].spider = {}
-M[lvlno].spider.MyScale = 0.15
-M[lvlno].spider.PosiX = 189
-M[lvlno].spider.PosiY = 100
-M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
-M[lvlno].spider.LegTapOrder = {1, 6, 8, 5, 2, 4, 3}
-M[lvlno].spider.LegImg = "nerdarrow.png"
-M[lvlno].spider.BodyImg = "nerdspider.png"
-M[lvlno].spider.BodyImgWidth = 1269
-M[lvlno].spider.BodyImgHeight = 917
-M[lvlno].spider.BodyRatio = 0.65
-
-M[lvlno].collider = {}
-M[lvlno].collider.GroupX = {30, 350, 620, 940}
-M[lvlno].collider.GroupY = {50, 50, 50, 50}
-M[lvlno].collider.Num = {10, 10, 10, 10}
-M[lvlno].collider.Orientation = {2, 2, 2, 2}
-M[lvlno].collider.ColliderType = {1, 1, 1, 1}
-
-M[lvlno].goal = {}
-M[lvlno].goal.PosiX = 544
-M[lvlno].goal.PosiY = 100
-
-M[lvlno].bg = {}
-M[lvlno].bg.Img = "water.jpg"
-M[lvlno].bg.Opacity = 0.3
-
-M[lvlno].eye = {}
-M[lvlno].eye.Opacity = 0
-
-M[lvlno].portal = {}
-M[lvlno].portal.Exists = 1
-M[lvlno].portal.Types = {2, 3, 4}
-M[lvlno].portal.PosiX = {{189, 780}, {780, 189}, {780, 544}, {780, 544}}
-M[lvlno].portal.PosiY = {{361, 361}, {445, 445}, {192, 361}, {830, 510}}
-
-M[lvlno].dos_donts = {}
-M[lvlno].dos_donts.Img = "sl_2.png"
-M[lvlno].dos_donts.Color = {0.1, 0.05, 0.2, 1}
-
-M[lvlno].icon = {}
-M[lvlno].icon.Img = "sli_2_new.png"
 
 ---------------------------------------- Level 7----------------------------------------
 lvlno = lvlno + 1
@@ -747,6 +690,64 @@ M[lvlno].dos_donts.Color = {0.25, 0.0, 0.12, 1}
 
 M[lvlno].icon = {}
 M[lvlno].icon.Img = "li_11_new.png"
+
+---------------------------------------- sl - 2----------------------------------------
+lvlno = lvlno + 1
+M[lvlno] = {}
+M[lvlno].goldMax = 150
+M[lvlno].freeMove = 0
+M[lvlno].levelName = "BoundLess"
+M[lvlno].levelNumber = "S2"
+
+M[lvlno].levelType  = 3
+
+M[lvlno].nextMoveExists = true
+M[lvlno].nextMove = {}
+M[lvlno].nextMove.PosiX = 700
+M[lvlno].nextMove.PosiY = 530
+
+M[lvlno].spider = {}
+M[lvlno].spider.MyScale = 0.15
+M[lvlno].spider.PosiX = 189
+M[lvlno].spider.PosiY = 100
+M[lvlno].spider.LegExists = {1,1,1,1,1,1,1,1}
+M[lvlno].spider.LegTapOrder = {1, 6, 8, 5, 2, 4, 3}
+M[lvlno].spider.LegImg = "nerdarrow.png"
+M[lvlno].spider.BodyImg = "nerdspider.png"
+M[lvlno].spider.BodyImgWidth = 1269
+M[lvlno].spider.BodyImgHeight = 917
+M[lvlno].spider.BodyRatio = 0.65
+
+M[lvlno].collider = {}
+M[lvlno].collider.GroupX = {30, 350, 620, 940}
+M[lvlno].collider.GroupY = {50, 50, 50, 50}
+M[lvlno].collider.Num = {10, 10, 10, 10}
+M[lvlno].collider.Orientation = {2, 2, 2, 2}
+M[lvlno].collider.ColliderType = {1, 1, 1, 1}
+
+M[lvlno].goal = {}
+M[lvlno].goal.PosiX = 544
+M[lvlno].goal.PosiY = 100
+
+M[lvlno].bg = {}
+M[lvlno].bg.Img = "water.jpg"
+M[lvlno].bg.Opacity = 0.3
+
+M[lvlno].eye = {}
+M[lvlno].eye.Opacity = 0
+
+M[lvlno].portal = {}
+M[lvlno].portal.Exists = 1
+M[lvlno].portal.Types = {2, 3, 4}
+M[lvlno].portal.PosiX = {{189, 780}, {780, 189}, {780, 544}, {780, 544}}
+M[lvlno].portal.PosiY = {{361, 361}, {445, 445}, {192, 361}, {830, 510}}
+
+M[lvlno].dos_donts = {}
+M[lvlno].dos_donts.Img = "sl_2.png"
+M[lvlno].dos_donts.Color = {0.1, 0.05, 0.2, 1}
+
+M[lvlno].icon = {}
+M[lvlno].icon.Img = "sli_2_new.png"
 
 ---------------------------------------- Level 12----------------------------------------
 lvlno = lvlno + 1

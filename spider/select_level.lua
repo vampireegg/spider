@@ -86,11 +86,11 @@ local function endSelection()
 	}
 	if(gotoSelectedLevel == true) then
 		print("going to select_level")		
-		composer.removeScene( "select_level" )
+		--composer.removeScene( "select_level" )
 		composer.gotoScene( "select_level", options )
 	else
 		print("going to dos_donts")
-		composer.removeScene( "select_level" )
+		--composer.removeScene( "select_level" )
 		composer.gotoScene( "dos_donts" , options)
 	end
 	

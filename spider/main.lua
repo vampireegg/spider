@@ -53,6 +53,21 @@ if ( levelTable == nil or #levelTable == 0 ) then
         levelTable = { 1 }
 end
 
+local function myUnhandledErrorListener( event )
+ 
+    local iHandledTheError = true
+ 
+    if iHandledTheError then
+        print( "Handling the unhandled error", event.errorMessage )
+    else
+        print( "Not handling the unhandled error", event.errorMessage )
+    end
+    
+    return iHandledTheError
+end
+ 
+Runtime:addEventListener("unhandledError", myUnhandledErrorListener)
+
 
 
 local options = {

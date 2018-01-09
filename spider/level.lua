@@ -8,7 +8,8 @@
 
 -- admob app id: ca-app-pub-3541871007849876~4925110585
 -- admob ad unit id: ca-app-pub-3541871007849876/3951117876
---startapp ad id: 200202265
+-- startapp ad id: 200202265
+-- facebook app id: 406399589814193
 
 
 local physics = require( "physics" )

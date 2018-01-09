@@ -70,6 +70,36 @@ end
 Runtime:addEventListener("unhandledError", myUnhandledErrorListener)
 
 
+local function facebookListener( event )
+ 
+    if ( "fbinit" == event.name ) then
+ 
+        print( "Facebook initialized" )
+        facebook.login()
+ 
+    elseif ( "fbconnect" == event.name ) then
+ 
+        if ( "session" == event.type ) then
+            -- Handle login event
+            if ( "login" == event.phase ) then
+                local shareParams = {
+                    link = "https://www.coronalabs.com/",
+                    title = "Corona Labs"
+                }
+                facebook.showDialog( "link", shareParams )
+            end
+ 
+        elseif ( "dialog" == event.type ) then
+            -- Handle dialog event
+            print( event.response )
+        end
+    end
+end
+ 
+-- Set the "fbinit" listener to be triggered when initialization is complete
+facebook.init( facebookListener )
+
+
 
 local options = {
     effect = "fade",

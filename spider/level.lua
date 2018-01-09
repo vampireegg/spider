@@ -10,7 +10,7 @@
 -- admob ad unit id: ca-app-pub-3541871007849876/3951117876
 -- startapp ad id: 200202265
 -- facebook app id: 406399589814193
---KEY HASH: 6OtLE09dBnVqXl5kKlIs5KWuVGk=
+--KEY HASH: E6H9jBE7rr5S50MYNeiOg0p1bkQ=
 
 
 local physics = require( "physics" )

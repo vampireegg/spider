@@ -18,11 +18,11 @@ settings =
 	--
 	android =
 	{
+		facebookAppId = "406399589814193",
 		usesPermissions =
 		{
 			"android.permission.INTERNET",			
 		},
-		facebookAppId = "406399589814193",
 	},
 
 	--
@@ -57,7 +57,7 @@ settings =
             publisherId = "com.startapp"
         },
 		
-		["plugin.facebook.v4"] =
+		["plugin.facebook.v4a"] =
         {
             publisherId = "com.coronalabs"
         },

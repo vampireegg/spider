@@ -817,7 +817,7 @@ M[lvlno] = {}
 M[lvlno].goldMax = 40
 M[lvlno].freeMove = 0
 M[lvlno].levelName = "Windows and Gates"
-M[lvlno].levelNumber = "7"
+M[lvlno].levelNumber = "13"
 
 M[lvlno].nextMoveExists = true
 M[lvlno].nextMove = {}

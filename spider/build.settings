@@ -20,9 +20,9 @@ settings =
 	{
 		usesPermissions =
 		{
-			"android.permission.INTERNET",
-			facebookAppId = "406399589814193",  -- Replace XXXXXXXXXX with your Facebook App ID
+			"android.permission.INTERNET",			
 		},
+		facebookAppId = "406399589814193",
 	},
 
 	--

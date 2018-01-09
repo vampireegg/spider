@@ -5,6 +5,7 @@ local json = require( "json" )
 local startapp = require( "plugin.startapp" )
 local levelProp = require("levelProp")
 local composer = require( "composer" )
+local facebook = require( "plugin.facebook.v4" )
 local filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 local levelTable = {}
 local scoreTable = {}

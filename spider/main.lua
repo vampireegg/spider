@@ -79,20 +79,20 @@ local function facebookListener( event )
  
     elseif ( "fbconnect" == event.name ) then
  
-        -- if ( "session" == event.type ) then
-            -- -- Handle login event
-            -- if ( "login" == event.phase ) then
-                -- local shareParams = {
-                    -- link = "https://www.coronalabs.com/",
-                    -- title = "Corona Labs"
-                -- }
-                -- facebook.showDialog( "link", shareParams )
-            -- end
+        if ( "session" == event.type ) then
+            -- Handle login event
+            if ( "login" == event.phase ) then
+                local shareParams = {
+                    link = "https://www.coronalabs.com/",
+                    title = "Corona Labs"
+                }
+                facebook.showDialog( "link", shareParams )
+            end
  
-        -- elseif ( "dialog" == event.type ) then
-            -- -- Handle dialog event
-            -- print( event.response )
-        -- end
+        elseif ( "dialog" == event.type ) then
+            -- Handle dialog event
+            print( event.response )
+        end
     end
 end
  

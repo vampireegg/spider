@@ -83,8 +83,8 @@ local function facebookListener( event )
             -- Handle login event
             if ( "login" == event.phase ) then
                 local shareParams = {
-                    link = "https://www.coronalabs.com/",
-                    title = "Corona Labs"
+                    link = "https://play.google.com/store/apps/details?id=com.gmail.vampireegg.spider&hl=en",
+                    title = "Lost in the Labyrinth"
                 }
                 facebook.showDialog( "link", shareParams )
             end

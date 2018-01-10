@@ -42,6 +42,7 @@ local function facebookListener( event )
             -- Handle login event
             if ( "login" == event.phase ) then
                 local shareParams = {
+					message = "I completed the Hard Level " .. control.Completed_level .. " in " .. control.Time1stTime .. " seconds, can you beat me?",
                     link = "https://play.google.com/store/apps/details?id=com.gmail.vampireegg.spider&hl=en",
                     title = "Lost in the Labyrinth"
                 }

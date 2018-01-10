@@ -570,6 +570,10 @@ local function showScore()
 	progressTable.totalGold = control.totalGold
 	progressTable.totalFreeMove = control.totalFreeMove
 	
+	composer.setVariable("Time1stTime", control.Time1stTime)
+	composer.setVariable("Completed_level", Level)
+	composer.setVariable("UsedFreeMoves", control.CurrentUsedFreeMoves)
+	
 	scoreboardProp.UsedFreeMoves = control.CurrentUsedFreeMoves
 	scoreboardProp.OptimalMoves = control.LevelMoves
 	scoreboardProp.PlayerMoves = control.CurrentMoves

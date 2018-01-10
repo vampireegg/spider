@@ -9,7 +9,6 @@ local control = {}
 local background
 
 
-local Level
 local bgProp = {}
 
 local totalHeight
@@ -54,12 +53,14 @@ function scene:create( event )
  
 	print("fb_connect")
 	
-	Level = composer.getVariable("level")
-	
+	control.Time1stTime = composer.getVariable("Time1stTime")
+	control.Completed_level = composer.getVariable("Completed_level")
+	control.UsedFreeMoves = composer.getVariable("UsedFreeMoves")
 	
     local sceneGroup = self.view
 	
-	control.rectColor = {levelProp[Level].dos_donts.Color[1] / 2.5, levelProp[Level].dos_donts.Color[2] / 2.8, levelProp[Level].dos_donts.Color[3] / 1.8, 1}
+	control.rectColor = {levelProp[control.Completed_level].dos_donts.Color[1] / 2.5, levelProp[control.Completed_level].dos_donts.Color[2] / 2.8, 
+	levelProp[control.Completed_level].dos_donts.Color[3] / 1.8, 1}
     -- Code here runs when the scene is first created but has not yet appeared on screen
 	
 	totalWidth = commonProp.total.Width
@@ -81,6 +82,18 @@ function scene:create( event )
  
 	background = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
 	background:setFillColor(control.rectColor[1], control.rectColor[2], control.rectColor[3], control.rectColor[4])
+	
+	local posiX = totalHeight/2
+	local posiY = totalWidth/2 - 200
+	
+	background.txt = {}
+	background.txt[1] = display.newText( "Congratulations ", posiX, posiY,  "comic.ttf", 36 )
+	background.txt[1]:setFillColor( 0.9, 0.9, 0.65, 1)
+	
+	posiY = posiY + 100
+	
+	background.txt[2] = display.newText( "You completed the Hard Level " .. control.Completed_level .. " in " .. control.Time1stTime .. " seconds, can your friends beat you?", posiX, posiY,  "comic.ttf", 16 )
+	background.txt[2]:setFillColor( 0.9, 0.9, 0.65, 1)
 
 	background:addEventListener("tap", gotoGame)
 	

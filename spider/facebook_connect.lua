@@ -7,6 +7,7 @@ local facebook = require( "plugin.facebook.v4a" )
 local scene = composer.newScene()
 local control = {}
 local background
+local sceneGroup
 
 
 local bgProp = {}
@@ -17,8 +18,15 @@ local totalWidth
 
 
 local function gotoGame()
-
-    composer.gotoScene( "dos_donts" , options)
+	local options = 
+	{
+		effect = "fade",
+		time = 800
+	}
+	if(sceneGroup~= nil) then
+		display.remove(sceneGroup)
+		composer.gotoScene( "dos_donts" , options)
+	end
 end
 
 local function facebookListener( event )
@@ -46,6 +54,19 @@ local function facebookListener( event )
         end
     end
 end
+
+local function fbinit( event )
+		-- Set the "fbinit" listener to be triggered when initialization is complete
+	if(facebook ~= nil) then
+		if(facebook.init ~= nil) then
+			facebook.init( facebookListener )
+		else
+			print("facebook.init nil")
+		end
+	else
+		print("facebook nil")
+	end
+end
  
 
 
@@ -56,9 +77,9 @@ function scene:create( event )
 	control.Time1stTime = composer.getVariable("Time1stTime")
 	control.Completed_level = composer.getVariable("Completed_level")
 	control.UsedFreeMoves = composer.getVariable("UsedFreeMoves")
-	local Scale = 0.04
+	local Scale = 0.06
 	
-    local sceneGroup = self.view
+    sceneGroup = self.view
 	
 	control.rectColor = {levelProp[control.Completed_level].dos_donts.Color[1] / 2.5, levelProp[control.Completed_level].dos_donts.Color[2] / 2.8, 
 	levelProp[control.Completed_level].dos_donts.Color[3] / 1.8, 1}
@@ -68,17 +89,7 @@ function scene:create( event )
 	totalHeight = commonProp.total.Height
 	
 
-	
-	-- Set the "fbinit" listener to be triggered when initialization is complete
-	if(facebook ~= nil) then
-		if(facebook.init ~= nil) then
-			facebook.init( facebookListener )
-		else
-			print("facebook.init nil")
-		end
-	else
-		print("facebook nil")
-	end
+
 
  
 	background = display.newRect(sceneGroup, totalHeight/2, totalWidth/2, totalHeight, totalWidth)
@@ -103,25 +114,32 @@ function scene:create( event )
 	
 	posiY = posiY + 100
 	
-	background.txt[3] = display.newText( "Confirm: ", posiX - 50, posiY,  "comic.ttf", 20 )
+	background.txt[3] = display.newText( "Share : ", posiX - 30, posiY,  "comic.ttf", 20 )
 	background.txt[3]:setFillColor( 0.6, 0.6, 1, 1)
 	sceneGroup:insert(background.txt[3])
+	background.txt[3]:addEventListener("tap", fbinit)
 	
-	background.facebookButton = display.newImageRect( sceneGroup, "fb_button.png", 1920, 1040 )
+	background.facebookButton = display.newImageRect( sceneGroup, "f2.png", 606, 606 )
 	background.facebookButton.x = background.txt[3].x + background.txt[3].width/2 + 20
 	background.facebookButton.y = posiY
 	background.facebookButton:scale(Scale, Scale)
 	
-	posiY = posiY + 100
+	background.facebookButton:addEventListener("tap", fbinit)
 	
-	background.txt[4] = display.newText( "Cancel : ", posiX - 50, posiY,  "comic.ttf", 20 )
+	posiY = posiY + 70
+	
+	background.txt[4] = display.newText( "Cancel : ", posiX - 30, posiY,  "comic.ttf", 20 )
 	background.txt[4]:setFillColor( 0.9, 0.9, 0.3, 1)
 	sceneGroup:insert(background.txt[4])
+	
+	background.txt[4]:addEventListener("tap", gotoGame)
 	
 	background.crossButton = display.newImageRect( sceneGroup, "cross2.png", 70, 65 )
 	background.crossButton.x = background.txt[4].x + background.txt[4].width/2 + 20
 	background.crossButton.y = posiY
 	background.crossButton:scale(.5, .5)
+	
+	background.crossButton:addEventListener("tap", gotoGame)
 	
 	
 
@@ -138,8 +156,6 @@ function scene:show( event )
 		-- Code here runs when the scene is still off screen (but is about to come on screen)
 
 	elseif ( phase == "did" ) then
-		-- Code here runs when the scene is entirely on screen
-		Runtime:addEventListener( "enterFrame", on_frame )
 	end
 end
 
@@ -155,7 +171,7 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Code here runs immediately after the scene goes entirely off screen
-		composer.removeScene( "splash" )
+		composer.removeScene( "facebook_connect" )
 
 	end
 end

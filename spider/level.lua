@@ -265,10 +265,11 @@ local function endGame()
 	-- Go to the menu screen
 	if(control.spiderReachedGoal == true) then
 		print("going to dos_donts")
-		composer.gotoScene( "dos_donts" , control.screenTransitionOptions)
+		--composer.gotoScene( "dos_donts" , control.screenTransitionOptions)
+		composer.gotoScene( "facebook_connect" , control.screenTransitionOptions)
 	elseif(control.needtoCross == false) then
 		print("going to level")
-		composer.gotoScene( "level" , control.screenTransitionOptions)
+		composer.gotoScene( "level" , control.screenTransitionOptions)		
 	else
 		composer.gotoScene( "select_level" , control.screenTransitionOptions)
 	end

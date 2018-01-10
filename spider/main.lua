@@ -5,7 +5,6 @@ local json = require( "json" )
 local startapp = require( "plugin.startapp" )
 local levelProp = require("levelProp")
 local composer = require( "composer" )
-local facebook = require( "plugin.facebook.v4a" )
 local filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
 local levelTable = {}
 local scoreTable = {}
@@ -70,44 +69,6 @@ end
 Runtime:addEventListener("unhandledError", myUnhandledErrorListener)
 
 
-local function facebookListener( event )
- 
-    if ( "fbinit" == event.name ) then
- 
-        print( "Facebook initialized" )
-        facebook.login()
- 
-    elseif ( "fbconnect" == event.name ) then
- 
-        if ( "session" == event.type ) then
-            -- Handle login event
-            if ( "login" == event.phase ) then
-                local shareParams = {
-                    link = "https://play.google.com/store/apps/details?id=com.gmail.vampireegg.spider&hl=en",
-                    title = "Lost in the Labyrinth"
-                }
-                facebook.showDialog( "link", shareParams )
-            end
- 
-        elseif ( "dialog" == event.type ) then
-            -- Handle dialog event
-            print( event.response )
-        end
-    end
-end
- 
--- Set the "fbinit" listener to be triggered when initialization is complete
-if(facebook ~= nil) then
-	if(facebook.init ~= nil) then
-		facebook.init( facebookListener )
-	else
-		print("facebook.init nil")
-	end
-else
-	print("facebook nil")
-end
-
-
 
 local options = {
     effect = "fade",
@@ -119,6 +80,6 @@ startapp.init( adListener, { appId="200202265", enableReturnAds = true } )
 -- Go to the menu screen
 composer.setVariable( "1st_level", 1 )
 composer.setVariable( "show_1st_move", 0 )
-composer.setVariable( "level", 16 )
+composer.setVariable( "level", 1 )
 composer.setVariable( "max_completed_level", levelTable[1] )
-composer.gotoScene( "title", options )
+composer.gotoScene( "level", options )

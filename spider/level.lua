@@ -455,6 +455,11 @@ local function showScore()
 	control.CurrentTime = timeTable["L" ..  Level].SpentTime
 	control.CurrentMoves = #currentLegTapOrder
 	
+	local scurrentLegTapOrder = ""
+	for i = 1, #currentLegTapOrder do
+		scurrentLegTapOrder = scurrentLegTapOrder .. " , " .. currentLegTapOrder[i]		
+	end
+	print(scurrentLegTapOrder)
 
 	if(scoreTable == nil) then
 		print("scoreTable == nil")

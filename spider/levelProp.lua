@@ -995,12 +995,12 @@ M[lvlno].collider.Orientation = {2, 2}
 M[lvlno].collider.ColliderType = {1, 1}
 
 M[lvlno].goal = {}
-M[lvlno].goal.PosiX = 350
-M[lvlno].goal.PosiY = 500
+M[lvlno].goal.PosiX = 328
+M[lvlno].goal.PosiY = 524
 
 M[lvlno].bg = {}
 M[lvlno].bg.Img = "splash3.jpg"
-M[lvlno].bg.Opacity = 0.4
+M[lvlno].bg.Opacity = 0.3
 
 M[lvlno].eye = {}
 M[lvlno].eye.Opacity = 0
@@ -1018,14 +1018,14 @@ M[lvlno].switchSystem = {}
 M[lvlno].switchSystem.Num = 5
 M[lvlno].switchSystem.Color = 					{{1, 1, 1},  {.3,.3, 1}, {1, 1, .3}, {1, 0, .5}, {1, 0, 0}}
 M[lvlno].switchSystem.switch = {}
-M[lvlno].switchSystem.switch.PosiX = 			{553, 		 350,  		 553, 		 776, 		  776}
-M[lvlno].switchSystem.switch.PosiY = 			{100,        310, 	     310, 		 310, 		  500}
+M[lvlno].switchSystem.switch.PosiX = 			{553, 		 776,  		 553, 		 776, 		  350}
+M[lvlno].switchSystem.switch.PosiY = 			{100,        500, 	     310, 		 310, 		  310}
 M[lvlno].switchSystem.window = {}
-M[lvlno].switchSystem.window.Orientation = 		{{1, 	 1}, {1,     2}, {1,     1}, {2,     2}, {2,     2}}
+M[lvlno].switchSystem.window.Orientation = 		{{1, 	 1}, {1,     2}, {1,     2}, {2,     2}, {2,     2}}
 M[lvlno].switchSystem.window.State = 			{{1, 	 0}, {1,     0}, {1,     0}, {1,     0}, {1,     0}}
-M[lvlno].switchSystem.window.Num = 				{{7, 	 7}, {7,     6}, {7,     7}, {6,     6}, {6,     6}}
-M[lvlno].switchSystem.window.PosiX = 			{{274, 691}, {274, 450}, {480, 480}, {671, 450}, {450, 671}}
-M[lvlno].switchSystem.window.PosiY = 			{{200, 410}, {410,  30}, {200, 410}, {230, 440}, {230,  30}}
+M[lvlno].switchSystem.window.Num = 				{{7, 	 7}, {7,     6}, {7,     6}, {6,     6}, {6,     6}}
+M[lvlno].switchSystem.window.PosiX = 			{{274, 691}, {274, 450}, {480, 671}, {671, 450}, {450, 671}}
+M[lvlno].switchSystem.window.PosiY = 			{{200, 410}, {410,  30}, {200, 440}, {230, 440}, {230,  30}}
 
 M[lvlno].dos_donts = {}
 M[lvlno].dos_donts.Img = "sl_3.png"

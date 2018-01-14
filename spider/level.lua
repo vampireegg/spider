@@ -96,6 +96,24 @@ local function showAdd()
 	end
 end
 
+local function onKeyEvent( event )
+ 
+    -- Print which key was pressed down/up
+    local message = "Key '" .. event.keyName .. "' was pressed " .. event.phase
+    print( message )
+ 
+    -- If the "back" key was pressed on Android, prevent it from backing out of the app
+    if ( event.keyName == "back" ) then
+        if ( system.getInfo("platform") == "android" ) then
+            return true
+        end
+    end
+ 
+    -- IMPORTANT! Return false to indicate that this app is NOT overriding the received key
+    -- This lets the operating system execute its default handling of the key
+    return false
+end
+
 
 local function pushLeg(event )
 	if(event.target == nil) then
@@ -780,8 +798,9 @@ local function on_frame( event )
 		if(goalFlag == true) then
 			music.goalMusicChannel = audio.play( music.goalMusic, { channel=5, loops=0, duration = 3000, fadeout=2000 } )
 			goal[1]:setFillColor( 1, 1, 1, 0 )
-			
+
 			Runtime:removeEventListener( "enterFrame", on_frame )
+			Runtime:removeEventListener( "key",  onKeyEvent )
 			if(Level < #levelProp) then
 				composer.setVariable( "level", Level + 1 )
 			else
@@ -796,6 +815,7 @@ local function on_frame( event )
 		--local vx, vy = spider[1]:getLinearVelocity()
 		--if(vx == 0 and vy == 0) then
 			Runtime:removeEventListener( "enterFrame", on_frame )
+			Runtime:removeEventListener( "key",  onKeyEvent )
 			myTimers[#myTimers+1] = timer.performWithDelay( 500, endGame )
 		--end
 	end
@@ -1172,6 +1192,7 @@ function scene:show( event )
 		physics.start()
 		
 		Runtime:addEventListener( "enterFrame", on_frame )
+		Runtime:addEventListener( "key",  onKeyEvent )
 		spider[1].collision = spiderCollided
 		spider[1]:addEventListener( "collision" )
 		

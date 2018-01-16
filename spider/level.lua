@@ -22,7 +22,7 @@ local commonProp = require("commonProp")
 local levelProp = require("levelProp")
 local composer = require( "composer" )
 local json = require( "json" )
-local startapp = require( "plugin.startapp" )
+--local startapp = require( "plugin.startapp" )
 
  
  -- Hide the status bar
@@ -94,9 +94,9 @@ local levelTable = {}
 
 
 local function showAdd()
-	if ( startapp.isLoaded( "interstitial" ) ) then
-		startapp.show( "interstitial" )
-	end
+	-- if ( startapp.isLoaded( "interstitial" ) ) then
+		-- startapp.show( "interstitial" )
+	-- end
 end
 
 local function onKeyEvent( event )

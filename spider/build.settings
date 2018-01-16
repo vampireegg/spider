@@ -52,9 +52,9 @@ settings =
 	--
 	plugins =
     {
-        ["plugin.startapp"] =
+        ["plugin.vungle"] =
         {
-            publisherId = "com.startapp"
+            publisherId = "com.vungle"
         },
 		
 		["plugin.facebook.v4a"] =

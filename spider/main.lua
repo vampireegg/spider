@@ -6,6 +6,7 @@ local vungle = require( "plugin.vungle" )
 local levelProp = require("levelProp")
 local composer = require( "composer" )
 local filePath = system.pathForFile( "level.json", system.DocumentsDirectory )
+local vungle
 local levelTable = {}
 local scoreTable = {}
  
@@ -75,7 +76,9 @@ local options = {
     time = 800
 }
 
-local vungle = require( "plugin.vungle" )
+if ( system.getInfo("platform") == "android" ) then
+	vungle = require( "plugin.vungle" )
+end
  
 local appID, placementID1, placementID2
 if ( system.getInfo("platform") == "android" ) then
@@ -98,9 +101,15 @@ end
  
 -- Initialize the Vungle plugin
 local initParams = appID .. "," .. placementID1 .. "," .. placementID2
-vungle.init( "vungle", initParams, adListener )
+if(vungle ~= nil) then
+	vungle.init( "vungle", initParams, adListener )
+end
 
-local adShown = vungle.show( { placementId=placementID1, isSoundEnabled=true } )
+if ( system.getInfo("platform") == "android" ) then
+	if(vungle ~= nil and vungle.show ~= nil) then
+		local adShown = vungle.show( { placementId=placementID1, isSoundEnabled=true } )
+	end
+end
  
 -- Go to the menu screen
 composer.setVariable( "1st_level", 1 )

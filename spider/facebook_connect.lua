@@ -44,7 +44,7 @@ local function facebookListener( event )
                 local shareParams = {
 					description = "I completed the Hard Level " .. control.Completed_level .. " in " .. control.Time1stTime .. " seconds, can you beat me?",
 					link = "https://play.google.com/store/apps/details?id=com.gmail.vampireegg.spider&hl=en",
-					title = "Hello Friends" ,
+					title = "Hello Friends"
 					--photos  = {"https://drive.google.com/open?id=1WUeHxGsqgqXH51rU3pl5tkvA2L8hzVDI"}
                 }
                 facebook.showDialog( "link", shareParams )

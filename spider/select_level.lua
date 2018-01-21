@@ -173,7 +173,7 @@ function scene:create( event )
 	bgRect:setFillColor(bgProp.Color[1], bgProp.Color[2], bgProp.Color[3], bgProp.Color[4])
 	
 	
-	spiderProp.MyScale = 0.4
+	spiderProp.MyScale = 0.35
 	spiderProp.ArrowSize = 83.5 * spiderProp.MyScale
 	spiderProp.BodySize = 487 * spiderProp.MyScale
 	spiderProp.ArrowDistance = 365 * spiderProp.MyScale
@@ -196,7 +196,7 @@ function scene:create( event )
 	for i = 1,8 do
 		if(levelCount <= MaxLevel) then
 			levelIcons[levelCount] = display.newImageRect( sceneGroup, levelProp[levelCount].icon.Img, 1920, 1040 )
-			levelIcons[levelCount]:scale(0.04, 0.04)
+			levelIcons[levelCount]:scale(0.045, 0.045)
 			local radAngle = (i - 1) * 45 * math.pi / 180
 			levelIcons[levelCount].x = totalHeight/ 2 + 230 * math.cos(radAngle)
 			levelIcons[levelCount].y = totalWidth / 2 + 230 * math.sin(radAngle)
